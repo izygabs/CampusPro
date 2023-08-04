@@ -15,7 +15,6 @@ const login = async (req, res) => {
   } else {
     try {
       const isUser = await user.findOne({ email: Email });
-      console.log(isUser);
       if (isUser) {
         //check the password
         let validPassword = await bcrypt.compare(Password, isUser.password);
@@ -28,12 +27,17 @@ const login = async (req, res) => {
             }
           );
           res.cookie("campusProUserToken", token, { maxAge: 1000 * 60 * 60 });
+          res.status(StatusCodes.OK).json({ "Welcome ": isUser.firstName });
         } else {
           return res.status(401).json("Invalid Password");
         }
       } else {
+        res
+          .status(StatusCodes.EXPECTATION_FAILED)
+          .json("Invalid Email or Password");
       }
     } catch (error) {
+      console.log(error);
       res.status(StatusCodes.FORBIDDEN).json({ "Database Error": error });
     }
   }

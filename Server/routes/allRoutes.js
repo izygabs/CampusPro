@@ -62,6 +62,6 @@ route.get("/api/item/:id", verifyToken, viewItemById);
 route.delete("/api/property/:id", verifyToken, deleteProperty);
 
 route.delete("/api/item/:id", verifyToken, deleteItem);
-route.get("/api/auth/logout", verifyToken, logOut);
+route.get("/api/logout", verifyToken, logOut);
 
 module.exports = route;
