@@ -2,12 +2,19 @@ const bcrypt = require("bcrypt");
 const { user } = require("../models/userSchema");
 const validator = require("../validators/joiValidation");
 const { StatusCodes } = require("http-status-codes");
+const errorHandler = require("../middlewares/handleError");
 
 const signUp = async (req, res) => {
   const { error, value } = validator.signUp(req.body);
   console.log(value);
+  if (req.file == null) {
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ "Image Error": "Upload profile picture" });
+  }
   if (error) {
-    res.status(StatusCodes.NOT_ACCEPTABLE).json({ error: error });
+    const errors = errorHandler.JoiErrorHandler(error);
+    res.status(StatusCodes.NOT_ACCEPTABLE).json({ error: errors });
   } else {
     try {
       const userExist = await user.findOne({ email: value.Email });
@@ -21,9 +28,12 @@ const signUp = async (req, res) => {
           lastName: value.lastName,
           email: value.Email,
           phoneNumber: value.Phone,
-          altPhoneNumber: value.altPhoneNumber,
+          altPhoneNumber: value.altPhoneNumber || "",
           password: hashedPassword,
-          // profilePic: req.file.path,
+          profilePic: req.file.path,
+          typeOfUser: value.typeOfUser,
+          propertyIds: [],
+          itemIds: [],
         });
         let newUser = await agents.save();
         res
@@ -32,7 +42,10 @@ const signUp = async (req, res) => {
       }
     } catch (error) {
       console.log(error);
-      res.status(StatusCodes.EXPECTATION_FAILED).send("Registration failed");
+      const errors = errorHandler.dbSchemaErrors(error);
+      res
+        .status(StatusCodes.EXPECTATION_FAILED)
+        .json({ "Error message": errors });
     }
   }
 };

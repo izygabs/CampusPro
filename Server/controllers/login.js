@@ -4,12 +4,14 @@ const jwt = require("jsonwebtoken");
 const { StatusCodes } = require("http-status-codes");
 const { user } = require("../models/userSchema");
 const validator = require("../validators/joiValidation");
+const errorHandler = require("../middlewares/handleError");
 
 const login = async (req, res) => {
   const { error, value } = validator.loginSchema(req.body);
   const { email, password } = value;
   if (error) {
-    res.status(StatusCodes.FORBIDDEN).json({ "Validation Error": error });
+    const errors = errorHandler.JoiErrorHandler(error);
+    res.status(StatusCodes.FORBIDDEN).json({ "Validation Error": errors });
   } else {
     try {
       const isUser = await user.findOne({ email });

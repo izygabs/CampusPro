@@ -48,6 +48,12 @@ const signUp = (data) => {
       "any.require": "Confirm Password is required",
       "any.only": "Passwords do not match",
     }),
+
+    typeOfUser: Joi.string().required().trim().messages({
+      "string.base": `user type should be a "text"`,
+      "string.empty": `user type cannot be empty`,
+      "any.required": `user type field is required`,
+    }),
   });
   return Schemas.validate(data);
 };

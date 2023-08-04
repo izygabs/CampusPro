@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const hostelSchema = new mongoose.Schema({
+  agentID: {
+    type: mongoose.Schema.Types.ObjectIdc,
+    ref: "user",
+  },
   description: {
     type: String,
     required: true,

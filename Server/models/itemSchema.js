@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const itemSchema = new mongoose.Schema({
+  merchantID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+  },
   category: {
     type: String,
     required: true,
