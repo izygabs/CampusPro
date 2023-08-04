@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    lowerCase: true,
   },
   phoneNumber: {
     type: Number,
@@ -35,10 +36,22 @@ const userSchema = new mongoose.Schema({
     type: String,
     // required: true,
   },
-  address: {
+  typeOfUser: {
     type: String,
     required: true,
   },
+  propertyIds: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "hostel",
+    },
+  ],
+  itemIds: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "item",
+    },
+  ],
 });
 
 module.exports.user = mongoose.model("user", userSchema);

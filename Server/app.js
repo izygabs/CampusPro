@@ -5,9 +5,10 @@ const connectMongoose = require("./models/connectMongoose");
 const route = require("./routes/allRoutes");
 const cookieParser = require("cookie-parser");
 
-// middlewares
 app.use(cookieParser());
+
 app.use(express.json());
+
 app.use(route);
 
 app.listen(PORT, async () => {

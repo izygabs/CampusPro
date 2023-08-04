@@ -4,18 +4,21 @@ const jwt = require("jsonwebtoken");
 const { StatusCodes } = require("http-status-codes");
 const { user } = require("../models/userSchema");
 const validator = require("../validators/joiValidation");
+const errorHandler = require("../middlewares/handleError");
 
 const login = async (req, res) => {
   const { error, value } = validator.loginSchema(req.body);
-  const { email, password } = value;
+  const { Email, Password } = value;
   if (error) {
-    res.status(StatusCodes.FORBIDDEN).json({ "Validation Error": error });
+    const errors = errorHandler.JoiErrorHandler(error);
+    res.status(StatusCodes.FORBIDDEN).json({ "Validation Error": errors });
   } else {
     try {
-      const isUser = await user.findOne({ email });
+      const isUser = await user.findOne({ email: Email });
+      console.log(isUser);
       if (isUser) {
         //check the password
-        let validPassword = await bcrypt.compare(password, isUser.password);
+        let validPassword = await bcrypt.compare(Password, isUser.password);
         if (validPassword) {
           const token = jwt.sign(
             { _id: isUser._id, email: isUser.email },
@@ -26,15 +29,13 @@ const login = async (req, res) => {
           );
           res.cookie("campusProUserToken", token, { maxAge: 1000 * 60 * 60 });
         } else {
-          return res.status(401).send("Invalid Password");
+          return res.status(401).json("Invalid Password");
         }
       } else {
       }
     } catch (error) {
       res.status(StatusCodes.FORBIDDEN).json({ "Database Error": error });
     }
-
-    res.status(StatusCodes.ACCEPTED).json("Welcome");
   }
 };
 module.exports = login;

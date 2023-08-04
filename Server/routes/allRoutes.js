@@ -24,6 +24,8 @@ const deleteProperty = require("../controllers/deleteProperty");
 
 const deleteItem = require("../controllers/deleteItem");
 const upload = require("../validators/uploadFile");
+const verifyToken = require("../validators/verifyToken");
+const logOut = require("../controllers/logOut");
 
 const route = express.Router();
 
@@ -31,24 +33,35 @@ route.post("/api/signUp", upload.single("ProfilePic"), signUp);
 
 route.post("/api/login", login);
 
-route.post("/api/uploadProperties", upload.array("hostels"), uploadProperty);
+route.post(
+  "/api/uploadProperties",
+  verifyToken,
+  upload.array("hostels"),
+  uploadProperty
+);
 
-route.post("/api/uploadItems", upload.array("items"), uploadItem);
+route.post("/api/uploadItems", verifyToken, upload.array("items"), uploadItem);
 
-route.put("/api/property/:id", upload.array("hostels"), updateProperty);
+route.put(
+  "/api/property/:id",
+  verifyToken,
+  upload.array("hostels"),
+  updateProperty
+);
 
-route.put("/api/item/:id", upload.array("items"), updateItem);
+route.put("/api/item/:id", verifyToken, upload.array("items"), updateItem);
 
-route.get("/api/allProperties", viewProperties);
+route.get("/api/allProperties", verifyToken, viewProperties);
 
-route.get("/api/allItems", viewItems);
+route.get("/api/allItems", verifyToken, viewItems);
 
-route.get("/api/property/:id", viewPropertyById);
+route.get("/api/property/:id", verifyToken, viewPropertyById);
 
-route.get("/api/item/:id", viewItemById);
+route.get("/api/item/:id", verifyToken, viewItemById);
 
-route.delete("/api/property/:id", deleteProperty);
+route.delete("/api/property/:id", verifyToken, deleteProperty);
 
-route.delete("/api/item/:id", deleteItem);
+route.delete("/api/item/:id", verifyToken, deleteItem);
+route.get("/api/auth/logout", verifyToken, logOut);
 
 module.exports = route;
