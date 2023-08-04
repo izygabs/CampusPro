@@ -1,0 +1,277 @@
+[
+    { 
+        "id":1,
+        "description": "3 Bedroom flat",
+        "image": "house2.jpg",
+        "amount":"1.5m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"lasu",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+
+    { 
+        "id":2,
+        "description": "4 Bedroom flat",
+        "image":"house3.jpg",
+        "amount":"1.9m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"the polytechnic ibadan",
+        "location": "yaba",
+        "bathroom":6,
+        "electricity": true  
+    },
+    { 
+        "id":3,
+        "description": "4 Bedroom flat",
+        "image": "house1.jpg",
+        "amount":"2.6m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"the polytechnic ibadan",
+        "location": "agbala ewa",
+        "bathroom":3,
+        "electricity": true  
+    },
+    { 
+        "id":4,
+        "description": "3 Bedroom flat",
+        "image": "house4.jpg",
+        "amount":"2m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"ui",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+    
+    { 
+        "id":5,
+        "description": "3 Bedroom flat",
+        "image": "house2.jpg",
+        "amount":"1.5m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"lasu",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+
+    { 
+        "id":6,
+        "description": "4 Bedroom flat",
+        "image": "house3.jpg",
+        "amount":"1.9m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"unilag",
+        "location": "yaba",
+        "bathroom":6,
+        "electricity": true  
+    },
+    { 
+        "id":7,
+        "description": "3 Bedroom flat",
+        "image": "house2.jpg",
+        "amount":"1.5m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"lasu",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+
+    { 
+        "id":8,
+        "description": "4 Bedroom flat",
+        "image":"house3.jpg",
+        "amount":"1.9m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"the polytechnic ibadan",
+        "location": "yaba",
+        "bathroom":6,
+        "electricity": true  
+    },
+    { 
+        "id":9,
+        "description": "4 Bedroom flat",
+        "image": "house1.jpg",
+        "amount":"2.6m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"eksu",
+        "location": "agbala ewa",
+        "bathroom":3,
+        "electricity": true  
+    },
+    { 
+        "id":10,
+        "description": "3 Bedroom flat",
+        "image": "house4.jpg",
+        "amount":"2m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"unilag",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+    
+    { 
+        "id":11,
+        "description": "3 Bedroom flat",
+        "image": "house2.jpg",
+        "amount":"1.5m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"unilag",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+
+    { 
+        "id":12,
+        "description": "4 Bedroom flat",
+        "image": "house3.jpg",
+        "amount":"1.9m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"lasu",
+        "location": "yaba",
+        "bathroom":6,
+        "electricity": true  
+    },
+    { 
+        "id":13,
+        "description": "3 Bedroom flat",
+        "image": "house2.jpg",
+        "amount":"1.5m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"the polytechnic ibadanu",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+
+    { 
+        "id":14,
+        "description": "4 Bedroom flat",
+        "image":"house3.jpg",
+        "amount":"1.9m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"lasu",
+        "location": "yaba",
+        "bathroom":6,
+        "electricity": true  
+    },
+    { 
+        "id":15,
+        "description": "4 Bedroom flat",
+        "image": "house1.jpg",
+        "amount":"2.6m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"unilag",
+        "location": "agbala ewa",
+        "bathroom":3,
+        "electricity": true  
+    },
+    { 
+        "id":16,
+        "description": "3 Bedroom flat",
+        "image": "house4.jpg",
+        "amount":"2m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"lasu",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+    
+    { 
+        "id":17,
+        "description": "3 Bedroom flat",
+        "image": "house2.jpg",
+        "amount":"1.5m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"oou",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+
+    { 
+        "id":18,
+        "description": "4 Bedroom flat",
+        "image": "house3.jpg",
+        "amount":"1.9m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"oau",
+        "location": "yaba",
+        "bathroom":6,
+        "electricity": true  
+    },
+    { 
+        "id":19,
+        "description": "3 Bedroom flat",
+        "image": "house2.jpg",
+        "amount":"1.5m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"unilorin",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    },
+
+    { 
+        "id":20,
+        "description": "4 Bedroom flat",
+        "image":"house3.jpg",
+        "amount":"1.9m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"laspotech",
+        "location": "yaba",
+        "bathroom":6,
+        "electricity": true  
+    },
+    { 
+        "id":21,
+        "description": "4 Bedroom flat",
+        "image": "house1.jpg",
+        "amount":"2.6m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"the polytechnic ibadan",
+        "location": "agbala ewa",
+        "bathroom":3,
+        "electricity": true  
+    },
+    { 
+        "id":22,
+        "description": "3 Bedroom flat",
+        "image": "house4.jpg",
+        "amount":"2m Annualy",
+        "security": true,
+        "gateman":false,
+        "campus":"ui",
+        "location": "School bus stop",
+        "bathroom":2,
+        "electricity": true  
+    }
+
+]
