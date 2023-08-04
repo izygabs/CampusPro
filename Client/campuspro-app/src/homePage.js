@@ -1,5 +1,5 @@
 import React from "react";
-import logo from './logo2.png'
+import logo from './logo22.png'
 import data from "./data"
 import { useState } from "react";
 import Schools from "./schools";
@@ -39,7 +39,8 @@ const house = datas.map((aparte)=>{
           </div> 
         </div>
         <div>
-          <input onChange={change} className="hp-select-button"/> 
+          <input onChange={change} placeholder="Search for hostels around your school. example: oou" className="hp-select-button"/>
+
           {/* <select onChange={change} className="hp-select-button">
               <option value={'lasu'}>LASU</option>
               <option value={'unilag'}>UNILAG</option>
