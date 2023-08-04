@@ -10,6 +10,7 @@ const signUp = (data) => {
     password: Joi.string().required().min(8).max(100),
     confirmPassword: Joi.string().required().min(8).max(100),
     profilePic: Joi.string().required(),
+    address: Joi.string().trim(),
   });
   return schema.validate(data);
 };
