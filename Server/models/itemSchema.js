@@ -1,17 +1,24 @@
 const mongoose = require("mongoose");
 
-const hostelSchema = new mongoose.Schema({
+const itemSchema = new mongoose.Schema({
+  category: {
+    type: String,
+    required: true,
+  },
+  itemName: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
   },
-  image: {
-    type: String,
+  price: {
+    type: Number,
     required: true,
   },
-  amount: {
+  quantity: {
     type: String,
-    required: true,
   },
   campus: {
     type: String,
@@ -21,7 +28,7 @@ const hostelSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  houseProperties: [],
+  itemProperties: [],
 });
 
-module.exports.hostelProps = mongoose.model("hostel", hostelSchema);
+module.exports.items = mongoose.model("item", itemSchema);
