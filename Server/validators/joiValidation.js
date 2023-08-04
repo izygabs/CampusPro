@@ -20,6 +20,12 @@ const signUp = (data) => {
         "string.pattern.base": `Invalid phone number`,
         "any.required": "phone Number must not be empty",
       }),
+    altPhoneNumber: Joi.string()
+      .trim()
+      .pattern(new RegExp(/^((\+234)+|0)[7-9]{1}[0-9]{9}$/))
+      .messages({
+        "string.pattern.base": `Invalid phone number`,
+      }),
 
     Email: Joi.string().trim().email().required().messages({
       "string.email": `Invalid email, for instance 'example@gmail.com'`,
@@ -38,10 +44,10 @@ const signUp = (data) => {
         "string.min": `Password length must at least be 8 characters long`,
       }),
 
-    confirmPassword: Joi.string()
-      .valid(Joi.ref("password"))
-      .required()
-      .error(new Error("Passwords do not match")),
+    confirmPassword: Joi.any().valid(Joi.ref("Password")).required().messages({
+      "any.require": "Confirm Password is required",
+      "any.only": "Passwords do not match",
+    }),
   });
   return Schemas.validate(data);
 };
