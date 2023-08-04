@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const register = require("../models/signupSchema");
+const register = require("../models/userSchema");
 const validator = require("../validators/joiValidation");
 const { StatusCodes } = require("http-status-codes");
 
