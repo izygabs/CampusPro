@@ -23,20 +23,21 @@ const viewItemById = require("../controllers/viewItemById");
 const deleteProperty = require("../controllers/deleteProperty");
 
 const deleteItem = require("../controllers/deleteItem");
+const upload = require("../validators/uploadFile");
 
 const route = express.Router();
 
-route.post("/api/signUp", signUp);
+route.post("/api/signUp", upload.single("ProfilePic"), signUp);
 
 route.post("/api/login", login);
 
-route.post("/api/uploadProperties", uploadProperty);
+route.post("/api/uploadProperties", upload.array("hostels"), uploadProperty);
 
-route.post("/api/uploadItems", uploadItem);
+route.post("/api/uploadItems", upload.array("items"), uploadItem);
 
-route.put("/api/property/:id", updateProperty);
+route.put("/api/property/:id", upload.array("hostels"), updateProperty);
 
-route.put("/api/item/:id", updateItem);
+route.put("/api/item/:id", upload.array("items"), updateItem);
 
 route.get("/api/allProperties", viewProperties);
 

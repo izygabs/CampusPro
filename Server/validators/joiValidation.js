@@ -52,4 +52,20 @@ const signUp = (data) => {
   return Schemas.validate(data);
 };
 
+const loginSchema = (data) => {
+  Schemas = Joi.object({
+    Email: Joi.string().email().required().trim().messages({
+      "string.email": `Invalid email, for instance 'example@gmail.com'`,
+      "any.required": `this field is require`,
+      "string.empty": `"email" cannot be empty field`,
+    }),
+    Password: Joi.string().trim().required().messages({
+      "any.required": `Password field is required`,
+      "string.min": `"password" length must at least be 8 characters long`,
+    }),
+  });
+  return Schemas.validate(data);
+};
+
 module.exports.signUp = signUp;
+module.exports.loginSchema = loginSchema;
