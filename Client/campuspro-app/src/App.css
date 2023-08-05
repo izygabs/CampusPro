@@ -1,11 +1,14 @@
 body{
-    color: white;
-
+    color: #fff;
+}
+p{
+    margin: 3px;
 }
 .hp-header{
     /* position:fixed; */
     display:flex;
     background-color: rgb(9, 7, 7);
+    /* background-color: #ccc; */
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -50,8 +53,12 @@ body{
     background-color: gold;
     height: 100%;
     text-align: center;
+    /* padding-top: 10vh; */
+    /* justify-content: space-around; */
+
 }
 .hp-heading{
+    margin-top: 20%;
     text-align: center;
     font-size: 40px;
     font-weight: 700;
@@ -62,6 +69,7 @@ body{
     font-size: 18px;
     text-align: center;
     padding: 0 15px;
+    
 }
 .hp-school{
     display: flex;
@@ -103,4 +111,201 @@ body{
     color: black;
     font-size: 30px;
     font-weight: 700;
+}
+.sp-subrent-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: white;
+}
+.sp-sub-div{
+    margin: 5vh 0;
+    background-color: black;
+    height: 53vh;
+}
+.sp-text-div{
+   text-align: center;
+   padding-bottom: 2vh;
+}
+.sp-img-div{
+    height: 60%;
+    margin-bottom: 10px;
+}
+.sp-img-div img {
+    height: 100%;
+   
+}
+
+.sp-text-div button{
+    background-color: transparent;
+    padding: 7px 15px;
+    border-width: 1px;
+    border-radius: 20px;
+    border-color: gold;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 10px;
+}
+.hp-button-link{
+    margin-top: 10px;
+    padding:10px 20px;
+    background-color: transparent;
+    border: solid 1px black;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.6s;
+}
+.link{
+    text-decoration: none;
+    color: black;
+    
+}
+.hp-button-link:hover{
+    background-color: black;
+    color: white;
+}
+.sp-select-amount{
+    width: 20vw;
+    outline: none;
+    height: 5vh;
+    border: solid 2px gold;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+.sp-select-amount option{
+    font-size: 13px;
+    background-color: black;
+    color: white;
+}
+
+/* Buy-page 1 */
+
+.bp1-navbar {
+    display: flex;
+    width: 100%;
+    border: 1px black solid;
+    height: 15vh;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: all 2s ease-in-out;
+}
+
+.bp1-navbar:hover {
+    box-shadow: 3px 3px 10px gold;
+    
+}
+
+.bp1-logo {
+    width: 25rem;
+    margin-left: -1.5rem;
+}
+
+.bp1-input {
+    width: 30%;
+    height: 7vh;
+    box-shadow: inset 2px 2px 5px black;
+    outline: none;
+    border: none;
+}
+
+.bp1-p {
+    margin-right: 1rem;
+    padding: 0.5rem 0.8rem;
+    background: gold;
+    color: #000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 20px;
+    border: none;
+}
+
+.cate-gory {
+    text-align: center;
+    font-weight: bold;
+}
+
+.bp1-select {
+    background-color: whitesmoke;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: -15rem;
+}
+
+
+.bp1-buy-sec {
+    border: 1px black solid;
+    width: 100%;
+}
+
+.bp1-houses {
+    color: #000;
+    border: 1px black solid;
+    width: 20%;
+    text-align: center;
+    background-color: gold;
+    border: none;
+    transition: all 2s ease-in-out;
+    cursor: pointer;
+}
+
+.bp1-houses:hover {
+    transform: scale(1);
+    box-shadow: 2px 2px 5px black;
+}
+
+.bp1-duplex {
+    width: 100%;
+}
+
+.bp1-duplex:hover {
+    transform: scale(1);
+    box-shadow: inset 2px 2px 5px black;
+}
+
+
+.bp1-overall {
+    display: flex;
+    justify-content: space-around;
+}
+
+.bp1-header {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    background: gold;
+    border-radius: 20px;
+    transition: all 2s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.bp1-header:hover {
+    box-shadow: 2px 2px 5px black;
+}
+
+.bp1-btn {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    background: gold;
+    border-radius: 20px;
+    border: none;
+    margin-left: 70rem;
+    transition: all 2s ease-in-out;
+    cursor: pointer;
+}
+
+.bp1-btn:hover {
+    opacity: 0.5;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px black;
 }

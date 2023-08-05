@@ -10,7 +10,7 @@ const uploadProperty = async (req, res) => {
   let userId = req.user;
   const { error, value } = validator.hostelSchema(req.body);
 
-  if (hostelsPictures == null) {
+  if (hostelsPictures == null || hostelsPictures.length < 5) {
     // to delete the images saved into the hostels Images folder while validation failed
     hostelsPictures.forEach((file) => {
       fs.unlinkSync(file.path);
@@ -18,7 +18,7 @@ const uploadProperty = async (req, res) => {
 
     res
       .status(StatusCodes.BAD_REQUEST)
-      .json({ "Image Error": "Upload hostel pictures" });
+      .json({ "Image Error": "You must upload minimum of 5 pictures" });
   } else {
     const { Description, Price, Campus, Location } = value;
     if (error) {

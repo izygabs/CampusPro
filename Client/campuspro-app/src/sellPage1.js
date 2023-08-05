@@ -1,7 +1,7 @@
-import React from "react";
-
-function sellPage1() {
-  return <div>sellPage1</div>;
+const SellPage = () => {
+  return (
+    <h1>Sellers Dashboard</h1>
+  );
 }
-
-export default sellPage1;
+ 
+export default SellPage;
