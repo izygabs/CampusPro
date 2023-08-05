@@ -147,6 +147,7 @@ p{
     margin-right: auto;
     display: block;
     margin-top: 10px;
+    transition: background-color 0.9s;
 }
 .hp-button-link{
     margin-top: 10px;
@@ -174,9 +175,46 @@ p{
     margin-right: auto;
     margin-left: auto;
     display: block;
+    font-size: 14px;
 }
 .sp-select-amount option{
     font-size: 13px;
     background-color: black;
     color: white;
+}
+.sp2-main-sector{
+    margin-top: -19vh;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.sp2-main-img{
+    width: 100%
+
+}
+.sp2-divs{
+    /* border: solid black 3px; */
+    width:47%
+}
+.sp2-divs2{
+    /* border: solid black 3px; */
+    width:50%;
+    display:flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+.sp2-divs2 p{
+    color: black;
+    font-size: 15px;
+    line-height: 10px;
+}
+.sp2-linkk{
+    text-decoration: none;
+}
+.sp2-linkk button:hover{
+    background-color: gold;
+    color: black;
+}
+.sp2-linkk button:active{
+    opacity: 0.5
 }

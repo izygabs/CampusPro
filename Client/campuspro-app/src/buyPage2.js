@@ -1,7 +1,11 @@
 import React from "react";
 
 function buyPage2() {
-  return <div>buyPage2</div>;
+  return (
+    <div>
+      
+    </div>
+  )
 }
 
 export default buyPage2;
