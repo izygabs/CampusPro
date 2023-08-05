@@ -7,6 +7,7 @@ import apartment from './apartment.jpeg';
 import stove1 from './electric-stove.jpeg';
 import stove2 from './electric-stove-1.jpeg';
 import stove3 from './electric-stove-2.jpeg';
+import { Link } from 'react-router-dom';
 
 
 const BuyPage = () => {
@@ -14,11 +15,19 @@ const BuyPage = () => {
   const electric = 'Electric Gas';
   const light = 'Ringlights';
 
+  const handleClick = (e) => {
+    alert(`
+    4 master bedroom and good parking space
+    Location: Surulere avenue
+    Price: 90m naira
+    `)
+  }
+
   return (
   <>
     <navbar className='bp1-navbar'>
       <div className="bp1-logo">
-        <img src={logo} alt='logo' className="bp1-logo" />
+        <Link to='/'><img src={logo} alt='logo' className="bp1-logo" /></Link>
       </div>
       {/* <input type="text" className="bp1-input" /> */}
 
@@ -47,7 +56,7 @@ const BuyPage = () => {
       </button>
     <div className="bp1-overall">
       <div className="bp1-houses">
-        <img src={duplex} alt='duplex' className="bp1-duplex" />
+        <img src={duplex} alt='duplex' className="bp1-duplex" onClick={handleClick}/>
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
@@ -75,7 +84,7 @@ const BuyPage = () => {
       </div>
       </div>
       <button type="button" className="bp1-btn">
-        See More
+        <Link to='/'>See More</Link>
       </button>
 
 
@@ -150,7 +159,7 @@ const BuyPage = () => {
       </div>
       </div>
       <button type="button" className="bp1-btn">
-        See More
+        View More
       </button>
 
     </section>

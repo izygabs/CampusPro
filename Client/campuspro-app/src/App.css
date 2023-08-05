@@ -1,6 +1,5 @@
 body{
-    color: #000;
-    background-color: lightcyan;
+    color: #fff;
 }
 .hp-header{
     /* position:fixed; */
@@ -171,6 +170,7 @@ body{
 }
 
 .bp1-houses {
+    color: #000;
     border: 1px black solid;
     width: 20%;
     text-align: center;
@@ -228,5 +228,8 @@ body{
 }
 
 .bp1-btn:hover {
+    opacity: 0.5;
+    color: #fff;
+    font-weight: bold;
     box-shadow: 2px 2px 5px black;
 }
