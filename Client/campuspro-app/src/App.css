@@ -2,6 +2,9 @@ body{
     color: white;
 
 }
+p{
+    margin: 3px;
+}
 .hp-header{
     /* position:fixed; */
     display:flex;
@@ -50,8 +53,12 @@ body{
     background-color: gold;
     height: 100%;
     text-align: center;
+    /* padding-top: 10vh; */
+    /* justify-content: space-around; */
+
 }
 .hp-heading{
+    margin-top: 20%;
     text-align: center;
     font-size: 40px;
     font-weight: 700;
@@ -62,6 +69,7 @@ body{
     font-size: 18px;
     text-align: center;
     padding: 0 15px;
+    
 }
 .hp-school{
     display: flex;
@@ -103,4 +111,72 @@ body{
     color: black;
     font-size: 30px;
     font-weight: 700;
+}
+.sp-subrent-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: white;
+}
+.sp-sub-div{
+    margin: 5vh 0;
+    background-color: black;
+    height: 53vh;
+}
+.sp-text-div{
+   text-align: center;
+   padding-bottom: 2vh;
+}
+.sp-img-div{
+    height: 60%;
+    margin-bottom: 10px;
+}
+.sp-img-div img {
+    height: 100%;
+   
+}
+
+.sp-text-div button{
+    background-color: transparent;
+    padding: 7px 15px;
+    border-width: 1px;
+    border-radius: 20px;
+    border-color: gold;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 10px;
+}
+.hp-button-link{
+    margin-top: 10px;
+    padding:10px 20px;
+    background-color: transparent;
+    border: solid 1px black;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.6s;
+}
+.link{
+    text-decoration: none;
+    color: black;
+    
+}
+.hp-button-link:hover{
+    background-color: black;
+    color: white;
+}
+.sp-select-amount{
+    width: 20vw;
+    outline: none;
+    height: 5vh;
+    border: solid 2px gold;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+.sp-select-amount option{
+    font-size: 13px;
+    background-color: black;
+    color: white;
 }
