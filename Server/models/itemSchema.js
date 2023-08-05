@@ -18,7 +18,7 @@ const itemSchema = new mongoose.Schema({
     required: true,
   },
   price: {
-    type: Number,
+    type: String,
     required: true,
   },
   quantity: {
@@ -29,6 +29,10 @@ const itemSchema = new mongoose.Schema({
     required: true,
   },
   location: {
+    type: String,
+    required: true,
+  },
+  itemImage: {
     type: String,
     required: true,
   },
