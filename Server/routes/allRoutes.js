@@ -23,7 +23,11 @@ const viewItemById = require("../controllers/viewItemById");
 const deleteProperty = require("../controllers/deleteProperty");
 
 const deleteItem = require("../controllers/deleteItem");
-const { upload, uploadHostels } = require("../validators/uploadFile");
+const {
+  upload,
+  uploadHostels,
+  uploadItems,
+} = require("../validators/uploadFile");
 const verifyToken = require("../validators/verifyToken");
 const logOut = require("../controllers/logOut");
 
@@ -43,18 +47,23 @@ route.post(
 route.post(
   "/api/uploadItems",
   verifyToken,
-  upload.single("itemImage"),
+  uploadItems.array("itemImages", 10),
   uploadItem
 );
 
 route.put(
   "/api/property/:id",
   verifyToken,
-  uploadHostels.array("hostels", 15),
+  uploadHostels.array("hostels", 10),
   updateProperty
 );
 
-route.put("/api/item/:id", verifyToken, upload.array("items"), updateItem);
+route.put(
+  "/api/item/:id",
+  verifyToken,
+  uploadItems.array("itemImages", 10),
+  updateItem
+);
 
 route.get("/api/allProperties", verifyToken, viewProperties);
 
