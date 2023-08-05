@@ -3,7 +3,6 @@ const validator = require("../validators/joiValidation");
 const errorHandler = require("../middlewares/handleError");
 const { hostelProps } = require("../models/hostelSchema");
 let fs = require("fs");
-let path = require("path");
 
 const uploadProperty = async (req, res) => {
   let hostelsPictures = req.files;
