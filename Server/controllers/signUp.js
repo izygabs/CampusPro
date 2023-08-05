@@ -15,7 +15,6 @@ const signUp = async (req, res) => {
   } else {
     if (error) {
       file && fs.unlinkSync(file.path); // delete image saved in the images folder if joi validation failed
-
       const errors = errorHandler.JoiErrorHandler(error);
       res.status(StatusCodes.NOT_ACCEPTABLE).json({ error: errors });
     } else {

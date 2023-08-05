@@ -73,6 +73,7 @@ const loginSchema = (data) => {
   return Schemas.validate(data);
 };
 
+<<<<<<< HEAD
 const hostelSchema = (data) => {
   Schemas = Joi.object({
     Description: Joi.string().required().trim().messages({
@@ -102,3 +103,44 @@ const hostelSchema = (data) => {
 module.exports.signUp = signUp;
 module.exports.loginSchema = loginSchema;
 module.exports.hostelSchema = hostelSchema;
+=======
+const itemSchema = (data) => {
+  const schema = Joi.object({
+    category: Joi.string().required().trim().messages({
+      "string.base": `category should be a "text"`,
+      "string.empty": `category cannot be empty`,
+      "any.required": `category field is required`,
+    }),
+    itemName: Joi.string().required().trim().messages({
+      "string.base": `itemName should be a "text"`,
+      "string.empty": `itemName cannot be empty`,
+      "any.required": `itemName field is required`,
+    }),
+    description: Joi.string().required().trim().messages({
+      "string.base": `description should be a "text"`,
+      "string.empty": `description cannot be empty`,
+      "any.required": `description field is required`,
+    }),
+    price: Joi.string().required().trim().messages({
+      "string.empty": `price cannot be empty`,
+      "any.required": `price field is required`,
+    }),
+    quantity: Joi.string().trim(),
+    campus: Joi.string().required().trim().messages({
+      "string.base": `campus should be a "text"`,
+      "string.empty": `campus cannot be empty`,
+      "any.required": `campus field is required`,
+    }),
+    location: Joi.string().required().trim().messages({
+      "string.base": `location should be a "text"`,
+      "string.empty": `location cannot be empty`,
+      "any.required": `location field is required`,
+    }),
+  });
+  return schema.validate(data);
+};
+
+module.exports.signUp = signUp;
+module.exports.loginSchema = loginSchema;
+module.exports.itemSchema = itemSchema;
+>>>>>>> d35c91f4a8ac26cb302d139d927080a5deda2b40
