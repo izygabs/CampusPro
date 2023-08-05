@@ -1,6 +1,2 @@
-const { StatusCodes } = require("http-status-codes");
-
-const uploadItem = (req, res) => {
-  res.status(StatusCodes.CREATED).json("Item uploaded");
-};
+const uploadItem = async (req, res) => {};
 module.exports = uploadItem;

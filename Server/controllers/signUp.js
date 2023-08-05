@@ -22,7 +22,8 @@ const signUp = async (req, res) => {
       try {
         const userExist = await user.findOne({ email: value.Email });
         if (userExist) {
-          res.status(StatusCodes.CONFLICT).send("User Exist");
+          file && fs.unlinkSync(file.path); // delete image saved in the images folder if joi validation failed
+          res.status(StatusCodes.CONFLICT).json("User already exist");
         } else {
           const salt = await bcrypt.genSalt();
           const hashedPassword = await bcrypt.hash(value.Password, salt);
@@ -31,7 +32,7 @@ const signUp = async (req, res) => {
             lastName: value.lastName,
             email: value.Email.toLowerCase(),
             phoneNumber: value.Phone,
-            altPhoneNumber: value.altPhoneNumber || "",
+            altPhoneNumber: value.altPhoneNumber || " ",
             password: hashedPassword,
             profilePic: req.file.path,
             typeOfUser: value.typeOfUser,
@@ -44,7 +45,7 @@ const signUp = async (req, res) => {
             .json({ "Account created successfully": newUser });
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         file && fs.unlinkSync(file.path); // delete image saved in the images folder if no new user created
 
         const errors = errorHandler.dbSchemaErrors(error);

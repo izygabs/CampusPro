@@ -1,31 +1,31 @@
 const mongoose = require("mongoose");
 
-const hostelSchema = new mongoose.Schema({
-  agentID: {
-    type: mongoose.Schema.Types.ObjectIdc,
-    ref: "user",
+const hostelSchema = new mongoose.Schema(
+  {
+    agentID: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: String,
+      required: true,
+    },
+    campusName: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    hostelImages: [String],
+    houseProperties: [String],
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  amount: {
-    type: String,
-    required: true,
-  },
-  campus: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  houseProperties: [],
-});
+  { timestamps: true }
+);
 
 module.exports.hostelProps = mongoose.model("hostel", hostelSchema);

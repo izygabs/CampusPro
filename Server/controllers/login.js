@@ -37,8 +37,8 @@ const login = async (req, res) => {
           .json("Invalid Email or Password");
       }
     } catch (error) {
-      console.log(error);
-      res.status(StatusCodes.FORBIDDEN).json({ "Database Error": error });
+      const errors = errorHandler.dbSchemaErrors(error);
+      res.status(StatusCodes.FORBIDDEN).json({ "Database Error": errors });
     }
   }
 };

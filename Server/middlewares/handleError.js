@@ -12,7 +12,7 @@ module.exports.dbSchemaErrors = (err) => {
     } else if (key[0] === "email") {
       return "Email address already exist";
     } else if (key[0] === "altPhoneNumber") {
-      return "Phone Number already exist";
+      return "Alt Phone Number already exist";
     }
   }
   return errors;
@@ -46,12 +46,10 @@ module.exports.JoiErrorHandler = (error) => {
 };
 
 module.exports.PropertySchemaErrors = (err) => {
-  let errors = { agentID: "", title: "", releaseYear: "", genre: "" };
+  let errors = {};
 
   if (
-    err.message.includes(
-      "property validation failed" || "user validation failed"
-    )
+    err.message.includes("hostel validation failed" || "item validation failed")
   ) {
     Object.values(err.errors).forEach(({ properties }) => {
       errors[properties.path] = properties.message;

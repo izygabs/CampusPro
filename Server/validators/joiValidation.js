@@ -73,5 +73,32 @@ const loginSchema = (data) => {
   return Schemas.validate(data);
 };
 
+const hostelSchema = (data) => {
+  Schemas = Joi.object({
+    Description: Joi.string().required().trim().messages({
+      "string.base": `Description should be a text`,
+      "string.empty": `Description cannot be empty`,
+      "any.required": `Description field is required`,
+    }),
+    Price: Joi.number().required().positive().messages({
+      "any.required": `Price is required`,
+      "number.base": `Invalid price, Price must be in numbers`,
+      "number.positive": `Invalid price`,
+    }),
+    Campus: Joi.string().required().trim().messages({
+      "string.base": `Campus should be a text`,
+      "string.empty": `Campus cannot be empty`,
+      "any.required": `Campus is required`,
+    }),
+    Location: Joi.string().required().trim().messages({
+      "string.base": `Location should be a text`,
+      "string.empty": `Location cannot be empty`,
+      "any.required": `Location is required`,
+    }),
+  });
+
+  return Schemas.validate(data);
+};
 module.exports.signUp = signUp;
 module.exports.loginSchema = loginSchema;
+module.exports.hostelSchema = hostelSchema;
