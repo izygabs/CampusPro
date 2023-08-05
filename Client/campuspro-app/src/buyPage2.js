@@ -1,7 +1,13 @@
 import React from "react";
 
-function buyPage2() {
-  return <div>buyPage2</div>;
+const BuyPage2 = () => {
+  
+  return 
+  <>
+
+  </>
+
 }
 
-export default buyPage2;
+
+export default BuyPage2;
