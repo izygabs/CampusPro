@@ -1,6 +1,5 @@
 body{
-    color: white;
-
+    color: #fff;
 }
 p{
     margin: 3px;
@@ -9,6 +8,7 @@ p{
     /* position:fixed; */
     display:flex;
     background-color: rgb(9, 7, 7);
+    /* background-color: #ccc; */
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -182,16 +182,8 @@ p{
     background-color: black;
     color: white;
 }
-.sp2-main-sector{
-    margin-top: -19vh;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.sp2-main-img{
-    width: 100%
 
-}
+
 .sp2-divs{
     /* border: solid black 3px; */
     width:47%

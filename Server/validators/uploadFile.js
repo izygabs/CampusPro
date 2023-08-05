@@ -33,27 +33,9 @@ const itemsStorage = multer.diskStorage({
 const upload = multer({ storage: storage });
 const uploadHostels = multer({
   storage: hostelStorage,
-  limits: {
-    files: {
-      min: 5, // Minimum number of files
-      max: 15, // Maximum number of files
-    },
-    fileSize: {
-      maxSize: "8mb",
-    },
-  },
 });
 
 const uploadItems = multer({
   storage: itemsStorage,
-  limits: {
-    files: {
-      min: 5, // Minimum number of files
-      max: 15, // Maximum number of files
-    },
-    fileSize: {
-      maxSize: "8mb",
-    },
-  },
 });
 module.exports = { upload, uploadHostels, uploadItems };

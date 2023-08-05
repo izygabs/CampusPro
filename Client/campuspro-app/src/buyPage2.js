@@ -1,11 +1,8 @@
 import React from "react";
 
 function buyPage2() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div>buyPage2</div>;
 }
 
-export default buyPage2;
+
+export default BuyPage2;
