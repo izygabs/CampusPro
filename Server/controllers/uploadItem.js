@@ -5,7 +5,7 @@ const { user } = require("../models/userSchema");
 const { items } = require("../models/itemSchema");
 let fs = require("fs");
 
-const uploadItem = async (req, res, next) => {
+const uploadItem = async (req, res) => {
   const itemPics = req.files;
   const merchantId = req.user;
   const { error, value } = validator.itemSchema(req.body);
