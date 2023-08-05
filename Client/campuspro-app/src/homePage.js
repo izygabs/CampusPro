@@ -3,6 +3,7 @@ import logo from './logo22.png'
 import data from "./data"
 import { useState } from "react";
 import Schools from "./schools";
+import{Link} from 'react-router-dom'
 
 
 function HomePage() {
@@ -65,17 +66,31 @@ const house = datas.map((aparte)=>{
           <div className="hp-buy-div">
             <p className="hp-heading">BUY A PROPERTY</p>
             <p className="hp-texts">Explore various properties listed for sale around your campus</p>
-
+            <Link className="link" to='/01-rentPage'>
+                <button className="hp-button-link">
+                    Buy a property
+                </button>
+              </Link>
           </div>
 
           <div className="hp-sell-div">
             <p className="hp-heading">SELL A PROPERTY </p>
             <p className="hp-texts">Become a merchant and sell properties on CampusPro.</p>
+            <Link className="link" to=''>
+                <button className="hp-button-link">
+                   Sell a property
+                </button>
+              </Link>
           </div>
 
           <div className="hp-rent-div">
             <p className="hp-heading">RENT A PROPERTY </p>
-            <p className="hp-texts">Need an accomodation? Navigate through pletora of hostels around your campus</p>
+            <p className="hp-texts">Navigate through pletora of hostels around your campus</p>
+              <Link className="link" to='/01-rentPage'>
+                <button className="hp-button-link">
+                    Rent a property
+                </button>
+              </Link>
           </div>
       </section>
 
