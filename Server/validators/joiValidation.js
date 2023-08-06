@@ -73,7 +73,6 @@ const loginSchema = (data) => {
   return Schemas.validate(data);
 };
 
-<<<<<<< HEAD
 const hostelSchema = (data) => {
   Schemas = Joi.object({
     Description: Joi.string().required().trim().messages({
@@ -100,10 +99,7 @@ const hostelSchema = (data) => {
 
   return Schemas.validate(data);
 };
-module.exports.signUp = signUp;
-module.exports.loginSchema = loginSchema;
-module.exports.hostelSchema = hostelSchema;
-=======
+
 const itemSchema = (data) => {
   const schema = Joi.object({
     category: Joi.string().required().trim().messages({
@@ -143,4 +139,4 @@ const itemSchema = (data) => {
 module.exports.signUp = signUp;
 module.exports.loginSchema = loginSchema;
 module.exports.itemSchema = itemSchema;
->>>>>>> d35c91f4a8ac26cb302d139d927080a5deda2b40
+module.exports.hostelSchema = hostelSchema;
