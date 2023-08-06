@@ -9,7 +9,7 @@ function Schools (props){
                 </div>
                 <div className='hp-props-text'>
                     <p>{props.description}</p>
-                    <p> #{props.amount} </p>
+                    <p> #{props.amount.toLocaleString()} </p>
                     <p>{props.campus.toUpperCase()}</p>
                 </div>
                 

@@ -1,5 +1,5 @@
 
-import logo from './logo22.png'
+import logo from './images/campuspro(6).png';
 import house from './images/house1.jpg'
 import {useState} from "react"
 

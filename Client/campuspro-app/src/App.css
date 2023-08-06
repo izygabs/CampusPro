@@ -210,3 +210,23 @@ p{
 .sp2-linkk button:active{
     opacity: 0.5
 }
+.sp2-main-sector{
+    display: flex;
+    margin-top: -19vh;
+    flex-direction: row;
+    height: 60vh;
+    border: solid 3px red
+    
+}
+.sp2-divs{
+    width: 50%;
+    height: 100%;
+}
+.sp2-divs2{
+    width: 45%;
+    height: 100% 
+}
+.sp2-main-img{
+    width:100%;
+    height: 100%;
+}
