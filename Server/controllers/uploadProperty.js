@@ -3,6 +3,7 @@ const validator = require("../validators/joiValidation");
 const errorHandler = require("../middlewares/handleError");
 const { hostelProps } = require("../models/hostelSchema");
 let fs = require("fs");
+let hostelProperties = require("../data");
 
 const uploadProperty = async (req, res) => {
   let hostelsPictures = req.files;
@@ -50,6 +51,7 @@ const uploadProperty = async (req, res) => {
           await hostelProps.findByIdAndUpdate(
             { _id: newHostel._id },
             { $push: { hostelImages: { $each: hostelPics } } },
+            { $push: { houseProperties: { $each: hostelProperties } } },
             { new: true }
           );
         }
