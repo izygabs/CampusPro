@@ -1,5 +1,5 @@
 import React from "react";
-import logo from './campus-logo.png'
+import logo from './images/campuspro(6).png';
 import data from "./data"
 import { useState } from "react";
 import Schools from "./schools";

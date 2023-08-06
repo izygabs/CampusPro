@@ -1,3 +1,4 @@
+import{Link} from 'react-router-dom'
 function SubRentpage1(props){
     return(
         <div>
@@ -9,9 +10,12 @@ function SubRentpage1(props){
                     <p>{props.description}</p>
                     <p>#{props.amount.toLocaleString()}</p>
                     <p>{props.campus.toUpperCase()}</p>
-                    <button>
-                        Rent this property
-                    </button>
+                    <Link className="sp2-linkk" to='/02-rentpage'>
+                        <button>
+                            View this property
+                        </button>
+                    </Link>
+                    
 
                 </div>
             </div>

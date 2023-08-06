@@ -1,12 +1,7 @@
 import React from "react";
 
-const BuyPage2 = () => {
-  
-  return 
-  <>
-
-  </>
-
+function buyPage2() {
+  return <div>buyPage2</div>;
 }
 
 

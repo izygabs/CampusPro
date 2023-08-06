@@ -1,12 +1,12 @@
 import React from "react";
-import logo from './campuspro(6).png';
-import duplex from './duplex.jpeg';
-import house from './house.jpeg';
-import mansion from './mansion.jpeg';
-import apartment from './apartment.jpeg';
-import stove1 from './electric-stove.jpeg';
-import stove2 from './electric-stove-1.jpeg';
-import stove3 from './electric-stove-2.jpeg';
+import logo from './images/campuspro(6).png';
+import duplex from './images/duplex.jpeg';
+import house from './images/house.jpeg';
+import mansion from './images/mansion.jpeg';
+import apartment from './images/apartment.jpeg';
+// import stove1 from './electric-stove.jpeg';
+// import stove2 from './electric-stove-1.jpeg';
+// import stove3 from './electric-stove-2.jpeg';
 import { Link } from 'react-router-dom';
 
 
@@ -60,6 +60,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
 
       <div className="bp1-houses">
@@ -67,6 +70,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
 
       <div className="bp1-houses">
@@ -74,6 +80,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
 
       <div className="bp1-houses">
@@ -81,6 +90,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
       </div>
       <button type="button" className="bp1-btn">
@@ -97,6 +109,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
 
       <div className="bp1-houses">
@@ -104,6 +119,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
 
       <div className="bp1-houses">
@@ -111,6 +129,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
 
       <div className="bp1-houses">
@@ -118,6 +139,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
       </div>
       <button type="button" className="bp1-btn">
@@ -135,6 +159,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
 
       <div className="bp1-houses">
@@ -142,6 +169,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
 
       <div className="bp1-houses">
@@ -149,6 +179,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
 
       <div className="bp1-houses">
@@ -156,6 +189,9 @@ const BuyPage = () => {
         <p>4 master bedroom and good parking space</p>
         <p>Location: Surulere avenue</p>
         <p>Price: 90m naira </p>
+        <button>
+          <Link to='/buyPage2'>View Details</Link>
+        </button>
       </div>
       </div>
       <button type="button" className="bp1-btn">
