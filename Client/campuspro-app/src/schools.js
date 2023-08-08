@@ -1,4 +1,4 @@
-import logo from './logo.png'
+import logo from './images/campuspro(6).png'
 
 function Schools (props){
     return(
