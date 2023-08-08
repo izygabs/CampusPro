@@ -13,14 +13,14 @@ function App() {
     <div className="App">
       <Login />
       <Dashboard />
-      {/* <Router>
+      <Router>
         <Routes>
-          <Route path='/' element={<HomePage/>}/>
-          <Route path="/01-rentpage" element={<RentPage1/>}/>
-          <Route path="/02-rentpage" element={<RentPage2/>}/>
-          <Route path="/buyPage1" element={<BuyPage/>}/>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/01-rentpage" element={<RentPage1 />} />
+          <Route path="/02-rentpage" element={<RentPage2 />} />
+          <Route path="/buyPage1" element={<BuyPage />} />
         </Routes>
-    </Router> */}
+      </Router>
     </div>
   );
 }
