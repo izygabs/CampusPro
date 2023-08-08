@@ -1,11 +1,19 @@
-import css from './App.css'
-import HomePage from "./HomePage.js";
+import React from 'react'
+import Signup2 from './newsignup'
+import Signup from './signUp'
+
 function App() {
   return (
-    <div className="App">
-      <HomePage/>
+    <div>
+      <Signup2/>
+      <Signup/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+          
+          
+                
+              
+            
