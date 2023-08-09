@@ -136,7 +136,38 @@ const itemSchema = (data) => {
   return schema.validate(data);
 };
 
+const updateItemSchema = (data) => {
+  const schema = Joi.object({
+    category: Joi.string().trim().messages({
+      "string.base": `category should be a "text"`,
+      "string.empty": `category cannot be empty`,
+    }),
+    itemName: Joi.string().trim().messages({
+      "string.base": `itemName should be a "text"`,
+      "string.empty": `itemName cannot be empty`,
+    }),
+    description: Joi.string().trim().messages({
+      "string.base": `description should be a "text"`,
+      "string.empty": `description cannot be empty`,
+    }),
+    price: Joi.string().trim().messages({
+      "string.empty": `price cannot be empty`,
+    }),
+    quantity: Joi.string().trim(),
+    campus: Joi.string().trim().messages({
+      "string.base": `campus should be a "text"`,
+      "string.empty": `campus cannot be empty`,
+    }),
+    location: Joi.string().trim().messages({
+      "string.base": `location should be a "text"`,
+      "string.empty": `location cannot be empty`,
+    }),
+  });
+  return schema.validate(data);
+};
+
 module.exports.signUp = signUp;
 module.exports.loginSchema = loginSchema;
 module.exports.itemSchema = itemSchema;
 module.exports.hostelSchema = hostelSchema;
+module.exports.updateItemSchema = updateItemSchema;

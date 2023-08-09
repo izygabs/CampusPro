@@ -1,0 +1,143 @@
+/* body{
+     /* background-color: rgb(211, 205, 205);  */
+/* background-color: black; */
+
+.signupForm {
+  background-color: white;
+  /* background-color: #ccc; */
+  padding: 8px;
+  margin: 5px;
+  border-radius: 10px;
+  height: 100%;
+  width: 61%;
+}
+h1 {
+  color: rgb(5, 5, 6);
+}
+.signupBtn {
+  background-color: gold;
+  border: none;
+  color: black;
+  width: 15rem;
+  height: 2rem;
+  padding: 10px;
+  font-weight: lighter;
+  margin-top: 2.5rem;
+  position: relative;
+  left: 10rem;
+  width: 15rem;
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px black;
+  transition: all 0.5s ease-in-out;
+}
+.signupBtn:hover {
+  background-color: black;
+  color: white;
+}
+.formInput {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 100%;
+}
+.sp-Input {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding: 10px;
+  margin: 0px 3px;
+  outline: none;
+  justify-content: space-around;
+  /* background-color: rgb(220, 213, 213); */
+  background-color: #fff;
+  border: none;
+  box-shadow: inset 2px 2px 5px black;
+}
+.sp-label {
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  display: block;
+}
+span {
+  font-size: 12px;
+  display: none;
+  padding: 3px;
+  color: brown;
+}
+.sp-Input:invalid[Focused="true"] ~ span {
+  display: block;
+}
+/* input {
+  display: flex;
+  justify-content: space-around;
+  /* background-color: rgb(220, 213, 213); */
+/* background-color: #fff;
+  border: none;
+  box-shadow: inset 2px 2px 5px black;
+} */
+.sp-input-one {
+  display: flex;
+  justify-content: space-around;
+  border-radius: none;
+  margin-top: 2rem;
+}
+.sp-checkbox {
+  display: flex;
+  justify-content: space-around;
+}
+.sp-checkbox input {
+  width: 124%;
+  margin-top: 2rem;
+  position: relative;
+  right: 2rem;
+  font-weight: lighter;
+  text-align: center;
+}
+.sp-main {
+  align-items: center;
+  justify-content: space-around;
+  margin: 2rem;
+  margin-left: 25%;
+}
+.sp-fp-btn button {
+  background-color: gold;
+  width: 15rem;
+  height: 6vh;
+  border: none;
+  color: white;
+  margin-left: 1rem;
+}
+.sp-btn button {
+  width: 15rem;
+  height: 6vh;
+  border: none;
+  background-color: black;
+  color: white;
+}
+/* button:hover {
+  background-color: black;
+} */
+.sp-btn button:hover {
+  background-color: blue;
+}
+.sp-photo {
+  width: 15vw;
+  border: 2px solid black;
+  height: 25vh;
+  text-align: center;
+  float: right;
+  position: relative;
+  bottom: 35rem;
+  background-color: white;
+  border: none;
+}
+.sp-radio-box {
+  margin-left: 14px;
+}
+#agent {
+  width: 96.5%;
+}
+#merchant {
+  width: 96.5%;
+}
