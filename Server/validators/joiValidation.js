@@ -166,8 +166,34 @@ const updateItemSchema = (data) => {
   return schema.validate(data);
 };
 
+const newPasswordSchema = (data) => {
+  const schema = Joi.object({
+    newPassword: Joi.string()
+      .required()
+      .min(8)
+      .pattern(
+        new RegExp(/(?=.*[A-Z])[a-zA-Z0-9]+[\#\@\$\%\&\*\(\)\>\<\~\{\}]+/)
+      )
+      .messages({
+        "string.pattern.base": `Password must contain atleast one capital letter and one special characters`,
+        "any.required": `Password field is required`,
+        "string.min": `Password length must at least be 8 characters long`,
+      }),
+
+    confirmPassword: Joi.any()
+      .valid(Joi.ref("newPassword"))
+      .required()
+      .messages({
+        "any.require": "Confirm Password is required",
+        "any.only": "Passwords do not match",
+      }),
+  });
+  return schema.validate(data);
+};
+
 module.exports.signUp = signUp;
 module.exports.loginSchema = loginSchema;
 module.exports.itemSchema = itemSchema;
 module.exports.hostelSchema = hostelSchema;
 module.exports.updateItemSchema = updateItemSchema;
+module.exports.newPasswordSchema = newPasswordSchema;
