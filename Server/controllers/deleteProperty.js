@@ -6,15 +6,16 @@ const deleteProperty = async (req, res) => {
   const propertyId = req.params.id;
   try {
     const property = await hostelProps.findById({ _id: propertyId });
-    const propPic = property.hostelImages;
-    const delProperty = await hostelProps.findByIdAndDelete({
-      _id: propertyId,
-    });
-    if (!delProperty) {
+
+    if (!property) {
       res.status(StatusCodes.NOT_FOUND).send("Invalid Id");
     } else {
+      const propPic = property.hostelImages;
+      const delProperty = await hostelProps.findByIdAndDelete({
+        _id: propertyId,
+      });
       propPic.forEach((file) => {
-        fs.unlinkSync(file.path);
+        fs.unlinkSync(file);
       });
       res.status(StatusCodes.OK).json(`Property deleted: ${delProperty}`);
     }
