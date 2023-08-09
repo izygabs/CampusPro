@@ -63,4 +63,3 @@ const updateProperty = async (req, res) => {
   // }
 };
 module.exports = updateProperty;
-git;
