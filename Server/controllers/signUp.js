@@ -1,34 +1,4 @@
 const bcrypt = require("bcrypt");
-<<<<<<< HEAD
-
-
-// import { useState, } from "react";
-// import React from "react";
-// import './Signup.css'
-
-// const Signup = (props) => {
-//     const [focused, setFocused] = useState(false)
-//     const {label, onChange,errorMessage, id, ...inputProps } = props;
-//     const handleFocuse = (e) => {
-//         setFocused(true)
-//     }
-//   return (
-//     <div className="sp-form-one">
-//         <form>
-//             <label>{label}</label>
-//             <input {...inputProps} onChange={onChange} 
-//             onBlur={handleFocuse}
-//             onFocus={() => inputProps.name==='confirmPassword' && setFocused(true)} 
-//             focused={focused.toString()}/>
-//             <span>{errorMessage}</span>
-//         </form>
-        
-//     </div>
-//   )
-// }
-
-// export default Signup
-=======
 const { user } = require("../models/userSchema");
 const validator = require("../validators/joiValidation");
 const { StatusCodes } = require("http-status-codes");
@@ -85,4 +55,3 @@ const signUp = async (req, res) => {
   }
 };
 module.exports = signUp;
->>>>>>> 72c25f3a114e89dae4fe4735120d58ba1d6041e0

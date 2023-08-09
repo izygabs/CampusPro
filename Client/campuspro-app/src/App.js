@@ -1,16 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import css from "./App.css";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./homePage.js";
 import RentPage1 from "./rentPage1";
 import RentPage2 from "./rentPage2";
 import BuyPage from "./buyPage1";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
+import SignUp from "./RenderSignUp";
 
 function App() {
   return (
     <div className="App">
+      <SignUp />
       <Login />
       <Dashboard />
       <Router>
