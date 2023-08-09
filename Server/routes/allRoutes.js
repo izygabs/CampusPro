@@ -30,6 +30,7 @@ const {
 } = require("../validators/uploadFile");
 const verifyToken = require("../validators/verifyToken");
 const logOut = require("../controllers/logOut");
+const changePassword = require("../controllers/changePassword");
 
 const route = express.Router();
 
@@ -76,6 +77,9 @@ route.get("/api/item/:id", verifyToken, viewItemById);
 route.delete("/api/property/:id", verifyToken, deleteProperty);
 
 route.delete("/api/item/:id", verifyToken, deleteItem);
+
 route.get("/api/logout", verifyToken, logOut);
+
+route.put("/api/changePassword/:id", verifyToken, changePassword);
 
 module.exports = route;
