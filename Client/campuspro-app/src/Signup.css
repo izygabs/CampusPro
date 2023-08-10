@@ -86,7 +86,7 @@ span {
   display: flex;
   justify-content: space-around;
 }
-.sp-checkbox input {
+.sp-checkbox-input {
   width: 124%;
   margin-top: 2rem;
   position: relative;
@@ -100,7 +100,7 @@ span {
   margin: 2rem;
   margin-left: 25%;
 }
-.sp-fp-btn button {
+.sp-fp-btn-button {
   background-color: gold;
   width: 15rem;
   height: 6vh;
@@ -108,7 +108,7 @@ span {
   color: white;
   margin-left: 1rem;
 }
-.sp-btn button {
+.sp-btn-button {
   width: 15rem;
   height: 6vh;
   border: none;
@@ -118,7 +118,7 @@ span {
 /* button:hover {
   background-color: black;
 } */
-.sp-btn button:hover {
+.sp-btn-button:hover {
   background-color: blue;
 }
 .sp-photo {

@@ -67,8 +67,9 @@ const Dashboard = (prop) => {
         class="navbar sticky-top bg-dark flex-md-nowrap p-3 shadow"
         data-bs-theme="dark"
       >
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 " href="/">
-          CampusPro
+        <a class="navbar-brand col-md-3 col-lg-2 me-0  fs-6 dashboard-logo" href="/">
+          <img  src={require("../images/campuspro(6).png")}
+          />
         </a>
 
         <ul class="navbar-nav flex-row d-md-none">
