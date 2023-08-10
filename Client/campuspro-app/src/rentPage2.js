@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 
 import logo from './images/campuspro(6).png';
 import house from './images/house1.jpg'
 import {useState} from "react"
-=======
-import logo from "./images/campuspro(6).png";
-import house from "./images/house1.jpg";
-import { useState } from "react";
->>>>>>> bfa74cfa3b0ce2d40c2c518636c849f71279e883
 
 function RentPage2() {
   const [info, setInfo] = useState("");

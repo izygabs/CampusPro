@@ -1,8 +1,12 @@
 body{
     color: #fff;
+    
+}
+.homepage{
+    background-color: rgb(237, 233, 211)
 }
 p{
-    margin: 3px;
+    margin: 3px !important;
 }
 .hp-header{
     /* position:fixed; */
@@ -13,7 +17,7 @@ p{
     justify-content: space-between;
     align-items: center;
     height: 15vh;
-    margin-bottom: 20vh;
+    /* margin-bottom: 20vh; */
 
 }
 .hp-login-button{
@@ -26,13 +30,14 @@ p{
     border: none;
 }
 .hp-logo{
-    width: 70px
+    width: 20rem
+    
 }
 .hp-logo-div{
     display:flex;
     border:none;
     align-items: center;
-    margin-left: 15px;
+    /* margin-left: 15px; */
 }
 .hp-select-button{
     height: 8vh;
@@ -44,18 +49,23 @@ p{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height:50vh;
-    margin-bottom: 25vh;
+    height:97vh;
+    border: none;
+    background-image: url('./images/house-interior.webp');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding-bottom: 25vh;
+    padding-top: 20vh;
 }
 .hp-buy-div, .hp-sell-div, .hp-rent-div{
     width: 25%;
-    border:solid;
+    border:none;
     background-color: gold;
-    height: 100%;
+    height: 90%;
     text-align: center;
+    padding-top: 7px;
     /* padding-top: 10vh; */
     /* justify-content: space-around; */
-
 }
 .hp-heading{
     margin-top: 20%;
@@ -75,7 +85,7 @@ p{
     display: flex;
     justify-content: space-between;
     overflow-x: scroll;
-    border-style: solid;
+    border-style: none;
     width: 100%;
     /* height: 40vh; */
     /* background-color: black; */
@@ -95,22 +105,47 @@ p{
 .hp-school-div p{
     text-align: center;
     color: black;
+    border: none !important;
 }
 .hp-props-text{
     background-color: gold;
 }
 .hp-img-div{
     height:60%;
+    position: relative;
 }
+.hp-img-div div{
+   position: absolute;
+   top:5px;
+   right:3px;
+   color: black;
+   background-color: #ffd700;
+   border-radius: 15px;
+   padding: 3px 10px;
+   font-size: 12px;
+   display: flex;
+   flex-direction: row;
+}
+.hp-locate{
+    max-width: 15px;
+    margin-top: 4px;
+}
+
 .hp-img-div img{
     height: 100%;
     width: 100%;
     object-fit: cover;
+   
+}
+.hp-view-div{
+    margin-top: 20vh; 
 }
 .hp-view-hostels{
     color: black;
     font-size: 30px;
     font-weight: 700;
+    font-style: italic;
+   
 }
 .sp-subrent-div{
     display: flex;
@@ -121,18 +156,36 @@ p{
 .sp-sub-div{
     margin: 5vh 0;
     background-color: black;
-    height: 53vh;
+    height: 47vh;
+    width: 23vw;
 }
 .sp-text-div{
    text-align: center;
-   padding-bottom: 2vh;
+   padding-bottom: 2vh !important;
+   height: 40%;
+   background-color: gold;
+   color: black;
 }
 .sp-img-div{
     height: 60%;
+    width: 100%;
     margin-bottom: 10px;
+    position: relative;
+}
+.sp-img-div div{
+    position: absolute;
+    background-color: gold;
+    display: flex;
+    flex-direction: row;
+    top:5px;
+    right:5px;
+    font-size: 12px;
+    border-radius: 15px;
+    padding: 1px 10px;
 }
 .sp-img-div img {
     height: 100%;
+    width: 100%;
    
 }
 
@@ -141,17 +194,23 @@ p{
     padding: 7px 15px;
     border-width: 1px;
     border-radius: 20px;
-    border-color: gold;
-    color: white;
+    border-color: black;
+    color: black;
     margin-left: auto;
     margin-right: auto;
     display: block;
     margin-top: 10px;
-    transition: background-color 0.9s;
+    margin-bottom: 3vh;
+    transition: background-color 0.7s;
+}
+.sp-text-div button:hover{
+    background-color: black;
+    color: gold;
+   
 }
 .hp-button-link{
     margin-top: 10px;
-    padding:10px 20px;
+    padding:6px 20px;
     background-color: transparent;
     border: solid 1px black;
     text-decoration: none;

@@ -27,15 +27,15 @@ function HomePage() {
     return <Schools key={aparte.id} {...aparte} />;
   });
   return (
-    <div>
+    <div className="homepage">
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
             <img src={logo} className="hp-logo" />
           </div>
-          <div>
+          {/* <div>
             <p>CampusPro</p>
-          </div>
+          </div> */}
         </div>
         <div>
           <input
@@ -59,43 +59,47 @@ function HomePage() {
           </select> */}
         </div>
         <div>
-          <button className="hp-login-button">Login</button>
+          <Link to="/login-page">
+             <button className="hp-login-button">Login</button>
+          </Link>
         </div>
       </div>
 
       <section className="hp-section1">
         <div className="hp-buy-div">
-          <p className="hp-heading">BUY A PROPERTY</p>
+          <p className="hp-heading">BUY <br></br> ITEMS</p>
           <p className="hp-texts">
             Explore various properties listed for sale around your campus
           </p>
           <Link className="link" to="/buyPage1">
-            <button className="hp-button-link">Buy a Property</button>
+            <button className="hp-button-link">Buy items</button>
           </Link>
         </div>
 
         <div className="hp-sell-div">
-          <p className="hp-heading">SELL A PROPERTY</p>
+          <p className="hp-heading">SELL <br></br>ITEMS</p>
           <p className="hp-texts">
             Become a merchant and sell properties on CampusPro.
           </p>
-          <Link className="link" to="">
-            <button className="hp-button-link">Sell a property</button>
+          <Link className="link" to="/login-page">
+            <button className="hp-button-link">Become a merchant</button>
           </Link>
         </div>
 
         <div className="hp-rent-div">
-          <p className="hp-heading">RENT A PROPERTY </p>
+          <p className="hp-heading">RENT APARTMENT </p>
           <p className="hp-texts">
             Navigate through pletora of hostels around your campus
           </p>
           <Link className="link" to="/01-rentPage">
-            <button className="hp-button-link">Rent a property</button>
+            <button className="hp-button-link">Rent an apartment</button>
           </Link>
         </div>
       </section>
 
-      <p className="hp-view-hostels">View Hostels Around Your Campus</p>
+      <div className="hp-view-div">
+        <p className="hp-view-hostels">View hostels around your campus</p>
+      </div>
       <div className="hp-school">{house}</div>
     </div>
   );

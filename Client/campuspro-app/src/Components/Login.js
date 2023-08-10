@@ -1,7 +1,7 @@
 import React from "react";
 import "../Bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   // const [email, setEmail] =useState("");
   return (
@@ -9,7 +9,8 @@ const Login = () => {
       <main class="form-signin w-100 m-auto">
         <form action="" method="post">
           <img
-            class="mb-4"
+            class="mb-4 log-in-logo"
+            
             src={require("../images/campuspro(6).png")}
             alt=""
             width="72"
@@ -47,9 +48,11 @@ const Login = () => {
               Remember me
             </label>
           </div>
-          <button class="btn btn-warning w-100 py-2 createBtn " type="submit">
-            Sign in
-          </button>
+          <Link to="/merchant-dashboard">
+            <button class="btn btn-warning w-100 py-2 createBtn " type="submit">
+              Sign in
+            </button>
+          </Link>
           <p class="mt-5 mb-3 text-body-secondary">
             &copy; {new Date().getFullYear()}
           </p>

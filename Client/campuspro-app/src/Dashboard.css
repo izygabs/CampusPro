@@ -128,7 +128,7 @@
   z-index: 1500;
 }
 
-Dropdown-item {
+.Dropdown-item {
   color: red !important;
 
   background-color: yellow !important;
@@ -139,4 +139,13 @@ Dropdown-item {
 canvas {
   width: 100% !important;
   border: 1px solid red !important;
+}
+.dashboard-logo img{
+  width: 15rem !important;
+  height: 5rem;
+}
+.dashboard-logo{
+  margin: 0 !important;
+  padding: 0 !important;
+  
 }
