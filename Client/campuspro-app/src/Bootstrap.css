@@ -89,5 +89,11 @@
     font-size: 3.5rem;
   }
 }
-
+.googleLogin {
+  margin-top: 2rem;
+  /* width: 100%; */
+}
+#container {
+  width: 24vmax;
+}
 /* for Dashboard */

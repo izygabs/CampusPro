@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Signup from "./signUp";
 import "./Signup.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import Google from "./Components/Google";
 
 const RenderSignUp = (prop) => {
   const [values, setValues] = useState({
@@ -149,6 +151,12 @@ const RenderSignUp = (prop) => {
         </div>
         <button className="signupBtn">Create Account</button>
       </form>
+      {/* 
+      <div>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENT_ID}>
+          <Google />
+        </GoogleOAuthProvider>
+      </div> */}
     </div>
   );
 };

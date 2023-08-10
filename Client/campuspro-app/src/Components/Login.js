@@ -1,6 +1,8 @@
 import React from "react";
 import "../Bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import Google from "./Google";
 
 const Login = () => {
   // const [email, setEmail] =useState("");
@@ -50,10 +52,18 @@ const Login = () => {
           <button class="btn btn-warning w-100 py-2 createBtn " type="submit">
             Sign in
           </button>
-          <p class="mt-5 mb-3 text-body-secondary">
-            &copy; {new Date().getFullYear()}
-          </p>
         </form>
+        {/* <div class="googleLogin"> */}
+        {/* <GoogleOAuthProvider
+            clientId={process.env.REACT_APP_CLIENT_ID}
+            className="innerGoogle"
+          >
+            <Google />
+          </GoogleOAuthProvider>
+        </div> */}
+        <p class="mt-5 mb-3 text-body-secondary">
+          &copy; {new Date().getFullYear()}
+        </p>
       </main>
     </div>
   );
