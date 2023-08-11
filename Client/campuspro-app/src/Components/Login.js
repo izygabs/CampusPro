@@ -1,6 +1,9 @@
 import React from "react";
 import "../Bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import Google from "./Google";
+
 import { Link } from "react-router-dom";
 const Login = () => {
   // const [email, setEmail] =useState("");
@@ -10,7 +13,6 @@ const Login = () => {
         <form action="" method="post">
           <img
             class="mb-4 log-in-logo"
-            
             src={require("../images/campuspro(6).png")}
             alt=""
             width="72"
@@ -57,6 +59,17 @@ const Login = () => {
             &copy; {new Date().getFullYear()}
           </p>
         </form>
+        {/* <div class="googleLogin"> */}
+        {/* <GoogleOAuthProvider
+            clientId={process.env.REACT_APP_CLIENT_ID}
+            className="innerGoogle"
+          >
+            <Google />
+          </GoogleOAuthProvider>
+        </div> */}
+        <p class="mt-5 mb-3 text-body-secondary">
+          &copy; {new Date().getFullYear()}
+        </p>
       </main>
     </div>
   );

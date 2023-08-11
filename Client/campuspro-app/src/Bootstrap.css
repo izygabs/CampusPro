@@ -89,9 +89,11 @@
     font-size: 3.5rem;
   }
 }
-.log-in-logo{
-  width: 20rem;
-  height: 10rem;
+.googleLogin {
+  margin-top: 2rem;
+  /* width: 100%; */
 }
-
+#container {
+  width: 24vmax;
+}
 /* for Dashboard */
