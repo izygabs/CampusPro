@@ -9,7 +9,7 @@ function RentPage2() {
   const changeInfo = () => setInfo();
 
   return (
-    <div>
+    <div className='rentpage-main'>
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
@@ -38,14 +38,35 @@ function RentPage2() {
           <p>Amount/Annum :</p>
           <p>Electricity:</p>
           <p>Furnised:</p>
-          <p>Cer Park:</p>
+          <p>Car Park:</p>
           <p>Agent Name:</p>
           <p>Agent address:</p>
         </div>
       </section>
 
-      <div>
-        <button>click to Contact this agent</button>
+      <div className='sp-2-img-div'>
+        <div>
+          <img/>
+        </div>
+        <div>
+          <img/>
+        </div>
+        <div>
+          <img/>
+        </div>
+        <div>
+          <img/>
+        </div>
+        <div>
+          <img/>
+        </div>
+        
+      </div>
+
+      <div className='sp2-agent-info'>
+        <button>
+          view agent contact
+        </button>
       </div>
     </div>
   );

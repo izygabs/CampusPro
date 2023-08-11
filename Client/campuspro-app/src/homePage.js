@@ -1,9 +1,14 @@
 import React from "react";
 import logo from "./images/campuspro(6).png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import house1 from "./images/house-interior.webp"
+import house2 from "./images/hostel2.webp"
+import hostel3 from "./images/hostel3.webp"
 import data from "./data";
 import { useState } from "react";
 import Schools from "./schools";
 import { Link } from "react-router-dom";
+import Carousel from 'react-bootstrap/Carousel';
 
 function HomePage() {
   const [datas, setDatas] = useState(data);
@@ -28,6 +33,7 @@ function HomePage() {
   });
   return (
     <div className="homepage">
+
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
@@ -65,7 +71,42 @@ function HomePage() {
         </div>
       </div>
 
-      <section className="hp-section1">
+
+      {/* //carousel */}
+        <div className="hp-carousel-div">
+            <Carousel controls={false} indicators={false}>
+          <Carousel.Item >
+            {/* <ExampleCarouselImage text="First slide" /> */}
+            <img src={house1} class="d-block w-100" alt="..."/>
+
+            <Carousel.Caption>
+              {/* <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            {/* <ExampleCarouselImage text="Second slide" /> */}
+            <img src={house2} class="d-block w-100" alt="..."/>
+
+            <Carousel.Caption>
+              {/* <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            {/* <ExampleCarouselImage text="Third slide" /> */}
+            <img src={hostel3} class="d-block w-100" alt="..."/>
+
+            <Carousel.Caption>
+              {/* <h3>Third slide label</h3>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              </p> */}
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+
+        <section className="hp-section1">
         <div className="hp-buy-div">
           <p className="hp-heading">BUY <br></br> ITEMS</p>
           <p className="hp-texts">
@@ -96,6 +137,8 @@ function HomePage() {
           </Link>
         </div>
       </section>
+        </div>
+      
 
       <div className="hp-view-div">
         <p className="hp-view-hostels">View hostels around your campus</p>

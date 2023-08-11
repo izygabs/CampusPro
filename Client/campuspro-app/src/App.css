@@ -23,7 +23,7 @@ p{
 .hp-login-button{
     padding: 10px 30px;
     font-size: 15px;
-    background-color: gold;
+    background-color: #ffef99;
     color:black;
     border-radius: 27px;
     margin-right: 10px;
@@ -45,13 +45,18 @@ p{
     outline: none;
     /* text-align: center; */
 }
+.hp-carousel-div{
+    position: relative;
+}
 .hp-section1{
     display: flex;
+    position: absolute;
+    top:9rem;
     justify-content: space-around;
     align-items: center;
     height:97vh;
     border: none;
-    background-image: url('./images/house-interior.webp');
+    background-color: transparent;
     background-repeat: no-repeat;
     background-size: 100%;
     padding-bottom: 25vh;
@@ -60,13 +65,22 @@ p{
 .hp-buy-div, .hp-sell-div, .hp-rent-div{
     width: 25%;
     border:none;
-    background-color: gold;
+    background-color: #ffef99;
     height: 90%;
     text-align: center;
     padding-top: 7px;
+   border-top-right-radius: 35px;
+   border-bottom-left-radius: 35px;
     /* padding-top: 10vh; */
     /* justify-content: space-around; */
+    transition: transform 0.7s;
 }
+.hp-buy-div:hover, .hp-sell-div:hover, .hp-rent-div:hover{
+    transform: scale(1.1);
+
+}
+
+
 .hp-heading{
     margin-top: 20%;
     text-align: center;
@@ -108,7 +122,7 @@ p{
     border: none !important;
 }
 .hp-props-text{
-    background-color: gold;
+    background-color: #ffef99;
 }
 .hp-img-div{
     height:60%;
@@ -119,7 +133,7 @@ p{
    top:5px;
    right:3px;
    color: black;
-   background-color: #ffd700;
+   background-color: #ffef99;
    border-radius: 15px;
    padding: 3px 10px;
    font-size: 12px;
@@ -163,7 +177,7 @@ p{
    text-align: center;
    padding-bottom: 2vh !important;
    height: 40%;
-   background-color: gold;
+   background-color: #ffef99;
    color: black;
 }
 .sp-img-div{
@@ -174,7 +188,7 @@ p{
 }
 .sp-img-div div{
     position: absolute;
-    background-color: gold;
+    background-color: #ffef99;
     display: flex;
     flex-direction: row;
     top:5px;
@@ -205,7 +219,7 @@ p{
 }
 .sp-text-div button:hover{
     background-color: black;
-    color: gold;
+    color: #ffef99;
    
 }
 .hp-button-link{
@@ -223,14 +237,17 @@ p{
     
 }
 .hp-button-link:hover{
-    background-color: black;
-    color: white;
+    background-color:black;
+    color:  #ffef99;
+}
+.hp-button-link:active{
+   opacity: 0.5;
 }
 .sp-select-amount{
     width: 20vw;
     outline: none;
     height: 5vh;
-    border: solid 2px gold;
+    border: solid 2px #ffef99;
     margin-right: auto;
     margin-left: auto;
     display: block;
@@ -287,18 +304,21 @@ p{
     border: 1px black solid;
     width: 20%;
     text-align: center;
-    background-color: gold;
+    background-color: #ffef99;
     color: black;
 }
 .sp2-linkk button:active{
     opacity: 0.5
 }
+.rentpage-main{
+    background-color: #fffbe6;
+}
 .sp2-main-sector{
     display: flex;
-    margin-top: -19vh;
+    margin-top: 5vh;
     flex-direction: row;
     height: 60vh;
-    border: solid 3px red
+    /* border: solid 3px red */
     
 }
 .sp2-divs{
@@ -312,4 +332,37 @@ p{
 .sp2-main-img{
     width:100%;
     height: 100%;
+}
+.sp-2-img-div{
+    display: flex;
+    flex-wrap: no;
+    width: 100%;
+    height:25vh;
+    justify-content: space-around;
+}
+.sp-2-img-div div{
+    width:17%;
+    border: solid 2px gold;
+    height:100% ;
+    margin:5vh  0;
+}
+.sp2-agent-info{
+    margin: 10vh 0;
+}
+.sp2-agent-info button{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    border: none;
+    background-color: #ffef99;
+    font-size: 15px;
+    padding: 3vh 8vw;
+    border-radius: 30px;
+    transition: background-color 0.7s;
+    
+}
+.sp2-agent-info button:hover{
+   background-color: #2a2929;
+   color: #ffef99;
+    
 }
