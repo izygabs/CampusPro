@@ -397,6 +397,7 @@ p{
     font-weight: bold;
     border-radius: 0px 25px 0px 0px;
     margin-left: 10rem;
+    background-color: #ffef99;
 }
 
 select {
@@ -420,4 +421,5 @@ label {
 
 #upload {
     color: white;
+    background-color: gold;
 }
