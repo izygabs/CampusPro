@@ -1,6 +1,20 @@
 const { StatusCodes } = require("http-status-codes");
+const { items } = require("../models/itemSchema");
 
-const viewItemById = (req, res) => {
-  res.status(StatusCodes.CREATED).json("Item display");
+const viewItemById = async (req, res) => {
+  const itemId = req.params.id;
+  try {
+    const item = await items.findById({ _id: itemId });
+    if (!item) {
+      res.status(StatusCodes.NOT_FOUND).send("Invalid Id");
+    } else {
+      res.status(StatusCodes.OK).json({ "Item found": item });
+    }
+  } catch (error) {
+    console.log(error);
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .json(`Error in finding the Item: ${error}`);
+  }
 };
 module.exports = viewItemById;

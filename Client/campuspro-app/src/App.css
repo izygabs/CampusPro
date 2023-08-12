@@ -1,8 +1,12 @@
 body{
     color: #fff;
+    
+}
+.homepage{
+    background-color: rgb(237, 233, 211)
 }
 p{
-    margin: 3px;
+    margin: 3px !important;
 }
 .hp-header{
     /* position:fixed; */
@@ -13,26 +17,27 @@ p{
     justify-content: space-between;
     align-items: center;
     height: 15vh;
-    margin-bottom: 20vh;
+    /* margin-bottom: 20vh; */
 
 }
 .hp-login-button{
     padding: 10px 30px;
     font-size: 15px;
-    background-color: gold;
+    background-color: #ffef99;
     color:black;
     border-radius: 27px;
     margin-right: 10px;
     border: none;
 }
 .hp-logo{
-    width: 70px
+    width: 20rem
+    
 }
 .hp-logo-div{
     display:flex;
     border:none;
     align-items: center;
-    margin-left: 15px;
+    /* margin-left: 15px; */
 }
 .hp-select-button{
     height: 8vh;
@@ -40,23 +45,42 @@ p{
     outline: none;
     /* text-align: center; */
 }
+.hp-carousel-div{
+    position: relative;
+}
 .hp-section1{
     display: flex;
+    position: absolute;
+    top:9rem;
     justify-content: space-around;
     align-items: center;
-    height:50vh;
-    margin-bottom: 25vh;
+    height:97vh;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding-bottom: 25vh;
+    padding-top: 20vh;
 }
 .hp-buy-div, .hp-sell-div, .hp-rent-div{
     width: 25%;
-    border:solid;
-    background-color: gold;
-    height: 100%;
+    border:none;
+    background-color: #ffef99;
+    height: 90%;
     text-align: center;
+    padding-top: 7px;
+   border-top-right-radius: 35px;
+   border-bottom-left-radius: 35px;
     /* padding-top: 10vh; */
     /* justify-content: space-around; */
+    transition: transform 0.7s;
+}
+.hp-buy-div:hover, .hp-sell-div:hover, .hp-rent-div:hover{
+    transform: scale(1.1);
 
 }
+
+
 .hp-heading{
     margin-top: 20%;
     text-align: center;
@@ -75,7 +99,7 @@ p{
     display: flex;
     justify-content: space-between;
     overflow-x: scroll;
-    border-style: solid;
+    border-style: none;
     width: 100%;
     /* height: 40vh; */
     /* background-color: black; */
@@ -95,22 +119,47 @@ p{
 .hp-school-div p{
     text-align: center;
     color: black;
+    border: none !important;
 }
 .hp-props-text{
-    background-color: gold;
+    background-color: #ffef99;
 }
 .hp-img-div{
     height:60%;
+    position: relative;
 }
+.hp-img-div div{
+   position: absolute;
+   top:5px;
+   right:3px;
+   color: black;
+   background-color: #ffef99;
+   border-radius: 15px;
+   padding: 3px 10px;
+   font-size: 12px;
+   display: flex;
+   flex-direction: row;
+}
+.hp-locate{
+    max-width: 15px;
+    margin-top: 4px;
+}
+
 .hp-img-div img{
     height: 100%;
     width: 100%;
     object-fit: cover;
+   
+}
+.hp-view-div{
+    margin-top: 20vh; 
 }
 .hp-view-hostels{
     color: black;
     font-size: 30px;
     font-weight: 700;
+    font-style: italic;
+   
 }
 .sp-subrent-div{
     display: flex;
@@ -121,18 +170,36 @@ p{
 .sp-sub-div{
     margin: 5vh 0;
     background-color: black;
-    height: 53vh;
+    height: 47vh;
+    width: 23vw;
 }
 .sp-text-div{
    text-align: center;
-   padding-bottom: 2vh;
+   padding-bottom: 2vh !important;
+   height: 40%;
+   background-color: #ffef99;
+   color: black;
 }
 .sp-img-div{
     height: 60%;
+    width: 100%;
     margin-bottom: 10px;
+    position: relative;
+}
+.sp-img-div div{
+    position: absolute;
+    background-color: #ffef99;
+    display: flex;
+    flex-direction: row;
+    top:5px;
+    right:5px;
+    font-size: 12px;
+    border-radius: 15px;
+    padding: 1px 10px;
 }
 .sp-img-div img {
     height: 100%;
+    width: 100%;
    
 }
 
@@ -141,16 +208,23 @@ p{
     padding: 7px 15px;
     border-width: 1px;
     border-radius: 20px;
-    border-color: gold;
-    color: white;
+    border-color: black;
+    color: black;
     margin-left: auto;
     margin-right: auto;
     display: block;
     margin-top: 10px;
+    margin-bottom: 3vh;
+    transition: background-color 0.7s;
+}
+.sp-text-div button:hover{
+    background-color: black;
+    color: #ffef99;
+   
 }
 .hp-button-link{
     margin-top: 10px;
-    padding:10px 20px;
+    padding:6px 20px;
     background-color: transparent;
     border: solid 1px black;
     text-decoration: none;
@@ -163,17 +237,21 @@ p{
     
 }
 .hp-button-link:hover{
-    background-color: black;
-    color: white;
+    background-color:black;
+    color:  #ffef99;
+}
+.hp-button-link:active{
+   opacity: 0.5;
 }
 .sp-select-amount{
     width: 20vw;
     outline: none;
     height: 5vh;
-    border: solid 2px gold;
+    border: solid 2px #ffef99;
     margin-right: auto;
     margin-left: auto;
     display: block;
+    font-size: 14px;
 }
 .sp-select-amount option{
     font-size: 13px;
@@ -181,49 +259,25 @@ p{
     color: white;
 }
 
-/* Buy-page 1 */
 
-.bp1-navbar {
-    display: flex;
-    width: 100%;
-    border: 1px black solid;
-    height: 15vh;
-    margin-top: 1rem;
-    margin-bottom: 4rem;
-    justify-content: space-between;
-    align-items: center;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-    transition: all 2s ease-in-out;
+.sp2-divs{
+    /* border: solid black 3px; */
+    width:47%
 }
-
-.bp1-navbar:hover {
-    box-shadow: 3px 3px 10px gold;
-    
+.sp2-divs2{
+    /* border: solid black 3px; */
+    width:50%;
+    display:flex;
+   flex-direction: column;
+   justify-content: space-around;
 }
-
-.bp1-logo {
-    width: 25rem;
-    margin-left: -1.5rem;
+.sp2-divs2 p{
+    color: black;
+    font-size: 15px;
+    line-height: 10px;
 }
-
-.bp1-input {
-    width: 30%;
-    height: 7vh;
-    box-shadow: inset 2px 2px 5px black;
-    outline: none;
-    border: none;
-}
-
-.bp1-p {
-    margin-right: 1rem;
-    padding: 0.5rem 0.8rem;
-    background: gold;
-    color: #000;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 20px;
-    border: none;
+.sp2-linkk{
+    text-decoration: none;
 }
 
 .cate-gory {
@@ -237,8 +291,6 @@ p{
     outline: none;
     cursor: pointer;
     margin-left: -15rem;
-    width: 30%;
-    height: 5vh;
 }
 
 
@@ -296,7 +348,40 @@ p{
 
 
 .bp1-overall {
+    background-color: #ffef99;
+    color: black;
+}
+.sp2-linkk button:active{
+    opacity: 0.5
+}
+.rentpage-main{
+    background-color: #fffbe6;
+}
+.sp2-main-sector{
     display: flex;
+    margin-top: 5vh;
+    flex-direction: row;
+    height: 60vh;
+    /* border: solid 3px red */
+    
+}
+.sp2-divs{
+    width: 50%;
+    height: 100%;
+}
+.sp2-divs2{
+    width: 45%;
+    height: 100% 
+}
+.sp2-main-img{
+    width:100%;
+    height: 100%;
+}
+.sp-2-img-div{
+    display: flex;
+    flex-wrap: no;
+    width: 100%;
+    height:25vh;
     justify-content: space-around;
 }
 
@@ -307,8 +392,27 @@ p{
     background: #ffef99;
     border-radius: 20px;
     transition: all 2s ease-in-out;
+}
+.sp-2-img-div div{
+    width:17%;
+    border: solid 2px gold;
+    height:100% ;
+    margin:5vh  0;
+}
+.sp2-agent-info{
+    margin: 10vh 0;
+}
+.sp2-agent-info button{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
     border: none;
-    cursor: pointer;
+    background-color: #ffef99;
+    font-size: 15px;
+    padding: 3vh 8vw;
+    border-radius: 30px;
+    transition: background-color 0.7s;
+    
 }
 
 .bp1-header:hover {
@@ -419,7 +523,12 @@ label {
     padding-left: 1rem;
 }
 
-#upload {
+.sp2-agent-info button:hover{
+    background-color: #2a2929;
+
+}
+    #upload {
     color: white;
     background-color: gold;
+    color: #ffef99;
 }

@@ -63,8 +63,8 @@ function RentPage1() {
         </div>
       </div>
 
-      <select className="sp-select-amount" onChange={sortPrice}>
-        <option value ="">filter hostel according to price</option>
+      <select className="sp-select-amount" onChange={sortPrice} title="Filter hostels according to their prices">
+        {/* <option value ="">Filter hostels according to their prices</option> */}
         <option value='2500000' >#2,500,000 & below</option>
         <option value='1000000' >#1,000,000 & below</option>
         <option value='500000' >#500,000 & below</option>

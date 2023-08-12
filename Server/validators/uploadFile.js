@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
   },
 
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "--" + file.originalname);
+    cb(null, file.originalname);
   },
 });
 
@@ -16,7 +16,7 @@ const hostelStorage = multer.diskStorage({
   },
 
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "--" + file.originalname);
+    cb(null, file.originalname);
   },
 });
 
@@ -26,34 +26,16 @@ const itemsStorage = multer.diskStorage({
   },
 
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "--" + file.originalname);
+    cb(null, file.originalname);
   },
 });
 
 const upload = multer({ storage: storage });
 const uploadHostels = multer({
   storage: hostelStorage,
-  limits: {
-    files: {
-      min: 5, // Minimum number of files
-      max: 15, // Maximum number of files
-    },
-    fileSize: {
-      maxSize: "8mb",
-    },
-  },
 });
 
 const uploadItems = multer({
   storage: itemsStorage,
-  limits: {
-    files: {
-      min: 5, // Minimum number of files
-      max: 15, // Maximum number of files
-    },
-    fileSize: {
-      maxSize: "8mb",
-    },
-  },
 });
 module.exports = { upload, uploadHostels, uploadItems };
