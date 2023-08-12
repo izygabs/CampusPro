@@ -4,23 +4,23 @@ import duplex from './images/duplex.jpeg';
 import house from './images/house.jpeg';
 import mansion from './images/mansion.jpeg';
 import apartment from './images/apartment.jpeg';
-// import stove1 from './electric-stove.jpeg';
-// import stove2 from './electric-stove-1.jpeg';
-// import stove3 from './electric-stove-2.jpeg';
 import { Link } from 'react-router-dom';
+import speaker from "./images/speakers.png";
+import A100 from "./images/A100-speaker.png";
+import music from "./images/music-speaker.png";
+import zealot from "./images/speaker-zealot.png";
+import bed from "./images/bed.png";
+import bedmat from "./images/bed-mat.png";
+import bedpocket from "./images/bed-pocket.png";
 
 
 const BuyPage = () => {
-  const header = 'Apartments';
-  const electric = 'Electric Gas';
+  const header = 'Mp3 Speakers';
+  const beds = 'Mattresses';
   const light = 'Ringlights';
 
   const handleClick = (e) => {
-    alert(`
-    4 master bedroom and good parking space
-    Location: Surulere avenue
-    Price: 90m naira
-    `)
+    
   }
 
   return (
@@ -45,7 +45,7 @@ const BuyPage = () => {
           <option value='9' className="bp1-input cate-gory">Lands</option>
         </select>
       <div>
-        <button className="bp1-p">Items for Buy</button>
+        <button className="bp1-p">Items available for buy</button>
       </div>
     </navbar>
     
@@ -56,42 +56,30 @@ const BuyPage = () => {
       </button>
     <div className="bp1-overall">
       <div className="bp1-houses">
-        <img src={duplex} alt='duplex' className="bp1-duplex" onClick={handleClick}/>
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
-        <button>
-          <Link to='/buyPage2'>View Details</Link>
+        <img src={speaker} alt='duplex' className="bp1-duplex" onClick={handleClick}/>
+        <button className="bp-btn">
+          <Link to='/buyPage2' className="bp1-Link">View Details</Link>
+        </button>
+      </div>
+ 
+      <div className="bp1-houses">
+        <img src={A100} alt='duplex' className="bp1-duplex" />
+        <button className="bp-btn">
+          <Link to='/buyPage2' className="bp1-Link">View Details</Link>
         </button>
       </div>
 
       <div className="bp1-houses">
-        <img src={house} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
-        <button>
-          <Link to='/buyPage2'>View Details</Link>
-        </button>
+        <img src={music} alt='duplex' className="bp1-duplex" id="bp1-music" />
+        <button className="bp-btn" id="link">
+          <Link to='/buyPage2' className="bp1-Link">View Details</Link>
+        </button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
       </div>
 
       <div className="bp1-houses">
-        <img src={mansion} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
-        <button>
-          <Link to='/buyPage2'>View Details</Link>
-        </button>
-      </div>
-
-      <div className="bp1-houses">
-        <img src={apartment} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
-        <button>
-          <Link to='/buyPage2'>View Details</Link>
+        <img src={zealot} alt='duplex' className="bp1-duplex" />
+        <button className="bp-btn">
+          <Link to='/buyPage2' className="bp1-Link">View Details</Link>
         </button>
       </div>
       </div>
@@ -101,46 +89,34 @@ const BuyPage = () => {
 
 
       <button type="button" className="bp1-header">
-        {electric}
+        {beds}
       </button>
     <div className="bp1-overall">
       <div className="bp1-houses">
-        <img src={mansion} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
-        <button>
-          <Link to='/buyPage2'>View Details</Link>
+        <img src={bed} alt='duplex' className="bp1-duplex" />
+        <button className="bp-btn" id="link">
+          <Link to='/buyPage2' className="bp1-Link">View Details</Link>
         </button>
       </div>
 
       <div className="bp1-houses">
-        <img src={mansion} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
-        <button>
-          <Link to='/buyPage2'>View Details</Link>
+        <img src={bedmat} alt='duplex' className="bp1-duplex" />
+        <button className="bp-btn">
+          <Link to='/buyPage2' className="bp1-Link">View Details</Link>
         </button>
       </div>
 
       <div className="bp1-houses">
-        <img src={mansion} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
-        <button>
-          <Link to='/buyPage2'>View Details</Link>
+        <img src={bedpocket} alt='duplex' className="bp1-duplex" />
+        <button className="bp-btn">
+          <Link to='/buyPage2' className="bp1-Link">View Details</Link>
         </button>
       </div>
 
       <div className="bp1-houses">
         <img src={apartment} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
-        <button>
-          <Link to='/buyPage2'>View Details</Link>
+        <button className="bp-btn">
+          <Link to='/buyPage2' className="bp1-Link">View Details</Link>
         </button>
       </div>
       </div>
@@ -156,9 +132,6 @@ const BuyPage = () => {
     <div className="bp1-overall">
       <div className="bp1-houses">
         <img src={duplex} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
         <button>
           <Link to='/buyPage2'>View Details</Link>
         </button>
@@ -166,9 +139,6 @@ const BuyPage = () => {
 
       <div className="bp1-houses">
         <img src={house} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
         <button>
           <Link to='/buyPage2'>View Details</Link>
         </button>
@@ -176,9 +146,6 @@ const BuyPage = () => {
 
       <div className="bp1-houses">
         <img src={mansion} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
         <button>
           <Link to='/buyPage2'>View Details</Link>
         </button>
@@ -186,9 +153,6 @@ const BuyPage = () => {
 
       <div className="bp1-houses">
         <img src={apartment} alt='duplex' className="bp1-duplex" />
-        <p>4 master bedroom and good parking space</p>
-        <p>Location: Surulere avenue</p>
-        <p>Price: 90m naira </p>
         <button>
           <Link to='/buyPage2'>View Details</Link>
         </button>
@@ -199,6 +163,7 @@ const BuyPage = () => {
       </button>
 
     </section>
+
 
     </>
   )

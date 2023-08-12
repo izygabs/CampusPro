@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import css from './App.css'
+import './App.css'
 import HomePage from "./homePage.js";
 import RentPage1 from './rentPage1';
 import BuyPage from './buyPage1';
 import BuyPage2 from './buyPage2';
+import BasicInfo from './BasicInfo';
+import Confirmation from './Confirmation';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path="/01-rentpage" element={<RentPage1/>}/>
           <Route path="/buyPage1" element={<BuyPage/>}/>
           <Route path="/buyPage2" element={<BuyPage2/>}/>
+          <Route path="/BasicInfo" element={<BasicInfo/>}/>
+          <Route path="/Confirmation" element={<Confirmation/>}/>
         </Routes>
     </Router>
     </div>

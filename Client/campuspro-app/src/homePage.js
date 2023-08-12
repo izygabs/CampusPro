@@ -76,7 +76,7 @@ const house = datas.map((aparte)=>{
           <div className="hp-sell-div">
           <p className="hp-heading">SELL A PROPERTY</p>
             <p className="hp-texts">Become a merchant and sell properties on CampusPro.</p>
-            <Link className="link" to=''>
+            <Link className="link" to='/BasicInfo'>
                 <button className="hp-button-link">
                    Sell a property
                 </button>
