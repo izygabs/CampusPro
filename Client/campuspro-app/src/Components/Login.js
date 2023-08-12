@@ -11,13 +11,6 @@ const Login = () => {
     <div class="d-flex align-items-center  py-5 bg-body-tertiary signinPage">
       <main class="form-signin w-100 m-auto">
         <form action="" method="post">
-          <img
-            class="mb-4 log-in-logo"
-            src={require("../images/campuspro(6).png")}
-            alt=""
-            width="72"
-            height="57"
-          />
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
           <div class="form-floating py-3">
@@ -52,25 +45,32 @@ const Login = () => {
           </div>
           <Link to="/merchant-dashboard">
             <button class="btn btn-warning w-100 py-2 createBtn " type="submit">
-              Sign in
+              Login
             </button>
           </Link>
-          <p class="mt-5 mb-3 text-body-secondary">
-            &copy; {new Date().getFullYear()}
+
+          <p class="mt-4 mb-3 text-center text-body-secondary">
+            <a href="#" id="create-account">
+              Create an Account?
+            </a>
+            <a href="#" class="forget-pwd">
+              Forget Password
+            </a>
           </p>
         </form>
-        {/* <div class="googleLogin"> */}
-        {/* <GoogleOAuthProvider
-            clientId={process.env.REACT_APP_CLIENT_ID}
-            className="innerGoogle"
-          >
-            <Google />
-          </GoogleOAuthProvider>
-        </div> */}
-        <p class="mt-5 mb-3 text-body-secondary">
+
+        <p class="mt-5 mb-3 text-center text-body-secondary">
           &copy; {new Date().getFullYear()}
         </p>
       </main>
+      {/* <div class="googleLogin">
+        <GoogleOAuthProvider
+          clientId={process.env.REACT_APP_CLIENT_ID}
+          className="innerGoogle"
+        >
+          <Google />
+        </GoogleOAuthProvider>
+      </div> */}
     </div>
   );
 };

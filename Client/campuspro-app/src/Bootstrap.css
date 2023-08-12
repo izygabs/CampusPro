@@ -1,7 +1,27 @@
 .signinPage {
   height: 100%;
-  background-color: whitesmoke;
-  background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+  /* background-color: whitesmoke; */
+  background-position: initial;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+      rgba(51, 51, 51, 0.6),
+      rgba(119, 119, 119, 0.285)
+    ),
+    url("../src/images/blackpeopleImage.jpg");
+  margin-bottom: 0;
+}
+.signinPage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  opacity: 2; /* Initial opacity */
+  transition: opacity 0.5s ease; /* Transition property for fading effect */
+  z-index: -1;
 }
 
 .form-signin {
@@ -97,3 +117,12 @@
   width: 24vmax;
 }
 /* for Dashboard */
+#create-account {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+  /* font-size: 1rem; */
+}
+.forget-pwd {
+  text-decoration: none;
+}

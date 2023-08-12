@@ -1,0 +1,56 @@
+.add-items-div {
+  /* width: 100%; */
+  /* margin: 2rem auto; */
+  display: flex;
+}
+.add-items-form {
+  margin: 0.1rem auto 0;
+}
+.add-items-inputs,
+.addItem-category {
+  width: 25rem;
+  border: 1px solid;
+  text-align: justify;
+}
+.add-items-inputs:hover {
+  border: 1px solid gold !important;
+}
+.add-item-checkbox {
+  margin-right: 10px;
+}
+
+.add-items-form div {
+  padding: 0.4rem;
+  /* margin: 1rem; */
+}
+.add-items-form div label {
+  /* display: block; */
+  margin-bottom: 0.3rem;
+}
+.add-item-btn {
+  text-align: center;
+}
+.add-item-btn button {
+  margin-top: 12px;
+  border: 0;
+  border-radius: 20px;
+  background-color: gold !important;
+  padding: 7px 4rem;
+  margin-bottom: 2rem;
+}
+.close-button {
+  margin-top: 12px;
+  border: 0;
+  border-radius: 10px;
+  background-color: gold !important;
+  padding: 3px 2rem;
+}
+.close-button:hover,
+.add-item-btn button:hover {
+  color: #fff !important ;
+  background-color: black !important;
+}
+.addItems-error-message {
+  font-size: 13px;
+  color: red;
+}

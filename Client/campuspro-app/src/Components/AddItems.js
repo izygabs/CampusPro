@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../AddItems.css";
 
 const AddItems = (prop) => {
   const [formData, setFormdate] = useState({
@@ -20,13 +21,15 @@ const AddItems = (prop) => {
       <form className="add-items-form" onSubmit={prop.submit}>
         <div>
           <label for="itemName">
-            Item Name:<span className="add-item-hysteric">*</span>
+            Name of the item:<span className="add-item-hysteric">*</span>
           </label>
+          <br />
           <input
+            className="add-items-inputs"
             placeholder="Enter item Name"
             type="text"
             name="itemName"
-            value={formData.itemName}
+            // value={formData.itemName}
           />
           {error.itemName && (
             <span className="addItems-error-message">{error.message}</span>
@@ -34,13 +37,16 @@ const AddItems = (prop) => {
         </div>
         <div>
           <label for="description">
-            Description:<span className="add-item-hysteric">*</span>
+            Tell us something about the item:
+            <span className="add-item-hysteric">*</span>
           </label>
+          <br />
           <input
+            className="add-items-inputs"
             placeholder="Enter item description"
             type="text"
             name="description"
-            value={formData.description}
+            // value={formData.description}
           />
           {error.description && (
             <span className="addItems-error-message">{error.message}</span>
@@ -49,13 +55,15 @@ const AddItems = (prop) => {
 
         <div>
           <label for="price">
-            Price:<span className="add-item-hysteric">*</span>
+            What is the Price?:<span className="add-item-hysteric">*</span>
           </label>
+          <br />
           <input
+            className="add-items-inputs"
             placeholder="Enter item Price"
-            type="text"
+            type="number"
             name="price"
-            value={formData.price}
+            // value={formData.price}
           />
           {error.price && (
             <span className="addItems-error-message">{error.message}</span>
@@ -64,13 +72,15 @@ const AddItems = (prop) => {
 
         <div>
           <label for="quantity">
-            No of Items:<span className="add-item-hysteric">*</span>
+            What is the quantity?<span className="add-item-hysteric">*</span>
           </label>
+          <br />
           <input
+            className="add-items-inputs"
             placeholder="Enter number of items"
-            type="text"
+            type="number"
             name="quantity"
-            value={formData.quantity}
+            // value={formData.quantity}
           />
           {error.quantity && (
             <span className="addItems-error-message">{error.message}</span>
@@ -79,13 +89,16 @@ const AddItems = (prop) => {
 
         <div>
           <label for="location">
-            Address:<span className="add-item-hysteric">*</span>
+            Tell us the about the location of the item:
+            <span className="add-item-hysteric">*</span>
           </label>
+          <br />
           <input
+            className="add-items-inputs"
             placeholder="Enter item's address"
             type="text"
             name="location"
-            value={formData.location}
+            // value={formData.location}
           />
           {error.location && (
             <span className="addItems-error-message">{error.message}</span>
@@ -94,30 +107,34 @@ const AddItems = (prop) => {
 
         <div>
           <label for="campus">
-            Address:<span className="add-item-hysteric">*</span>
+            Which Campus is the item located?
+            <span className="add-item-hysteric">*</span>
           </label>
+          <br />
           <input
+            className="add-items-inputs"
             placeholder="Enter the campus name here"
             type="text"
             name="campus"
-            value={formData.campus}
+            // value={formData.campus}
           />
           {error.campus && (
-            <span className="addItems-error-message">{error.message}</span>
+            <p className="addItems-error-message">error.message</p>
           )}
         </div>
 
         <div>
           <label for="category">
-            Category<span className="add-item-hysteric">*</span>
+            Catogory of the Item:<span className="add-item-hysteric">*</span>
           </label>
+          <br />
           <select
-            className="bp1-select"
+            className="addItem-category"
             name="category"
-            value={formData.category}
+            // value={formData.category}
           >
             <option value="0" className="bp1-input cate-gory gory">
-              Category
+              Select the category
             </option>
             <hr />
             <option value="Clothings" className="bp1-input cate-gory">
@@ -143,29 +160,28 @@ const AddItems = (prop) => {
             </option>
           </select>
           {error.category && (
-            <span className="addItems-error-message">{error.message}</span>
+            <p className="addItems-error-message">error.message</p>
           )}
         </div>
+        {/* <br /> */}
         <div>
-          <label for="negotiable">
-            Address:<span className="add-item-hysteric">*</span>
-          </label>
-          <input
-            placeholder="Enter number of items"
-            type="text"
-            name="location"
-            value={formData.location}
-          />
           <label>
             <input
+              className="add-item-checkbox"
               type="checkbox"
-              checked={isChecked}
+              // checked={isChecked}
               // onChange={handleCheckboxChange}
             />
             Is the price negotiable?
           </label>
           {/* <p>Negotiable {isChecked ? "YES" : "NO"}</p> */}
         </div>
+        <div className="add-item-btn">
+          <button onSubmit="">Add Item</button>
+        </div>
+      </form>
+      <form className="add-items-images">
+        <input type="file" name="itemImages" />
       </form>
     </div>
   );

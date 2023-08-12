@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./homePage.js";
 import RentPage1 from "./rentPage1";
 import RentPage2 from "./rentPage2";
@@ -10,11 +10,12 @@ import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import SignUp from "./RenderSignUp";
 import AddItems from "./Components/AddItems";
+import UserDashboard from "./Components/UserDashboard";
 
 function App() {
   return (
     <div className="App">
-      <AddItems />
+      {/* <UserDashboard /> */}
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login-page" element={<Login />} />
           <Route path="/merchant-dashboard" element={<Dashboard />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/add-items" element={<AddItems />} />
         </Routes>
       </Router>
     </div>
