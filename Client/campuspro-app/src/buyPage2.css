@@ -1,0 +1,58 @@
+.minor-sec {
+  height: 100vh;
+  display: flex;
+  box-shadow: inset 2px 2px 5px black;
+}
+
+.first-div {
+  border: 2px black solid;
+  margin: 1rem;
+  width: 50%;
+}
+
+.second-div {
+  margin: 2rem;
+  width: 50%;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px black;
+  border-radius: 10px;
+}
+
+#details {
+  background-color: #ffef99;
+  text-align: center;
+  font-size: 1.5rem;
+  transition: all 2s ease-in-out;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+#details:hover {
+  background-color: black;
+  color: #ffef99;
+  cursor: pointer;
+}
+
+#contact {
+  background-color: #ffef99;
+  text-align: center;
+  font-size: 1.5rem;
+  transition: all 2s ease-in-out;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+}
+
+#contact:hover {
+  background-color: black;
+  color: #ffef99;
+  cursor: pointer;
+}
+
+#para {
+  padding-bottom: 1.3rem;
+}
+
+.i-mg {
+  width: 100%;
+  height: 100%;
+}

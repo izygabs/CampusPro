@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./images/campuspro(6).png";
+import logo from './images/campuspro(6).png';
 import "bootstrap/dist/css/bootstrap.min.css";
 import house1 from "./images/house-interior.webp"
 import house2 from "./images/hostel2.webp"
