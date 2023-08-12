@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../Dashboard.css";
+// import { Link } from "react-router-dom";
 
 const Dashboard = (prop) => {
   return (
@@ -200,15 +201,18 @@ const Dashboard = (prop) => {
                         className="dropdown"
                         variant="Warning"
                       >
-                        <Dropdown.Item href="#/action-1">
+                        <Dropdown.Item href="#/Profile_info">
                           My Profile
                         </Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">
+                        <Dropdown.Item href="#/Changepassword">
                           Login & Security
                         </Dropdown.Item>
                       </DropdownButton>
                     </a>
                   </li>
+                  {/* <Link className="link" to="/buyPage1">
+                    <button className="hp-button-link">Buy a Property</button>
+                  </Link> */}
                   <li class="nav-item">
                     <a
                       class="nav-link d-flex align-items-center gap-2 signOut"

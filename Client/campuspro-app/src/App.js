@@ -8,10 +8,14 @@ import BuyPage from "./buyPage1";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import SignUp from "./RenderSignUp";
+import Changepassword from "./Components/Changepassword";
+import ProfileInfo from "./Components/Profile_info";
 
 function App() {
   return (
     <div className="App">
+      <Changepassword />
+      <ProfileInfo />
       <SignUp />
       <Login />
       <Dashboard />

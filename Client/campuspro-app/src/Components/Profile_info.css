@@ -1,0 +1,56 @@
+.pi-body {
+  background-color: lightgrey;
+  height: 100vh;
+  padding: 0.5rem;
+}
+
+.pi-sec {
+  /* border: 1px solid black; */
+  margin-left: 1rem;
+  padding-left: 2rem;
+  width: 95vw;
+  height: 95vh;
+  background-color: white;
+}
+
+.pi-head {
+  /* border: 1px solid blue; */
+  border-bottom: 1px solid rgb(125, 125, 125);
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.pi-pic {
+  margin-top: 1.5rem;
+  border-radius: 800px;
+}
+.pi-div {
+  /* border: 1px solid black; */
+  width: 45vw;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pi-div label {
+  font-size: large !important;
+  font-weight: 500;
+}
+
+.pi-input input {
+  margin-top: 0.5rem;
+  height: 3rem;
+  width: 45vw;
+  border: none;
+  border-bottom: 1px solid rgb(125, 125, 125);
+}
+
+.pi-div button {
+  border: none;
+  font-size: large !important;
+  font-weight: 500;
+  background-color: white;
+  color: gold;
+}
