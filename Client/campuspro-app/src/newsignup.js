@@ -1,142 +1,75 @@
-import { useState } from "react";
-import Signup from "./signUp";
-import css from './Signup.css'
+import React from 'react';
+import './Signup.css'
+import  key  from './lock_483408.png'
+import user from './MicrosoftTeams-image (4).png'
+import email from './MicrosoftTeams-image (6).png'
+import number from './MicrosoftTeams-image (5).png'
+import { Link } from 'react-router-dom';
 
-function Signup2() {
-  const [values, setValues] = useState({
-    firstName:"",
-    lastName:"",
-    email:"",
-    phoneNumber:"",
-    alternateNumber:"",
-    address:"",
-    password:'',
-    confirmPassword:"",
-  });
 
-  const input = [
-    {
-      id:1,
-      name: 'Firstname Lastname',
-      type: 'text',
-      // placeholder: 'Firstname',
-      errorMessage: 'Firstname should be 5-20 characters and should not include any special character',
-      label: 'Firstname(* Required)',
-      pattern:'^[a-zA-Z0-9]{3-16}$',
-      pattern: "",
-      require: true,
-    },
-    {
-    
-      id:2,
-      name: 'Lastname',
-      type: 'text',
-      // placeholder: 'Lastname',
-      errorMessage: 'Firstname should be 5-20 characters and should not include any special character',
-      label: 'Lastname*',
-      pattern:'^[a-zA-Z0-9]{3-16}$',
-      pattern: "",
-      require: true
-    },
-    {
-      id:3,
-      name: 'email',
-      type: 'text',
-      // placeholder: 'Email',
-      errorMessage: 'It should be a valid email',
-      pattern:'^[a-zA-Z0-9]{3-16}$',
-      pattern: "",
-      label: 'Email*',
-      require: true
-    },
-    {
-      id:4,
-      name: 'phone number',
-      type: 'text',
-      // placeholder: 'Phone number',
-      errorMessage: 'Number should be 1-11 character and should not include any letter character',
-      label: 'Phone number*',
-      pattern: '^((^+)(234){1}[0–9]{10})$',
-      pattern: "",
-      require: true,
-    },
-    {
-      id:5,
-      name: 'phone number two',
-      type: 'text',
-      // placeholder: 'Alternate Number',
-      errorMessage: 'Number should be 1-11 character and should not include any letter character',
-      label: 'Phone number two',
-      pattern: '((^+)(234){1}[0–9]{10})$',
-      pattern: "",
-      require: true
-    },
-    {
-      id:7,
-      name: 'password',
-      type: 'password',
-      // placeholder: 'Password',
-      errorMessage: 'Password should be 8-20 characters and include at least 1 letter and 1 number',
-      label: 'Password*',
-      pattern:'^[a-zA-Z0-9{3-16}$',
-      pattern: '',
-      require: true
-    },
-    {
-      id:8,
-      name: 'confirmPassword',
-      type: 'password',
-      // placeholder: 'Confirm Password',
-      errorMessage: 'forgot password? Sign in',
-      label: 'Confirm Password*',
-      pattern: values.password,
-      require: true,
-    },
-  ]
+// import gold from './gold.png'
 
-     
-     const handleSubmit = (e) => {
-      e.preventDefault()
-      // const data = new FormData(e.target)
-     }
-     const onChange = (e) =>{
-      setValues({...values, [e.target.name]: e.target.value})
-     }
-     console.log(values)
+
+const Signup = () => {
   return (
-    
-    <div className="sp-main">
-      
-      <form onSubmit={handleSubmit}>
-        <h1>Sign up</h1>
-        {input
-        .map((input) => (
-          <Signup key={input.id} {...input} value={values[input.name]}
-          onChange={onChange}
-          />
-        ))}
-        {/* <Signup name="lastname" placeholder="Lastname"/> */}
-        <div className="sp-input-one">
-          
-        </div>
-        <div className="sp-radio-box">
-        <label for='agent'>Agent</label>
-          <input type='radio' id='agent' value='Agent' name='seller' />
-          {/* <label for='agent'>Agent</label> */}
-          <br />
-          <label for='merchant'>Merchant</label>
-          <input type='radio' id='merchant' value='Merchant' name='seller'/>
-          {/* <label for='merchant'>Merchant</label> */}
-        </div>
-        <button className="btn">Submit</button>
-      </form>
-      <div className="sp-photo">
-        <h4>Insert photo</h4>
-      </div>
+    <div>
+        <form className='sp-form'>
+            <h1>Sign Up</h1>
+            <div className='header'>
+                <label className='sp-label' htmlFor='firstName'>Firstname:</label><br />
+                <input className='sp-input' type='text' id='name'/><br />
+                <img className='sp-user-img' src={user} alt='user image'/>
+                
+                <label className='sp-label1' htmlFor='lastName'>Lastname:</label><br />
+                <input className='sp-input1' type='text' id='name'/><br />
+
+                <label className='sp-email-label' htmlFor='email'>Email:</label><br />
+                <input className='sp-email-input' type='text'/><br />
+                <img className='sp-email-img' src={email} alt='email image'/>
+
+                <label className='sp-number1' htmlFor='number'>Phone number:</label><br />
+                <input className='sp-number2' type='number'/><br />
+                <img className='sp-number-img' src={number} alt='call image'/>
+
+                <label className='sp-number3' htmlFor='number'>Alternate number:</label><br />
+                <input className='sp-number4' type='number'/><br />
+
+                <label className='sp-pwd1' htmlFor='password'>Password:</label><br />
+                <input className='sp-pwd2' type='password'/><br />
+                <img className='sp-img-key' src={key} alt='key image'/>
+
+                <label className='sp-pwd3' htmlFor='password'>Confirm Password:</label><br />
+                <input className='sp-pwd4' type='password'/>
+                 
+                
+                
+                <br />
+            <div id='main'>
+                <div id="checks">
+                    <label className='sp-agent' htmlFor='agent'>Agent</label>
+                    <input className='sp' type='checkbox'/>
+                </div>
+
+                <div id='checks'>
+                    <label className='sp-merchant1' htmlFor='merchant'>Merchant</label>
+                    <input className='sp-input2' type='checkbox'/>
+                </div>
+            </div>
+            </div>
+            <span className='sp-signup'>
+                <h6>already signup? <button>
+                <Link to='/login'>View Details</Link>
+                </button></h6>
+            </span>
+            <div className='btn3'>
+                <button className='sp-btn'>Sign up</button>
+            </div>
+        </form>
     </div>
-  );
+  )
 }
-export default Signup2;
+
+export default Signup
           
           
                 
