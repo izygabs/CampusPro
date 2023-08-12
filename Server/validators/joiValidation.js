@@ -121,7 +121,8 @@ const itemSchema = (data) => {
       "string.empty": `price cannot be empty`,
       "any.required": `price field is required`,
     }),
-    quantity: Joi.string().trim(),
+    quantity: Joi.number().trim(),
+    negotiable: Joi.string().trim(),
     campus: Joi.string().required().trim().messages({
       "string.base": `campus should be a "text"`,
       "string.empty": `campus cannot be empty`,
