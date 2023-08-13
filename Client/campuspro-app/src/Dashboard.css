@@ -4,10 +4,16 @@
   height: 1rem;
 }
 
-/*
- * Sidebar
- */
+.dash {
+  height: 100% !important;
+}
 
+.dash::after {
+  content: "" !important;
+  width: 100%;
+  height: 100% !important;
+  z-index: -1 !important;
+}
 @media (min-width: 768px) {
   .sidebar .offcanvas-lg {
     position: -webkit-sticky;
@@ -69,7 +75,9 @@
 
 #sidebarMenu {
   color: white !important;
-  height: 100% !important;
+  height: 48rem !important;
+  position: sticky;
+  /* margin-bottom: 3rem !important; */
 }
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -128,15 +136,25 @@
   z-index: 1500;
 }
 
-Dropdown-item {
+.Dropdown-item {
   color: red !important;
 
   background-color: yellow !important;
 }
 .username {
   margin-right: 1rem;
+  color: white;
+  /* width: 1rem !important; */
 }
-canvas {
-  width: 100% !important;
-  border: 1px solid red !important;
+.userName-dropdown {
+  margin-right: 4rem !important;
 }
+
+.dashboard-logo {
+  width: 7rem !important;
+  /* height: 5rem !important; */
+}
+/* .dashboard-logo {
+  margin: 0 !important;
+  padding: 20px !important;
+} */

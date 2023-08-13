@@ -1,22 +1,17 @@
 import React from "react";
 import "../Bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
+// import Google from "./Google";
 
+import { Link } from "react-router-dom";
 const Login = () => {
   // const [email, setEmail] =useState("");
   return (
     <div class="d-flex align-items-center  py-5 bg-body-tertiary signinPage">
       <main class="form-signin w-100 m-auto">
-        <form action="" method="post">
-          <img
-            class="mb-4"
-            src={require("../images/campuspro(6).png")}
-            alt=""
-            width="72"
-            height="57"
-          />
-          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <form action="" method="post" className="login-form">
+          <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
 
           <div class="form-floating py-3">
             <input
@@ -30,7 +25,7 @@ const Login = () => {
           <div class="form-floating py-1">
             <input
               type="password"
-              class="form-control"
+              class="form-control "
               id="floatingPassword"
               placeholder="Password"
             />
@@ -44,20 +39,38 @@ const Login = () => {
               value="remember-me"
               id="flexCheckDefault"
             />
-            <label class="form-check-label " for="flexCheckDefault">
+            <label class="form-check-label text-white " for="flexCheckDefault">
               Remember me
             </label>
           </div>
-          <Link to="/Dashboard">
+          <Link to="/merchant-dashboard">
             <button class="btn btn-warning w-100 py-2 createBtn " type="submit">
-              Sign in
+              Login
             </button>
           </Link>
-          <p class="mt-5 mb-3 text-body-secondary">
-            &copy; {new Date().getFullYear()}
+
+          <p class="mt-4 mb-3 text-center text-body-secondary">
+            <Link to="/sign-up" className="create-account-link">
+              <p id="create-account">Create an Account?</p>
+            </Link>
+            <a href="#" class="forget-pwd">
+              Forget Password
+            </a>
           </p>
         </form>
+
+        <p class="mt-5 mb-3 text-center year-display">
+          &copy; {new Date().getFullYear()}
+        </p>
       </main>
+      {/* <div class="googleLogin">
+        <GoogleOAuthProvider
+          clientId={process.env.REACT_APP_CLIENT_ID}
+          className="innerGoogle"
+        >
+          <Google />
+        </GoogleOAuthProvider>
+      </div> */}
     </div>
   );
 };

@@ -33,6 +33,10 @@ const itemSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    negotiable: {
+      type: Boolean,
+      default: false,
+    },
     itemProperties: [String],
     itemPictures: [String],
   },
