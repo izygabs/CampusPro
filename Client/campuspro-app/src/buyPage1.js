@@ -33,13 +33,14 @@ const BuyPage = () => {
 
       <select value={update} onChange={handleChange} className='select'>
         <option value=' '>Select Item to Display</option><hr/>
-        <option value='mattress'>Mattress</option>
-        <option value='kitchen'>Utensils</option>
-        <option value='ringlight'>Ringlights</option>
-        <option value='speakers'>Speakers</option>
-        <option value='fridge'>Deep freezer</option>
-        <option value='chair'>Chairs</option>
-        <option value='iron'>Electric iron</option>
+        <option value='Clothings'>Clothings</option>
+        <option value='Kitchen Utensils'>Kitchen Utensils</option>
+        <option value='Phones & Computers'>Phones and Computers</option>
+        <option value='Home Appliances'>Home Appliances</option>
+        <option value='Furnitures'>Furnitures</option>
+        <option value='Electronic Gadgets'>Electronic Gadgets</option>
+        <option value='Books'>Books</option>
+        <option value='Others'>Others</option>
       </select>
 
       <section className='section'>
@@ -47,7 +48,6 @@ const BuyPage = () => {
           <div key={items.id} className='items'>
             <img src={items.image} alt="item" className='images'/>
             <p id='p-i'>{items.description}<br/> {items.price} <br/> <button className='btn'><Link to='/buyPage2' id='link-btn'>View Details</Link></button></p>
-            {/* <p id='p-i'></p> */}
           </div>
         ))}
       </section>
