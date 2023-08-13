@@ -99,13 +99,13 @@
   outline: none;
 }
 
-option {
+.select option {
   background-color: #ffef99;
   font-weight: bold;
   transition: all 5s ease-in-out;
 }
 
-option:hover {
+.select option:hover {
   background-color: black;
   color: #ffef99;
   cursor: pointer;

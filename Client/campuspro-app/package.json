@@ -27,7 +27,7 @@
     "test": "react-dotenv && react-scripts test",
     "eject": "react-dotenv && react-scripts eject"
   },
-  "proxy": "http://localhost:6600",
+  "proxy": "http://localhost:6600/",
   "eslintConfig": {
     "extends": [
       "react-app",
