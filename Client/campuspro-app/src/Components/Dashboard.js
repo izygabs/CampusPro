@@ -1,26 +1,10 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../Dashboard.css";
-import { Link } from "react-router-dom";
-import AddItems from "./AddItems";
-// import ButtonComponent from "./ButtonComponent";
-import OverlayComponent from "./OverlayComp";
 
 const Dashboard = (prop) => {
-  const [showOverlay, setShowOverlay] = useState(false);
-  const [selectedComponent, setSelectedComponent] = useState(null);
-
-  const handleButtonClicked = (component) => {
-    setSelectedComponent(component);
-    setShowOverlay(true);
-  };
-
-  const handleCloseOverlay = () => {
-    setShowOverlay(false);
-  };
-
   return (
     <div className="dash">
       <svg
@@ -220,17 +204,24 @@ const Dashboard = (prop) => {
                         title="Account"
                         className="dropdown"
                         variant="Warning"
+                        // onChange={handleDropDown}
                       >
-                        <Dropdown.Item href="#/action-1">
+                        <Dropdown.Item
+                          href="#/Profile_info"
+                          // onClick={handleDropDown}
+                        >
                           My Profile
                         </Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">
+                        <Dropdown.Item
+                          href="#/Changepassword"
+                          // onClick={handleDropDown}
+                        >
                           Login & Security
                         </Dropdown.Item>
                       </DropdownButton>
                     </a>
                   </li>
-                  <li class="nav-item signOut">
+                  <li class="nav-item">
                     <a
                       class="nav-link d-flex align-items-center gap-2 signOut"
                       href="/"

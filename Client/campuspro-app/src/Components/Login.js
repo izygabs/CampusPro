@@ -1,10 +1,8 @@
 import React from "react";
 import "../Bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { GoogleOAuthProvider } from "@react-oauth/google";
-// import Google from "./Google";
-
 import { Link } from "react-router-dom";
+
 const Login = () => {
   // const [email, setEmail] =useState("");
   return (
@@ -43,19 +41,13 @@ const Login = () => {
               Remember me
             </label>
           </div>
-          <Link to="/merchant-dashboard">
+          <Link to="/Dashboard">
             <button class="btn btn-warning w-100 py-2 createBtn " type="submit">
-              Login
+              Sign in
             </button>
           </Link>
-
-          <p class="mt-4 mb-3 text-center text-body-secondary">
-            <Link to="/sign-up" className="create-account-link">
-              <p id="create-account">Create an Account?</p>
-            </Link>
-            <a href="#" class="forget-pwd">
-              Forget Password
-            </a>
+          <p class="mt-5 mb-3 text-body-secondary">
+            &copy; {new Date().getFullYear()}
           </p>
         </form>
 

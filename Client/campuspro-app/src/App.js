@@ -9,24 +9,23 @@ import BuyPage2 from "./buyPage2";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import SignUp from "./RenderSignUp";
-import AddItems from "./Components/AddItems";
-import UserDashboard from "./Components/UserDashboard";
+import Changepassword from "./Components/Changepassword";
+import ProfileInfo from "./Components/Profile_info";
 
 function App() {
   return (
     <div className="App">
-      {/* <UserDashboard /> */}
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/01-rentpage" element={<RentPage1 />} />
           <Route path="/02-rentpage" element={<RentPage2 />} />
           <Route path="/buyPage1" element={<BuyPage />} />
-          <Route path="/buyPage2" element={<BuyPage2 />} />
-          <Route path="/login-page" element={<Login />} />
-          <Route path="/merchant-dashboard" element={<Dashboard />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/add-items" element={<AddItems />} />
+          <Route path="/Profile_info" element={<ProfileInfo />} />
+          <Route path="/Changepassword" element={<Changepassword />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </div>
