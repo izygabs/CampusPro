@@ -134,7 +134,7 @@ const AddItems = (prop) => {
             name="category"
             // value={formData.category}
           >
-            <option value="0" className="bp1-input cate-gory gory">
+            <option value="" className="bp1-input cate-gory gory">
               Select the category
             </option>
             <hr />
@@ -144,8 +144,8 @@ const AddItems = (prop) => {
             <option value="Kitchen Utensils" className="bp1-input cate-gory">
               Kitchen Utensils
             </option>
-            <option value="Mattress & Beddings" className="bp1-input cate-gory">
-              Mattress & Beddings
+            <option value="Home Appliances" className="bp1-input cate-gory">
+              Home Appliances
             </option>
             <option value="Phones & Computers" className="bp1-input cate-gory">
               Phones & Computers
@@ -155,6 +155,9 @@ const AddItems = (prop) => {
             </option>
             <option value="Books" className="bp1-input cate-gory">
               Books
+            </option>
+            <option value="Furnitures" className="bp1-input cate-gory">
+              Furnitures
             </option>
             <option value="Others" className="bp1-input cate-gory">
               Others

@@ -37,7 +37,7 @@ function RentPage2() {
           <p>Amount/Annum :</p>
           <p>Electricity:</p>
           <p>Furnised:</p>
-          <p>Car Park:</p>
+          <p>Cer Park:</p>
           <p>Agent Name:</p>
           <p>Agent address:</p>
         </div>
