@@ -260,10 +260,6 @@ p {
   font-weight: bold;
 }
 
-.bp1-body {
-  background-color: #fff;
-}
-
 .bp1-select {
   background-color: whitesmoke;
   border: none;
@@ -284,10 +280,6 @@ p {
   text-align: center;
   background-color: gold;
   color: black;
-}
-
-.bp2-body {
-  background-color: #fff;
 }
 .sp2-linkk button:active {
   opacity: 0.5;
@@ -310,4 +302,125 @@ p {
 .sp2-main-img {
   width: 100%;
   height: 100%;
+}
+.sp-2-img-div {
+  display: flex;
+  flex-wrap: no;
+  width: 100%;
+  height: 25vh;
+  justify-content: space-around;
+}
+
+.sp-2-img-div div {
+  width: 17%;
+  border: solid 2px gold;
+  height: 100%;
+  margin: 5vh 0;
+}
+.sp2-agent-info {
+  margin: 10vh 0;
+}
+.sp2-agent-info button {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  border: none;
+  background-color: #ffef99;
+  font-size: 15px;
+  padding: 3vh 8vw;
+  border-radius: 30px;
+  transition: background-color 0.7s;
+}
+
+/* Buy Page 2
+
+.bp2-navbar {
+    display: flex;
+    width: 100%;
+    height: 15vh;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: all 2s ease-in-out;
+}
+
+.bp2-sec {
+    border: 1px black solid;
+    width: 97%;
+    height: 90vh;
+    padding: 1rem;
+    display: flex;
+}
+
+.bp2-sec-div {
+    border: 1px green solid;
+    width: 50%;
+    height: 90vh;
+    margin-left: 0.5rem;
+}
+
+.bp2-desc {
+    border: 1px red solid;
+    width: 50%;
+    height: 90vh;
+}
+
+.bp2-logo {
+    width: 25rem;
+    margin-left: -3rem;
+}
+
+.bp2-search-bar {
+    margin-right: 3rem;
+}
+
+.bp2-input {
+    padding: 0.5rem 0.5rem;
+    border: none;
+    outline: none;
+    font-weight: bold;
+} */
+
+/* basic info page */
+
+.form {
+  color: black;
+  width: 400px;
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 0px 25px 0px 0px;
+  margin-left: 10rem;
+  background-color: #ffef99;
+}
+
+select {
+  width: 360px;
+  margin-left: 1rem;
+  height: 20px;
+  margin-bottom: 1rem;
+}
+
+input {
+  width: 350px;
+  height: 20px;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  outline: none;
+}
+
+label {
+  padding-left: 1rem;
+}
+
+.sp2-agent-info button:hover {
+  background-color: #2a2929;
+}
+#upload {
+  color: white;
+  background-color: gold;
+  color: #ffef99;
 }

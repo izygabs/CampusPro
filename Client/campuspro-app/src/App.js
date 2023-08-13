@@ -15,7 +15,6 @@ import UserDashboard from "./Components/UserDashboard";
 function App() {
   return (
     <div className="App">
-      {/* <UserDashboard /> */}
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -28,10 +27,9 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/add-items" element={<AddItems />} />
         </Routes>
-    </Router>
-
+      </Router>
     </div>
   );
-}                                                                                                                                        
+}
 
 export default App;

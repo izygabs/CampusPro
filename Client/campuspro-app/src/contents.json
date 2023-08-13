@@ -1,0 +1,330 @@
+[
+  {
+    "id": 1,
+    "description": "advanced zealot speaker",
+    "image": "../buyPage-images/zealot1.png",
+    "price": 15000
+  },
+
+  {
+    "id": 2,
+    "description": "high bass",
+    "image": "../buyPage-images/zealot2.png",
+    "price": 10000
+  },
+
+  {
+    "id": 3,
+    "description": "quality speaker",
+    "image": "../buyPage-images/zealot3.png",
+    "price": 13500
+  },
+
+  {
+    "id": 4,
+    "description": "long lasting speaker",
+    "image": "../buyPage-images/zealot4.png",
+    "price": 20000
+  },
+
+  {
+    "id": 5,
+    "description": "bass",
+    "image": "../buyPage-images/zealot5.png",
+    "price": 23000
+  },
+
+  {
+    "id": 6,
+    "description": "strong chair",
+    "image": "../buyPage-images/chair1.png",
+    "price": 5500
+  },
+
+  {
+    "id": 7,
+    "description": "durable chair",
+    "image": "../buyPage-images/chair2.png",
+    "price": 5500
+  },
+
+  {
+    "id": 8,
+    "description": "quality chair",
+    "image": "../buyPage-images/chair3.png",
+    "price": 4500
+  },
+
+  {
+    "id": 9,
+    "description": "innoson chair",
+    "image": "../buyPage-images/chair4.png",
+    "price": 6000
+  },
+
+  {
+    "id": 10,
+    "description": "innoson chair",
+    "image": "../buyPage-images/chair5.png",
+    "price": 7000
+  },
+
+  {
+    "id": 11,
+    "description": "electric iron",
+    "image": "../buyPage-images/iron1.png",
+    "price": 7500
+  },
+
+  {
+    "id": 12,
+    "description": "electric iron",
+    "image": "../buyPage-images/iron2.png",
+    "price": 5000
+  },
+
+  {
+    "id": 13,
+    "description": "electric iron",
+    "image": "../buyPage-images/iron3.png",
+    "price": 3500
+  },
+
+  {
+    "id": 14,
+    "description": "electric iron",
+    "image": "../buyPage-images/iron4.png",
+    "price": 3500
+  },
+
+  {
+    "id": 15,
+    "description": "electric iron",
+    "image": "../buyPage-images/iron5.png",
+    "price": 4000
+  },
+
+  {
+    "id": 16,
+    "description": "electric iron",
+    "image": "../buyPage-images/iron6.png",
+    "price": 5000
+  },
+
+  {
+    "id": 17,
+    "description": "utensils",
+    "image": "../buyPage-images/kitchen1.png",
+    "price": 23000
+  },
+
+  {
+    "id": 18,
+    "description": "modern kitchen utensils",
+    "image": "../buyPage-images/kitchen2.png",
+    "price": 25000
+  },
+
+  {
+    "id": 19,
+    "description": "modern kitchen utensils",
+    "image": "../buyPage-images/kitchen3.png",
+    "price": 25000
+  },
+
+  {
+    "id": 20,
+    "description": "modern kitchen utensils",
+    "image": "../buyPage-images/kitchen4.png",
+    "price": 24000
+  },
+
+  {
+    "id": 21,
+    "description": "quality utensils",
+    "image": "../buyPage-images/kitchen5.png",
+    "price": 30000
+  },
+
+  {
+    "id": 22,
+    "description": "quality kitchen utensils",
+    "image": "../buyPage-images/kitchen6.png",
+    "price": 32000
+  },
+
+  {
+    "id": 23,
+    "description": "quality kitchen utensils",
+    "image": "../buyPage-images/kitchen7.png",
+    "price": 29000
+  },
+
+  {
+    "id": 24,
+    "description": "quality kitchen utensils",
+    "image": "../buyPage-images/kitchen8.png",
+    "price": 29500
+  },
+
+  {
+    "id": 25,
+    "description": "soft mattress",
+    "image": "../buyPage-images/mouka1.png",
+    "price": 150000
+  },
+
+  {
+    "id": 26,
+    "description": "soft lasting mattress",
+    "image": "../buyPage-images/mouka2.png",
+    "price": 155000
+  },
+
+  {
+    "id": 27,
+    "description": "soft quality mattress",
+    "image": "../buyPage-images/mouka3.png",
+    "price": 180000
+  },
+
+  {
+    "id": 28,
+    "description": "mouka smooth mattress",
+    "image": "../buyPage-images/mouka4.png",
+    "price": 170000
+  },
+
+  {
+    "id": 29,
+    "description": "mouka smooth mattress",
+    "image": "../buyPage-images/mouka5.png",
+    "price": 190000
+  },
+
+  {
+    "id": 30,
+    "description": "west chair",
+    "image": "../buyPage-images/westchair.png",
+    "price": 50000
+  },
+
+  {
+    "id": 31,
+    "description": "lasting fridge",
+    "image": "../buyPage-images/fridge1.png",
+    "price": 250000
+  },
+
+  {
+    "id": 32,
+    "description": "deep fridge",
+    "image": "../buyPage-images/fridge2.png",
+    "price": 220000
+  },
+
+  {
+    "id": 33,
+    "description": "deep freezer",
+    "image": "../buyPage-images/fridge3.png",
+    "price": 240000
+  },
+
+  {
+    "id": 34,
+    "description": "deep freezer",
+    "image": "../buyPage-images/fridge4.png",
+    "price": 250000
+  },
+
+  {
+    "id": 35,
+    "description": "Bright Ringlight",
+    "image": "../buyPage-images/ringlight1.png",
+    "price": 15000
+  },
+
+  {
+    "id": 36,
+    "description": "coloured Ringlight",
+    "image": "../buyPage-images/ringlight2.png",
+    "price": 23000
+  },
+
+  {
+    "id": 37,
+    "description": "coloured Ringlight",
+    "image": "../buyPage-images/ringlight3.png",
+    "price": 21000
+  },
+
+  {
+    "id": 38,
+    "description": "coloured lasting Ringlight",
+    "image": "../buyPage-images/ringlight4.png",
+    "price": 16500
+  },
+
+  {
+    "id": 39,
+    "description": "coloured lasting Ringlight",
+    "image": "../buyPage-images/ringlight5.png",
+    "price": 18500
+  },
+
+  {
+    "id": 40,
+    "description": "Durable Ringlight",
+    "image": "../buyPage-images/ringlight6.png",
+    "price": 19500
+  },
+
+  {
+    "id": 41,
+    "description": "Durable Ringlight",
+    "image": "../buyPage-images/ringlight7.png",
+    "price": 23000
+  },
+
+  {
+    "id": 42,
+    "description": "lasting bed",
+    "image": "../buyPage-images/bed-mat.png",
+    "price": 200000
+  },
+
+  {
+    "id": 43,
+    "description": "lasting bed",
+    "image": "../buyPage-images/bed-pocket.png",
+    "price": 202000
+  },
+
+  {
+    "id": 44,
+    "description": "quality bed",
+    "image": "../buyPage-images/bed.png",
+    "price": 205000
+  },
+
+  {
+    "id": 45,
+    "description": "High volume speaker",
+    "image": "../buyPage-images/A100-speaker.png",
+    "price": 7000
+  },
+
+  {
+    "id": 46,
+    "description": "Zealot high bass speaker",
+    "image": "../buyPage-images/speaker-zealot.png",
+    "price": 10000
+  },
+
+  {
+    "id": 47,
+    "description": "Zealot high bass speaker",
+    "image": "../buyPage-images/speakers.png",
+    "price": 11000
+  }
+]
