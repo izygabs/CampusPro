@@ -48,9 +48,11 @@ const Login = () => {
               Remember me
             </label>
           </div>
-          <button class="btn btn-warning w-100 py-2 createBtn " type="submit">
-            <Link to="/Dashboard">Sign in</Link>
-          </button>
+          <Link to="/Dashboard">
+            <button class="btn btn-warning w-100 py-2 createBtn " type="submit">
+              Sign in
+            </button>
+          </Link>
           <p class="mt-5 mb-3 text-body-secondary">
             &copy; {new Date().getFullYear()}
           </p>
