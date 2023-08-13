@@ -7,11 +7,17 @@ import { Link } from 'react-router-dom';
 
 const BuyPage = () => {
   const [query, setQuery] = useState('');
+  const [dropDownQuery, setdropDownQuery] = useState('');
+
   const [update, setUpdate] = useState('');
+  
+
 
   const handleChange = (e) => {
-    setUpdate(e.target.value)
+    setdropDownQuery(e.target.value)
   } 
+
+
   
   return (
     <div className="main">
@@ -19,7 +25,7 @@ const BuyPage = () => {
         <Link to="/">
         <img src={logo} alt='logo' className='logo' />
         </Link>
-        <input type="search" name="input" id="search" placeholder='Search items...' value={update} onChange={(e) => setQuery(e.target.value)} />
+        <input type="search" name="input" id="search" placeholder='Search items...' onChange={(e) => setQuery(e.target.value)} />
         <div id='p'>
         <p id='paragraph'>Items Available for buy</p>
         </div>
@@ -29,7 +35,7 @@ const BuyPage = () => {
         <option value=' '>Select Item to Display</option><hr/>
         <option value='mattress'>Mattress</option>
         <option value='kitchen'>Utensils</option>
-        <option value='ringlights'>Ringlights</option>
+        <option value='ringlight'>Ringlights</option>
         <option value='speakers'>Speakers</option>
         <option value='fridge'>Deep freezer</option>
         <option value='chair'>Chairs</option>
@@ -37,7 +43,7 @@ const BuyPage = () => {
       </select>
 
       <section className='section'>
-        {Contents.filter((items) => items.description.toLowerCase().includes(query)).map((items) => (
+        {Contents.filter((items) => items.description.toLowerCase().includes( query || dropDownQuery )).map((items) => (
           <div key={items.id} className='items'>
             <img src={items.image} alt="item" className='images'/>
             <p id='p-i'>{items.description}<br/> {items.price} <br/> <button className='btn'><Link to='/buyPage2' id='link-btn'>View Details</Link></button></p>

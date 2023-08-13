@@ -5,13 +5,13 @@
 }
 
 .first-div {
-  border: 2px black solid;
   margin: 1rem;
   width: 50%;
+  border-radius: 10px;
 }
 
 .second-div {
-  margin: 2rem;
+  margin: 1.5rem;
   width: 50%;
   font-weight: bold;
   box-shadow: 2px 2px 5px black;

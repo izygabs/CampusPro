@@ -24,6 +24,7 @@ const BuyPage2 = ({ image, description }) => {
           <p id='para'>Merchant Name: </p>
           <p id='para'>Merchant Number: </p>
           <p id='para'>Merchant Alternate Number: </p>
+          <p id='para'>Merchant Email Address: </p>
           <p id='para'>Merchant Location: </p>
         </div>
       </section>
