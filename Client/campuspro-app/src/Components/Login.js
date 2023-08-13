@@ -10,8 +10,8 @@ const Login = () => {
   return (
     <div class="d-flex align-items-center  py-5 bg-body-tertiary signinPage">
       <main class="form-signin w-100 m-auto">
-        <form action="" method="post">
-          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <form action="" method="post" className="login-form">
+          <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
 
           <div class="form-floating py-3">
             <input
@@ -25,7 +25,7 @@ const Login = () => {
           <div class="form-floating py-1">
             <input
               type="password"
-              class="form-control"
+              class="form-control "
               id="floatingPassword"
               placeholder="Password"
             />
@@ -39,7 +39,7 @@ const Login = () => {
               value="remember-me"
               id="flexCheckDefault"
             />
-            <label class="form-check-label " for="flexCheckDefault">
+            <label class="form-check-label text-white " for="flexCheckDefault">
               Remember me
             </label>
           </div>
@@ -50,16 +50,16 @@ const Login = () => {
           </Link>
 
           <p class="mt-4 mb-3 text-center text-body-secondary">
-            <a href="#" id="create-account">
-              Create an Account?
-            </a>
+            <Link to="/sign-up" className="create-account-link">
+              <p id="create-account">Create an Account?</p>
+            </Link>
             <a href="#" class="forget-pwd">
               Forget Password
             </a>
           </p>
         </form>
 
-        <p class="mt-5 mb-3 text-center text-body-secondary">
+        <p class="mt-5 mb-3 text-center year-display">
           &copy; {new Date().getFullYear()}
         </p>
       </main>

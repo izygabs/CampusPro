@@ -260,6 +260,10 @@ p {
   font-weight: bold;
 }
 
+.bp1-body {
+  background-color: #fff;
+}
+
 .bp1-select {
   background-color: whitesmoke;
   border: none;
@@ -280,6 +284,10 @@ p {
   text-align: center;
   background-color: gold;
   color: black;
+}
+
+.bp2-body {
+  background-color: #fff;
 }
 .sp2-linkk button:active {
   opacity: 0.5;

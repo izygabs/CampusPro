@@ -20,8 +20,9 @@ const AddItems = (prop) => {
     <div className="add-items-div">
       <form className="add-items-form" onSubmit={prop.submit}>
         <div>
+          <p id="requiredInfo">* are required fields</p>
           <label for="itemName">
-            Name of the item:<span className="add-item-hysteric">*</span>
+            Name of the item<span className="add-item-hysteric">*</span>
           </label>
           <br />
           <input
@@ -37,7 +38,7 @@ const AddItems = (prop) => {
         </div>
         <div>
           <label for="description">
-            Tell us something about the item:
+            Tell us something about the item
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
@@ -55,7 +56,7 @@ const AddItems = (prop) => {
 
         <div>
           <label for="price">
-            What is the Price?:<span className="add-item-hysteric">*</span>
+            What is the Price?<span className="add-item-hysteric">*</span>
           </label>
           <br />
           <input
@@ -89,7 +90,7 @@ const AddItems = (prop) => {
 
         <div>
           <label for="location">
-            Tell us the about the location of the item:
+            Tell us the about the location of the item
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
@@ -125,7 +126,7 @@ const AddItems = (prop) => {
 
         <div>
           <label for="category">
-            Catogory of the Item:<span className="add-item-hysteric">*</span>
+            Catogory of the Item<span className="add-item-hysteric">*</span>
           </label>
           <br />
           <select
@@ -181,7 +182,12 @@ const AddItems = (prop) => {
         </div>
       </form>
       <form className="add-items-images">
-        <input type="file" name="itemImages" />
+        <span className="add-item-hysteric">*</span>
+        <input
+          type="file"
+          name="itemImages"
+          placeholder="upload items images"
+        />
       </form>
     </div>
   );

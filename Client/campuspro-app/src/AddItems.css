@@ -54,3 +54,11 @@
   font-size: 13px;
   color: red;
 }
+.add-item-hysteric {
+  color: red;
+  margin-left: 5px;
+}
+#requiredInfo {
+  color: rgb(138, 135, 135);
+  font-size: 12px;
+}

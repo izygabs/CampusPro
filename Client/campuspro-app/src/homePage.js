@@ -31,7 +31,7 @@ function HomePage() {
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
-            <img src={logo} className="hp-logo" />
+            <img src={logo} className="hp-logo" alt="campusPro logo" />
           </div>
           {/* <div>
             <p>CampusPro</p>
@@ -60,14 +60,16 @@ function HomePage() {
         </div>
         <div>
           <Link to="/login-page">
-             <button className="hp-login-button">Login</button>
+            <button className="hp-login-button">Login</button>
           </Link>
         </div>
       </div>
 
       <section className="hp-section1">
         <div className="hp-buy-div">
-          <p className="hp-heading">BUY <br></br> ITEMS</p>
+          <p className="hp-heading">
+            BUY <br></br> ITEMS
+          </p>
           <p className="hp-texts">
             Explore various properties listed for sale around your campus
           </p>
@@ -77,7 +79,9 @@ function HomePage() {
         </div>
 
         <div className="hp-sell-div">
-          <p className="hp-heading">SELL <br></br>ITEMS</p>
+          <p className="hp-heading">
+            SELL <br></br>ITEMS
+          </p>
           <p className="hp-texts">
             Become a merchant and sell properties on CampusPro.
           </p>

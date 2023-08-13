@@ -24,7 +24,7 @@ const BuyPage = () => {
   }
 
   return (
-  <>
+  <div className="bp1-body">
     <navbar className='bp1-navbar'>
       <div className="bp1-logo">
         <Link to='/'><img src={logo} alt='logo' className="bp1-logo" /></Link>
@@ -200,7 +200,7 @@ const BuyPage = () => {
 
     </section>
 
-    </>
+    </div>
   )
 }
 

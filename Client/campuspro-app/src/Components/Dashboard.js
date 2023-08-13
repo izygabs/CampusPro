@@ -84,12 +84,16 @@ const Dashboard = (prop) => {
         // data-bs-theme="dark"
       >
         <Link to="/">
-          <a
+          {/* <a
             class="navbar-brand col-md-3 col-lg-2 me-0  fs-6 dashboard-logo"
             href="/"
-          >
-            <img src={require("../images/campuspro(6).png")} />
-          </a>
+          > */}
+          <img
+            src={require("../images/campuspro(6).png")}
+            className="dashboard-logo"
+            alt=""
+          />
+          {/* </a> */}
         </Link>
         <div className="dashboard-search"></div>
         <div class="username">
