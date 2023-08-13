@@ -12,7 +12,7 @@ function RentPage2() {
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
-            <img src={logo} className="hp-logo" />
+            <img src={logo} className="hp-logo" alt="" />
           </div>
           <div>
             <p>CampusPro</p>
@@ -29,7 +29,7 @@ function RentPage2() {
 
       <section className="sp2-main-sector">
         <div className="sp2-divs">
-          <img className="sp2-main-img" src={house} />
+          <img className="sp2-main-img" src={house} alt="" />
         </div>
         <div className="sp2-divs2">
           <p>Description:</p>
