@@ -6,9 +6,9 @@
 
 .pi-sec {
   /* border: 1px solid black; */
-  margin-left: 1rem;
-  padding-left: 2rem;
-  width: 95vw;
+  /* margin-left: 1rem; */
+  padding-left: 20rem;
+  width: 100vw;
   height: 95vh;
   background-color: white;
 }
@@ -24,6 +24,11 @@
 .pi-pic {
   margin-top: 1.5rem;
   border-radius: 800px;
+  width: 150px;
+  height: 150px;
+}
+.pi-pic:hover {
+  cursor: pointer;
 }
 .pi-div {
   /* border: 1px solid black; */
@@ -53,4 +58,20 @@
   font-weight: 500;
   background-color: white;
   color: gold;
+}
+#uploadImage {
+  display: none;
+}
+.pi-btn {
+  margin-top: 0.5rem;
+  height: 2.5rem;
+  width: 5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: gold;
+  transition: all 0.3s ease-in-out;
+}
+.pi-btn:hover {
+  background-color: black;
+  color: white;
 }

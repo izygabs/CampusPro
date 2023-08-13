@@ -1,6 +1,7 @@
 import React from "react";
 import "../Bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   // const [email, setEmail] =useState("");
@@ -48,7 +49,7 @@ const Login = () => {
             </label>
           </div>
           <button class="btn btn-warning w-100 py-2 createBtn " type="submit">
-            Sign in
+            <Link to="/Dashboard">Sign in</Link>
           </button>
           <p class="mt-5 mb-3 text-body-secondary">
             &copy; {new Date().getFullYear()}

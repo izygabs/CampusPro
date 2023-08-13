@@ -5,7 +5,9 @@ const connectMongoose = require("./models/connectMongoose");
 const route = require("./routes/allRoutes");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
+const cors = require("cors");
 
+app.use(cors());
 app.use(cookieParser());
 
 app.use(express.json());
@@ -32,6 +34,3 @@ app.listen(PORT, async () => {
   await connectMongoose();
   console.log(`Server is Listening on port ${PORT}`);
 });
-
-
-

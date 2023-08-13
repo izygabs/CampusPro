@@ -1,11 +1,24 @@
 import React from "react";
+// import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../Dashboard.css";
+// import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const Dashboard = (prop) => {
+  // const navigate = useNavigate();
+  // const [outcome, setOutcome] = useState("");
+  // const handleDropDown = (e) => {
+  //   setOutcome(e.target.value);
+  //   if (outcome === "My Profile") {
+  //     navigate("/Profile_info");
+  //   } else {
+  //     navigate("/Changepassword");
+  //   }
+  // };
+
   return (
     <div>
       <svg
@@ -200,11 +213,18 @@ const Dashboard = (prop) => {
                         title="Account"
                         className="dropdown"
                         variant="Warning"
+                        // onChange={handleDropDown}
                       >
-                        <Dropdown.Item href="#/Profile_info">
+                        <Dropdown.Item
+                          href="#/Profile_info"
+                          // onClick={handleDropDown}
+                        >
                           My Profile
                         </Dropdown.Item>
-                        <Dropdown.Item href="#/Changepassword">
+                        <Dropdown.Item
+                          href="#/Changepassword"
+                          // onClick={handleDropDown}
+                        >
                           Login & Security
                         </Dropdown.Item>
                       </DropdownButton>
