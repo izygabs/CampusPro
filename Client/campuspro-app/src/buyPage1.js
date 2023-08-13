@@ -70,150 +70,23 @@ const BuyPage = () => {
         </div>
       </navbar>
 
-      <section className="bp1-buy-sec">
-        <button type="button" className="bp1-header">
-          {header}
-        </button>
-        <div className="bp1-overall">
-          <div className="bp1-houses">
-            <img
-              src={duplex}
-              alt="duplex"
-              className="bp1-duplex"
-              onClick={handleClick}
-            />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
+      <select value={update} onChange={handleChange} className='select'>
+        <option value=' '>Select Item to Display</option><hr/>
+        <option value='mattress'>Mattress</option>
+        <option value='kitchen'>Utensils</option>
+        <option value='ringlight'>Ringlights</option>
+        <option value='speakers'>Speakers</option>
+        <option value='fridge'>Deep freezer</option>
+        <option value='chair'>Chairs</option>
+        <option value='iron'>Electric iron</option>
+      </select>
 
-          <div className="bp1-houses">
-            <img src={house} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-
-          <div className="bp1-houses">
-            <img src={mansion} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-
-          <div className="bp1-houses">
-            <img src={apartment} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-        </div>
-        <button type="button" className="bp1-btn">
-          <Link to="/">See More</Link>
-        </button>
-
-        <button type="button" className="bp1-header">
-          {electric}
-        </button>
-        <div className="bp1-overall">
-          <div className="bp1-houses">
-            <img src={mansion} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-
-          <div className="bp1-houses">
-            <img src={mansion} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-
-          <div className="bp1-houses">
-            <img src={mansion} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-
-          <div className="bp1-houses">
-            <img src={apartment} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-        </div>
-        <button type="button" className="bp1-btn">
-          See More
-        </button>
-
-        <button type="button" className="bp1-header">
-          {light}
-        </button>
-        <div className="bp1-overall">
-          <div className="bp1-houses">
-            <img src={duplex} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-
-          <div className="bp1-houses">
-            <img src={house} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-
-          <div className="bp1-houses">
-            <img src={mansion} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
-          </div>
-
-          <div className="bp1-houses">
-            <img src={apartment} alt="duplex" className="bp1-duplex" />
-            <p>4 master bedroom and good parking space</p>
-            <p>Location: Surulere avenue</p>
-            <p>Price: 90m naira </p>
-            <button>
-              <Link to="/buyPage2">View Details</Link>
-            </button>
+      <section className='section'>
+        {Contents.filter((items) => items.description.toLowerCase().includes( query || dropDownQuery )).map((items) => (
+          <div key={items.id} className='items'>
+            <img src={items.image} alt="item" className='images'/>
+            <p id='p-i'>{items.description}<br/> {items.price} <br/> <button className='btn'><Link to='/buyPage2' id='link-btn'>View Details</Link></button></p>
+            {/* <p id='p-i'></p> */}
           </div>
         </div>
         <button type="button" className="bp1-btn">
