@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Signup from "./signUp";
 import "./Signup.css";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import Google from "./Components/Google";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
+// import Google from "./Components/Google";
 
 const RenderSignUp = (prop) => {
   const [values, setValues] = useState({

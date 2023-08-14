@@ -1,8 +1,8 @@
 import React from "react";
 import "../Bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import Google from "./Google";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
+// import Google from "./Google";
 
 import { Link } from "react-router-dom";
 const Login = () => {
