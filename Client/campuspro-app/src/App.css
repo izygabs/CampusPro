@@ -22,7 +22,7 @@ p {
 .hp-login-button {
   padding: 10px 30px;
   font-size: 15px;
-  background-color: gold;
+  background-color: #ffef99;
   color: black;
   border-radius: 27px;
   margin-right: 10px;
@@ -43,15 +43,20 @@ p {
   outline: none;
   /* text-align: center; */
 }
+.hp-carousel-div{
+  position: relative !important;
+}
+
 .hp-section1 {
+  position: absolute !important;
+  top: 8rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 97vh;
   border: none;
-  background-image: url("./images/house-interior.webp");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  /* background-repeat: no-repeat;
+  background-size: 100%; */
   padding-bottom: 25vh;
   padding-top: 20vh;
 }
@@ -60,11 +65,20 @@ p {
 .hp-rent-div {
   width: 25%;
   border: none;
-  background-color: gold;
+  background-color: #ffef99;
   height: 90%;
   text-align: center;
+  border-top-right-radius:40px ;
+  border-bottom-left-radius:40px ;
   padding-top: 7px;
+  transition: transform 0.4s;
   /* padding-top: 10vh; */
+  /* justify-content: space-around; */
+}
+.hp-buy-div:hover,
+.hp-sell-div:hover,
+.hp-rent-div:hover {
+ transform: scale(1.1);
   /* justify-content: space-around; */
 }
 .hp-heading {
@@ -106,7 +120,7 @@ p {
   border: none !important;
 }
 .hp-props-text {
-  background-color: gold;
+  background-color: #ffef99;
 }
 .hp-img-div {
   height: 60%;
@@ -159,7 +173,7 @@ p {
   text-align: center;
   padding-bottom: 2vh !important;
   height: 40%;
-  background-color: gold;
+  background-color: #ffef99;
   color: black;
 }
 .sp-img-div {
@@ -170,7 +184,7 @@ p {
 }
 .sp-img-div div {
   position: absolute;
-  background-color: gold;
+  background-color: #ffef99;
   display: flex;
   flex-direction: row;
   top: 5px;
@@ -200,7 +214,7 @@ p {
 }
 .sp-text-div button:hover {
   background-color: black;
-  color: gold;
+  color: #ffef99;
 }
 .hp-button-link {
   margin-top: 10px;
@@ -223,7 +237,7 @@ p {
   width: 20vw;
   outline: none;
   height: 5vh;
-  border: solid 2px gold;
+  border: solid 2px #ffef99;
   margin-right: auto;
   margin-left: auto;
   display: block;
@@ -278,7 +292,7 @@ p {
   border: 1px black solid;
   width: 20%;
   text-align: center;
-  background-color: gold;
+  background-color: #ffef99;
   color: black;
 }
 .sp2-linkk button:active {
@@ -313,7 +327,7 @@ p {
 
 .sp-2-img-div div {
   width: 17%;
-  border: solid 2px gold;
+  border: solid 2px #ffef99;
   height: 100%;
   margin: 5vh 0;
 }
@@ -421,6 +435,6 @@ input {
 }
 #upload {
   color: white;
-  background-color: gold;
+  background-color:#ffef99;
   color: #ffef99;
 }

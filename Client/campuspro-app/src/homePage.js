@@ -104,47 +104,53 @@ function HomePage() {
           </Carousel.Item>
         </Carousel>
 
-        <section className="hp-section1">
-          <div className="hp-buy-div">
-            <p className="hp-heading">
-              BUY <br></br> ITEMS
-            </p>
-            <p className="hp-texts">
-              Explore various properties listed for sale around your campus
-            </p>
-            <Link className="link" to="/buyPage1">
-              <button className="hp-button-link">Buy items</button>
-            </Link>
-          </div>
+       
+            <section className="hp-section1">
+              <div className="hp-buy-div">
+                <p className="hp-heading">
+                  BUY <br></br> ITEMS
+                </p>
+                <p className="hp-texts">
+                  Explore various properties listed for sale around your campus
+                </p>
+                <Link className="link" to="/buyPage1">
+                  <button className="hp-button-link">Buy items</button>
+                </Link>
+              </div>
 
-          <div className="hp-sell-div">
-            <p className="hp-heading">
-              SELL <br></br>ITEMS
-            </p>
-            <p className="hp-texts">
-              Become a merchant and sell properties on CampusPro.
-            </p>
-            <Link className="link" to="/login">
-              <button className="hp-button-link">Become a merchant</button>
-            </Link>
-          </div>
+              <div className="hp-sell-div">
+                <p className="hp-heading">
+                  SELL <br></br>ITEMS
+                </p>
+                <p className="hp-texts">
+                  Become a merchant and sell properties on CampusPro.
+                </p>
+                <Link className="link" to="/login">
+                  <button className="hp-button-link">Become a merchant</button>
+                </Link>
+              </div>
 
-          <div className="hp-rent-div">
-            <p className="hp-heading">RENT APARTMENT </p>
-            <p className="hp-texts">
-              Navigate through pletora of hostels around your campus
-            </p>
-            <Link className="link" to="/01-rentPage">
-              <button className="hp-button-link">Rent an apartment</button>
-            </Link>
-          </div>
-        </section>
+              <div className="hp-rent-div">
+                <p className="hp-heading">RENT APARTMENT </p>
+                <p className="hp-texts">
+                  Navigate through pletora of hostels around your campus
+                </p>
+                <Link className="link" to="/01-rentPage">
+                  <button className="hp-button-link">Rent an apartment</button>
+                </Link>
+              </div>
+            </section>
+     
+       
       </div>
 
-      <div className="hp-view-div">
-        <p className="hp-view-hostels">View hostels around your campus</p>
+      <div>
+        <div className="hp-view-div">
+          <p className="hp-view-hostels">View hostels around your campus</p>
+        </div>
+        <div className="hp-school">{house}</div>
       </div>
-      <div className="hp-school">{house}</div>
+    
     </div>
   );
 }
