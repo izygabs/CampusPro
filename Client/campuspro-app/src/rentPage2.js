@@ -1,7 +1,6 @@
-
-import logo from './images/campuspro(6).png';
-import house from './images/house1.jpg'
-import {useState} from "react"
+import logo from "./images/campuspro(6).png";
+import house from "./images/house1.jpg";
+import React, { useState } from "react";
 
 function RentPage2() {
   const [info, setInfo] = useState("");
@@ -9,7 +8,7 @@ function RentPage2() {
   const changeInfo = () => setInfo();
 
   return (
-    <div className='rentpage-main'>
+    <div className="rentpage-main">
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
@@ -44,29 +43,26 @@ function RentPage2() {
         </div>
       </section>
 
-      <div className='sp-2-img-div'>
+      <div className="sp-2-img-div">
         <div>
-          <img/>
+          <img />
         </div>
         <div>
-          <img/>
+          <img />
         </div>
         <div>
-          <img/>
+          <img />
         </div>
         <div>
-          <img/>
+          <img />
         </div>
         <div>
-          <img/>
+          <img />
         </div>
-        
       </div>
 
-      <div className='sp2-agent-info'>
-        <button>
-          view agent contact
-        </button>
+      <div className="sp2-agent-info">
+        <button>view agent contact</button>
       </div>
     </div>
   );
