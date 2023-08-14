@@ -115,22 +115,28 @@ const itemSchema = (data) => {
     description: Joi.string().required().trim().messages({
       "string.base": `description should be a "text"`,
       "string.empty": `description cannot be empty`,
-      "any.required": `description field is required`,
+      "any.required": `description is required`,
     }),
-    price: Joi.string().required().trim().messages({
-      "string.empty": `price cannot be empty`,
-      "any.required": `price field is required`,
+    price: Joi.number().required().trim().positive().messages({
+      "number.empty": `price cannot be empty`,
+      "number.positive": `Invalid price`,
+      "any.required": `price is required`,
     }),
-    quantity: Joi.string().trim(),
+    quantity: Joi.number().trim().positive().messages({
+      "number.empty": `No of items cannot be empty`,
+      "number.positive": `Invalid number`,
+      "any.required": `No of item is required`,
+    }),
+    negotiable: Joi.string().trim(),
     campus: Joi.string().required().trim().messages({
       "string.base": `campus should be a "text"`,
       "string.empty": `campus cannot be empty`,
-      "any.required": `campus field is required`,
+      "any.required": `campus  is required`,
     }),
     location: Joi.string().required().trim().messages({
-      "string.base": `location should be a "text"`,
-      "string.empty": `location cannot be empty`,
-      "any.required": `location field is required`,
+      "string.base": `Address should be a "text"`,
+      "string.empty": `Address cannot be empty`,
+      "any.required": `Address is required`,
     }),
   });
   return schema.validate(data);
@@ -168,6 +174,18 @@ const updateItemSchema = (data) => {
 
 const newPasswordSchema = (data) => {
   const schema = Joi.object({
+    currentPassword: Joi.string()
+      .required()
+      .min(8)
+      .pattern(
+        new RegExp(/(?=.*[A-Z])[a-zA-Z0-9]+[\#\@\$\%\&\*\(\)\>\<\~\{\}]+/)
+      )
+      .messages({
+        "string.pattern.base": `Password must contain atleast one capital letter and one special characters`,
+        "any.required": `Password field is required`,
+        "string.min": `Password length must at least be 8 characters long`,
+      }),
+
     newPassword: Joi.string()
       .required()
       .min(8)

@@ -5,13 +5,11 @@ const connectMongoose = require("./models/connectMongoose");
 const route = require("./routes/allRoutes");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
-const passport = require("passport");
-require("./controllers/passwordAuth")(passport);
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+const cors = require("cors");
 
+app.use(cors());
 app.use(cookieParser());
-
+app.use(cors());
 app.use(express.json());
 app.use(route);
 

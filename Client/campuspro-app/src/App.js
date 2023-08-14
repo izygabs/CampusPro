@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./homePage.js";
 import RentPage1 from "./rentPage1";
 import RentPage2 from "./rentPage2";
@@ -9,7 +9,6 @@ import BuyPage2 from "./buyPage2";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import SignUp from "./RenderSignUp";
-import React from "react";
 
 function App() {
   return (
