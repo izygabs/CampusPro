@@ -56,7 +56,7 @@ const BuyPage = () => {
               {items.description}
               <br /> {items.price} <br />{" "}
               <button className="btn">
-                <Link to="/buyPage2" id="link-btn">
+                <Link to="/viewitem" id="link-btn">
                   View Details
                 </Link>
               </button>
