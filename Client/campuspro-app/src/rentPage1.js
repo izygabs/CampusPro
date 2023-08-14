@@ -64,7 +64,7 @@ function RentPage1() {
           />
         </div>
         <div>
-          <Link to="/login-page">
+          <Link to="/login">
             <button className="hp-login-button">Login</button>
           </Link>
         </div>

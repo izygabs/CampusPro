@@ -5,7 +5,8 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import "../Dashboard.css";
 import { Link } from "react-router-dom";
 import AddItems from "./AddItems";
-// import ButtonComponent from "./ButtonComponent";
+import Changepassword from "./Changepassword";
+import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
 
 const Dashboard = (prop) => {
@@ -103,8 +104,18 @@ const Dashboard = (prop) => {
             className="userName-dropdown"
             variant="secondary"
           >
-            <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Login & Security</Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() => handleButtonClicked(<ProfileInfo />)}
+            >
+              My Profile
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-2"
+              onClick={() => handleButtonClicked(<Changepassword />)}
+            >
+              Login & Security
+            </Dropdown.Item>
             <Dropdown.Item href="#/action-2">Sign Out</Dropdown.Item>
           </DropdownButton>
         </div>
@@ -220,17 +231,18 @@ const Dashboard = (prop) => {
                         title="Account"
                         className="dropdown"
                         variant="Warning"
-                        // onChange={handleDropDown}
                       >
                         <Dropdown.Item
-                          href="#/Profile_info"
-                          // onClick={handleDropDown}
+                          href=""
+                          onClick={() => handleButtonClicked(<ProfileInfo />)}
                         >
                           My Profile
                         </Dropdown.Item>
                         <Dropdown.Item
-                          href="#/Changepassword"
-                          // onClick={handleDropDown}
+                          href=""
+                          onClick={() =>
+                            handleButtonClicked(<Changepassword />)
+                          }
                         >
                           Login & Security
                         </Dropdown.Item>
@@ -272,25 +284,10 @@ const Dashboard = (prop) => {
                   </button>
                   {/* </Link> */}
                 </div>
-                {/* <button
-                  type="button"
-                  class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1"
-                >
-                  <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                    <use xlinkHref="#calendar3" />
-                  </svg>
-                  This week
-                </button> */}
               </div>
             </div>
 
-            {/* <canvas class="my-4" width="900" height="500" ref={canvasRef}>
-              {displayComponent && (
-                <div className="custom-component">{<AddItems />}</div>
-              )}
-            </canvas> */}
             <div className="overComp">
-              {/* {<CanvasCom />} */}
               {showOverlay && (
                 <OverlayComponent
                   component={selectedComponent}

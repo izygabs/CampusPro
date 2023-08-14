@@ -185,12 +185,10 @@ const AddItems = (prop) => {
         </div>
       </form>
       <form className="add-items-images">
-        <span className="add-item-hysteric">*</span>
-        <input
-          type="file"
-          name="itemImages"
-          placeholder="upload items images"
-        />
+        <label for="Items-image">
+          Upload items pictures<span className="add-item-hysteric">*</span>
+        </label>
+        <input type="file" name="itemImages" />
       </form>
     </div>
   );
