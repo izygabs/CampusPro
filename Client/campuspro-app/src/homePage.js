@@ -50,9 +50,8 @@ function HomePage() {
           />
           const campus= data.campus;
           {/*
-            campus.map((index,item)=>{
-               <select onChange={change} className="hp-select-button" key={index}>
-              <option value={item}>LASU</option>
+            campus.map((item)=>{
+              
             })
           
            <select onChange={change} className="hp-select-button">
