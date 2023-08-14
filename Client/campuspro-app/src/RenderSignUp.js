@@ -1,10 +1,11 @@
+// eslint-disable-next-line
 import React, { useState } from "react";
 import "./Signup.css";
 import key from "./lock_483408.png";
 import user from "./MicrosoftTeams-image (4).png";
 import email from "./MicrosoftTeams-image (6).png";
 import number from "./MicrosoftTeams-image (5).png";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 // import gold from './gold.png'
 
@@ -168,7 +169,7 @@ const Signup = () => {
                 name="userType"
                 id="agent"
                 value="Agent"
-                onClick={handleCheckedButton}
+                onChange={handleCheckedButton}
                 // checked={checked}
               />
               <label className="sp-agent" for="agent">
@@ -183,7 +184,7 @@ const Signup = () => {
                 name="userType"
                 id="merchant"
                 value="Merchant"
-                onClick={handleCheckedButton}
+                onChange={handleCheckedButton}
                 // checked={checked}
               />
               <label className="sp-merchant1" for="merchant">
@@ -210,6 +211,7 @@ const Signup = () => {
           </button>
         </div>
       </form>
+      {console.log(checked)}
     </div>
   );
 };
