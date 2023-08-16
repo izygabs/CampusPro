@@ -1,6 +1,6 @@
 import logo from "./images/campuspro(6).png";
 import house from "./images/house1.jpg";
-import { useState } from "react";
+import React, { useState } from "react";
 
 function RentPage2() {
   const [info, setInfo] = useState("");

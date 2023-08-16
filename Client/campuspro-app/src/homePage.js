@@ -9,6 +9,7 @@ import { useState } from "react";
 import Schools from "./schools";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
+import Footer from "./Footer";
 
 function HomePage() {
   const [datas, setDatas] = useState(data);
@@ -36,7 +37,7 @@ function HomePage() {
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
-            <img src={logo} className="hp-logo" alt="campusPro logo" />
+            <img src={logo} className="hp-logo" />
           </div>
           {/* <div>
             <p>CampusPro</p>
@@ -48,8 +49,13 @@ function HomePage() {
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
           />
-
-          {/* <select onChange={change} className="hp-select-button">
+          const campus= data.campus;
+          {/*
+            campus.map((item)=>{
+              
+            })
+          
+           <select onChange={change} className="hp-select-button">
               <option value={'lasu'}>LASU</option>
               <option value={'unilag'}>UNILAG</option>
               <option value={'laspotech'}>LASPOTECH</option>
@@ -64,7 +70,7 @@ function HomePage() {
           </select> */}
         </div>
         <div>
-          <Link to="/login">
+          <Link to="/login-page">
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
@@ -118,17 +124,17 @@ function HomePage() {
                 </Link>
               </div>
 
-              <div className="hp-sell-div">
-                <p className="hp-heading">
-                  SELL <br></br>ITEMS
-                </p>
-                <p className="hp-texts">
-                  Become a merchant and sell properties on CampusPro.
-                </p>
-                <Link className="link" to="/login">
-                  <button className="hp-button-link">Become a merchant</button>
-                </Link>
-              </div>
+          <div className="hp-sell-div">
+            <p className="hp-heading">
+              SELL <br></br>ITEMS
+            </p>
+            <p className="hp-texts">
+              Become a merchant and sell properties on CampusPro.
+            </p>
+            <Link className="link" to="/login">
+              <button className="hp-button-link">Become a merchant</button>
+            </Link>
+          </div>
 
               <div className="hp-rent-div">
                 <p className="hp-heading">RENT APARTMENT </p>
@@ -144,13 +150,10 @@ function HomePage() {
        
       </div>
 
-      <div>
-        <div className="hp-view-div">
-          <p className="hp-view-hostels">View hostels around your campus</p>
-        </div>
-        <div className="hp-school">{house}</div>
+      <div className="hp-view-div">
+        <p className="hp-view-hostels">View hostels around your campus</p>
       </div>
-    
+      <div className="hp-school">{house}</div>
     </div>
   );
 }
