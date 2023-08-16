@@ -36,7 +36,7 @@ function HomePage() {
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
-            <img src={logo} className="hp-logo" />
+            <img src={logo} className="hp-logo" alt="" />
           </div>
           {/* <div>
             <p>CampusPro</p>
@@ -48,7 +48,7 @@ function HomePage() {
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
           />
-          const campus= data.campus;
+          {/* const campus= data.campus; */}
           {/*
             campus.map((item)=>{
               
@@ -69,7 +69,7 @@ function HomePage() {
           </select> */}
         </div>
         <div>
-          <Link to="/login-page">
+          <Link to="/login">
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
@@ -129,7 +129,7 @@ function HomePage() {
             <p className="hp-texts">
               Become a merchant and sell properties on CampusPro.
             </p>
-            <Link className="link" to="/login-page">
+            <Link className="link" to="/login">
               <button className="hp-button-link">Become a merchant</button>
             </Link>
           </div>

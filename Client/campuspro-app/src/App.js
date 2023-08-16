@@ -11,10 +11,13 @@ import Dashboard from "./Components/Dashboard";
 import SignUp from "./RenderSignUp";
 import Changepassword from "./Components/Changepassword";
 import ProfileInfo from "./Components/Profile_info";
+import React from "react";
+import UserDashboard from "./Components/UserDashboard";
 
 function App() {
   return (
     <div className="App">
+      {/* <UserDashboard /> */}
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />

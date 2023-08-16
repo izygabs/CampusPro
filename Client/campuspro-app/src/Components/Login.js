@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -7,6 +7,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 const Login = () => {
   // const [email, setEmail] =useState("");
+  const [inputValues, setInputValues] = useState({
+    Email: "",
+    Password: "",
+  });
+
   return (
     <div class="d-flex align-items-center  py-5 bg-body-tertiary signinPage">
       <main class="form-signin w-100 m-auto">

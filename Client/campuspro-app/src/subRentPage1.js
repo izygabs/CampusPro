@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import location from "./images/location-icon.png";
+import React from "react";
 
 function SubRentpage1(props) {
   return (
