@@ -182,29 +182,27 @@ const Signup = () => {
       const result = await response.json();
       if (response.status === 401) {
         alert(result.Message);
-        console.log(result.Message);
       } else if (response.status === 400) {
         alert(result.Errors);
         setErrors(result.Errors);
-        console.log(result.Errors);
       } else if (response.status === 403) {
         alert(result.Message);
-        console.log(result.Message);
       } else if (response.status === 201) {
-        alert(result.Message);
+        // alert(result.Message);
+        <Link to="/login">
+          {alert(result.Message)}
+          <Login />
+        </Link>;
         clearState();
-        console.log(result.Message);
+        // console.log(result.Message);
       } else {
         clearState();
         resetCheckedButton();
-        const alertResponse = window.confirm(result.message);
 
-        if (alertResponse) {
-          // Redirect to the login page
-          window.location.href = "/login";
-        }
         // <Link to="/login">
-        //   {alert(result.message)}
+        {
+          alert(result.message);
+        }
         //   <Login />
         // </Link>;
       }
