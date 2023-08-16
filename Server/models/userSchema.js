@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema(
     },
     altPhoneNumber: {
       type: Number,
-      unique: true,
     },
     password: {
       type: String,

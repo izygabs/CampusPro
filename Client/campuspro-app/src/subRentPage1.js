@@ -7,9 +7,9 @@ function SubRentpage1(props) {
     <div>
       <div className="sp-sub-div">
         <div className="sp-img-div">
-          <img src={`../images/${props.image}`} alt="" />
+          <img src={`../images/${props.image}`} />
           <div>
-            <img className="hp-locate" src={location} alt="" />
+            <img className="hp-locate" src={location} />
             <p>{props.campus.toUpperCase()}</p>
           </div>
         </div>
