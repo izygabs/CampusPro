@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./Profile_info.css";
-import pic from "../images/house2.jpg";
+import pic from "/images/house2.jpg";
 
 function ProfileInfo() {
   const [clicked, setClicked] = useState(false);

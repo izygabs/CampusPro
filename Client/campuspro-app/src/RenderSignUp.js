@@ -9,6 +9,7 @@ import Joi from "joi";
 // import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Login from "./Components/Login";
+import Modal from "react-modal";
 
 // import gold from './gold.png'
 
@@ -22,7 +23,7 @@ const Signup = () => {
     confirmPassword: "",
     userType: "",
   });
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [error, setErrors] = useState({});
   const [checked, setChecked] = useState(false);
   const [buttonChecked, setBtnChecked] = useState("");
@@ -87,25 +88,15 @@ const Signup = () => {
   //   if (password !== PASSWORD) {
   //   }
   // };
-  const validateForm = (event) => {
-    event.preventDefault();
-    const result = Schemas2.validate(inputValues, { abortEarly: false });
-    console.log(result);
-    const { error } = result;
-    if (!error) {
-      return null;
-    } else {
-      const errorData = {};
-      for (let item of error.details) {
-        const name = item.path[0];
-        const message = item.message;
-        errorData[name] = message;
-      }
-      console.log(error);
-      setErrors(errorData);
-      return errorData;
-    }
+
+  const openModal = () => {
+    setIsModalOpen(true);
   };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const validateProperty = (event) => {
     const { name, value } = event.target;
     const obj = { [name]: value };
@@ -198,8 +189,14 @@ const Signup = () => {
         clearState();
         resetCheckedButton();
         <Link to="/login">
-          {alert(result.message)}
-          <Login />
+          <Alert
+            severity="success"
+            onClose={() => {
+              <Login />;
+            }}
+          >
+            {result.message}
+          </Alert>
         </Link>;
       }
     } catch (error) {
