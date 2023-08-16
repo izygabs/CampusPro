@@ -6,6 +6,7 @@ body{
 .fp-main-header{
     background-color: black;
     height: 23rem;
+    width: 125vw;
 }
 .fp-header{
     display: flex;
@@ -14,14 +15,15 @@ body{
 
 .fp-btn{
     border-radius: 10rem;
-    width: 15rem;
-    height: 2rem;
+    width: 20rem;
+    height: 3rem;
     margin: 1rem;
-    font-size: small;
+    font-size: large;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
     border: none;
     margin-left: 2rem;
+
 }
 .fp-btn:hover{
     background-color: gold;
@@ -32,6 +34,7 @@ body{
     display: flex;
     background-color: rgba(1, 8, 1, 0.295);
     height: 15rem;
+    
     
 }
 .fp-main, .fp-campus .fp-moto{
@@ -47,7 +50,7 @@ body{
 .fp-main-one, .fp-campus .fp-moto{
     position: relative;
     left: 1rem;
-    top: 2.5rem;
+    top: 2.3rem;
 }
 .fp-moto{
     position: relative;
@@ -74,7 +77,7 @@ body{
 
  .fp-contact, .fp-number .fp-contact-num .fp-info{
     position: relative;
-    left: 16rem;
+    left: 18rem;
     top: 2.5rem;
     line-height: 1rem;
 }
@@ -82,7 +85,7 @@ body{
     /* display: flex; */
     margin-top: 3rem;
     position: relative;
-    right: 5.6rem;
+    right: 5rem;
 }
 .all-contact .fp-number{
     /* margin-top: 2rem; */
@@ -94,7 +97,7 @@ body{
 }
 .all-contact, .fp-number .fp-info{
     position: relative;
-    right: 5.8rem;
+    right: 6rem;
     top: 10px;
 }
  .fp-contact, .fp-img-all .one .two .three .four .five{
@@ -107,30 +110,30 @@ body{
     justify-content: space-around;
     height: 2rem;
     width: 2rem;
-    margin-top: 9rem;
+    margin-top: 12rem;
     margin-left: 4rem;
     /* background-color: white; */
 }
 .one{
     position: relative;
-    right: 10rem;
+    right: 14rem;
     /* fill: #ffffff; */
     /* background-color: white; */
 }
 .four{
     position: relative;
-    left: 1px;
+    left: 4rem;
     /* background-color: white; */
 }
 .two{
     position: relative;
-    left: 1.5px;
+    left: 2rem;
     /* background-color: white; */
 }
 .three{
     position: relative;
-    right: 10rem;
-    color: white;
+    right: 12rem;
+    /* color: white; */
     /* background-color: white; */
 }
 .five{
@@ -139,36 +142,55 @@ body{
 }
 
 .fp-newsletter, .fp-news input .fp-btn-one{
-    margin-left: 24rem;
+    margin-left: 25rem;
 }
 .fp-newsletter .fp-news{
     text-align: center;
-    margin-right: 3.3rem;
+    margin-right: -17rem;
+    font-size: larger;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .fp-newsletter .fp-btn-one{
-    margin-left: 5.3rem;
-    margin-top: 10px;
+    margin-left: 20rem;
+    position: relative;
+    top: 3rem;
+    width: 20rem;
+    height: 4rem;
+    /* margin-top: 4px; */
     border-radius: 4px;
-    font-size: small;
+    font-size: larger;
     font-weight: bold;
     cursor: pointer;
     outline: none;
     border: none;
+    border-radius: 1rem;
+}
+.fp-newsletter .fp-btn-one:hover{
+    background-color: gold;
+    transition: 0.4s;
 }
 .fp-newsletter .fp-input{
     margin-right: -20px;
     border: none;
     outline: none;
     position: relative;
-    left: -28px;
+    left: 12rem;
+    padding: 4px;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     
 }
 .fp-newsletter .fp-input1{
     border: none;
     outline: none;
     position: relative;
-    left: -1px;
-    
+    left: 14rem;
+    padding: 4px;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
 }
 
 .fp-address, .fp-add .fp-add-one{
@@ -181,7 +203,7 @@ body{
 .fp-newsletter, .fp-input1 .fp-input .fp-news .fp-btn-one{
     position: relative;
     top: 2rem;
-    
+    right: 6rem;
 }
 
 .fp-company, .fp-about-com .fp-p{
@@ -195,6 +217,18 @@ body{
     position: relative;
     top: 5px;
 }
+.fp-h3{
+    font-size: larger;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* .fp-displa, .fp-input1 .fp-input{
+    display: flex;
+} */
+.fp-newsletter .fp-input1 .fp-input{
+    display: flex;
+}
+
 
 /* .fp-img-all, .one .two .three .four{
     width: 5px;
