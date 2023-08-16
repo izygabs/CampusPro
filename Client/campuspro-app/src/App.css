@@ -44,10 +44,6 @@ p {
   outline: none;
   /* text-align: center; */
 }
-.hp-carousel-div{
-  position: relative ;
-}
-
 .hp-section1 {
   position: absolute;
   top: 8rem;
@@ -78,18 +74,6 @@ p {
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
   /* padding-top: 10vh; */
-  /* justify-content: space-around; */
-  transition: transform 0.6s;
-}
-.hp-buy-div:hover,
-.hp-sell-div:hover,
-.hp-rent-div:hover {
-  transform: scale(1.1);
-}
-.hp-buy-div:hover,
-.hp-sell-div:hover,
-.hp-rent-div:hover {
- transform: scale(1.1);
   /* justify-content: space-around; */
 }
 .hp-heading {
