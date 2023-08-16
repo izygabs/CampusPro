@@ -197,10 +197,16 @@ const Signup = () => {
       } else {
         clearState();
         resetCheckedButton();
-        <Link to="/login">
-          {alert(result.message)}
-          <Login />
-        </Link>;
+        const alertResponse = window.confirm(result.message);
+
+        if (alertResponse) {
+          // Redirect to the login page
+          window.location.href = "/login";
+        }
+        // <Link to="/login">
+        //   {alert(result.message)}
+        //   <Login />
+        // </Link>;
       }
     } catch (error) {
       console.error("Error sending data:", error);
@@ -284,25 +290,6 @@ const Signup = () => {
           </div>
           {error.Phone && <p className="signup-error-message">{error.Phone}</p>}
 
-          {/* <label className="sp-number3" for="number">
-            Alternate number:
-          </label>
-          <br />
-          <div className="sp-icon-input">
-            <img className="sp-user-img" src={number} alt="" />
-            <input
-              name="altPhoneNumber"
-              className="sp-input-testing"
-              type="tel"
-              value={inputValues.altPhoneNumber}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          {error.altPhoneNumber && (
-            <p className="signup-error-message">{error.altPhoneNumber}</p>
-          )} */}
-
           <label className="sp-pwd1" for="password">
             Password:
           </label>
@@ -355,7 +342,7 @@ const Signup = () => {
                 id="agent"
                 value="Agent"
                 onChange={handleCheckedButton}
-                checked={buttonChecked === "Agent"}
+                // checked={buttonChecked === "Agent"}
               />
               <label className="sp-agent" for="agent">
                 Agent
@@ -370,7 +357,7 @@ const Signup = () => {
                 id="merchant"
                 value="Merchant"
                 onChange={handleCheckedButton}
-                checked={buttonChecked === "Merchant"}
+                // checked={buttonChecked === "Merchant"}
               />
               <label className="sp-merchant1" for="merchant">
                 Merchant
