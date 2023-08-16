@@ -1,23 +1,22 @@
-
-import logo from './images/campuspro(6).png'
-import house from './images/house1.jpg'
-import {useState} from "react"
+import logo from "./images/campuspro(6).png";
+import house from "./images/house1.jpg";
+import React, { useState } from "react";
 
 function RentPage2() {
-   const [info, setInfo]= useState('')
+  const [info, setInfo] = useState("");
 
-   const changeInfo = ()=> setInfo()
+  const changeInfo = () => setInfo();
 
   return (
-    <div>
+    <div className="rentpage-main">
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
-           <img src={logo} className="hp-logo"/>
+            <img src={logo} className="hp-logo" alt="" />
           </div>
           <div>
             <p>CampusPro</p>
-          </div> 
+          </div>
         </div>
         {/* <div>
           <input  onChange={sort} placeholder="Search for hostels around your school. example: oou" className="hp-select-button"/>
@@ -30,7 +29,7 @@ function RentPage2() {
 
       <section className="sp2-main-sector">
         <div className="sp2-divs">
-          <img className="sp2-main-img" src ={house} />
+          <img className="sp2-main-img" src={house} alt="" />
         </div>
         <div className="sp2-divs2">
           <p>Description:</p>
@@ -41,17 +40,32 @@ function RentPage2() {
           <p>Cer Park:</p>
           <p>Agent Name:</p>
           <p>Agent address:</p>
-          
         </div>
       </section>
 
-      <div>
-        <button>
-          click to Contact this agent
-        </button>
+      <div className="sp-2-img-div">
+        <div>
+          <img />
+        </div>
+        <div>
+          <img />
+        </div>
+        <div>
+          <img />
+        </div>
+        <div>
+          <img />
+        </div>
+        <div>
+          <img />
+        </div>
+      </div>
+
+      <div className="sp2-agent-info">
+        <button>view agent contact</button>
       </div>
     </div>
-  )
+  );
 }
 
 export default RentPage2;

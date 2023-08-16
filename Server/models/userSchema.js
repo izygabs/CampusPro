@@ -58,6 +58,17 @@ const userSchema = new mongoose.Schema(
         },
       ],
     },
+    google: {
+      id: {
+        type: String,
+      },
+      name: {
+        type: String,
+      },
+      email: {
+        type: String,
+      },
+    },
   },
   { timestamps: true }
 );

@@ -1,199 +1,177 @@
-
-
-body{
-    background-image: url('./images/frames-for-your-heart-2d4lAQAlbDA-unsplash.jpg');
-    background-repeat: no-repeat;
-  background-position: 50% 0;
-    background-size: cover;
-    /* opacity: 0.7; */
-    /* filter: brightness(50%); */
-   margin: 5rem 0;
-    
+.sp-form-one {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+      rgba(33, 32, 32, 0.479),
+      rgba(35, 34, 34, 0.694)
+    ),
+    url("./images/editImage.jpeg");
 }
-h1{
-    text-align: center;
-    color: black;
+.sp-form h1 {
+  text-align: center;
+  padding-top: 40px;
 }
 
-.sp-form{
-    line-height: 2.5rem;
-    background-color: #ffef99;
-    border: 1px black solid;
-    width: 25rem;
-    position: relative;
-    left:28rem;
-    border-radius: 2rem;
-    border: none;
-}
-.sp-form input{
-    width: 20rem;
-    border-radius: 2rem;
-    border: none;
-    outline: none;
-    margin-right: 2rem;
-}
-.sp-form label{
-    position: relative;
-    top: 8px;
-    font-weight: bold;
-    /* font-size: ; */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: black;
-}
-.sp-signup{
-    text-align: center;
-    position: relative;
-    right: -1rem;
-    bottom:3rem;
-    color: brown;
-    font-size: large;
-}
-.btn3{
-    position: relative;
-    bottom: 3rem;
-    left: 3.5rem;
-    font-size: large;
-    font-size: large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: 5rem;
-}
-.sp-btn{
-    width: 18rem;
-    height: 2.5rem;
-    border-radius: 2rem;
-    border: none;
-    /* transition: 5000 */
-}
-.sp-btn:hover{
-    background-color: rgb(18, 17, 15);
-    color: white;
-    border: none;
-    transition: 0.4s
-
-}
-.header label, input{
-    position: relative;
-    left: 1.5rem;
-    height: 2rem;
-}
-.sp-agent-merchant{
-    display: flex;
-    height: 10vh;
-    align-items: center;
-    border: 2px solid black;
+.sp-form {
+  /* line-height: 2.5rem; */
+  background-color: #e4c824;
+  /* border: 1px black solid; */
+  width: 28rem;
+  /* position: relative; */
+  /* left: 28rem; */
+  border-radius: 2rem;
+  font-size: 1rem;
+  margin: 3rem auto;
 }
 
-.sp-agent{
-    vertical-align: text-bottom;
-    margin-right: 2rem;
+.sp-form label {
+  position: relative;
+  top: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.sp-merchant1{
-    /* bottom: 3px; */
-    margin-right: 19rem;
-    /* margin-top: -0.5rem; */
-    /* margin-bottom: 1rem; */
-    /* vertical-align: text-top; */
- } 
-/* .sp-input2 {
-    height: 15px;
-    left: 3rem;
-    margin-bottom: -1.3rem;
+.sp-signup {
+  text-align: center;
+  position: relative;
+  right: -1rem;
+  bottom: 1.5rem;
+  color: brown;
+}
+.sp-create-Account-button {
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+.sp-btn {
+  display: inline;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 2rem;
+  border: none;
+  margin: 1.5rem auto 2rem;
+
+  /* transition: 5000 */
+}
+.sp-btn:hover {
+  background-color: rgb(18, 17, 15);
+  border: none;
+  color: white;
+  transition: 0.4s;
+}
+.header label,
+.header input {
+  position: relative;
+  left: 1.5rem;
+  height: 2rem;
+}
+/* .sp-agent-merchant {
+  display: flex;
+  height: 10vh;
+  align-items: center;
+  border: 2px solid black;
 } */
 
-/* .sp {
-    height: 15px;
-    margin-left: -9.2rem;
-    margin-bottom: -1.3rem;
+/* .sp-agent {
+    vertical-align: text-bottom;
+  } */
+.sp-merchant1,
+.sp-agent {
+  /* display: inline-block; */
+  position: absolute;
+  top: 80px;
+  z-index: 1;
 }
+/* .sp-input2 {
+  height: 15px;
+  left: 5.3rem;
+  margin-bottom: -1.3rem;
+} */
+
+/*  */
 
 #checks {
-    height: 7vh;
-    align-items: center;
-    display: flex;
-    margin-right: -10rem;
-}  */
-.checks1{
-    display: flex;
-    margin-right: 17rem;
-}
-.checks1 .sp-agent{
-    position: relative;
-    left: 1px;
-    top: -1px;
-    /* border: 2px solid black; */
-}
-.checks1, .sp .sp-agent{
-     /* border: 2px solid black; */
-     margin-top: 2rem;
-}
-.checks, .sp-input2{
-    display: flex;
-    margin-left: 8rem;
-    bottom: 2.5rem;
-    left: 3px;
-     /* border: 4px solid black; */
-} 
-.checks .sp-merchant1{
-    /* border: 2px solid black; */
-    top: -2.5rem;
-    left: -1rem;
+  /* height: 7vh; */
+  margin: 1rem 0 0.3rem;
+  align-items: center;
+  display: flex;
+  /* margin-right: 5px; */
 }
 
+#main {
+  display: flex;
+  gap: 11.5rem;
+}
+.sp-img-key {
+  width: 1rem;
+  position: absolute;
+  top: 33rem;
+  left: 2rem;
+}
+.sp-input {
+  width: 22.2rem;
+  border-radius: 2rem;
+  border: 1px solid;
+  outline: none;
+}
 
-.main .sp{
-
-    /* display: flex; */
-    /* justify-content: space-around; */
+.sp-input-testing {
+  width: 20rem;
+  border-radius: 0rem 2rem 2rem 0;
+  border: 0;
+  outline: none;
+  /* margin-right: 5p; */
 }
-.sp-img-key{
-    width: 1rem;
-    position: absolute;
-    top: 32.5rem;
-    left: 2rem;
+.sp-icon-input {
+  width: 22rem;
+  border-radius: 2rem;
+  background-color: white;
+  padding-left: 10px;
+  margin-left: 19px;
 }
-
-.sp-user-img{
-    width: 1rem;
-    position: absolute;
-    top: 7.5rem;
-    left: 2rem;
+.sp-user-img {
+  width: 1rem;
+  opacity: 0.5;
 }
-.sp-email-img{
-    width: 1rem;
-    position: absolute;
-    top: 17.5rem;
-    left: 2rem;
+.sp-email-img {
+  width: 1rem;
+  position: absolute;
+  top: 17.5rem;
+  left: 2rem;
 }
-.sp-number-img{
-    width: 1rem;
-    position: absolute;
-    top: 22.7rem;
-    left: 2rem;
+.sp-number-img {
+  width: 1rem;
+  position: absolute;
+  top: 22.7rem;
+  left: 2rem;
 }
-.sp-form, input label button h2 h6{
-    position: relative;
-    left: 24rem;
-    
+/* .sp-form,
+input label button h2 h6 {
+  position: relative;
+  left: 30rem;
+} */
+.sp-type-user {
+  font-size: medium;
+  margin-right: 8px;
+  display: inline;
 }
-.sp-pwd2{
-    padding-left: 2rem;
+.sp-pwd2 {
+  padding-left: 2rem;
 }
-.sp-pwd4{
-    padding-left: 2rem;
+.sp-pwd4 {
+  padding-left: 2rem;
 }
-.sp-number4{
-    padding-left: 2rem;
+.sp-number4 {
+  padding-left: 2rem;
 }
-.sp-number2{
-    padding-left: 2rem;
-    
+.sp-number2 {
+  padding-left: 2rem;
 }
-.sp-email-input{
-    padding-left: 2rem;
+.sp-email-input {
+  padding-left: 2rem;
 }
-.sp-input1{
-    padding-left: 2rem;
+.sp-input1 {
+  padding-left: 2rem;
 }
-.sp-input{
-    padding-left: 2rem;
+.sp-input {
+  padding-left: 2rem;
 }

@@ -4,6 +4,8 @@ const errorHandler = require("../middlewares/handleError");
 const { hostelProps } = require("../models/hostelSchema");
 let fs = require("fs");
 let hostelProperties = require("../data");
+const nodeMailer = require("../Services/nodemailer");
+const { user } = require("../models/userSchema");
 
 const uploadProperty = async (req, res) => {
   let hostelsPictures = req.files;
@@ -21,7 +23,17 @@ const uploadProperty = async (req, res) => {
       .status(StatusCodes.BAD_REQUEST)
       .json({ "Image Error": "You must upload minimum of 5 pictures" });
   } else {
+    const userDetails = await user.findById({ _id: userId });
     const { Description, Price, Campus, Location } = value;
+    const subject = `Property added successfully`;
+    const message = `Greeting ${userDetails.firstName},
+    You have successfully uploaded new property. It will be published once verified.
+    Please check your dashboard for more details.                   
+                    
+
+                    Best regards
+                    The team at CampusPro`;
+
     if (error) {
       // to delete the images saved into the hostels Images folder while validation failed
       hostelsPictures.forEach((file) => {
@@ -55,6 +67,7 @@ const uploadProperty = async (req, res) => {
             { new: true }
           );
         }
+        nodeMailer(userEmail, subject, message);
         res.status(StatusCodes.CREATED).json("Properties uploaded succesfully");
       } catch (error) {
         // to delete the images saved into the hostels Images folder while database failed

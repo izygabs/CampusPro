@@ -1,212 +1,426 @@
-body{
-    color: #fff;
+body {
+  color: #fff;
+  margin-bottom: 0;
 }
-p{
-    margin: 3px;
+.homepage {
+  background-color: rgb(237, 233, 211);
 }
-.hp-header{
-    /* position:fixed; */
-    display:flex;
-    background-color: rgb(9, 7, 7);
-    /* background-color: #ccc; */
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    height: 15vh;
-    margin-bottom: 20vh;
+p {
+  margin: 3px !important;
+}
+.hp-header {
+  /* position:fixed; */
+  display: flex;
+  background-color: rgb(9, 7, 7);
+  /* background-color: #ccc; */
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  /* margin-bottom: 20vh; */
+}
+.hp-login-button {
+  padding: 10px 30px;
+  font-size: 15px;
+  background-color: gold;
+  color: black;
+  border-radius: 27px;
+  margin-right: 10px;
+  border: none;
+}
+.hp-logo {
+  width: 20rem;
+}
+.hp-logo-div {
+  display: flex;
+  border: none;
+  align-items: center;
+  /* margin-left: 15px; */
+}
+.hp-select-button {
+  height: 8vh;
+  width: 50vw;
+  outline: none;
+  /* text-align: center; */
+}
+.hp-section1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 97vh;
+  border: none;
+  background-image: url("./images/house-interior.webp");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-bottom: 25vh;
+  padding-top: 20vh;
+}
+.hp-buy-div,
+.hp-sell-div,
+.hp-rent-div {
+  width: 25%;
+  border: none;
+  background-color: gold;
+  height: 90%;
+  text-align: center;
+  padding-top: 7px;
+  /* padding-top: 10vh; */
+  /* justify-content: space-around; */
+}
+.hp-heading {
+  margin-top: 20%;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: black;
+}
+.hp-texts {
+  color: black;
+  font-size: 18px;
+  text-align: center;
+  padding: 0 15px;
+}
+.hp-school {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: scroll;
+  border-style: none;
+  width: 100%;
+  /* height: 40vh; */
+  /* background-color: black; */
+}
+.hp-school::-webkit-scrollbar {
+  display: none;
+}
+.hp-school-div {
+  /* border-style: solid; */
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  height: 50vh;
+  margin-right: 15px;
+}
+.hp-school-div p {
+  text-align: center;
+  color: black;
+  border: none !important;
+}
+.hp-props-text {
+  background-color: gold;
+}
+.hp-img-div {
+  height: 60%;
+  position: relative;
+}
+.hp-img-div div {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  color: black;
+  background-color: #ffd700;
+  border-radius: 15px;
+  padding: 3px 10px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+}
+.hp-locate {
+  max-width: 15px;
+  margin-top: 4px;
+}
 
+.hp-img-div img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
-.hp-login-button{
-    padding: 10px 30px;
-    font-size: 15px;
-    background-color: gold;
-    color:black;
-    border-radius: 27px;
-    margin-right: 10px;
-    border: none;
+.hp-view-div {
+  margin-top: 20vh;
 }
-.hp-logo{
-    width: 70px
+.hp-view-hostels {
+  color: black;
+  font-size: 30px;
+  font-weight: 700;
+  font-style: italic;
 }
-.hp-logo-div{
-    display:flex;
-    border:none;
-    align-items: center;
-    margin-left: 15px;
+.sp-subrent-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: white;
 }
-.hp-select-button{
-    height: 8vh;
-    width: 50vw;
-    outline: none;
-    /* text-align: center; */
+.sp-sub-div {
+  margin: 5vh 0;
+  background-color: black;
+  height: 47vh;
+  width: 23vw;
 }
-.hp-section1{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height:50vh;
-    margin-bottom: 25vh;
+.sp-text-div {
+  text-align: center;
+  padding-bottom: 2vh !important;
+  height: 40%;
+  background-color: gold;
+  color: black;
 }
-.hp-buy-div, .hp-sell-div, .hp-rent-div{
-    width: 25%;
-    border:solid;
-    background-color: gold;
-    height: 100%;
-    text-align: center;
-    /* padding-top: 10vh; */
-    /* justify-content: space-around; */
-
+.sp-img-div {
+  height: 60%;
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
 }
-.hp-heading{
-    margin-top: 20%;
-    text-align: center;
-    font-size: 40px;
-    font-weight: 700;
-    color: black;
-}
-.hp-texts{
-    color: black;
-    font-size: 18px;
-    text-align: center;
-    padding: 0 15px;
-    
-}
-.hp-school{
-    display: flex;
-    justify-content: space-between;
-    overflow-x: scroll;
-    border-style: solid;
-    width: 100%;
-    /* height: 40vh; */
-    /* background-color: black; */
-}
-.hp-school::-webkit-scrollbar{
-    display:none
-}
-.hp-school-div{
-    /* border-style: solid; */
-    display: flex;
-    flex-direction: column;
-    width:20vw;
-    height:50vh ;
-    margin-right: 15px;
-    
-}
-.hp-school-div p{
-    text-align: center;
-    color: black;
-}
-.hp-props-text{
-    background-color: gold;
-}
-.hp-img-div{
-    height:60%;
-}
-.hp-img-div img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-.hp-view-hostels{
-    color: black;
-    font-size: 30px;
-    font-weight: 700;
-}
-.sp-subrent-div{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: white;
-}
-.sp-sub-div{
-    margin: 5vh 0;
-    background-color: black;
-    height: 53vh;
-}
-.sp-text-div{
-   text-align: center;
-   padding-bottom: 2vh;
-}
-.sp-img-div{
-    height: 60%;
-    margin-bottom: 10px;
+.sp-img-div div {
+  position: absolute;
+  background-color: gold;
+  display: flex;
+  flex-direction: row;
+  top: 5px;
+  right: 5px;
+  font-size: 12px;
+  border-radius: 15px;
+  padding: 1px 10px;
 }
 .sp-img-div img {
-    height: 100%;
-   
+  height: 100%;
+  width: 100%;
 }
 
-.sp-text-div button{
-    background-color: transparent;
-    padding: 7px 15px;
-    border-width: 1px;
-    border-radius: 20px;
-    border-color: gold;
-    color: white;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-top: 10px;
-    transition: background-color 0.9s;
+.sp-text-div button {
+  background-color: transparent;
+  padding: 7px 15px;
+  border-width: 1px;
+  border-radius: 20px;
+  border-color: black;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 3vh;
+  transition: background-color 0.7s;
 }
-.hp-button-link{
-    margin-top: 10px;
-    padding:10px 20px;
-    background-color: transparent;
-    border: solid 1px black;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.6s;
+.sp-text-div button:hover {
+  background-color: black;
+  color: gold;
 }
-.link{
-    text-decoration: none;
-    color: black;
-    
+.hp-button-link {
+  margin-top: 10px;
+  padding: 6px 20px;
+  background-color: transparent;
+  border: solid 1px black;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.6s;
 }
-.hp-button-link:hover{
-    background-color: black;
-    color: white;
+.link {
+  text-decoration: none;
+  color: black;
 }
-.sp-select-amount{
-    width: 20vw;
+.hp-button-link:hover {
+  background-color: black;
+  color: white;
+}
+.sp-select-amount {
+  width: 20vw;
+  outline: none;
+  height: 5vh;
+  border: solid 2px gold;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  font-size: 14px;
+}
+.sp-select-amount option {
+  font-size: 13px;
+  background-color: black;
+  color: white;
+}
+
+.sp2-divs {
+  /* border: solid black 3px; */
+  width: 47%;
+}
+.sp2-divs2 {
+  /* border: solid black 3px; */
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.sp2-divs2 p {
+  color: black;
+  font-size: 15px;
+  line-height: 10px;
+}
+.sp2-linkk {
+  text-decoration: none;
+}
+
+.cate-gory {
+  text-align: center;
+  font-weight: bold;
+}
+
+.bp1-select {
+  background-color: whitesmoke;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: -15rem;
+}
+
+.bp1-buy-sec {
+  border: 1px black solid;
+  width: 100%;
+}
+
+.bp1-houses {
+  color: #000;
+  border: 1px black solid;
+  width: 20%;
+  text-align: center;
+  background-color: gold;
+  color: black;
+}
+.sp2-linkk button:active {
+  opacity: 0.5;
+}
+.sp2-main-sector {
+  display: flex;
+  margin-top: -19vh;
+  flex-direction: row;
+  height: 60vh;
+  border: solid 3px red;
+}
+.sp2-divs {
+  width: 50%;
+  height: 100%;
+}
+.sp2-divs2 {
+  width: 45%;
+  height: 100%;
+}
+.sp2-main-img {
+  width: 100%;
+  height: 100%;
+}
+.sp-2-img-div {
+  display: flex;
+  flex-wrap: no;
+  width: 100%;
+  height: 25vh;
+  justify-content: space-around;
+}
+
+.sp-2-img-div div {
+  width: 17%;
+  border: solid 2px gold;
+  height: 100%;
+  margin: 5vh 0;
+}
+.sp2-agent-info {
+  margin: 10vh 0;
+}
+.sp2-agent-info button {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  border: none;
+  background-color: #ffef99;
+  font-size: 15px;
+  padding: 3vh 8vw;
+  border-radius: 30px;
+  transition: background-color 0.7s;
+}
+
+/* Buy Page 2
+
+.bp2-navbar {
+    display: flex;
+    width: 100%;
+    height: 15vh;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: all 2s ease-in-out;
+}
+
+.bp2-sec {
+    border: 1px black solid;
+    width: 97%;
+    height: 90vh;
+    padding: 1rem;
+    display: flex;
+}
+
+.bp2-sec-div {
+    border: 1px green solid;
+    width: 50%;
+    height: 90vh;
+    margin-left: 0.5rem;
+}
+
+.bp2-desc {
+    border: 1px red solid;
+    width: 50%;
+    height: 90vh;
+}
+
+.bp2-logo {
+    width: 25rem;
+    margin-left: -3rem;
+}
+
+.bp2-search-bar {
+    margin-right: 3rem;
+}
+
+.bp2-input {
+    padding: 0.5rem 0.5rem;
+    border: none;
     outline: none;
-    height: 5vh;
-    border: solid 2px gold;
-    margin-right: auto;
-    margin-left: auto;
-    display: block;
-    font-size: 14px;
-}
-.sp-select-amount option{
-    font-size: 13px;
-    background-color: black;
-    color: white;
+    font-weight: bold;
+} */
+
+/* basic info page */
+
+.form {
+  color: black;
+  width: 400px;
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 0px 25px 0px 0px;
+  margin-left: 10rem;
+  background-color: #ffef99;
 }
 
+/* select {
+  width: 360px;
+  margin-left: 1rem;
+  height: 20px;
+  margin-bottom: 1rem;
+}
 
-.sp2-divs{
-    /* border: solid black 3px; */
-    width:47%
+input {
+  width: 350px;
+  height: 20px;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  outline: none;
+} */
+
+/* label {
+  padding-left: 1rem;
+} */
+
+.sp2-agent-info button:hover {
+  background-color: #2a2929;
 }
-.sp2-divs2{
-    /* border: solid black 3px; */
-    width:50%;
-    display:flex;
-   flex-direction: column;
-   justify-content: space-around;
-}
-.sp2-divs2 p{
-    color: black;
-    font-size: 15px;
-    line-height: 10px;
-}
-.sp2-linkk{
-    text-decoration: none;
-}
-.sp2-linkk button:hover{
-    background-color: gold;
-    color: black;
-}
-.sp2-linkk button:active{
-    opacity: 0.5
+#upload {
+  color: white;
+  background-color: gold;
+  color: #ffef99;
 }

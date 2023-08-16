@@ -1,39 +1,10 @@
 const bcrypt = require("bcrypt");
-<<<<<<< HEAD
-
-
-// import { useState, } from "react";
-// import React from "react";
-// import './Signup.css'
-
-// const Signup = (props) => {
-//     const [focused, setFocused] = useState(false)
-//     const {label, onChange,errorMessage, id, ...inputProps } = props;
-//     const handleFocuse = (e) => {
-//         setFocused(true)
-//     }
-//   return (
-//     <div className="sp-form-one">
-//         <form>
-//             <label>{label}</label>
-//             <input {...inputProps} onChange={onChange} 
-//             onBlur={handleFocuse}
-//             onFocus={() => inputProps.name==='confirmPassword' && setFocused(true)} 
-//             focused={focused.toString()}/>
-//             <span>{errorMessage}</span>
-//         </form>
-        
-//     </div>
-//   )
-// }
-
-// export default Signup
-=======
 const { user } = require("../models/userSchema");
 const validator = require("../validators/joiValidation");
 const { StatusCodes } = require("http-status-codes");
 const errorHandler = require("../middlewares/handleError");
 const fs = require("fs");
+const nodeMailer = require("../Services/nodemailer");
 
 const signUp = async (req, res) => {
   const { error, value } = validator.signUp(req.body);
@@ -53,6 +24,13 @@ const signUp = async (req, res) => {
         if (userExist) {
           res.status(StatusCodes.CONFLICT).send("User Exist");
         } else {
+          const subject = `Welcome to CampusPro`;
+          const message = `Greeting ${value.firstName}.
+                    Your account has been successfully created on our platform.
+                    Please login using your credentials and start posting your properties and items.
+                    
+                    Best regards
+                    The team at CampusPro`;
           const salt = await bcrypt.genSalt();
           const hashedPassword = await bcrypt.hash(value.Password, salt);
           const agents = new user({
@@ -68,6 +46,7 @@ const signUp = async (req, res) => {
             itemIds: [],
           });
           let newUser = await agents.save();
+          nodeMailer(value.Email, subject, message);
           res
             .status(StatusCodes.CREATED)
             .json({ "Account created successfully": newUser });
@@ -85,4 +64,3 @@ const signUp = async (req, res) => {
   }
 };
 module.exports = signUp;
->>>>>>> 72c25f3a114e89dae4fe4735120d58ba1d6041e0

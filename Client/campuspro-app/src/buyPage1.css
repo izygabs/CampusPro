@@ -1,0 +1,112 @@
+.navbar {
+  border: 1px black solid;
+  display: flex;
+  height: 20vh;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: 100%;
+  background: black;
+}
+
+.logo {
+  height: 200px;
+  margin-top: -3rem;
+  margin-left: -3rem;
+}
+
+#search {
+  margin-left: -6rem;
+  margin-top: -3rem;
+  height: 7vh;
+}
+
+#paragraph {
+  display: inline-block;
+  background-color: #ffef99;
+  padding: 0.5rem 1rem;
+  margin-left: -5rem;
+  margin-top: -5em;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+#p {
+  margin-top: -3em;
+  margin-right: 1rem;
+}
+
+/* section */
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 5px black;
+  margin-top: 2rem;
+}
+
+.images {
+  height: 180px;
+}
+
+.items {
+  height: 330px;
+  width: 280px;
+  margin: 1rem;
+  box-shadow: 2px 2px 10px black;
+}
+
+#p-i {
+  font-weight: bold;
+  color: black;
+  height: 15vh;
+  padding-top: 2rem;
+  margin-left: -4rem;
+}
+
+.btn {
+  background-color: #ffef99;
+  font-weight: bold;
+  transition: all 2s ease-in-out;
+}
+
+#link-btn {
+  text-decoration: none;
+  color: black;
+  transition: all 2s ease-in-out;
+}
+
+#link-btn:hover {
+  color: #ffef99;
+}
+
+.btn:hover {
+  background-color: black;
+  color: #ffef99 !important;
+}
+
+.select {
+  text-align: center;
+  margin-left: 27rem;
+  margin-top: 2rem;
+  height: 5vh;
+  box-shadow: 1px 1px 5px black;
+  transition: all 2s ease-in-out;
+  font-weight: bold;
+  outline: none;
+}
+
+.select option {
+  background-color: #ffef99;
+  font-weight: bold;
+  transition: all 5s ease-in-out;
+}
+
+.select option:hover {
+  background-color: black;
+  color: #ffef99;
+  cursor: pointer;
+}
