@@ -12,7 +12,6 @@ import OverlayComponent from "./OverlayComp";
 const Dashboard = (prop) => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
-
   const handleButtonClicked = (component) => {
     setSelectedComponent(component);
     setShowOverlay(true);
