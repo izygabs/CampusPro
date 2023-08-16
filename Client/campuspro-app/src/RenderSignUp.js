@@ -182,25 +182,27 @@ const Signup = () => {
       const result = await response.json();
       if (response.status === 401) {
         alert(result.Message);
-        console.log(result.Message);
       } else if (response.status === 400) {
         alert(result.Errors);
         setErrors(result.Errors);
-        console.log(result.Errors);
       } else if (response.status === 403) {
         alert(result.Message);
-        console.log(result.Message);
       } else if (response.status === 201) {
         alert(result.Message);
+        // <Link to="/login">
+          // {alert(result.Message)}
+        //   <Login />
+        // </Link>;
         clearState();
-        console.log(result.Message);
+        // console.log(result.Message);
       } else {
         clearState();
         resetCheckedButton();
+
         // <Link to="/login">
-
-        alert(result.Message);
-
+        {
+          alert(result.message);
+        }
         //   <Login />
         // </Link>;
       }
@@ -286,25 +288,6 @@ const Signup = () => {
           </div>
           {error.Phone && <p className="signup-error-message">{error.Phone}</p>}
 
-          {/* <label className="sp-number3" for="number">
-            Alternate number:
-          </label>
-          <br />
-          <div className="sp-icon-input">
-            <img className="sp-user-img" src={number} alt="" />
-            <input
-              name="altPhoneNumber"
-              className="sp-input-testing"
-              type="tel"
-              value={inputValues.altPhoneNumber}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          {error.altPhoneNumber && (
-            <p className="signup-error-message">{error.altPhoneNumber}</p>
-          )} */}
-
           <label className="sp-pwd1" for="password">
             Password:
           </label>
@@ -357,7 +340,7 @@ const Signup = () => {
                 id="agent"
                 value="Agent"
                 onChange={handleCheckedButton}
-                checked={buttonChecked === "Agent"}
+                // checked={buttonChecked === "Agent"}
               />
               <label className="sp-agent" for="agent">
                 Agent
@@ -372,7 +355,7 @@ const Signup = () => {
                 id="merchant"
                 value="Merchant"
                 onChange={handleCheckedButton}
-                checked={buttonChecked === "Merchant"}
+                // checked={buttonChecked === "Merchant"}
               />
               <label className="sp-merchant1" for="merchant">
                 Merchant
