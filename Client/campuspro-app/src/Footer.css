@@ -1,0 +1,237 @@
+body{
+    width: 100%;
+    height: 100%;
+}
+
+.fp-main-header{
+    background-color: black;
+    height: 23rem;
+    width: 125vw;
+}
+.fp-header{
+    display: flex;
+    margin-left: 4rem;
+}
+
+.fp-btn{
+    border-radius: 10rem;
+    width: 20rem;
+    height: 3rem;
+    margin: 1rem;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+    margin-left: 2rem;
+
+}
+.fp-btn:hover{
+    background-color: gold;
+    transition: 0.2s
+}
+
+.fp-main{
+    display: flex;
+    background-color: rgba(1, 8, 1, 0.295);
+    height: 15rem;
+    
+    
+}
+.fp-main, .fp-campus .fp-moto{
+    margin-left: 4rem;
+}
+.fp-main, .fp-newsletter .fp-address .fp-contact .fp-company .fp-main-one{
+    margin-right: 4rem;
+} 
+.fp-campus{
+    color: rgb(173, 148, 8);
+}
+
+.fp-main-one, .fp-campus .fp-moto{
+    position: relative;
+    left: 1rem;
+    top: 2.3rem;
+}
+.fp-moto{
+    position: relative;
+    top: 5px;
+}
+
+.fp-header, .fp-h3 .fp-btn{
+    margin-left: 20rem;
+}
+
+.email-box{
+    width: 10px;
+    height: 8px;
+    position: relative;
+    top: 7px;
+}
+
+.fp-company, .fp-p{
+    list-style: none;
+    border: none;
+    text-decoration: none;
+    line-height: 1rem;
+}
+
+ .fp-contact, .fp-number .fp-contact-num .fp-info{
+    position: relative;
+    left: 18rem;
+    top: 2.5rem;
+    line-height: 1rem;
+}
+.all-contact{
+    /* display: flex; */
+    margin-top: 3rem;
+    position: relative;
+    right: 5rem;
+}
+.all-contact .fp-number{
+    /* margin-top: 2rem; */
+    position: relative;
+    top: 8px;
+}
+.all-contact .fp-info{
+    display: flex;
+}
+.all-contact, .fp-number .fp-info{
+    position: relative;
+    right: 6rem;
+    top: 10px;
+}
+ .fp-contact, .fp-img-all .one .two .three .four .five{
+    width: 15px;
+    display: flex;
+    justify-content: space-around;
+}  
+.fp-img-all, .one .two .three .four .five{
+    display: flex;
+    justify-content: space-around;
+    height: 2rem;
+    width: 2rem;
+    margin-top: 12rem;
+    margin-left: 4rem;
+    /* background-color: white; */
+}
+.one{
+    position: relative;
+    right: 14rem;
+    /* fill: #ffffff; */
+    /* background-color: white; */
+}
+.four{
+    position: relative;
+    left: 4rem;
+    /* background-color: white; */
+}
+.two{
+    position: relative;
+    left: 2rem;
+    /* background-color: white; */
+}
+.three{
+    position: relative;
+    right: 12rem;
+    /* color: white; */
+    /* background-color: white; */
+}
+.five{
+    position: relative;
+    right: 10rem;
+}
+
+.fp-newsletter, .fp-news input .fp-btn-one{
+    margin-left: 25rem;
+}
+.fp-newsletter .fp-news{
+    text-align: center;
+    margin-right: -17rem;
+    font-size: larger;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.fp-newsletter .fp-btn-one{
+    margin-left: 20rem;
+    position: relative;
+    top: 3rem;
+    width: 20rem;
+    height: 4rem;
+    /* margin-top: 4px; */
+    border-radius: 4px;
+    font-size: larger;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 1rem;
+}
+.fp-newsletter .fp-btn-one:hover{
+    background-color: gold;
+    transition: 0.4s;
+}
+.fp-newsletter .fp-input{
+    margin-right: -20px;
+    border: none;
+    outline: none;
+    position: relative;
+    left: 12rem;
+    padding: 4px;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    
+}
+.fp-newsletter .fp-input1{
+    border: none;
+    outline: none;
+    position: relative;
+    left: 14rem;
+    padding: 4px;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.fp-address, .fp-add .fp-add-one{
+    position: relative;
+    left: 20rem;
+    top: 2rem;
+    line-height: 1.5rem;
+}
+        
+.fp-newsletter, .fp-input1 .fp-input .fp-news .fp-btn-one{
+    position: relative;
+    top: 2rem;
+    right: 6rem;
+}
+
+.fp-company, .fp-about-com .fp-p{
+    position: relative;
+    left: 4rem;
+    top: 2.5rem;
+}
+.fp-p li{
+    /* border: 2px solid bisque; */
+    line-height: 20px;
+    position: relative;
+    top: 5px;
+}
+.fp-h3{
+    font-size: larger;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* .fp-displa, .fp-input1 .fp-input{
+    display: flex;
+} */
+.fp-newsletter .fp-input1 .fp-input{
+    display: flex;
+}
+
+
+/* .fp-img-all, .one .two .three .four{
+    width: 5px;
+    display: flex;
+    justify-content: space-around;
+} */
