@@ -9,6 +9,7 @@ import { useState } from "react";
 import Schools from "./schools";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
+import Footer from "./Footer";
 
 function HomePage() {
   const [datas, setDatas] = useState(data);
@@ -36,7 +37,7 @@ function HomePage() {
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
-            <img src={logo} className="hp-logo" alt="campusPro logo" />
+            <img src={logo} className="hp-logo" alt="" />
           </div>
           {/* <div>
             <p>CampusPro</p>
@@ -48,8 +49,13 @@ function HomePage() {
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
           />
-
-          {/* <select onChange={change} className="hp-select-button">
+          {/* const campus= data.campus; */}
+          {/*
+            campus.map((item)=>{
+              
+            })
+          
+           <select onChange={change} className="hp-select-button">
               <option value={'lasu'}>LASU</option>
               <option value={'unilag'}>UNILAG</option>
               <option value={'laspotech'}>LASPOTECH</option>
@@ -104,18 +110,19 @@ function HomePage() {
           </Carousel.Item>
         </Carousel>
 
-        <section className="hp-section1">
-          <div className="hp-buy-div">
-            <p className="hp-heading">
-              BUY <br></br> ITEMS
-            </p>
-            <p className="hp-texts">
-              Explore various properties listed for sale around your campus
-            </p>
-            <Link className="link" to="/buyPage1">
-              <button className="hp-button-link">Buy items</button>
-            </Link>
-          </div>
+       
+            <section className="hp-section1">
+              <div className="hp-buy-div">
+                <p className="hp-heading">
+                  BUY <br></br> ITEMS
+                </p>
+                <p className="hp-texts">
+                  Explore various properties listed for sale around your campus
+                </p>
+                <Link className="link" to="/buyPage1">
+                  <button className="hp-button-link">Buy items</button>
+                </Link>
+              </div>
 
           <div className="hp-sell-div">
             <p className="hp-heading">
@@ -129,16 +136,18 @@ function HomePage() {
             </Link>
           </div>
 
-          <div className="hp-rent-div">
-            <p className="hp-heading">RENT APARTMENT </p>
-            <p className="hp-texts">
-              Navigate through pletora of hostels around your campus
-            </p>
-            <Link className="link" to="/01-rentPage">
-              <button className="hp-button-link">Rent an apartment</button>
-            </Link>
-          </div>
-        </section>
+              <div className="hp-rent-div">
+                <p className="hp-heading">RENT APARTMENT </p>
+                <p className="hp-texts">
+                  Navigate through pletora of hostels around your campus
+                </p>
+                <Link className="link" to="/01-rentPage">
+                  <button className="hp-button-link">Rent an apartment</button>
+                </Link>
+              </div>
+            </section>
+     
+       
       </div>
 
       <div className="hp-view-div">

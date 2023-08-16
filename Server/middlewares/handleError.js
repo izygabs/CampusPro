@@ -19,27 +19,38 @@ module.exports.dbSchemaErrors = (err) => {
 };
 
 module.exports.JoiErrorHandler = (error) => {
-  let errors = "";
-
+  // let errors = "";
+  const errors = {
+    firstName: "",
+    lastName: "",
+    Phone: "",
+    altPhoneNumber: "",
+    Email: "",
+    Password: "",
+    confirmPassword: "",
+    userType: "",
+  };
   var errorType = error.details[0].type;
+  var errorLabel = error.details[0].context.label;
+
   switch (errorType) {
     case "string.empty":
-      errors += error.message;
+      errors[errorLabel] = error.message;
       break;
     case "string.pattern.base":
-      errors += error.message;
+      errors[errorLabel] = error.message;
       break;
     case "any.required":
-      errors += error.message;
+      errors[errorLabel] = error.message;
       break;
     case "string.email":
-      errors += error.message;
+      errors[errorLabel] += error.message;
       break;
     case "any.only":
-      errors += error.message;
+      errors[errorLabel] = error.message;
       break;
     default:
-      errors += error.message;
+      errors[errorLabel] = error.message;
       break;
   }
   return errors;
