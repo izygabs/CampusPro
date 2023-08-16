@@ -6,8 +6,9 @@ body{
 .fp-main-header{
     background-color: black;
     height: 23rem;
-    width: 125vw;
+    width: 100%;
 }
+
 .fp-header{
     display: flex;
     margin-left: 4rem;
@@ -152,7 +153,7 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .fp-newsletter .fp-btn-one{
-    margin-left: 20rem;
+    /* margin-left: 20rem; */
     position: relative;
     top: 3rem;
     width: 20rem;
@@ -222,16 +223,16 @@ body{
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-/* .fp-displa, .fp-input1 .fp-input{
+.fp-displa, .fp-input1 .fp-input{
     display: flex;
-} */
+}
 .fp-newsletter .fp-input1 .fp-input{
     display: flex;
 }
 
 
-/* .fp-img-all, .one .two .three .four{
+.fp-img-all, .one .two .three .four{
     width: 5px;
     display: flex;
     justify-content: space-around;
-} */
+}

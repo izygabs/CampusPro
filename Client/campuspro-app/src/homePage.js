@@ -9,6 +9,7 @@ import { useState } from "react";
 import Schools from "./schools";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
+import Footer from "./Footer";
 
 function HomePage() {
   const [datas, setDatas] = useState(data);
@@ -150,7 +151,12 @@ function HomePage() {
         <p className="hp-view-hostels">View hostels around your campus</p>
       </div>
       <div className="hp-school">{house}</div>
+
+      <div>
+        <Footer/>
+      </div>
     </div>
+
   );
 }
 

@@ -55,12 +55,12 @@ const Footer = () => {
                 <p className='fp-add-one'>101, Awolowo Road, Ikoyi, Lagos, Nigeria </p>
             </div>
 
-            <div className='fp-newsletter'>
+            {/* <div className='fp-newsletter'>
                 <h3 className='fp-news'>Newsletter</h3>
                 <input className='fp-input' type='text' placeholder='name'/>
                 <input className='fp-input1' type='email' placeholder='email'/>
                 <button className='fp-btn-one'>REGISTER NOW</button>
-            </div>
+            </div> */}
         </footer>
     </div>
   )
