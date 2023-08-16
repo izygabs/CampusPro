@@ -1,0 +1,19 @@
+body {
+}
+
+.section-1 {
+  color: black;
+  background-color: #ffef99;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+label {
+  margin-left: -10rem;
+}
+
+.main-head {
+  text-align: center;
+  color: black;
+}

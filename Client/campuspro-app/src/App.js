@@ -9,6 +9,7 @@ import BuyPage2 from "./buyPage2"
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import SignUp from "./RenderSignUp";
+import CampusFeatures from "./CampusFeatures";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login-page" element={<Login/>}/>
           <Route path="/merchant-dashboard" element={<Dashboard/>}/>
           <Route path="/sign-up" element={<SignUp/>}/>
+          <Route path="/CampusFeatures" element={<CampusFeatures/>}/>
         </Routes>
       </Router>
     </div>

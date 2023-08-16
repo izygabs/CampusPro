@@ -5,6 +5,7 @@ import Contents from './contents.json';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 const BuyPage = () => {
   const [query, setQuery] = useState('');
   const [dropDownQuery, setdropDownQuery] = useState('');
@@ -50,6 +51,7 @@ const BuyPage = () => {
             <p id='p-i'>{items.description}<br/> {items.price} <br/> <button className='btn'><Link to='/buyPage2' id='link-btn'>View Details</Link></button></p>
           </div>
         ))}
+        <button type="button"><Link to='/CampusFeatures'>Next</Link></button>
       </section>
     </div>
   )
