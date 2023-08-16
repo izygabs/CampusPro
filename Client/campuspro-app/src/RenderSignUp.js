@@ -197,10 +197,12 @@ const Signup = () => {
       } else {
         clearState();
         resetCheckedButton();
-        <Link to="/login">
-          {alert(result.message)}
-          <Login />
-        </Link>;
+        // <Link to="/login">
+
+        alert(result.Message);
+
+        //   <Login />
+        // </Link>;
       }
     } catch (error) {
       console.error("Error sending data:", error);
