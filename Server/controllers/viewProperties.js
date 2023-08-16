@@ -8,12 +8,10 @@ const viewProperties = async (req, res) => {
     if (!allProperties) {
       res.status(StatusCodes.BAD_REQUEST).send("Invalid ID");
     } else {
-      res.status(StatusCodes.OK).json({ "Properties display": allProperties });
+      res.status(StatusCodes.OK).json({ Properties: allProperties });
     }
   } catch (error) {
-    res
-      .status(StatusCodes.BAD_REQUEST)
-      .json(`Error in getting Properties: ${error}`);
+    res.status(StatusCodes.BAD_REQUEST).json({ Error: error });
   }
 };
 module.exports = viewProperties;
