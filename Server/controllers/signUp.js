@@ -7,17 +7,8 @@ const fs = require("fs");
 const nodeMailer = require("../Services/nodemailer");
 
 const signUp = async (req, res) => {
-  // console.log(req.body.data);
-  const value = req.body.data;
-  console.log(value);
-  // if (error) {
-  //   console.log(error);
-  //   // const errors = errorHandler.JoiErrorHandler(error);
-  //   // return res.status(400).json({ Errors: error });
+  const value = req.body;
 
-  //   const errorMessages = error.details.map((detail) => detail.message);
-  //   return res.status(400).json({ Errors: errorMessages });
-  // } else {
   try {
     const userExist = await user.findOne({ email: value.Email });
     if (userExist) {

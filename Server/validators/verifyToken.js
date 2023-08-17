@@ -11,7 +11,7 @@ const verifyToken = async (req, res, next) => {
         req.user = null;
         res
           .status(401)
-          .send({ message: "Access denied. You must login first" });
+          .json({ Message: "Access denied. You must login first" });
       } else {
         const userID = await user.findById(decoded._id);
         req.user = userID._id;
@@ -21,7 +21,7 @@ const verifyToken = async (req, res, next) => {
     });
   } else {
     req.user = null;
-    res.status(401).json({ message: "Access denied. You must login first" });
+    res.status(401).json({ Message: "Access denied. You must login first" });
   }
 };
 module.exports = verifyToken;
