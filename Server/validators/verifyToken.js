@@ -9,7 +9,9 @@ const verifyToken = async (req, res, next) => {
     jwt.verify(token, process.env.SECRET_KEY, async (error, decoded) => {
       if (error || !decoded) {
         req.user = null;
-        res.status(403).send("Access denied. You must login first");
+        res
+          .status(401)
+          .json({ Message: "Access denied. You must login first" });
       } else {
         const userID = await user.findById(decoded._id);
         req.user = userID._id;
@@ -19,7 +21,7 @@ const verifyToken = async (req, res, next) => {
     });
   } else {
     req.user = null;
-    res.status(403).send("Access denied. You must login first");
+    res.status(401).json({ Message: "Access denied. You must login first" });
   }
 };
 module.exports = verifyToken;

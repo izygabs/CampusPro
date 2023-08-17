@@ -85,16 +85,11 @@ const Dashboard = (prop) => {
         // data-bs-theme="dark"
       >
         <Link to="/">
-          {/* <a
-            class="navbar-brand col-md-3 col-lg-2 me-0  fs-6 dashboard-logo"
-            href="/"
-          > */}
           <img
             src={require("../images/campuspro(6).png")}
             className="dashboard-logo"
             alt=""
           />
-          {/* </a> */}
         </Link>
         <div className="dashboard-search"></div>
         <div class="username">
@@ -183,7 +178,7 @@ const Dashboard = (prop) => {
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
-                      href="/"
+                      href=""
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
@@ -194,7 +189,7 @@ const Dashboard = (prop) => {
                   <li class="nav-item">
                     <a
                       class="nav-link d-flex  align-items-center gap-2"
-                      href="/"
+                      href=""
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
@@ -203,10 +198,7 @@ const Dashboard = (prop) => {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link d-flex align-items-center gap-2"
-                      href="/"
-                    >
+                    <a class="nav-link d-flex align-items-center gap-2" href="">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#cart" />
                       </svg>
@@ -274,7 +266,7 @@ const Dashboard = (prop) => {
                   <button type="button" class="btn btn-sm btn-outline-dark">
                     Create Property
                   </button>
-                  {/* <Link to="/add-items"> */}
+
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
@@ -282,7 +274,6 @@ const Dashboard = (prop) => {
                   >
                     Create Items
                   </button>
-                  {/* </Link> */}
                 </div>
               </div>
             </div>
