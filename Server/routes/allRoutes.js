@@ -66,11 +66,11 @@ route.put(
   updateItem
 );
 
-route.get("/api/allProperties", verifyToken, viewProperties);
+route.get("/api/allProperties",  viewProperties);
 
 route.get("/api/allItems", verifyToken, viewItems);
 
-route.get("/api/property/:id", verifyToken, viewPropertyById);
+route.get("/api/property/:id", viewPropertyById);
 
 route.get("/api/item/:id", verifyToken, viewItemById);
 

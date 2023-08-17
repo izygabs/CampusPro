@@ -4,34 +4,70 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import house1 from "./images/house-interior.webp";
 import house2 from "./images/hostel2.webp";
 import hostel3 from "./images/hostel3.webp";
-import data from "./data";
-import { useState } from "react";
-import Schools from "./schools";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
+import location from "./images/location-icon.png";
 
 function HomePage() {
-  const [datas, setDatas] = useState(data);
-  // const [camp , setCamp]=useState('')
+  const [datas, setDatas] = useState([]);
+  const [ ids, setIds]= useState([])
 
+// // function t fetch the particular information of clicked id
+
+const fetchProperty = async (abc)=>{
+  
+  const urls = `/api/property/${abc}`
+  const inf = await fetch(urls)
+  const infData = await inf.json()
+  console.log(infData)
+  setIds(infData)
+}
+
+
+
+
+//using the hook to display the fetch data on load
+  useEffect(()=>{
+    
+    fetcher()
+    
+  },[] )
+  
+  //function to fetch properties from the database
+  const url= "/api/allProperties"
+  const fetcher = async()=> {
+    try {
+      const info = await fetch(url)
+      const data2 = await info.json()
+      const result = data2.Properties
+      setDatas(result)
+      console.log(result)
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  
+//function to filter properties according to the user search
   function change(e) {
     // e.preventDefault()
     const pal = e.target.value;
     console.log(pal);
-
+    
     if (pal) {
       const filt = datas.filter((place) =>
-        place.campus.toLowerCase().startsWith(pal.toLowerCase())
+        place.campusName.toLowerCase().startsWith(pal.toLowerCase())
       );
       setDatas(filt);
     } else {
-      setDatas(data);
+      setDatas(datas);
     }
   }
-  const house = datas.map((aparte) => {
-    return <Schools key={aparte.id} {...aparte} />;
-  });
+
+
   return (
     <div className="homepage">
       <div className="hp-header">
@@ -150,7 +186,32 @@ function HomePage() {
       <div className="hp-view-div">
         <p className="hp-view-hostels">View hostels around your campus</p>
       </div>
-      <div className="hp-school">{house}</div>
+      
+
+      
+      <div className="hp-school">
+        {datas.map((results)=>{
+          return(
+            <div key={results._id} className="hp-school-div">
+              <div className="hp-img-div">
+                  <img src={`.../Server/${results.hostelImages[1]}`} />
+                  <div>
+                    <img className="hp-locate" src={location} />
+                    <p>{results.campusName.toUpperCase()}</p>
+                  </div>
+              </div>
+              <div className="hp-props-text">
+                <p>{results.houseProperties[1]}</p>
+                <p>#{Number(results.price).toLocaleString()} </p>
+      
+                <Link className="sp2-linkk" to="/02-rentpage">
+                  <button onClick={()=>{fetchProperty(results._id)} } className="home-school-button">View this property</button>
+                </Link>
+              </div>
+          </div>
+          )
+        })}
+      </div>
 
       <div>
         <Footer/>

@@ -1,11 +1,9 @@
 import logo from "./images/campuspro(6).png";
 import house from "./images/house1.jpg";
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 
-function RentPage2() {
+function RentPage2 (props) {
   const [info, setInfo] = useState("");
-
-  const changeInfo = () => setInfo();
 
   return (
     <div className="rentpage-main">
@@ -33,13 +31,14 @@ function RentPage2() {
         </div>
         <div className="sp2-divs2">
           <p>Description:</p>
-          <p>Campus:</p>
-          <p>Amount/Annum :</p>
+          <p>{props.campusName}</p>
+          <p>Amount/Annum : {props.price}</p>
           <p>Electricity:</p>
           <p>Furnised:</p>
           <p>Cer Park:</p>
           <p>Agent Name:</p>
           <p>Agent address:</p>
+          <p>Campus Address: {props.location} jjj</p>
         </div>
       </section>
 

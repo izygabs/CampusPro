@@ -4,11 +4,11 @@ const { hostelProps } = require("../models/hostelSchema");
 const viewProperties = async (req, res) => {
   const agentID = req.user;
   try {
-    const allProperties = await hostelProps.find({ agentID });
+    const allProperties = await hostelProps.find();
     if (!allProperties) {
       res.status(StatusCodes.BAD_REQUEST).send("Invalid ID");
     } else {
-      res.status(StatusCodes.OK).json({ "Properties display": allProperties });
+      res.status(StatusCodes.OK).json({ "Properties": allProperties });
     }
   } catch (error) {
     res
