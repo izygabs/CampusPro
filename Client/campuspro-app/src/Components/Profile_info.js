@@ -79,10 +79,10 @@ function ProfileInfo() {
             </button>
           </div>
           {!clicked ? (
-            <p>{"Isaiah"}</p>
+            <p className="pi-para">{"Isaiah"}</p>
           ) : (
             <div>
-              <input type="text" name="name" />
+              <input type="text" name="name" placeholder="Isaiah" />
               <br />
               <br />
               <button className="pi-btn">Confirm</button>
@@ -97,10 +97,10 @@ function ProfileInfo() {
             </button>
           </div>
           {!clicked2 ? (
-            <p>{"Gabriel"}</p>
+            <p className="pi-para">{"Gabriel"}</p>
           ) : (
             <div>
-              <input type="text" name="name" />
+              <input type="text" name="name" placeholder="Gabriel" />
               <br />
               <br />
               <button className="pi-btn">Confirm</button>
@@ -115,10 +115,14 @@ function ProfileInfo() {
             </button>
           </div>
           {!clicked3 ? (
-            <p>{"+2348103871744"}</p>
+            <div>
+              <p className="pi-para">{"+2348103871744"}</p>
+              <p className="pi-para">{"izygabs@gmail.com"}</p>
+            </div>
           ) : (
             <div>
-              <input type="text" name="name" />
+              <input type="number" name="name" placeholder="+2348103871744" />
+              <input type="email" name="name" placeholder="izygabs@gmail.com" />
               <br />
               <br />
               <button className="pi-btn">Confirm</button>

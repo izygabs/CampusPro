@@ -23,14 +23,20 @@ const viewItemById = require("../controllers/viewItemById");
 const deleteProperty = require("../controllers/deleteProperty");
 
 const deleteItem = require("../controllers/deleteItem");
+
 const {
   upload,
   uploadHostels,
   uploadItems,
 } = require("../validators/uploadFile");
+
 const verifyToken = require("../validators/verifyToken");
+
 const logOut = require("../controllers/logOut");
+
 const changePassword = require("../controllers/changePassword");
+
+const updateUser = require("../controllers/updateUser");
 
 const route = express.Router();
 
@@ -45,12 +51,7 @@ route.post(
   uploadProperty
 );
 
-route.post(
-  "/api/uploadItems",
-  verifyToken,
-  uploadItems.array("itemImages", 10),
-  uploadItem
-);
+route.post("/api/uploadItems", uploadItems.array("itemImages", 10), uploadItem);
 
 route.put(
   "/api/property/:id",
@@ -81,5 +82,7 @@ route.delete("/api/item/:id", verifyToken, deleteItem);
 route.get("/api/logout", verifyToken, logOut);
 
 route.put("/api/changePassword/:id", verifyToken, changePassword);
+
+route.put("/api/updateUser/:id", upload.single("profilePic"), updateUser);
 
 module.exports = route;

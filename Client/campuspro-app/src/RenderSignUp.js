@@ -87,25 +87,7 @@ const Signup = () => {
   //   if (password !== PASSWORD) {
   //   }
   // };
-  const validateForm = (event) => {
-    event.preventDefault();
-    const result = Schemas2.validate(inputValues, { abortEarly: false });
-    console.log(result);
-    const { error } = result;
-    if (!error) {
-      return null;
-    } else {
-      const errorData = {};
-      for (let item of error.details) {
-        const name = item.path[0];
-        const message = item.message;
-        errorData[name] = message;
-      }
-      console.log(error);
-      setErrors(errorData);
-      return errorData;
-    }
-  };
+  
   const validateProperty = (event) => {
     const { name, value } = event.target;
     const obj = { [name]: value };
