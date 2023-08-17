@@ -67,11 +67,36 @@ const Dashboard = (prop) => {
         class="navbar sticky-top bg-dark flex-md-nowrap p-3 shadow"
         data-bs-theme="dark"
       >
-        <a class="navbar-brand col-md-3 col-lg-2 me-0  fs-6 dashboard-logo" href="/">
-          <img  src={require("../images/campuspro(6).png")}
+        <Link to="/">
+          <img
+            src={require("../images/campuspro(6).png")}
+            className="dashboard-logo"
+            alt=""
           />
-        </a>
-
+        </Link>
+        <div className="dashboard-search"></div>
+        <div class="username">
+          <DropdownButton
+            id="dropdown-basic-button"
+            title={"Gabriel Isaiah"}
+            className="userName-dropdown"
+            variant="secondary"
+          >
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() => handleButtonClicked(<ProfileInfo />)}
+            >
+              My Profile
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-2"
+              onClick={() => handleButtonClicked(<Changepassword />)}
+            >
+              Login & Security
+            </Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Sign Out</Dropdown.Item>
+          </DropdownButton>
+        </div>
         <ul class="navbar-nav flex-row d-md-none">
           <li class="nav-item text-nowrap">
             <button
@@ -130,7 +155,7 @@ const Dashboard = (prop) => {
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
-                      href="/"
+                      href=""
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
@@ -141,7 +166,7 @@ const Dashboard = (prop) => {
                   <li class="nav-item">
                     <a
                       class="nav-link d-flex  align-items-center gap-2"
-                      href="/"
+                      href=""
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
@@ -150,10 +175,7 @@ const Dashboard = (prop) => {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link d-flex align-items-center gap-2"
-                      href="/"
-                    >
+                    <a class="nav-link d-flex align-items-center gap-2" href="">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#cart" />
                       </svg>

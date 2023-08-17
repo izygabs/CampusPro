@@ -61,14 +61,16 @@ app.use((err, req, res, next) => {
     // A Multer error occurred during file upload
     console.log(err.code);
     if (err.code == "LIMIT_UNEXPECTED_FILE") {
-      res.status(400).send("Maximum number of pictures you upload is 10");
+      res
+        .status(406)
+        .json({ Message: "Maximum number of pictures you upload is 10" });
     } else {
       console.log(err.message);
-      res.status(400).send("Multer Error: " + err.message);
+      res.status(406).json({ Message: err.message });
     }
   } else {
     // For other errors, or if the error is not from Multer
-    res.status(500).send("Something went wrong: " + err.message);
+    res.status(500).json({ Message: err.message });
   }
 });
 

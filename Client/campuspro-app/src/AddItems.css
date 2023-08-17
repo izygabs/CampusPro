@@ -32,9 +32,10 @@
 }
 .add-item-btn {
   text-align: center;
+  margin-top: 0;
 }
 .add-item-btn button {
-  margin-top: 12px;
+  /* margin-top: 12px; */
   border: 0;
   border-radius: 20px;
   background-color: gold !important;
@@ -53,18 +54,23 @@
   color: #fff !important ;
   background-color: black !important;
 }
-.addItems-error-message {
-  font-size: 13px;
+.addItem-error-message {
+  font-size: 12px;
   color: red;
 }
 .add-item-hysteric {
   color: red;
   margin-left: 5px;
+  font-size: 12px;
 }
 #requiredInfo {
   color: rgb(138, 135, 135);
   font-size: 12px;
 }
 .add-items-images {
-  margin-top: 3rem;
+  margin: 1rem auto 0.5rem;
+}
+.addItem-error-message {
+  color: red;
+  font-size: 12px;
 }
