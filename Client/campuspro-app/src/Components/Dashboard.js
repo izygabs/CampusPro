@@ -288,7 +288,7 @@ const Dashboard = () => {
                 />
               )}
             </div>
-            <h1>Welcome back, {"Isaiah"}</h1>
+            {/* <h1>Welcome back, {"Isaiah"}</h1>
             <div className="db-content">
               <h6>WHAT'S NEXT</h6>
               <h3>Let's continue with creating your property and items!</h3>
@@ -300,7 +300,7 @@ const Dashboard = () => {
             </div>
             <div className="db-confirm">
               <p>Pending Confirmation</p>
-            </div>
+            </div> */}
           </main>
         </div>
       </div>
