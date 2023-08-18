@@ -30,14 +30,14 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ data: inputValues }),
+        body: JSON.stringify(inputValues),
       });
       const result = await response.json();
 
       switch (response.status) {
         case 200:
           alert(result.Message);
-          navigator("/Dashboard");
+          navigator("/Dashboard", { state: inputValues.Email });
           break;
         case 401:
           alert(result.Message);

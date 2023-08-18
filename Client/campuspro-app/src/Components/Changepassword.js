@@ -130,7 +130,7 @@ function Changepassword() {
         </div>
         <div className="cp-account">
           <h4>Account</h4>
-          <p>{"EMAIL"}</p>
+          <p>{prop.Email}</p>
         </div>
         <div>
           <div className="cp-password">
