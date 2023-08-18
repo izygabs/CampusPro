@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Changepassword.css";
 import Joi from "joi";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Changepassword() {
   const navigate = useNavigate();
@@ -13,6 +14,12 @@ function Changepassword() {
   });
 
   const [error, setErrors] = useState({});
+
+  const [user, setUser] = useState({ email: "" });
+
+  // useEffect(() => {
+  //   axios.get();
+  // });
 
   const Schemas = {
     currentPassword: Joi.string().required().min(8),
