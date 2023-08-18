@@ -34,7 +34,7 @@ const changePassword = require("../controllers/changePassword");
 
 const route = express.Router();
 
-route.post("/api/signUp", upload.single("ProfilePic"), signUp);
+route.post("/api/signUp", signUp);
 
 route.post("/api/login", login);
 
