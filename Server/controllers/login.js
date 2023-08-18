@@ -7,8 +7,8 @@ const validator = require("../validators/joiValidation");
 const errorHandler = require("../middlewares/handleError");
 
 const login = async (req, res) => {
-  const { Email, Password } = req.body.data;
-  console.log(Email, Password);
+  const { Email, Password } = req.body;
+  // console.log(Email, Password);
 
   try {
     const isUser = await user.findOne({ email: Email });

@@ -93,7 +93,7 @@ const Signup = () => {
 
   return (
     <div className="sp-form-one">
-      <form className="sp-form" onSubmit={formik.handleSubmit} action="/login">
+      <form className="sp-form" onSubmit={formik.handleSubmit}>
         <h1>Register</h1>
         <div className="header">
           <label className="sp-label" for="firstName">

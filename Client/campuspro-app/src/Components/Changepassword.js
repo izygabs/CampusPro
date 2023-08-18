@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Changepassword.css";
 
-function Changepassword() {
+function Changepassword(prop) {
   // const [password, setPwd] = useState("");
   // const [newPassword, setNewPwd] = useState("");
   // const [confirmPassword, setConfirmPwd] = useState("");
@@ -27,7 +27,7 @@ function Changepassword() {
         </div>
         <div className="cp-account">
           <h4>Account</h4>
-          <p>{"EMAIL"}</p>
+          <p>{prop.Email}</p>
         </div>
         <div>
           <div className="cp-password">
@@ -49,7 +49,7 @@ function Changepassword() {
                     // value={password}
                     placeholder="Enter current password"
                   />
-                </label>{" "}
+                </label>
                 <br></br>
                 <label>
                   New password: <br></br>
