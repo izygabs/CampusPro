@@ -10,12 +10,13 @@ import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
 import { useLocation } from "react-router-dom";
 
-const Dashboard = (prop) => {
+const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
 
   const location = useLocation();
-  const userEmail = location.state;
+  const { userID, email, userType, userName } = location.state;
+
   const handleButtonClicked = (component) => {
     setSelectedComponent(component);
     setShowOverlay(true);
@@ -98,15 +99,21 @@ const Dashboard = (prop) => {
         <div class="username">
           <DropdownButton
             id="dropdown-basic-button"
-            title={userEmail}
+            title={userName}
             className="userName-dropdown"
             variant="secondary"
           >
-            <Dropdown.Item onClick={() => handleButtonClicked(<ProfileInfo />)}>
+            <Dropdown.Item
+              onClick={() =>
+                handleButtonClicked(<ProfileInfo userID={userID} />)
+              }
+            >
               My Profile
             </Dropdown.Item>
             <Dropdown.Item
-              onClick={() => handleButtonClicked(<Changepassword />)}
+              onClick={() =>
+                handleButtonClicked(<Changepassword Email={email} />)
+              }
             >
               Login & Security
             </Dropdown.Item>
@@ -220,13 +227,17 @@ const Dashboard = (prop) => {
                         variant="Warning"
                       >
                         <Dropdown.Item
-                          onClick={() => handleButtonClicked(<ProfileInfo />)}
+                          onClick={() =>
+                            handleButtonClicked(<ProfileInfo userID={userID} />)
+                          }
                         >
                           My Profile
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() =>
-                            handleButtonClicked(<Changepassword />)
+                            handleButtonClicked(
+                              <Changepassword Email={email} />
+                            )
                           }
                         >
                           Login & Security

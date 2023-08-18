@@ -8,7 +8,7 @@ const updateItem = async (req, res) => {
   const itemPics = req.files;
   const merchantId = req.user;
   const itemId = req.params.id;
-  const { error, value } = validator.updateItemSchema(req.body);
+  const value = req.body;
   // if (error) {
   //   itemPics.forEach((file) => {
   //     fs.unlinkSync(file.path);
@@ -33,13 +33,13 @@ const updateItem = async (req, res) => {
       },
       { new: true }
     );
-    res.status(StatusCodes.CREATED).json({ "Item update successfull": item });
+    res.status(201).json({ Message: item });
     // const merchant = await items.findByIdAndUpdate(merchantId,{$set: value});
   } catch (error) {
     itemPics.forEach((file) => {
       fs.unlinkSync(file.path);
     });
-    res.status(StatusCodes.EXPECTATION_FAILED).json({ error });
+    res.status(417).json({ Error: error });
   }
 };
 // res.status(StatusCodes.CREATED).json("Item updated");

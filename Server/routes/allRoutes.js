@@ -23,6 +23,7 @@ const viewItemById = require("../controllers/viewItemById");
 const deleteProperty = require("../controllers/deleteProperty");
 
 const deleteItem = require("../controllers/deleteItem");
+const userProfile = require("../controllers/userProfile");
 
 const {
   upload,
@@ -74,6 +75,8 @@ route.get("/api/allItems", verifyToken, viewItems);
 route.get("/api/property/:id", verifyToken, viewPropertyById);
 
 route.get("/api/item/:id", verifyToken, viewItemById);
+
+route.get("/api/user/:id", verifyToken, userProfile);
 
 route.delete("/api/property/:id", verifyToken, deleteProperty);
 
