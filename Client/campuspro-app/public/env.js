@@ -83,5 +83,6 @@ window.env = {
   "VSCODE_INJECTION": "1",
   "VSCODE_NONCE": "174f950e-2407-46c4-a084-13fd73d5be41",
   "windir": "C:\\WINDOWS",
-  "ZES_ENABLE_SYSMAN": "1"
+  "ZES_ENABLE_SYSMAN": "1",
+  "SKIP_PREFLIGHT_CHECK": true
 };

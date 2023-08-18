@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./homePage.js";
 import RentPage1 from "./rentPage1";
 import RentPage2 from "./rentPage2";
@@ -24,7 +23,7 @@ function App() {
           <Route path="/01-rentpage" element={<RentPage1 />} />
           <Route path="/02-rentpage" element={<RentPage2 />} />
           <Route path="/buyPage1" element={<BuyPage />} />
-          <Route path="/viewItems" element={<BuyPage2 />} />
+          <Route path="/Contents/:id" element={<BuyPage2 />} />
           <Route path="/Profile_info" element={<ProfileInfo />} />
           <Route path="/Changepassword" element={<Changepassword />} />
           <Route path="/Dashboard" element={<Dashboard />} />
