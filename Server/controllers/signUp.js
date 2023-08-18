@@ -7,9 +7,13 @@ const fs = require("fs");
 const nodeMailer = require("../Services/nodemailer");
 
 const signUp = async (req, res) => {
+<<<<<<< HEAD
   // console.log(req.body.data);
   const value = req.body.data;
   console.log(value);
+=======
+  const value = req.body;
+>>>>>>> 48bdbfec88992606cf06d267b0333ae7e1fecbe1
 
   try {
     const userExist = await user.findOne({ email: value.Email });

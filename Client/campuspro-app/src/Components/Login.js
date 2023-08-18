@@ -4,6 +4,7 @@
 // // import { GoogleOAuthProvider } from "@react-oauth/google";
 // // import Google from "./Google";
 
+<<<<<<< HEAD
 // import { Link } from "react-router-dom";
 // const Login = () => {
 //   // const [email, setEmail] =useState("");
@@ -53,6 +54,115 @@
 //               Login
 //             </button>
 //           </Link>
+=======
+import { Link, useNavigate } from "react-router-dom";
+
+const Login = () => {
+  const navigator = useNavigate();
+  // const [email, setEmail] =useState("");
+  const [inputValues, setInputValues] = useState({
+    Email: "",
+    Password: "",
+  });
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    let userData = { ...inputValues };
+    userData[name] = value;
+    setInputValues(userData);
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data: inputValues }),
+      });
+      const result = await response.json();
+
+      switch (response.status) {
+        case 200:
+          alert(result.Message);
+          navigator("/Dashboard");
+          break;
+        case 401:
+          alert(result.Message);
+          break;
+        case 417:
+          alert(result.Message);
+          break;
+        case 403:
+          alert(result.Message);
+          break;
+        default:
+          alert(result.Message);
+          break;
+      }
+    } catch (error) {
+      console.log("Error in login ", error);
+    }
+  };
+
+  return (
+    <div class="d-flex align-items-center  py-5 bg-body-tertiary signinPage">
+      <main class="form-signin w-100 m-auto">
+        <form
+          to="/Dashboard"
+          onSubmit={handleLogin}
+          method="Post"
+          className="login-form"
+        >
+          <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
+
+          <div class="form-floating py-3">
+            <input
+              name="Email"
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+              onChange={handleInputChange}
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating py-1">
+            <input
+              name="Password"
+              type="password"
+              class="form-control "
+              id="floatingPassword"
+              placeholder="Password"
+              onChange={handleInputChange}
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+
+          <div class="form-check text-start my-3 pb-2">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="remember-me"
+              id="flexCheckDefault"
+            />
+            <label class="form-check-label text-white " for="flexCheckDefault">
+              Remember me
+            </label>
+          </div>
+          {/* <Link to="/Dashboard"> */}
+          <button
+            class="btn btn-warning w-100 py-2 createBtn "
+            type="submit"
+            onClick={handleLogin}
+          >
+            Login
+          </button>
+          {/* </Link> */}
+>>>>>>> 48bdbfec88992606cf06d267b0333ae7e1fecbe1
 
 //           <p class="mt-4 mb-3 text-center text-body-secondary">
 //             <Link to="/Signup" className="create-account-link">
