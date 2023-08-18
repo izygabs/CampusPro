@@ -63,16 +63,40 @@
 //         </symbol>
 //       </svg>
 
-<<<<<<< HEAD
 //       <div
 //         class="navbar sticky-top bg-dark flex-md-nowrap p-3 shadow"
 //         data-bs-theme="dark"
 //       >
-//         <a class="navbar-brand col-md-3 col-lg-2 me-0  fs-6 dashboard-logo" href="/">
-//           <img  src={require("../images/campuspro(6).png")}
+//         <Link to="/">
+//           <img
+//             src={require("../images/campuspro(6).png")}
+//             className="dashboard-logo"
+//             alt=""
 //           />
-//         </a>
-
+//         </Link>
+//         <div className="dashboard-search"></div>
+//         <div class="username">
+//           <DropdownButton
+//             id="dropdown-basic-button"
+//             title={"Gabriel Isaiah"}
+//             className="userName-dropdown"
+//             variant="secondary"
+//           >
+//             <Dropdown.Item
+//               href="#/action-1"
+//               onClick={() => handleButtonClicked(<ProfileInfo />)}
+//             >
+//               My Profile
+//             </Dropdown.Item>
+//             <Dropdown.Item
+//               href="#/action-2"
+//               onClick={() => handleButtonClicked(<Changepassword />)}
+//             >
+//               Login & Security
+//             </Dropdown.Item>
+//             <Dropdown.Item href="#/action-2">Sign Out</Dropdown.Item>
+//           </DropdownButton>
+//         </div>
 //         <ul class="navbar-nav flex-row d-md-none">
 //           <li class="nav-item text-nowrap">
 //             <button
@@ -105,77 +129,9 @@
 //             </button>
 //           </li>
 //         </ul>
-=======
-      <div
-        class="navbar sticky-top bg-dark flex-md-nowrap p-3 shadow"
-        data-bs-theme="dark"
-      >
-        <Link to="/">
-          <img
-            src={require("../images/campuspro(6).png")}
-            className="dashboard-logo"
-            alt=""
-          />
-        </Link>
-        <div className="dashboard-search"></div>
-        <div class="username">
-          <DropdownButton
-            id="dropdown-basic-button"
-            title={"Gabriel Isaiah"}
-            className="userName-dropdown"
-            variant="secondary"
-          >
-            <Dropdown.Item
-              href="#/action-1"
-              onClick={() => handleButtonClicked(<ProfileInfo />)}
-            >
-              My Profile
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#/action-2"
-              onClick={() => handleButtonClicked(<Changepassword />)}
-            >
-              Login & Security
-            </Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Sign Out</Dropdown.Item>
-          </DropdownButton>
-        </div>
-        <ul class="navbar-nav flex-row d-md-none">
-          <li class="nav-item text-nowrap">
-            <button
-              class="nav-link px-3 text-white"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSearch"
-              aria-controls="navbarSearch"
-              aria-expanded="false"
-              aria-label="Toggle search"
-            >
-              <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                <use xlinkHref="#search" />
-              </svg>
-            </button>
-          </li>
-          <li class="nav-item text-nowrap">
-            <button
-              class="nav-link px-3 text-white"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#sidebarMenu"
-              aria-controls="sidebarMenu"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                <use xlinkHref="#list" />
-              </svg>
-            </button>
-          </li>
-        </ul>
->>>>>>> 48bdbfec88992606cf06d267b0333ae7e1fecbe1
 
-//         <div id="navbarSearch" class="navbar-search w-100 collapse">
-//           <input
+// //         <div id="navbarSearch" class="navbar-search w-100 collapse">
+// //           <input
 //             class="form-control w-100 rounded-0 border-0"
 //             type="text"
 //             placeholder="Search"
@@ -184,7 +140,6 @@
 //         </div>
 //       </div>
 
-<<<<<<< HEAD
 //       <div class="container-fluid">
 //         <div class="row">
 //           <div class="sidebar border border-right col-md-3 col-lg-2 p-0  ">
@@ -257,77 +212,6 @@
 //                   class="my-4 "
 //                   style={{ color: "black", width: "13.1rem" }}
 //                 /> */}
-=======
-      <div class="container-fluid">
-        <div class="row">
-          <div class="sidebar border border-right col-md-3 col-lg-2 p-0  ">
-            <div
-              class="offcanvas-md offcanvas-end bg-warning"
-              tabindex="-1"
-              id="sidebarMenu"
-              aria-labelledby="sidebarMenuLabel"
-            >
-              <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-                <ul class="nav flex-column">
-                  <li class="nav-item ">
-                    <a
-                      class="nav-link d-flex  align-items-center gap-2 active "
-                      aria-current="page"
-                      href=""
-                    >
-                      <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                        <use xlinkHref="#house-fill" />
-                      </svg>
-                      Dashboard
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link d-flex  align-items-center gap-2"
-                      href=""
-                    >
-                      <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                        <use xlinkHref="#file-earmark" />
-                      </svg>
-                      Properties
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="">
-                      <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                        <use xlinkHref="#cart" />
-                      </svg>
-                      Items
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link d-flex align-items-center gap-2"
-                      href="/"
-                    >
-                      <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                        <use xlinkHref="#people" />
-                      </svg>
-                      View Properties
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link d-flex align-items-center gap-2"
-                      href="/"
-                    >
-                      <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                        <use xlinkHref="#graph-up" />
-                      </svg>
-                      View Items
-                    </a>
-                  </li>
-                </ul>
-                {/* <hr
-                  class="my-4 "
-                  style={{ color: "black", width: "13.1rem" }}
-                /> */}
->>>>>>> 48bdbfec88992606cf06d267b0333ae7e1fecbe1
 
 //                 <ul class="nav flex-column mb-auto">
 //                   <li class="nav-item">
@@ -410,4 +294,4 @@
 //     </div>
 //   );
 // };
-// export default Dashboard;
+ export default Dashboard;
