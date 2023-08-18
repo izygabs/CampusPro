@@ -154,6 +154,7 @@ function HomePage() {
         <p className="hp-view-hostels">View hostels around your campus</p>
       </div>
       <div className="hp-school">{house}</div>
+        <Footer />
     </div>
   );
 }

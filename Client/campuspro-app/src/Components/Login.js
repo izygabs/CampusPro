@@ -12,6 +12,14 @@ const Login = () => {
     Password: "",
   });
 
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setInputValues((preValues) => ({
+      ...preValues,
+      [name]: value,
+    }));
+  };
   return (
     <div class="d-flex align-items-center  py-5 bg-body-tertiary signinPage">
       <main class="form-signin w-100 m-auto">
