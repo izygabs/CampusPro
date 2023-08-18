@@ -21,7 +21,7 @@ function App() {
           <Route path="/01-rentpage" element={<RentPage1/>}/>
           <Route path="/02-rentpage" element={<RentPage2/>}/>
           <Route path="/buyPage1" element={<BuyPage/>}/>
-          <Route path="/buyPage2" element={<BuyPage2/>}/>
+          <Route path="/Contents/:id" element={<BuyPage2/>}/>
           <Route path="/login-page" element={<Login/>}/>
           <Route path="/merchant-dashboard" element={<Dashboard/>}/>
           <Route path="/sign-up" element={<SignUp/>}/>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './images/campuspro(6).png';
 import './buyPage1.css';
 import Contents from './contents.json';
@@ -11,13 +11,29 @@ const BuyPage = () => {
   const [dropDownQuery, setdropDownQuery] = useState('');
 
   const [update, setUpdate] = useState('');
+  const [holddata, setHoldData] = useState([]);
   
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
+  const fetchItems = async () => {
+    try {
+      const res = await fetch('/api/allItems')
+      console.log(res);
+      const data = await res.json()
+      setHoldData(data)
+      console.log(holddata)
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   const handleChange = (e) => {
     setdropDownQuery(e.target.value)
   } 
 
+  
 
   
   return (
@@ -31,7 +47,7 @@ const BuyPage = () => {
         <p id='paragraph'>Items Available for buy</p>
         </div>
       </navbar>
-
+                                    
       <select value={update} onChange={handleChange} className='select'>
         <option value=' '>Select Item to Display</option><hr/>
         <option value='Clothings'>Clothings</option>
@@ -48,10 +64,12 @@ const BuyPage = () => {
         {Contents.filter((items) => items.description.toLowerCase().includes( query || dropDownQuery )).map((items) => (
           <div key={items.id} className='items'>
             <img src={items.image} alt="item" className='images'/>
+            <Link to={`/Contents/${items.id}`}>
             <p id='p-i'>{items.description}<br/> {items.price} <br/> <button className='btn'><Link to='/buyPage2' id='link-btn'>View Details</Link></button></p>
+            </Link>
           </div>
         ))}
-        <button type="button"><Link to='/CampusFeatures'>Next</Link></button>
+        {/* <button type="button"><Link to='/CampusFeatures'>Next</Link></button> */}
       </section>
     </div>
   )

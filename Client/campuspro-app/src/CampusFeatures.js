@@ -8,7 +8,7 @@ const CampusFeatures = () => {
         <h1 className="main-head">
           Campus Features
         </h1>
-        <select name="" id="" className="select">
+        <select name="" id="" className="c-select">
           <option value="">Select Campus Location</option>
         </select><br/>
         <input type="checkbox" name="" id="" />

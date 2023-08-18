@@ -68,7 +68,7 @@ route.put(
 
 route.get("/api/allProperties", verifyToken, viewProperties);
 
-route.get("/api/allItems", verifyToken, viewItems);
+route.get("/api/allItems", viewItems);
 
 route.get("/api/property/:id", verifyToken, viewPropertyById);
 

@@ -3,7 +3,6 @@ body {
 
 .section-1 {
   color: black;
-  background-color: #ffef99;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -14,6 +13,19 @@ label {
 }
 
 .main-head {
+  border: 1px black solid;
+  /* margin-top: 5rem; */
   text-align: center;
   color: black;
+}
+
+.c-select {
+  text-align: center;
+  margin-left: 27rem;
+  margin-top: -2rem;
+  height: 5vh;
+  box-shadow: 1px 1px 5px black;
+  transition: all 2s ease-in-out;
+  font-weight: bold;
+  outline: none;
 }
