@@ -13,29 +13,34 @@ function RentPage1() {
   const [click, setClick] = useState([]);
 
   
+  const arrs = []
 // // function to fetch the particular information of clicked id
 const fetchProperty2 = async (abc)=>{
-  const arrs = []
   const urls = `/api/property/${abc}`
   const inf = await fetch(urls)
   const infData = await inf.json()
   // console.log(infData)
   arrs.push(infData)
   // console.log(arrs);
-  // setClick(arrs)
-  // console.log(click)
-  
-   const palm = arrs.map((pass)=>{
+  // setClick(arrs);
+  // console.log(click);
+  arrs.map((pass)=>{
     console.log(pass)
     return(
       <RentPage2 key={pass._id} {...pass}/>
-    ) ;   
-  });
-}
+    );})
+};
+
+// const dis = ()=>{
+  
+// }
+
+
   //using the hook to display the fetch data on load
 
   useEffect(()=>{
     fetcher2()
+
   },[] )
   
   //function to fetch properties from the database
@@ -99,9 +104,6 @@ const fetchProperty2 = async (abc)=>{
               <img src={logo} className="hp-logo" />
             </Link>
           </div>
-          <div>
-            <p>CampusPro</p>
-          </div>
         </div>
         <div>
           <input
@@ -141,7 +143,7 @@ const fetchProperty2 = async (abc)=>{
                 <p>{info.houseProperties[0]}</p>
                 <p>#{info.price.toLocaleString()}</p>
 
-                <Link className="sp2-linkk" to="/02-rentpage">
+                <Link className="sp2-linkk" to={`/data11/${info._id}`}>
                   <button onClick={()=>{fetchProperty2(info._id)}}>View this property</button>
                 </Link>
               </div>
@@ -154,3 +156,4 @@ const fetchProperty2 = async (abc)=>{
 }
 
 export default RentPage1;
+

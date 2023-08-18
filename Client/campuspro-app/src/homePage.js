@@ -85,7 +85,7 @@ const fetchProperty = async (abc)=>{
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
           />
-          const campus= data.campus;
+
           {/*
             campus.map((item)=>{
               
@@ -204,7 +204,7 @@ const fetchProperty = async (abc)=>{
                 <p>{results.houseProperties[1]}</p>
                 <p>#{Number(results.price).toLocaleString()} </p>
       
-                <Link className="sp2-linkk" to="/02-rentpage">
+                <Link className="sp2-linkk"  to={`/data11/${results._id}`}>
                   <button onClick={()=>{fetchProperty(results._id)} } className="home-school-button">View this property</button>
                 </Link>
               </div>

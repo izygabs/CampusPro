@@ -74,7 +74,7 @@ route.get("/api/property/:id", viewPropertyById);
 
 route.get("/api/item/:id", verifyToken, viewItemById);
 
-route.delete("/api/property/:id", verifyToken, deleteProperty);
+route.delete("/api/property/:id", deleteProperty);
 
 route.delete("/api/item/:id", verifyToken, deleteItem);
 

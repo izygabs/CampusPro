@@ -277,7 +277,7 @@ p {
 .sp2-divs2 p {
   color: black;
   font-size: 15px;
-  line-height: 10px;
+  line-height: 20px;
 }
 .sp2-linkk {
   text-decoration: none;
@@ -314,10 +314,11 @@ p {
 }
 .sp2-main-sector {
   display: flex;
-  margin-top: -19vh;
+  /* top: 79vh; */
   flex-direction: row;
-  height: 60vh;
+  height: 80vh;
   border: solid 3px red;
+  padding-top: 15vh;
 }
 .sp2-divs {
   width: 50%;
