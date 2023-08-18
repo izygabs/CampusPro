@@ -7,8 +7,8 @@ const validator = require("../validators/joiValidation");
 const errorHandler = require("../middlewares/handleError");
 
 const login = async (req, res) => {
-  const { Email, Password } = req.body.data;
-  console.log(Email, Password);
+  const { Email, Password } = req.body;
+  // console.log(Email, Password);
 
   try {
     const isUser = await user.findOne({ email: Email });
@@ -16,15 +16,24 @@ const login = async (req, res) => {
       //check the password
       let validPassword = await bcrypt.compare(Password, isUser.password);
       if (validPassword) {
+        let username = isUser.firstName + " " + isUser.lastName;
+
         const token = jwt.sign(
-          { _id: isUser._id, email: isUser.email },
+          {
+            _id: isUser._id,
+            email: isUser.email,
+            userType: isUser.typeOfUser,
+            name: username,
+          },
           process.env.SECRET_KEY,
           {
             expiresIn: "1h",
           }
         );
         res.cookie("campusProUserToken", token, { maxAge: 1000 * 60 * 60 });
-        res.status(200).json({ Message: `Welcome ${isUser.firstName}` });
+        res
+          .status(200)
+          .json({ Message: `Welcome ${isUser.firstName}`, jwtToken: token });
       } else {
         return res.status(401).json({ Message: "Invalid Password" });
       }

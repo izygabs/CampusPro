@@ -8,6 +8,7 @@ const AddItems = () => {
   const navigator = useNavigate();
   const [msg, setMsg] = useState("");
 
+  // const handleClick = () => console.log(msg);
   const validationSchema = yup.object({
     itemName: yup.string().required(" Item name is required"),
     category: yup.string().required(" Category is required"),
@@ -20,13 +21,13 @@ const AddItems = () => {
       .number()
       .required("No of items is required")
       .positive("Invalid Number"),
-    negotiable: yup.boolean().oneOf([true]),
+    negotiable: yup.boolean(),
+    campus: yup.string().required("Campus is Required"),
+    location: yup.string().required("Address field is required"),
     itemImages: yup
       .array()
       .min(5, "You must upload minimum of 5 pictures")
       .max(10, "You can upload maximum of 10 pictures"),
-    campus: yup.string().required("Campus is Required"),
-    location: yup.string().required(" Address field is required"),
   });
 
   const formik = useFormik({
@@ -34,7 +35,7 @@ const AddItems = () => {
       itemName: "",
       price: "",
       category: "",
-      quantity: " ",
+      quantity: "",
       campus: "",
       location: "",
       negotiable: false,
@@ -42,22 +43,36 @@ const AddItems = () => {
       itemImages: [],
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (values, { resetForm }) => {
       // Handle form submission
+      // setMsg(() => values);
       try {
+        const formData = new FormData();
+        values.itemImages.forEach((file) => {
+          formData.append("itemImages", file);
+        });
+        formData.append("itemName", values.itemName);
+        formData.append("price", values.price);
+        formData.append("category", values.category);
+        formData.append("quantity", values.quantity);
+        formData.append("negotiable", values.negotiable);
+        formData.append("campus", values.campus);
+        formData.append("location", values.location);
+        formData.append("description", values.description);
+
         const response = await fetch("/api/uploadItems", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
+          // headers: {
+          //   "Content-Type": "application/json",
+          // },
+          body: formData,
         });
 
         const result = await response.json();
         switch (response.status) {
           case 201:
             alert(result.Message);
-            navigator("/Dashboard");
+            // navigator("/Dashboard");
             break;
           case 400:
             alert(result.Message);
@@ -76,9 +91,11 @@ const AddItems = () => {
             alert(result.Message);
             break;
         }
+        resetForm();
       } catch (error) {
         console.error("Error sending data:", error);
       }
+      console.log(values);
     },
   });
 
@@ -296,15 +313,25 @@ const AddItems = () => {
         </div>
         <div className="add-items-images">
           <label for="Items-image">
-            Upload items pictures{" "}
+            Upload items pictures
             <span className="add-item-hysteric">min:5, max:10</span>
             <input
               type="file"
               multiple
               name="itemImages"
-              style={{ display: "block", margin: "10px 0" }}
+              style={{
+                display: "block",
+                margin: "10px 0",
+                border: "1px solid ",
+                // padding: ".375rem .75rem",
+                width: "25rem",
+                cursor: "pointer",
+              }}
               onChange={(event) => {
-                formik.setFieldValue("files", event.currentTarget.itemImages);
+                formik.setFieldValue(
+                  "itemImages",
+                  Array.from(event.currentTarget.files)
+                );
               }}
               onBlur={formik.handleBlur}
             />

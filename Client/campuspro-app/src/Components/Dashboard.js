@@ -8,10 +8,14 @@ import AddItems from "./AddItems";
 import Changepassword from "./Changepassword";
 import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
+import { useLocation } from "react-router-dom";
 
-const Dashboard = (prop) => {
+const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
+
+  const location = useLocation();
+  const { userID, email, userType, userName } = location.state;
 
   const handleButtonClicked = (component) => {
     setSelectedComponent(component);
@@ -95,23 +99,25 @@ const Dashboard = (prop) => {
         <div class="username">
           <DropdownButton
             id="dropdown-basic-button"
-            title={"Gabriel Isaiah"}
+            title={userName}
             className="userName-dropdown"
             variant="secondary"
           >
             <Dropdown.Item
-              href="#/action-1"
-              onClick={() => handleButtonClicked(<ProfileInfo />)}
+              onClick={() =>
+                handleButtonClicked(<ProfileInfo userID={userID} />)
+              }
             >
               My Profile
             </Dropdown.Item>
             <Dropdown.Item
-              href="#/action-2"
-              onClick={() => handleButtonClicked(<Changepassword />)}
+              onClick={() =>
+                handleButtonClicked(<Changepassword Email={email} />)
+              }
             >
               Login & Security
             </Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Sign Out</Dropdown.Item>
+            <Dropdown.Item>Sign Out</Dropdown.Item>
           </DropdownButton>
         </div>
         <ul class="navbar-nav flex-row d-md-none">
@@ -178,7 +184,6 @@ const Dashboard = (prop) => {
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
-                      href=""
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
@@ -187,10 +192,7 @@ const Dashboard = (prop) => {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link d-flex  align-items-center gap-2"
-                      href=""
-                    >
+                    <a class="nav-link d-flex  align-items-center gap-2">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
                       </svg>
@@ -225,15 +227,17 @@ const Dashboard = (prop) => {
                         variant="Warning"
                       >
                         <Dropdown.Item
-                          href=""
-                          onClick={() => handleButtonClicked(<ProfileInfo />)}
+                          onClick={() =>
+                            handleButtonClicked(<ProfileInfo userID={userID} />)
+                          }
                         >
                           My Profile
                         </Dropdown.Item>
                         <Dropdown.Item
-                          href=""
                           onClick={() =>
-                            handleButtonClicked(<Changepassword />)
+                            handleButtonClicked(
+                              <Changepassword Email={email} />
+                            )
                           }
                         >
                           Login & Security
@@ -242,10 +246,7 @@ const Dashboard = (prop) => {
                     </a>
                   </li>
                   <li class="nav-item signOut">
-                    <a
-                      class="nav-link d-flex align-items-center gap-2 signOut"
-                      href="/"
-                    >
+                    <a class="nav-link d-flex align-items-center gap-2 signOut">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#door-closed" />
                       </svg>

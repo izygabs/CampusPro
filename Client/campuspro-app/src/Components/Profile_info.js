@@ -1,13 +1,27 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Profile_info.css";
 import pic from "../images/house2.jpg";
+import axios from "axios";
 
-function ProfileInfo() {
+function ProfileInfo(prop) {
   const [clicked, setClicked] = useState(false);
   const [clicked2, setClicked2] = useState(false);
   const [clicked3, setClicked3] = useState(false);
   const [imgSrc, setImageScr] = useState(pic);
   const fileUpload = useRef(null);
+  const [userProfile, setUserProfile] = useState([]);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const results = await axios.get("/api/user/:id");
+        setUserProfile(results.data.Profile);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProfile();
+  }, []);
 
   const handleEditClicked = (e) => {
     e.preventDefault();
@@ -19,6 +33,7 @@ function ProfileInfo() {
   };
   const handleEditClicked2 = (e) => {
     e.preventDefault();
+    // console.log(userProfile);
     if (!clicked2) setClicked2(true);
     else setClicked2(false);
     // console.log("click2", clicked2);
@@ -64,7 +79,7 @@ function ProfileInfo() {
             />
           ) : (
             <img
-              src={pic}
+              src={userProfile.profilePic || pic}
               alt="profilepic"
               className="pi-pic"
               onClick={uploadFile}
@@ -79,10 +94,14 @@ function ProfileInfo() {
             </button>
           </div>
           {!clicked ? (
-            <p className="pi-para">{"Isaiah"}</p>
+            <p className="pi-para">{userProfile.firstName}</p>
           ) : (
             <div>
-              <input type="text" name="name" placeholder="Isaiah" />
+              <input
+                type="text"
+                name="name"
+                placeholder={userProfile.firstName}
+              />
               <br />
               <br />
               <button className="pi-btn">Confirm</button>
@@ -97,10 +116,14 @@ function ProfileInfo() {
             </button>
           </div>
           {!clicked2 ? (
-            <p className="pi-para">{"Gabriel"}</p>
+            <p className="pi-para">{userProfile.lastName}</p>
           ) : (
             <div>
-              <input type="text" name="name" placeholder="Gabriel" />
+              <input
+                type="text"
+                name="name"
+                placeholder={userProfile.lastName}
+              />
               <br />
               <br />
               <button className="pi-btn">Confirm</button>
@@ -116,13 +139,17 @@ function ProfileInfo() {
           </div>
           {!clicked3 ? (
             <div>
-              <p className="pi-para">{"+2348103871744"}</p>
-              <p className="pi-para">{"izygabs@gmail.com"}</p>
+              <p className="pi-para">{"+" + userProfile.phoneNumber}</p>
+              <p className="pi-para">{userProfile.email}</p>
             </div>
           ) : (
             <div>
-              <input type="number" name="name" placeholder="+2348103871744" />
-              <input type="email" name="name" placeholder="izygabs@gmail.com" />
+              <input
+                type="tel"
+                name="name"
+                placeholder={"+" + userProfile.phoneNumber}
+              />
+              <input type="email" name="name" placeholder={userProfile.email} />
               <br />
               <br />
               <button className="pi-btn">Confirm</button>

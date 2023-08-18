@@ -1,77 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Changepassword.css";
-import Joi from "joi";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
-function Changepassword() {
-  const navigate = useNavigate();
-
-  const [inputValues, setInputValues] = useState({
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
-  });
-
-  const [error, setErrors] = useState({});
-
-  const [user, setUser] = useState({ email: "" });
-
-  // useEffect(() => {
-  //   axios.get();
-  // });
-
-  const Schemas = {
-    currentPassword: Joi.string().required().min(8),
-    newPassword: Joi.string().required().min(8),
-    // .pattern(
-    //   new RegExp(/(?=.*[A-Z])[a-zA-Z0-9]+[\#\@\$\%\&\*\(\)\>\<\~\{\}]+/)
-    // ),
-    // .messages({
-    //   "string.pattern.base": `Password must contain atleast one capital letter and one special characters`,
-    //   "any.required": `Password field is required`,
-    //   "string.min": `Password must be minimum 8 characters`,
-    // }),
-
-    confirmPassword: Joi.any().valid(Joi.ref("newPassword")).required(),
-    // .messages({
-    //   "string.required": "Confirm Password is required",
-    //   "any.only": "Passwords do not match",
-    //   "password.confirm": `Your passwords no gree`,
-    // }),
-  };
-
-  const validateProperty = (event) => {
-    const { name, value } = event.target;
-    const obj = { [name]: value };
-    const subSchema = Joi.object({ [name]: Schemas[name] });
-    const result = subSchema.validate(obj);
-    const { error } = result;
-    return error ? error.details[0].message : null;
-  };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    let errorData = { ...error };
-    const errorMessage = validateProperty(event);
-    if (errorMessage) {
-      errorData[name] = errorMessage;
-      // !checked && setChecked((prev) => prev);
-    } else {
-      delete errorData[name];
-    }
-    let userData = { ...inputValues };
-    userData[name] = value;
-    setInputValues(userData);
-    setErrors(errorData);
-    console.log(inputValues);
-
-    console.log(Object.values(inputValues).length);
-  };
-
-  // const [password, setPwd] = useState("");
-  // const [newPassword, setNewPwd] = useState("");
-  // const [confirmPassword, setConfirmPwd] = useState("");
+function Changepassword(prop) {
   const [click, setClick] = useState(false);
 
   const handleEditClicked = (e) => {
@@ -81,46 +13,55 @@ function Changepassword() {
     else setClick(false);
   };
 
-  const clearState = () => {
-    setInputValues({
+  const validationSchema = yup.object({
+    currentPassword: yup.string().required("Current Password is required"),
+
+    newPassword: yup
+      .string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+        "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character"
+      ),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("newPassword"), null], "Passwords must match")
+      .required("Confirm Password is required"),
+  });
+
+  const formik = useFormik({
+    initialValues: {
       currentPassword: "",
       newPassword: "",
       confirmPassword: "",
-    });
-    setErrors({});
-  };
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values, { resetForm }) => {
+      // Handle form submission
+      try {
+        const response = await fetch("/api/changePassword/:id", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        });
 
-  const handleConfirm = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("/api/changePassword/:id", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: inputValues }),
-      });
-
-      const result = await response.json();
-      if (response.status === 404) {
-        alert(result.message);
-      } else if (response.status === 401) {
-        alert(result.message);
-        navigate("/login");
-      } else if (response.status === 417) {
-        alert(result.Error);
-        setErrors(result.Error);
-      } else if (response.status === 201) {
-        alert(result.message);
-        clearState();
+        const result = await response.json();
+        if (response.status === 404) {
+          alert(result.message);
+        } else if (response.status === 401) {
+          alert(result.message);
+        } else if (response.status === 417) {
+          alert(result.Error);
+        } else if (response.status === 201) {
+          alert(result.message);
+        }
+        resetForm();
+      } catch (error) {
+        console.error("Error sending password:", error);
       }
-    } catch (error) {
-      console.error("Error sending password:", error);
-    }
-  };
-  // useEffect(() => {
-  //   fetch("http://localhost:6600/newPassword")
-  //     .then((res) => res.json())
-  //     .then((data) => setNewPwd(data.newPassword));
-  // }, []);
+    },
+  });
 
   return (
     <div className="cp-body">
@@ -130,7 +71,7 @@ function Changepassword() {
         </div>
         <div className="cp-account">
           <h4>Account</h4>
-          <p>{"EMAIL"}</p>
+          <p>{prop.Email}</p>
         </div>
         <div>
           <div className="cp-password">
@@ -143,46 +84,61 @@ function Changepassword() {
             <hr className="cp-hr" />
           ) : (
             <div>
-              <form className="cp-forms">
+              <form className="cp-forms" onSubmit={formik.handleSubmit}>
                 <label>
                   Current password:<br></br>
                   <input
                     type="password"
                     name="currentPassword"
-                    value={inputValues.currentPassword}
-                    onChange={handleInputChange}
-                    placeholder="Enter current password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.currentPassword}
+                    placeholder="Enter your current password"
                   />
                 </label>
-                {error.firstName && (
-                  <p className="signup-error-message">
-                    {error.currentPassword}
-                  </p>
-                )}
+                {formik.touched.currentPassword &&
+                  formik.errors.currentPassword && (
+                    <p className="chngPwd-error-message">
+                      {formik.errors.currentPassword}
+                    </p>
+                  )}
                 <br></br>
                 <label>
-                  New password: <br></br>
+                  New password: <br />
                   <input
                     type="password"
                     name="newPassword"
-                    value={inputValues.newPassword}
-                    onChange={handleInputChange}
-                    placeholder="Enter new password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.newPassword}
+                    placeholder="Enter your new password"
                   />
                 </label>
-                <br></br>
+                {formik.touched.newPassword && formik.errors.newPassword && (
+                  <p className="chngPwd-error-message">
+                    {formik.errors.newPassword}
+                  </p>
+                )}
+                <br />
                 <label>
-                  Confirm new password: <br></br>
+                  Confirm new password: <br />
                   <input
                     type="password"
                     name="confirmPassword"
-                    value={inputValues.confirmPassword}
-                    onChange={handleInputChange}
-                    placeholder="Enter new password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.confirmPassword}
+                    placeholder="Confirm your password"
                   />
                 </label>
+                {formik.touched.confirmPassword &&
+                  formik.errors.confirmPassword && (
+                    <p className="chngPwd-error-message">
+                      {formik.errors.confirmPassword}
+                    </p>
+                  )}
               </form>
-              <button className="cp-btn" type="submit" onClick={handleConfirm}>
+              <button className="cp-btn" type="submit">
                 Confirm
               </button>
             </div>
