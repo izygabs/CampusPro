@@ -9,6 +9,7 @@ import Changepassword from "./Changepassword";
 import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
 import { useLocation } from "react-router-dom";
+import Content from "./Content";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -287,19 +288,7 @@ const Dashboard = () => {
                   onClose={handleCloseOverlay}
                 />
               )}
-            </div>
-            <h1>Welcome back, {"Isaiah"}</h1>
-            <div className="db-content">
-              <h6>WHAT'S NEXT</h6>
-              <h3>Let's continue with creating your property and items!</h3>
-              <p>
-                Your info is pending verified, just continue with listing your
-                property now.
-              </p>
-              <button>Go to Create Your Property</button>
-            </div>
-            <div className="db-confirm">
-              <p>Pending Confirmation</p>
+              {Content}
             </div>
           </main>
         </div>
