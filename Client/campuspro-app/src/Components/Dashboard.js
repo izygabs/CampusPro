@@ -9,6 +9,7 @@ import Changepassword from "./Changepassword";
 import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
 import { useLocation } from "react-router-dom";
+import Content from "./Content";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);

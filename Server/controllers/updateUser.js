@@ -4,7 +4,7 @@ const fs = require("fs");
 const updateUser = async (req, res) => {
   const profilePic = req.file.path;
   const value = req.body;
-  const userId = req.params.id;
+  const userId = req.user;
   try {
     const updatedUser = await user.findByIdAndUpdate(
       { _id: userId },
