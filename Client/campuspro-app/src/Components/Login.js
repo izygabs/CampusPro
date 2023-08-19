@@ -3,10 +3,13 @@ import "../Bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { GoogleOAuthProvider } from "@react-oauth/google";
 // import Google from "./Google";
+import jwtDecode from "jwt-decode";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
+  const [jwtData, setJwtToken] = useState(null);
+
   const navigator = useNavigate();
   // const [email, setEmail] =useState("");
   const [inputValues, setInputValues] = useState({
@@ -30,14 +33,24 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ data: inputValues }),
+        body: JSON.stringify(inputValues),
       });
       const result = await response.json();
+      const token = jwtDecode(result.jwtToken);
+      // setJwtToken(token);
+      // console.log(result);
+      const email = token.email;
+      const userType = token.userType;
+      const userName = token.name;
+      const userID = token._id;
 
       switch (response.status) {
         case 200:
           alert(result.Message);
+
           navigator("/Dashboard");
+          // state: { userID, email, userType, userName },
+          // });
           break;
         case 401:
           alert(result.Message);
