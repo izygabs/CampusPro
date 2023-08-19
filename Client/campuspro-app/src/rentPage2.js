@@ -58,7 +58,7 @@ const fetcher = async()=> {
              <img className="sp2-main-img" src={house} alt="" />
            </div>
            <div className="sp2-divs2">
-             { datas.houseProperties ? <p> Description: {datas.houseProperties}</p> : null}
+             { datas.houseProperties ? <p> Description: {datas.houseProperties.toString().split(",").join(', ')}</p> : null}
              <p>campus {datas.campusName}</p>
              <p>Amount/Annum : {Number(datas.price).toLocaleString()}</p>
              <p>Campus Address: {datas.location} </p>

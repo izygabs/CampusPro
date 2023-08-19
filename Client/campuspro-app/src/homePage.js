@@ -12,20 +12,6 @@ import location from "./images/location-icon.png";
 
 function HomePage() {
   const [datas, setDatas] = useState([]);
-  const [ ids, setIds]= useState([])
-
-// // function t fetch the particular information of clicked id
-
-const fetchProperty = async (abc)=>{
-  
-  const urls = `/api/property/${abc}`
-  const inf = await fetch(urls)
-  const infData = await inf.json()
-  console.log(infData)
-  setIds(infData)
-}
-
-
 
 
 //using the hook to display the fetch data on load
@@ -50,10 +36,10 @@ const fetchProperty = async (abc)=>{
     }
   }
   
-  
+
 //function to filter properties according to the user search
   function change(e) {
-    // e.preventDefault()
+    e.preventDefault();
     const pal = e.target.value;
     console.log(pal);
     
@@ -62,12 +48,11 @@ const fetchProperty = async (abc)=>{
         place.campusName.toLowerCase().startsWith(pal.toLowerCase())
       );
       setDatas(filt);
-    } else {
-      setDatas(datas);
     }
+      setDatas(datas);
   }
 
-
+  console.log(datas)
   return (
     <div className="homepage">
       <div className="hp-header">
@@ -194,7 +179,7 @@ const fetchProperty = async (abc)=>{
           return(
             <div key={results._id} className="hp-school-div">
               <div className="hp-img-div">
-                  <img src={`.../Server/${results.hostelImages[1]}`} />
+                  <img src={`http://localhost:6600/${results.hostelImages[4]}`} />
                   <div>
                     <img className="hp-locate" src={location} />
                     <p>{results.campusName.toUpperCase()}</p>
@@ -204,8 +189,8 @@ const fetchProperty = async (abc)=>{
                 <p>{results.houseProperties[1]}</p>
                 <p>#{Number(results.price).toLocaleString()} </p>
       
-                <Link className="sp2-linkk"  to={`/data11/${results._id}`}>
-                  <button onClick={()=>{fetchProperty(results._id)} } className="home-school-button">View this property</button>
+                <Link className="sp2-linkk"  to={`/rentproperty/${results._id}`}>
+                  <button  className="home-school-button">View this property</button>
                 </Link>
               </div>
           </div>
