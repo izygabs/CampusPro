@@ -8,6 +8,7 @@ const multer = require("multer");
 const cors = require("cors");
 
 app.use(cors());
+app.use('/Hostel_Images', express.static(__dirname + "Hostel_Images"))
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
