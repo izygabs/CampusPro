@@ -9,7 +9,7 @@ import Changepassword from "./Changepassword";
 import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
 import { useLocation } from "react-router-dom";
-import Content from "./Content";
+import Welcome from "./WelcomeMessage";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -288,8 +288,8 @@ const Dashboard = () => {
                   onClose={handleCloseOverlay}
                 />
               )}
-              {Content}
             </div>
+            {/* <Welcome /> */}
           </main>
         </div>
       </div>
