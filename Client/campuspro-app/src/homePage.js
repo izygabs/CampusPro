@@ -22,11 +22,12 @@ function HomePage() {
   },[] )
   
   //function to fetch properties from the database
-  const url= "/api/allProperties"
   const fetcher = async()=> {
     try {
+      const url= "/api/allProperties"
       const info = await fetch(url)
       const data2 = await info.json()
+      console.log(data2)
       const result = data2.Properties
       setDatas(result)
       console.log(result)
@@ -49,16 +50,18 @@ function HomePage() {
       );
       setDatas(filt);
     }
-      setDatas(datas);
+      // setDatas(datas);
   }
 
-  console.log(datas)
+  // console.log(datas)
+  console.log("datas", datas)
+
   return (
     <div className="homepage">
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
-            <img src={logo} className="hp-logo" />
+            <img src={logo} className="hp-logo" alt="" />
           </div>
           {/* <div>
             <p>CampusPro</p>
@@ -91,7 +94,7 @@ function HomePage() {
           </select> */}
         </div>
         <div>
-          <Link to="/login-page">
+          <Link to="/login">
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
@@ -131,18 +134,19 @@ function HomePage() {
           </Carousel.Item>
         </Carousel>
 
-        <section className="hp-section1">
-          <div className="hp-buy-div">
-            <p className="hp-heading">
-              BUY <br></br> ITEMS
-            </p>
-            <p className="hp-texts">
-              Explore various properties listed for sale around your campus
-            </p>
-            <Link className="link" to="/buyPage1">
-              <button className="hp-button-link">Buy items</button>
-            </Link>
-          </div>
+       
+            <section className="hp-section1">
+              <div className="hp-buy-div">
+                <p className="hp-heading">
+                  BUY <br></br> ITEMS
+                </p>
+                <p className="hp-texts">
+                  Explore various properties listed for sale around your campus
+                </p>
+                <Link className="link" to="/buyPage1">
+                  <button className="hp-button-link">Buy items</button>
+                </Link>
+              </div>
 
           <div className="hp-sell-div">
             <p className="hp-heading">
@@ -151,21 +155,23 @@ function HomePage() {
             <p className="hp-texts">
               Become a merchant and sell properties on CampusPro.
             </p>
-            <Link className="link" to="/login-page">
+            <Link className="link" to="/login">
               <button className="hp-button-link">Become a merchant</button>
             </Link>
           </div>
 
-          <div className="hp-rent-div">
-            <p className="hp-heading">RENT APARTMENT </p>
-            <p className="hp-texts">
-              Navigate through pletora of hostels around your campus
-            </p>
-            <Link className="link" to="/01-rentPage">
-              <button className="hp-button-link">Rent an apartment</button>
-            </Link>
-          </div>
-        </section>
+              <div className="hp-rent-div">
+                <p className="hp-heading">RENT APARTMENT </p>
+                <p className="hp-texts">
+                  Navigate through pletora of hostels around your campus
+                </p>
+                <Link className="link" to="/01-rentPage">
+                  <button className="hp-button-link">Rent an apartment</button>
+                </Link>
+              </div>
+            </section>
+     
+       
       </div>
 
       <div className="hp-view-div">
@@ -173,13 +179,12 @@ function HomePage() {
       </div>
       
 
-      
       <div className="hp-school">
         {datas.map((results)=>{
           return(
             <div key={results._id} className="hp-school-div">
               <div className="hp-img-div">
-                  <img src={`http://localhost:6600/${results.hostelImages[4]}`} />
+                  <img src={results.hostelImages[1]} />
                   <div>
                     <img className="hp-locate" src={location} />
                     <p>{results.campusName.toUpperCase()}</p>
@@ -202,7 +207,6 @@ function HomePage() {
         <Footer/>
       </div>
     </div>
-
   );
 }
 

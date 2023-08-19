@@ -1,24 +1,113 @@
 import React, { useState } from "react";
 import "../AddItems.css";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { useNavigate } from "react-router";
 
-const AddItems = (prop) => {
-  const [formData, setFormdate] = useState({
-    itemName: "",
-    price: "",
-    category: "",
-    quantity: " ",
-    campus: "",
-    location: "",
-    negotiable: "",
-    description: "",
+const AddItems = () => {
+  const navigator = useNavigate();
+  const [msg, setMsg] = useState("");
+
+  // const handleClick = () => console.log(msg);
+  const validationSchema = yup.object({
+    itemName: yup.string().required(" Item name is required"),
+    category: yup.string().required(" Category is required"),
+    description: yup.string().required(" Description is required"),
+    price: yup
+      .number()
+      .required(" Price is required")
+      .positive("Invalid Price"),
+    quantity: yup
+      .number()
+      .required("No of items is required")
+      .positive("Invalid Number"),
+    negotiable: yup.boolean(),
+    campus: yup.string().required("Campus is Required"),
+    location: yup.string().required("Address field is required"),
+    itemImages: yup
+      .array()
+      .min(5, "You must upload minimum of 5 pictures")
+      .max(10, "You can upload maximum of 10 pictures"),
   });
 
-  const [error, setError] = useState({});
-  const [isChecked, setChecked] = useState(false);
+  const formik = useFormik({
+    initialValues: {
+      itemName: "",
+      price: "",
+      category: "",
+      quantity: "",
+      campus: "",
+      location: "",
+      negotiable: false,
+      description: "",
+      itemImages: [],
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values, { resetForm }) => {
+      // Handle form submission
+      // setMsg(() => values);
+      try {
+        const formData = new FormData();
+        values.itemImages.forEach((file) => {
+          formData.append("itemImages", file);
+        });
+        formData.append("itemName", values.itemName);
+        formData.append("price", values.price);
+        formData.append("category", values.category);
+        formData.append("quantity", values.quantity);
+        formData.append("negotiable", values.negotiable);
+        formData.append("campus", values.campus);
+        formData.append("location", values.location);
+        formData.append("description", values.description);
+
+        const response = await fetch("/api/uploadItems", {
+          method: "POST",
+          // headers: {
+          //   "Content-Type": "application/json",
+          // },
+          body: formData,
+        });
+
+        const result = await response.json();
+        switch (response.status) {
+          case 201:
+            alert(result.Message);
+            // navigator("/Dashboard");
+            break;
+          case 400:
+            alert(result.Message);
+            break;
+          case 401:
+            alert(result.Message);
+            navigator("/login");
+            break;
+          case 403:
+            alert(result.Message);
+            break;
+          case 406:
+            setMsg(result.Message);
+            break;
+          default:
+            alert(result.Message);
+            break;
+        }
+        resetForm();
+      } catch (error) {
+        console.error("Error sending data:", error);
+      }
+      console.log(values);
+    },
+  });
 
   return (
     <div className="add-items-div">
-      <form className="add-items-form" onSubmit={prop.submit}>
+      <form
+        className="add-items-form"
+        onSubmit={formik.handleSubmit}
+        enctype="multipart/form-data"
+        method="post"
+        action="/api/uploadItems"
+      >
         <div>
           <p id="requiredInfo">* are required fields</p>
           <label for="itemName">
@@ -30,10 +119,12 @@ const AddItems = (prop) => {
             placeholder="Enter item Name"
             type="text"
             name="itemName"
-            // value={formData.itemName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.itemName}
           />
-          {error.itemName && (
-            <span className="addItems-error-message">{error.message}</span>
+          {formik.touched.itemName && formik.errors.itemName && (
+            <p className="addItem-error-message">{formik.errors.itemName}</p>
           )}
         </div>
         <div>
@@ -47,10 +138,12 @@ const AddItems = (prop) => {
             placeholder="Enter item description"
             type="text"
             name="description"
-            // value={formData.description}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.description}
           />
-          {error.description && (
-            <span className="addItems-error-message">{error.message}</span>
+          {formik.touched.description && formik.errors.description && (
+            <p className="addItem-error-message">{formik.errors.description}</p>
           )}
         </div>
 
@@ -64,10 +157,12 @@ const AddItems = (prop) => {
             placeholder="Enter item Price"
             type="number"
             name="price"
-            // value={formData.price}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.price}
           />
-          {error.price && (
-            <span className="addItems-error-message">{error.message}</span>
+          {formik.touched.price && formik.errors.price && (
+            <p className="addItem-error-message">{formik.errors.price}</p>
           )}
         </div>
 
@@ -81,10 +176,12 @@ const AddItems = (prop) => {
             placeholder="Enter number of items"
             type="number"
             name="quantity"
-            // value={formData.quantity}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.quantity}
           />
-          {error.quantity && (
-            <span className="addItems-error-message">{error.message}</span>
+          {formik.touched.quantity && formik.errors.quantity && (
+            <p className="addItem-error-message">{formik.errors.quantity}</p>
           )}
         </div>
 
@@ -99,10 +196,12 @@ const AddItems = (prop) => {
             placeholder="Enter item's address"
             type="text"
             name="location"
-            // value={formData.location}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.location}
           />
-          {error.location && (
-            <span className="addItems-error-message">{error.message}</span>
+          {formik.touched.location && formik.errors.location && (
+            <p className="addItem-error-message">{formik.errors.location}</p>
           )}
         </div>
 
@@ -117,10 +216,12 @@ const AddItems = (prop) => {
             placeholder="Enter the campus name here"
             type="text"
             name="campus"
-            // value={formData.campus}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.campus}
           />
-          {error.campus && (
-            <p className="addItems-error-message">error.message</p>
+          {formik.touched.campus && formik.errors.campus && (
+            <p className="addItem-error-message">{formik.errors.campus}</p>
           )}
         </div>
 
@@ -132,39 +233,67 @@ const AddItems = (prop) => {
           <select
             className="addItem-category"
             name="category"
-            // value={formData.category}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.category}
           >
-            <option value="" className="bp1-input cate-gory gory">
-              Select the category
-            </option>
+            <option
+              value=""
+              className="bp1-input cate-gory gory"
+              label="Select a category"
+            />
+
             <hr />
-            <option value="Clothings" className="bp1-input cate-gory">
-              Clothings
-            </option>
-            <option value="Kitchen Utensils" className="bp1-input cate-gory">
-              Kitchen Utensils
-            </option>
-            <option value="Home Appliances" className="bp1-input cate-gory">
-              Home Appliances
-            </option>
-            <option value="Phones & Computers" className="bp1-input cate-gory">
-              Phones & Computers
-            </option>
-            <option value="Electronic Gadgets" className="bp1-input cate-gory">
-              Electronic Gadgets
-            </option>
-            <option value="Books" className="bp1-input cate-gory">
-              Books
-            </option>
-            <option value="Furnitures" className="bp1-input cate-gory">
-              Furnitures
-            </option>
-            <option value="Others" className="bp1-input cate-gory">
-              Others
-            </option>
+            <option
+              value="Clothings"
+              className="bp1-input cate-gory"
+              label="Clothings"
+            />
+
+            <option
+              value="Kitchen Utensils"
+              className="bp1-input cate-gory"
+              label="  Kitchen Utensils"
+            />
+
+            <option
+              value="Home Appliances"
+              className="bp1-input cate-gory"
+              label=" Home Appliances"
+            />
+
+            <option
+              value="Phones & Computers"
+              className="bp1-input cate-gory"
+              label=" Phones & Computers"
+            />
+
+            <option
+              value="Electronic Gadgets"
+              className="bp1-input cate-gory"
+              label="  Electronic Gadgets"
+            />
+
+            <option
+              value="Books"
+              className="bp1-input cate-gory"
+              label=" Books"
+            />
+
+            <option
+              value="Furnitures"
+              className="bp1-input cate-gory"
+              label=" Furnitures"
+            />
+
+            <option
+              value="Others"
+              className="bp1-input cate-gory"
+              label=" Others"
+            />
           </select>
-          {error.category && (
-            <p className="addItems-error-message">error.message</p>
+          {formik.touched.category && formik.errors.category && (
+            <p className="addItem-error-message">{formik.errors.category}</p>
           )}
         </div>
         {/* <br /> */}
@@ -173,22 +302,48 @@ const AddItems = (prop) => {
             <input
               className="add-item-checkbox"
               type="checkbox"
-              // checked={isChecked}
-              // onChange={handleCheckboxChange}
+              name="negotiable"
+              checked={formik.values.negotiable}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
             />
             Is the price negotiable?
           </label>
           {/* <p>Negotiable {isChecked ? "YES" : "NO"}</p> */}
         </div>
-        <div className="add-item-btn">
-          <button onSubmit="">Add Item</button>
+        <div className="add-items-images">
+          <label for="Items-image">
+            Upload items pictures
+            <span className="add-item-hysteric">min:5, max:10</span>
+            <input
+              type="file"
+              multiple
+              name="itemImages"
+              style={{
+                display: "block",
+                margin: "10px 0",
+                border: "1px solid ",
+                // padding: ".375rem .75rem",
+                width: "25rem",
+                cursor: "pointer",
+              }}
+              onChange={(event) => {
+                formik.setFieldValue(
+                  "itemImages",
+                  Array.from(event.currentTarget.files)
+                );
+              }}
+              onBlur={formik.handleBlur}
+            />
+          </label>
+          {formik.touched.itemImages && formik.errors.itemImages && (
+            <p className="addItem-error-message">{formik.errors.itemImages}</p>
+          )}
         </div>
-      </form>
-      <form className="add-items-images">
-        <label for="Items-image">
-          Upload items pictures<span className="add-item-hysteric">*</span>
-        </label>
-        <input type="file" name="itemImages" />
+
+        <div className="add-item-btn">
+          <button type="submit">Add Item</button>
+        </div>
       </form>
     </div>
   );

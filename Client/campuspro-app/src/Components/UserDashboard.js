@@ -19,7 +19,7 @@ const UserDashboard = (prop) => {
         className=" mb-3"
       >
         <Container fluid>
-          <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
+          <Navbar.Brand href="#">CampusPro</Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${""}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${false}`}
@@ -28,7 +28,7 @@ const UserDashboard = (prop) => {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${false}`}>
-                Offcanvas Pelumi
+                Details
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>

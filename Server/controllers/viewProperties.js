@@ -4,7 +4,7 @@ const { hostelProps } = require("../models/hostelSchema");
 const viewProperties = async (req, res) => {
   const agentID = req.user;
   try {
-    const allProperties = await hostelProps.find();
+    const allProperties = await hostelProps.find({});
     if (!allProperties) {
       res.status(StatusCodes.BAD_REQUEST).send("Invalid ID");
     } else {

@@ -7,39 +7,42 @@ const validator = require("../validators/joiValidation");
 const errorHandler = require("../middlewares/handleError");
 
 const login = async (req, res) => {
-  const { error, value } = validator.loginSchema(req.body);
-  const { Email, Password } = value;
-  if (error) {
-    const errors = errorHandler.JoiErrorHandler(error);
-    res.status(StatusCodes.FORBIDDEN).json({ "Validation Error": errors });
-  } else {
-    try {
-      const isUser = await user.findOne({ email: Email });
-      if (isUser) {
-        //check the password
-        let validPassword = await bcrypt.compare(Password, isUser.password);
-        if (validPassword) {
-          const token = jwt.sign(
-            { _id: isUser._id, email: isUser.email },
-            process.env.SECRET_KEY,
-            {
-              expiresIn: "1h",
-            }
-          );
-          res.cookie("campusProUserToken", token, { maxAge: 1000 * 60 * 60 });
-          res.status(StatusCodes.OK).json({ "Welcome ": isUser.firstName });
-        } else {
-          return res.status(401).json("Invalid Password");
-        }
-      } else {
+  const { Email, Password } = req.body;
+  // console.log(Email, Password);
+
+  try {
+    const isUser = await user.findOne({ email: Email });
+    if (isUser) {
+      //check the password
+      let validPassword = await bcrypt.compare(Password, isUser.password);
+      if (validPassword) {
+        let username = isUser.firstName + " " + isUser.lastName;
+
+        const token = jwt.sign(
+          {
+            _id: isUser._id,
+            email: isUser.email,
+            userType: isUser.typeOfUser,
+            name: username,
+          },
+          process.env.SECRET_KEY,
+          {
+            expiresIn: "1h",
+          }
+        );
+        res.cookie("campusProUserToken", token, { maxAge: 1000 * 60 * 60 });
         res
-          .status(StatusCodes.EXPECTATION_FAILED)
-          .json("Invalid Email or Password");
+          .status(200)
+          .json({ Message: `Welcome ${isUser.firstName}`, jwtToken: token });
+      } else {
+        return res.status(401).json({ Message: "Invalid Password" });
       }
-    } catch (error) {
-      const errors = errorHandler.dbSchemaErrors(error);
-      res.status(StatusCodes.FORBIDDEN).json({ "Database Error": errors });
+    } else {
+      res.status(417).json({ Message: "Invalid Email or Password" });
     }
+  } catch (error) {
+    const errors = errorHandler.dbSchemaErrors(error);
+    res.status(403).json({ Message: errors });
   }
 };
 module.exports = login;

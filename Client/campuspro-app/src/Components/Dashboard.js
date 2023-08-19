@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../Dashboard.css";
+import { Link } from "react-router-dom";
+import AddItems from "./AddItems";
+import Changepassword from "./Changepassword";
+import ProfileInfo from "./Profile_info";
+import OverlayComponent from "./OverlayComp";
+import { useLocation } from "react-router-dom";
+import Welcome from "./WelcomeMessage"
 
-const Dashboard = (prop) => {
+const Dashboard = () => {
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [selectedComponent, setSelectedComponent] = useState(null);
+
+  const location = useLocation();
+  const { userID, email, userType, userName } = location.state;
+
+  const handleButtonClicked = (component) => {
+    setSelectedComponent(component);
+    setShowOverlay(true);
+  };
+
+  const handleCloseOverlay = () => {
+    setShowOverlay(false);
+  };
+
   return (
-    <div>
+    <div className="dash">
       <svg
         xmlnsSvg="http://www.w3.org/2000/svg"
         class="d-none height='40px' width='40px'"
@@ -64,14 +86,41 @@ const Dashboard = (prop) => {
       </svg>
 
       <div
-        class="navbar sticky-top bg-dark flex-md-nowrap p-3 shadow"
-        data-bs-theme="dark"
+        class="navbar sticky-top bg-dark text-white flex-md-nowrap p-3 shadow"
+        // data-bs-theme="dark"
       >
-        <a class="navbar-brand col-md-3 col-lg-2 me-0  fs-6 dashboard-logo" href="/">
-          <img  src={require("../images/campuspro(6).png")}
+        <Link to="/">
+          <img
+            src={require("../images/campuspro(6).png")}
+className="dashboard-logo"
+            alt=""
           />
-        </a>
-
+        </Link>
+        <div className="dashboard-search"></div>
+        <div class="username">
+          <DropdownButton
+            id="dropdown-basic-button"
+            title={userName}
+            className="userName-dropdown"
+            variant="secondary"
+          >
+            <Dropdown.Item
+              onClick={() =>
+                handleButtonClicked(<ProfileInfo userID={userID} />)
+              }
+            >
+              My Profile
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() =>
+                handleButtonClicked(<Changepassword Email={email} />)
+              }
+            >
+              Login & Security
+            </Dropdown.Item>
+            <Dropdown.Item>Sign Out</Dropdown.Item>
+          </DropdownButton>
+        </div>
         <ul class="navbar-nav flex-row d-md-none">
           <li class="nav-item text-nowrap">
             <button
@@ -83,7 +132,10 @@ const Dashboard = (prop) => {
               aria-expanded="false"
               aria-label="Toggle search"
             >
-              <svg class="bi" style={{ width: "20px", height: "20px" }}>
+              <svg
+                class="bi"
+                style={{ width: "20px", height: "20px", color: "white" }}
+              >
                 <use xlinkHref="#search" />
               </svg>
             </button>
@@ -98,7 +150,10 @@ const Dashboard = (prop) => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <svg class="bi" style={{ width: "20px", height: "20px" }}>
+              <svg
+                class="bi"
+                style={{ width: "20px", height: "20px", color: "white" }}
+              >
                 <use xlinkHref="#list" />
               </svg>
             </button>
@@ -130,8 +185,7 @@ const Dashboard = (prop) => {
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
-                      href="/"
-                    >
+                                          >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
                       </svg>
@@ -139,10 +193,7 @@ const Dashboard = (prop) => {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link d-flex  align-items-center gap-2"
-                      href="/"
-                    >
+                    <a class="nav-link d-flex  align-items-center gap-2">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
                       </svg>
@@ -150,39 +201,14 @@ const Dashboard = (prop) => {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link d-flex align-items-center gap-2"
-                      href="/"
-                    >
+                    <a class="nav-link d-flex align-items-center gap-2" href="">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#cart" />
                       </svg>
                       Items
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link d-flex align-items-center gap-2"
-                      href="/"
-                    >
-                      <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                        <use xlinkHref="#people" />
-                      </svg>
-                      View Properties
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link d-flex align-items-center gap-2"
-                      href="/"
-                    >
-                      <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                        <use xlinkHref="#graph-up" />
-                      </svg>
-                      View Items
-                    </a>
-                  </li>
-                </ul>
+                                  </ul>
                 {/* <hr
                   class="my-4 "
                   style={{ color: "black", width: "13.1rem" }}
@@ -201,20 +227,27 @@ const Dashboard = (prop) => {
                         className="dropdown"
                         variant="Warning"
                       >
-                        <Dropdown.Item href="#/action-1">
+                        <Dropdown.Item
+                          onClick={() =>
+                            handleButtonClicked(<ProfileInfo userID={userID} />)
+                          }
+                        >
                           My Profile
                         </Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">
+                        <Dropdown.Item
+                          onClick={() =>
+                            handleButtonClicked(
+                              <Changepassword Email={email} />
+                            )
+                          }
+                        >
                           Login & Security
                         </Dropdown.Item>
                       </DropdownButton>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link d-flex align-items-center gap-2 signOut"
-                      href="/"
-                    >
+                  <li class="nav-item signOut">
+                    <a class="nav-link d-flex align-items-center gap-2 signOut">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#door-closed" />
                       </svg>
@@ -226,7 +259,7 @@ const Dashboard = (prop) => {
             </div>
           </div>
 
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 class="h2">Dashboard</h1>
 
@@ -235,12 +268,15 @@ const Dashboard = (prop) => {
                   <button type="button" class="btn btn-sm btn-outline-dark">
                     Create Property
                   </button>
+{/* <Link to="/add-items"> */}
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
+onClick={() => handleButtonClicked(<AddItems />)}
                   >
                     Create Items
                   </button>
+{/* </Link> */}
                 </div>
                 {/* <button
                   type="button"
@@ -257,12 +293,15 @@ const Dashboard = (prop) => {
               </div>
             </div>
 
-            <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
-
-            {/* <h2>Section title</h2>
-            <div class="table-responsive small">
-              <h1>display something here</h1>
-            </div> */}
+            <div className="overComp">
+              {showOverlay && (
+                <OverlayComponent
+                  component={selectedComponent}
+                  onClose={handleCloseOverlay}
+                />
+              )}
+            </div>
+            <Welcome />
           </main>
         </div>
       </div>
