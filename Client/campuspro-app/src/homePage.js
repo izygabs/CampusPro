@@ -4,14 +4,37 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import house1 from "./images/house-interior.webp";
 import house2 from "./images/hostel2.webp";
 import hostel3 from "./images/hostel3.webp";
+import data from "./data";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Schools from "./schools";
+import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
 import location from "./images/location-icon.png";
 
 function HomePage() {
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState(data);
+  // const [camp , setCamp]=useState('')
+  const [isTokenExp, setIsTokenExp] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("/api/getTokenExpiration", {
+      headers: {
+        Authorization: "campusProUserToken", // Include your actual token
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setIsTokenExp(data.Exp);
+        // console.log(data.token);
+        // console.log(isTokenExp);
+        // Redirect to login if token is expired
+      })
+      .catch((error) => {
+        console.error("Error fetching token status:", error);
+      });
+  }, [isTokenExp]);
 
 
 //using the hook to display the fetch data on load
@@ -94,7 +117,7 @@ function HomePage() {
           </select> */}
         </div>
         <div>
-          <Link to="/login">
+          <Link to={isTokenExp ? "/login" : "/Dashboard"}>
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
@@ -134,19 +157,18 @@ function HomePage() {
           </Carousel.Item>
         </Carousel>
 
-       
-            <section className="hp-section1">
-              <div className="hp-buy-div">
-                <p className="hp-heading">
-                  BUY <br></br> ITEMS
-                </p>
-                <p className="hp-texts">
-                  Explore various properties listed for sale around your campus
-                </p>
-                <Link className="link" to="/buyPage1">
-                  <button className="hp-button-link">Buy items</button>
-                </Link>
-              </div>
+        <section className="hp-section1">
+          <div className="hp-buy-div">
+            <p className="hp-heading">
+              BUY <br></br> ITEMS
+            </p>
+            <p className="hp-texts">
+              Explore various properties listed for sale around your campus
+            </p>
+            <Link className="link" to="/buyPage1">
+              <button className="hp-button-link">Buy items</button>
+            </Link>
+          </div>
 
           <div className="hp-sell-div">
             <p className="hp-heading">
@@ -155,23 +177,22 @@ function HomePage() {
             <p className="hp-texts">
               Become a merchant and sell properties on CampusPro.
             </p>
-            <Link className="link" to="/login">
+
+            <Link to={isTokenExp ? "/login" : "/Dashboard"}>
               <button className="hp-button-link">Become a merchant</button>
             </Link>
           </div>
 
-              <div className="hp-rent-div">
-                <p className="hp-heading">RENT APARTMENT </p>
-                <p className="hp-texts">
-                  Navigate through pletora of hostels around your campus
-                </p>
-                <Link className="link" to="/01-rentPage">
-                  <button className="hp-button-link">Rent an apartment</button>
-                </Link>
-              </div>
-            </section>
-     
-       
+          <div className="hp-rent-div">
+            <p className="hp-heading">RENT APARTMENT </p>
+            <p className="hp-texts">
+              Navigate through pletora of hostels around your campus
+            </p>
+            <Link className="link" to="/01-rentPage">
+              <button className="hp-button-link">Rent an apartment</button>
+            </Link>
+          </div>
+        </section>
       </div>
 
       <div className="hp-view-div">
@@ -184,10 +205,10 @@ function HomePage() {
           return(
             <div key={results._id} className="hp-school-div">
               <div className="hp-img-div">
-                  <img src={results.hostelImages[1]} />
+                  <img src={results.hostelImages[0]} />
                   <div>
                     <img className="hp-locate" src={location} />
-                    <p>{results.campusName.toUpperCase()}</p>
+                    <p>{results.campusName}</p>
                   </div>
               </div>
               <div className="hp-props-text">
