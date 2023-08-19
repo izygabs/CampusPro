@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import Google from "./Google";
 import jwtDecode from "jwt-decode";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const [jwtData, setJwtToken] = useState(null);
@@ -43,13 +43,14 @@ const Login = () => {
       const userType = token.userType;
       const userName = token.name;
       const userID = token._id;
+
       switch (response.status) {
         case 200:
           alert(result.Message);
 
-          navigator("/Dashboard", {
-            state: { userID, email, userType, userName },
-          });
+          navigator("/Dashboard");
+          // state: { userID, email, userType, userName },
+          // });
           break;
         case 401:
           alert(result.Message);

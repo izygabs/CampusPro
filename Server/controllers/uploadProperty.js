@@ -9,9 +9,10 @@ const { user } = require("../models/userSchema");
 
 const uploadProperty = async (req, res) => {
   let hostelsPictures = req.files;
+  console.log(hostelsPictures);
   let userEmail = req.email;
   let userId = req.user;
-  let value = req.body.data;
+  let value = req.body;
   if (hostelsPictures == null || hostelsPictures.length < 5) {
     // to delete the images saved into the hostels Images folder while validation failed
     hostelsPictures.forEach((file) => {
