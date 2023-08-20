@@ -4,50 +4,54 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import house1 from "./images/house-interior.webp";
 import house2 from "./images/hostel2.webp";
 import hostel3 from "./images/hostel3.webp";
+import data from "./data";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Schools from "./schools";
+import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
-import location from "./images/location-icon.png";
 
 function HomePage() {
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState(data);
+  // const [camp , setCamp]=useState('')
+  const [isTokenExp, setIsTokenExp] = useState(false);
+  const navigate = useNavigate();
 
-  //using the hook to display the fetch data on load
   useEffect(() => {
-    fetcher();
-  }, []);
+    fetch("/api/getTokenExpiration", {
+      headers: {
+        Authorization: "campusProUserToken", // Include your actual token
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setIsTokenExp(data.Exp);
+        // console.log(data.token);
+        // console.log(isTokenExp);
+        // Redirect to login if token is expired
+      })
+      .catch((error) => {
+        console.error("Error fetching token status:", error);
+      });
+  }, [isTokenExp]);
 
-  //function to fetch properties from the database
-  const url = "/api/allProperties";
-  const fetcher = async () => {
-    try {
-      const info = await fetch(url);
-      const data2 = await info.json();
-      const result = data2.Properties;
-      setDatas(result);
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  //function to filter properties according to the user search
   function change(e) {
-    e.preventDefault();
+    // e.preventDefault()
     const pal = e.target.value;
     console.log(pal);
 
     if (pal) {
       const filt = datas.filter((place) =>
-        place.campusName.toLowerCase().startsWith(pal.toLowerCase())
+        place.campus.toLowerCase().startsWith(pal.toLowerCase())
       );
       setDatas(filt);
+    } else {
+      setDatas(data);
     }
-    setDatas(datas);
   }
-
-  console.log(datas);
+  const house = datas.map((aparte) => {
+    return <Schools key={aparte.id} {...aparte} />;
+  });
   return (
     <div className="homepage">
       <div className="hp-header">
@@ -65,6 +69,7 @@ function HomePage() {
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
           />
+          {/* const campus= data.campus; */}
           {/*
             campus.map((item)=>{
               
@@ -85,7 +90,7 @@ function HomePage() {
           </select> */}
         </div>
         <div>
-          <Link to="/login">
+          <Link to={isTokenExp ? "/login" : "/Dashboard"}>
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
@@ -145,7 +150,8 @@ function HomePage() {
             <p className="hp-texts">
               Become a merchant and sell properties on CampusPro.
             </p>
-            <Link className="link" to="/login">
+
+            <Link to={isTokenExp ? "/login" : "/Dashboard"}>
               <button className="hp-button-link">Become a merchant</button>
             </Link>
           </div>
@@ -165,36 +171,7 @@ function HomePage() {
       <div className="hp-view-div">
         <p className="hp-view-hostels">View hostels around your campus</p>
       </div>
-
-      <div className="hp-school">
-        {datas.map((results) => {
-          return (
-            <div key={results._id} className="hp-school-div">
-              <div className="hp-img-div">
-                <img src={`http://localhost:6600/${results.hostelImages[4]}`} />
-                <div>
-                  <img className="hp-locate" src={location} />
-                  <p>{results.campusName.toUpperCase()}</p>
-                </div>
-              </div>
-              <div className="hp-props-text">
-                <p>{results.houseProperties[1]}</p>
-                <p>#{Number(results.price).toLocaleString()} </p>
-
-                <Link className="sp2-linkk" to={`/rentproperty/${results._id}`}>
-                  <button className="home-school-button">
-                    View this property
-                  </button>
-                </Link>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <div>
-        <Footer />
-      </div>
+      <div className="hp-school">{house}</div>
     </div>
   );
 }

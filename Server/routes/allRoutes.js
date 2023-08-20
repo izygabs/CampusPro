@@ -24,6 +24,7 @@ const deleteProperty = require("../controllers/deleteProperty");
 
 const deleteItem = require("../controllers/deleteItem");
 const userProfile = require("../controllers/userProfile");
+const checkTokenExpired = require("../controllers/checkTokenExpired");
 
 const {
   upload,
@@ -60,6 +61,7 @@ route.put(
   uploadHostels.array("hostels", 10),
   updateProperty
 );
+route.get("/api/getTokenExpiration", verifyToken, checkTokenExpired);
 
 route.put(
   "/api/item/:id",

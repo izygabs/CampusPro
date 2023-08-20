@@ -3,20 +3,53 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../Dashboard.css";
-import { Link } from "react-router-dom";
 import AddItems from "./AddItems";
 import Changepassword from "./Changepassword";
 import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
-import { useLocation } from "react-router-dom";
-import Welcome from "./WelcomeMessage";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+// import Content from "./Content";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
+  const [isTokenExp, setIsTokenExp] = useState(false);
+  const [userID, setUserID] = useState();
+  const [email, setEmail] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [userType, setUserType] = useState();
+  const navigate = useNavigate();
 
-  const location = useLocation();
-  const { userID, email, userType, userName } = location.state;
+  useEffect(() => {
+    fetch("/api/getTokenExpiration", {
+      headers: {
+        Authorization: "campusProUserToken", // Include your actual token
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setIsTokenExp(data.isTokenExpired);
+
+        const token = jwtDecode(data.campusToken);
+        console.log(token);
+        const { _id, fName, lName, userType, email } = token;
+        setUserID(_id);
+        setEmail(email);
+        setFirstName(fName);
+        setLastName(lName);
+        setUserType(userType);
+        // Redirect to login if token is expired
+        if (data.isTokenExpired) {
+          navigate("/login");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching token status:", error);
+      });
+  }, [navigate]);
 
   const handleButtonClicked = (component) => {
     setSelectedComponent(component);
@@ -26,6 +59,7 @@ const Dashboard = () => {
   const handleCloseOverlay = () => {
     setShowOverlay(false);
   };
+  let userName = firstName + " " + lastName;
 
   return (
     <div className="dash">
@@ -106,19 +140,40 @@ const Dashboard = () => {
           >
             <Dropdown.Item
               onClick={() =>
-                handleButtonClicked(<ProfileInfo userID={userID} />)
+                handleButtonClicked(
+                  isTokenExp ? (
+                    navigate("/login")
+                  ) : (
+                    <ProfileInfo userID={userID} />
+                  )
+                )
               }
             >
               My Profile
             </Dropdown.Item>
             <Dropdown.Item
               onClick={() =>
-                handleButtonClicked(<Changepassword Email={email} />)
+                handleButtonClicked(
+                  isTokenExp ? (
+                    navigate("/login")
+                  ) : (
+                    <Changepassword Email={email} />
+                  )
+                )
               }
             >
               Login & Security
             </Dropdown.Item>
-            <Dropdown.Item>Sign Out</Dropdown.Item>
+            <Dropdown.Item
+              onClick={async () => {
+                const logout = await axios.get("/api/logout");
+                if (logout) {
+                  navigate("/login");
+                }
+              }}
+            >
+              Sign Out
+            </Dropdown.Item>
           </DropdownButton>
         </div>
         <ul class="navbar-nav flex-row d-md-none">
@@ -229,7 +284,13 @@ const Dashboard = () => {
                       >
                         <Dropdown.Item
                           onClick={() =>
-                            handleButtonClicked(<ProfileInfo userID={userID} />)
+                            handleButtonClicked(
+                              isTokenExp ? (
+                                navigate("/login")
+                              ) : (
+                                <ProfileInfo userID={userID} />
+                              )
+                            )
                           }
                         >
                           My Profile
@@ -237,7 +298,11 @@ const Dashboard = () => {
                         <Dropdown.Item
                           onClick={() =>
                             handleButtonClicked(
-                              <Changepassword Email={email} />
+                              isTokenExp ? (
+                                navigate("/login")
+                              ) : (
+                                <Changepassword Email={email} />
+                              )
                             )
                           }
                         >
@@ -247,7 +312,22 @@ const Dashboard = () => {
                     </a>
                   </li>
                   <li class="nav-item signOut">
-                    <a class="nav-link d-flex align-items-center gap-2 signOut">
+                    <a
+                      class="nav-link d-flex align-items-center gap-2 signOut"
+                      onClick={async () => {
+                        const logout = await axios.get("/api/logout");
+                        if (logout) {
+                          navigate("/login");
+                        }
+                        // if (logout.ok) {
+                        //   localStorage.removeItem("token"); // Remove token from storage
+                        //   // window.location.reload(); // Refresh the app or redirect to login page
+                        //   navigate("/login");
+                        // } else {
+                        //   console.error("Logout failed");
+                        // }
+                      }}
+                    >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#door-closed" />
                       </svg>
@@ -272,7 +352,11 @@ const Dashboard = () => {
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
-                    onClick={() => handleButtonClicked(<AddItems />)}
+                    onClick={() =>
+                      handleButtonClicked(
+                        isTokenExp ? navigate("/login") : <AddItems />
+                      )
+                    }
                   >
                     Create Items
                   </button>
@@ -282,11 +366,37 @@ const Dashboard = () => {
             </div>
 
             <div className="overComp">
-              {showOverlay && (
+              {showOverlay ? (
                 <OverlayComponent
                   component={selectedComponent}
                   onClose={handleCloseOverlay}
                 />
+              ) : (
+                <div>
+                  <h1>Welcome back, {firstName}</h1>
+                  <div className="db-content">
+                    <h6>WHAT'S NEXT</h6>
+                    <h3>
+                      Let's continue with creating your property and items!
+                    </h3>
+                    <p>
+                      Your info is pending verified, just continue with listing
+                      your property now.
+                    </p>
+                    <button
+                      onClick={() =>
+                        handleButtonClicked(
+                          isTokenExp ? navigate("/login") : <AddItems />
+                        )
+                      }
+                    >
+                      Go to Create Your Property
+                    </button>
+                  </div>
+                  <div className="db-confirm">
+                    <p>Pending Confirmation</p>
+                  </div>
+                </div>
               )}
             </div>
             {/* <Welcome /> */}
