@@ -4,18 +4,13 @@ import {useParams} from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect} from "react";
 import Carousel from "react-bootstrap/Carousel";
-import house1 from "./images/house-interior.webp";
-import house2 from "./images/hostel2.webp";
-import hostel3 from "./images/hostel3.webp";
-import home1 from "./images/house1.webp"
-import home2 from "./images/house12.webp"
-import home3 from "./images/house13.webp"
-import home4 from "./images/house14.webp"
+
 
 function RentPage2 (pass) {
   const [datas, setDatas] = useState([]);
   const [arr, setArr] = useState([]);
   const [agent, setAgent] = useState(false);
+  const [other, setOthers]=useState(null);
 
  
 
@@ -26,20 +21,28 @@ function RentPage2 (pass) {
 },[] )
 
 //filter properties according to agent id
-const similar = async ()=>{
-  const req = await fetch("/api/allProperties")
-  const res = await req.json()
-  console.log(res)
-  setArr(res)
-}
+// const similar = async ()=>{
+//   const req = await fetch("/api/allProperties")
+//   const res = await req.json()
+//   console.log(res.Properties)
+//   const properties = res.Properties
+//   setArr([properties])
+//   console.log(arr)
+
+//   const simi = arr.filter((simis)=>
+//     simis.agentID.toUpperString() == datas.agentID.toUpperString()
+//   );
+
+//   setOthers(simi)
+//   // console.log(other)
+
+// }
 
 //function to fetch properties from the database
 const {id} = useParams()
 const url= `/api/property/${id}`
 const fetcher = async()=> {
   try {
-    // console.log(id)
-    // console.log(url)
     const info = await fetch(url)
     const data2 = await info.json()
     const result = data2
@@ -123,8 +126,9 @@ const fetcher = async()=> {
           <button onClick={viewAgent}>{!agent? 'View agent contact': 'Hide agent info'}</button>
       </div>
 
-      
-        <button onClick={similar}>fetch similar</button>
+
+        {/* <button onClick={similar}>fetch similar</button> */}
+
 
       
   </div>
