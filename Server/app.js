@@ -6,17 +6,20 @@ const route = require("./routes/allRoutes");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const cors = require("cors");
-const path = require("path")
-const uploadHostels = require("./validators/uploadFile")
+const path = require("path");
+const uploadHostels = require("./validators/uploadFile");
 
 app.use(cors());
-app.use('/uploads', express.static("Hostel_Images"))
+app.use("/uploads", express.static("Hostel_Images"));
 // app.use(express.static(path.join(__dirname, "Hostel_Images")))
- 
+
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
-app.use('/Hostel_Images',express.static(path.join(__dirname, 'Hostel_Images')));
+app.use(
+  "/Hostel_Images",
+  express.static(path.join(__dirname, "Hostel_Images"))
+);
 app.use(route);
 
 // {

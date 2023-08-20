@@ -42,6 +42,8 @@ const changePassword = require("../controllers/changePassword");
 
 const updateUser = require("../controllers/updateUser");
 
+const viewPropertyByAgentId = require("../controllers/viewPropertyByAgentId");
+
 const route = express.Router();
 
 route.post("/api/signUp", signUp);
@@ -88,8 +90,10 @@ route.delete("/api/item/:id", verifyToken, deleteItem);
 
 route.get("/api/logout", verifyToken, logOut);
 
-route.put("/api/changePassword/:id", verifyToken, changePassword);
+route.put("/api/changePassword/:id", changePassword);
 
 route.put("/api/updateUser/:id", upload.single("profilePic"), updateUser);
+
+route.get("/api/propertyByAgent/:agentId", viewPropertyByAgentId);
 
 module.exports = route;

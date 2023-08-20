@@ -8,7 +8,7 @@ const viewProperties = async (req, res) => {
     if (!allProperties) {
       res.status(StatusCodes.BAD_REQUEST).send("Invalid ID");
     } else {
-      res.status(StatusCodes.OK).json({ "Properties": allProperties });
+      res.status(StatusCodes.OK).json({ Properties: allProperties });
     }
   } catch (error) {
     res

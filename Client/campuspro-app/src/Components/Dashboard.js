@@ -411,6 +411,7 @@ className="dashboard-logo"
                 </div>
               )}
             </div>
+            {/* <Welcome /> */}
           </main>
         </div>
       </div>
