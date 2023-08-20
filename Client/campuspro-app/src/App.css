@@ -10,7 +10,7 @@ p {
   margin: 3px !important;
 }
 .hp-header {
-  /* position:fixed; */
+  position:fixed;
   display: flex;
   background-color: rgb(9, 7, 7);
   /* background-color: #ccc; */
@@ -18,7 +18,9 @@ p {
   justify-content: space-between;
   align-items: center;
   height: 15vh;
-  /* margin-bottom: 20vh; */
+  margin-bottom: 15vh;
+  /* position: fixed; */
+  z-index: 100;
 }
 .hp-login-button {
   padding: 10px 30px;
@@ -159,11 +161,20 @@ p {
   font-weight: 700;
   font-style: italic;
 }
+.home-school-button{
+  border-radius: 10px;
+  border: none;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-bottom: 5px;background-color: black;color: white;
+}
 .sp-subrent-div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   background-color: white;
+  margin-top: 15vh;
 }
 .sp-sub-div {
   margin: 5vh 0;
@@ -238,12 +249,15 @@ p {
 .sp-select-amount {
   width: 20vw;
   outline: none;
-  height: 5vh;
+  height: 15vh;
   border: solid 2px #ffef99;
   margin-right: auto;
   margin-left: auto;
   display: block;
   font-size: 14px;
+  /* margin-top: 10vh; */
+  
+  
 }
 .sp-select-amount option {
   font-size: 13px;
@@ -265,7 +279,7 @@ p {
 .sp2-divs2 p {
   color: black;
   font-size: 15px;
-  line-height: 10px;
+  line-height: 20px;
 }
 .sp2-linkk {
   text-decoration: none;
@@ -302,10 +316,11 @@ p {
 }
 .sp2-main-sector {
   display: flex;
-  margin-top: -19vh;
+  /* top: 79vh; */
   flex-direction: row;
-  height: 60vh;
+  height: 80vh;
   border: solid 3px red;
+  padding-top: 15vh;
 }
 .sp2-divs {
   width: 50%;

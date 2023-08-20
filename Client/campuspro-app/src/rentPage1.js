@@ -1,15 +1,42 @@
 import React from "react";
 import logo from "./images/campuspro(6).png";
-import datae from "./data";
-import { useState } from "react";
-import SubRentpage1 from "./subRentPage1";
+
+import { useState, useEffect } from "react";
+// import SubRentpage1 from "./subRentPage1";
 import { Link } from "react-router-dom";
+import location from "./images/location-icon.png";
+import RentPage2 from "./rentPage2"
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function RentPage1() {
-  const [data1, setData1] = useState(datae);
-  const subRent = data1.map((ie) => {
-    return <SubRentpage1 key={ie.id} {...ie} />;
-  });
+  const [data11, setData11] = useState([]);
+  // const [click, setClick] = useState([]);
+
+//using the hook to display the fetch data on load
+  useEffect(()=>{
+      fetcher2()
+    },[] 
+  )
+  
+  //function to fetch properties from the database
+  const url= "/api/allProperties"
+  const fetcher2 = async()=> {
+    try {
+      const info = await fetch(url)
+      const data2 = await info.json()
+      const result = data2.Properties
+      setData11(result)
+      console.log(result)
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  // const subRent = data11.map((ie) => {
+  //   return <SubRentpage1 key={ie.id} {...ie} />;
+  // });
   // a function to sort houses according to the campus name the user inputs into the input
   function sort(e) {
     // e.preventDefault()
@@ -17,29 +44,29 @@ function RentPage1() {
     console.log(searchs);
 
     if (searchs) {
-      let sorting = data1.filter((ei) =>
+      let sorting = data11.filter((ei) =>
         ei.campus.toLowerCase().startsWith(searchs.toLowerCase())
       );
-      setData1(sorting);
+      setData11(sorting);
     } else {
-      setData1(datae);
+      setData11(data11);
     }
   }
 
   // a function to sort houses according to thier prices
   function sortPrice(e) {
-    setData1(datae);
+    setData11(data11);
 
     const prc = Number(e.target.value);
 
     console.log(prc);
 
     if (prc) {
-      let srtprice = data1.filter((ea) => ea.amount <= prc);
+      let srtprice = data11.filter((ea) => ea.amount <= prc);
 
-      setData1(srtprice);
+      setData11(srtprice);
     } else {
-      setData1(datae);
+      setData11(data11);
     }
   }
 
@@ -51,9 +78,6 @@ function RentPage1() {
             <Link to="/">
               <img src={logo} className="hp-logo" />
             </Link>
-          </div>
-          <div>
-            <p>CampusPro</p>
           </div>
         </div>
         <div>
@@ -78,9 +102,33 @@ function RentPage1() {
         <option value="200000">#200,000 & below</option>
       </select>
 
-      <div className="sp-subrent-div">{subRent}</div>
+      {/* <div className="sp-subrent-div">{subRent}</div> */}
+      <div className="sp-subrent-div">
+        {data11.map((info)=>{
+          return(
+            <div key={info._id} className="sp-sub-div">
+              <div className="sp-img-div">
+                <img src={`../images/${info.image}`} />
+                <div>
+                  <img className="hp-locate" src={location} />
+                  <p>{info.campusName.toUpperCase()}</p>
+                </div>
+              </div>
+              <div className="sp-text-div">
+                <p>{info.houseProperties[0]}</p>
+                <p>#{info.price.toLocaleString()}</p>
+
+                <Link className="sp2-linkk" to={`/rentproperty/${info._id}`}>
+                  <button>View this property</button>
+                </Link>
+              </div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   );
 }
 
 export default RentPage1;
+

@@ -69,16 +69,15 @@ route.put(
 );
 
 route.get("/api/allProperties", viewProperties);
+route.get("/api/allProperties", viewProperties);
 
 route.get("/api/allItems", verifyToken, viewItems);
 
-route.get("/api/property/:id", verifyToken, viewPropertyById);
+route.get("/api/property/:id", viewPropertyById);
 
 route.get("/api/item/:id", verifyToken, viewItemById);
 
-route.get("/api/user/:id", verifyToken, userProfile);
-
-route.delete("/api/property/:id", verifyToken, deleteProperty);
+route.delete("/api/property/:id", deleteProperty);
 
 route.delete("/api/item/:id", verifyToken, deleteItem);
 
