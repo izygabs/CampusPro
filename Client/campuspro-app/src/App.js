@@ -23,7 +23,7 @@ function App() {
           <Route path="/01-rentpage" element={<RentPage1 />} />
           <Route path="/02-rentpage" element={<RentPage2 />} />
           <Route path="/buyPage1" element={<BuyPage />} />
-          <Route path="/Contents/:id" element={<BuyPage2 />} />
+          <Route path="/holddata/:id" element={<BuyPage2 />} />
           <Route path="/Profile_info" element={<ProfileInfo />} />
           <Route path="/Changepassword" element={<Changepassword />} />
           <Route path="/Dashboard" element={<Dashboard />} />

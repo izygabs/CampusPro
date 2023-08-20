@@ -7,11 +7,11 @@ let fs = require("fs");
 
 const uploadItem = async (req, res) => {
   const itemPics = req.files;
-  console.log(req.files.path);
+  // console.log(req.files);
   const merchantId = req.user;
-  console.log(merchantId);
+  // console.log(merchantId);
   let value = req.body;
-  console.log(value);
+  // console.log(value);
 
   if (itemPics == null || itemPics.length < 5) {
     // itemPics.forEach((file) => {

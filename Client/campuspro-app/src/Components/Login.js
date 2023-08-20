@@ -1,19 +1,22 @@
-// import React, { useState } from "react";
-// import "../Bootstrap.css";
-// // import "bootstrap/dist/css/bootstrap.min.css";
-// // import { GoogleOAuthProvider } from "@react-oauth/google";
-// // import Google from "./Google";
+import React, { useState } from "react";
+import "../Bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
+// import Google from "./Google";
+import jwtDecode from "jwt-decode";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
+  const [jwtData, setJwtToken] = useState(null);
+
   const navigator = useNavigate();
   // const [email, setEmail] =useState("");
   const [inputValues, setInputValues] = useState({
     Email: "",
     Password: "",
   });
-}
+
   const handleInputChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -30,14 +33,24 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ data: inputValues }),
+        body: JSON.stringify(inputValues),
       });
       const result = await response.json();
+      const token = jwtDecode(result.jwtToken);
+      // setJwtToken(token);
+      // console.log(result);
+      const email = token.email;
+      const userType = token.userType;
+      const userName = token.name;
+      const userID = token._id;
 
       switch (response.status) {
         case 200:
           alert(result.Message);
+
           navigator("/Dashboard");
+          // state: { userID, email, userType, userName },
+          // });
           break;
         case 401:
           alert(result.Message);
@@ -102,7 +115,7 @@ const Login = () => {
               Remember me
             </label>
           </div>
-          {/* <Link to="/Dashboard"> */}
+          <Link to="/Dashboard">
           <button
             class="btn btn-warning w-100 py-2 createBtn "
             type="submit"
@@ -110,33 +123,26 @@ const Login = () => {
           >
             Login
           </button>
-          {/* </Link> */}
+          </Link> 
 
-{/* //           <p class="mt-4 mb-3 text-center text-body-secondary">
-//             <Link to="/Signup" className="create-account-link">
-//               <p id="create-account">Create an Account?</p>
-//             </Link>
-//             <a href="." class="forget-pwd">
-//               Forget Password
-//             </a>
-//           </p>
-//         </form>
+           <p class="mt-4 mb-3 text-center text-body-secondary">
+            <Link to="/Signup" className="create-account-link">
+            <p id="create-account">Create an Account?</p>
+          </Link>
+          <a href="." class="forget-pwd">
+            Forget Password
+          </a>
+        </p>
+      </form>
+      <p class="mt-5 mb-3 text-center year-display">
+        &copy; {new Date().getFullYear()}
+         </p>
+       </main> 
+         
+       </div> 
+  
+  )
 
-//         <p class="mt-5 mb-3 text-center year-display">
-//           &copy; {new Date().getFullYear()}
-//         </p>
-//       </main> */}
-{/* {/* //       <div class="googleLogin">
-//         <GoogleOAuthProvider
-//           clientId={process.env.REACT_APP_CLIENT_ID}
-//           className="innerGoogle"
-//         >
-//           <Google />
-//         </GoogleOAuthProvider>
-//       </div> */}
-{/* //     </div>
-//   );
-// };
-  ) */}
+  }
 
 export default Login; 

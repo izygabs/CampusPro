@@ -3,8 +3,10 @@ import "../AddItems.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router";
+// import CampusFeatures from "../CampusFeatures";
+import Campusfeatures from "./CampusFeatures";
 
-const AddItems = () => {
+const Createproperty = () => {
   const navigator = useNavigate();
   const [msg, setMsg] = useState("");
 
@@ -108,7 +110,7 @@ const AddItems = () => {
         method="post"
         action="/api/uploadItems"
       >
-        <div>
+        {/* <div>
           <p id="requiredInfo">* are required fields</p>
           <label for="itemName">
             Name of the item<span className="add-item-hysteric">*</span>
@@ -126,10 +128,10 @@ const AddItems = () => {
           {formik.touched.itemName && formik.errors.itemName && (
             <p className="addItem-error-message">{formik.errors.itemName}</p>
           )}
-        </div>
+        </div> */}
         <div>
           <label for="description">
-            Tell us something about the item
+            Tell us something about the property
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
@@ -154,7 +156,7 @@ const AddItems = () => {
           <br />
           <input
             className="add-items-inputs"
-            placeholder="Enter item Price"
+            placeholder="Enter property Price"
             type="number"
             name="price"
             onChange={formik.handleChange}
@@ -166,7 +168,7 @@ const AddItems = () => {
           )}
         </div>
 
-        <div>
+        {/* <div>
           <label for="quantity">
             What is the quantity?<span className="add-item-hysteric">*</span>
           </label>
@@ -183,17 +185,17 @@ const AddItems = () => {
           {formik.touched.quantity && formik.errors.quantity && (
             <p className="addItem-error-message">{formik.errors.quantity}</p>
           )}
-        </div>
+        </div> */}
 
         <div>
           <label for="location">
-            Tell us the about the location of the item
+            Tell us the about the location of the property
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
           <input
             className="add-items-inputs"
-            placeholder="Enter item's address"
+            placeholder="Enter property address"
             type="text"
             name="location"
             onChange={formik.handleChange}
@@ -207,7 +209,7 @@ const AddItems = () => {
 
         <div>
           <label for="campus">
-            Which Campus is the item located?
+            Which Campus is the property located?
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
@@ -225,7 +227,7 @@ const AddItems = () => {
           )}
         </div>
 
-        <div>
+        {/* <div>
           <label for="category">
             Catogory of the Item<span className="add-item-hysteric">*</span>
           </label>
@@ -295,7 +297,8 @@ const AddItems = () => {
           {formik.touched.category && formik.errors.category && (
             <p className="addItem-error-message">{formik.errors.category}</p>
           )}
-        </div>
+        </div> */}
+        <Campusfeatures />
         {/* <br /> */}
         <div>
           <label>
@@ -349,4 +352,4 @@ const AddItems = () => {
   );
 };
 
-export default AddItems;
+export default Createproperty;

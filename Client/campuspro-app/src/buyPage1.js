@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
 import logo from './images/campuspro(6).png';
 import './buyPage1.css';
-import Contents from './contents.json';
-import { useState } from 'react';
+// import Contents from './contents.json';
+import { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -20,10 +20,10 @@ const BuyPage = () => {
   const fetchItems = async () => {
     try {
       const res = await fetch('/api/allItems')
-      console.log(res);
       const data = await res.json()
-      setHoldData(data)
-      console.log(holddata)
+      console.log(data)
+      setHoldData(data.Items)
+      // console.log(holddata)
     } catch(err) {
       console.log(err);
     }
@@ -35,7 +35,8 @@ const BuyPage = () => {
 
   
 
-  
+  console.log(holddata); 
+
   return (
     <div className="main">
       <navbar className="navbar">
@@ -61,13 +62,26 @@ const BuyPage = () => {
       </select>
 
       <section className='section'>
-        {Contents.filter((items) => items.description.toLowerCase().includes( query || dropDownQuery )).map((items) => (
-          <div key={items.id} className='items'>
-            <img src={items.image} alt="item" className='images'/>
-            <Link to={`/Contents/${items.id}`}>
-            <p id='p-i'>{items.description}<br/> {items.price} <br/> <button className='btn'><Link to='/buyPage2' id='link-btn'>View Details</Link></button></p>aa</Link>
+        {holddata.map((items) => {
+          return(
+            <div key={items.id} className='items'>
+              {items.itemPictures? <img src={`/${items.itemPictures}`}/> : null}  
+            {/* // <img src={items.itemPictures[]} alt="item" className='images'/> */}
+                 <p id='p-i'>{items.campus}
+              <br/> 
+              {items.price} 
+              <br/> 
+            
+              <button className='btn'><Link to={`/holddata/${items._id}`} id='link-btn'>
+                View Details
+                </Link>
+                </button>
+                </p>
+              
           </div>
-        ))}
+          )
+          
+        })}
         {/* <button type="button"><Link to='/CampusFeatures'>Next</Link></button> */}
       </section>
     </div>
