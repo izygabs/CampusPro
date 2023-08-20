@@ -108,7 +108,7 @@ function RentPage1() {
           return(
             <div key={info._id} className="sp-sub-div">
               <div className="sp-img-div">
-                <img src={`../images/${info.image}`} />
+                <img src={`${info.hostelImages[5]}`} />
                 <div>
                   <img className="hp-locate" src={location} />
                   <p>{info.campusName.toUpperCase()}</p>
@@ -116,7 +116,7 @@ function RentPage1() {
               </div>
               <div className="sp-text-div">
                 <p>{info.houseProperties[0]}</p>
-                <p>#{info.price.toLocaleString()}</p>
+                <p>#{Number(info.price).toLocaleString()}</p>
 
                 <Link className="sp2-linkk" to={`/rentproperty/${info._id}`}>
                   <button>View this property</button>
