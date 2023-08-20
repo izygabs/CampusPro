@@ -16,6 +16,7 @@ app.use('/uploads', express.static("Hostel_Images"))
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+app.use('/Hostel_Images',express.static(path.join(__dirname, 'Hostel_Images')));
 app.use(route);
 
 // {

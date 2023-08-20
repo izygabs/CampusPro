@@ -4,19 +4,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import house1 from "./images/house-interior.webp";
 import house2 from "./images/hostel2.webp";
 import hostel3 from "./images/hostel3.webp";
-import data from "./data";
 import { useState, useEffect } from "react";
-import Schools from "./schools";
 import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
 import location from "./images/location-icon.png";
 
 function HomePage() {
-  const [datas, setDatas] = useState(data);
+  const [datas, setDatas] = useState([]);
   // const [camp , setCamp]=useState('')
   const [isTokenExp, setIsTokenExp] = useState(false);
   const navigate = useNavigate();
+
+  
 
   useEffect(() => {
     fetch("/api/getTokenExpiration", {
@@ -50,11 +50,11 @@ function HomePage() {
       const url= "/api/allProperties"
       const info = await fetch(url)
       const data2 = await info.json()
-      console.log(data2)
+      // console.log(data2)
       const result = data2.Properties
       setDatas(result)
-      console.log(result)
-      
+      console.log(result[0])
+      console.log(result[0].hostelImages[0]);
     } catch (error) {
       console.log(error)
     }
@@ -77,7 +77,7 @@ function HomePage() {
   }
 
   // console.log(datas)
-  console.log("datas", datas)
+  
 
   return (
     <div className="homepage">
@@ -205,14 +205,14 @@ function HomePage() {
           return(
             <div key={results._id} className="hp-school-div">
               <div className="hp-img-div">
-                  <img src={results.hostelImages[0]} />
+                  <img src={`${results.hostelImages[1]}`} />
                   <div>
                     <img className="hp-locate" src={location} />
                     <p>{results.campusName}</p>
                   </div>
               </div>
               <div className="hp-props-text">
-                <p>{results.houseProperties[1]}</p>
+                <p>{results.houseProperties[0]}</p>
                 <p>#{Number(results.price).toLocaleString()} </p>
       
                 <Link className="sp2-linkk"  to={`/rentproperty/${results._id}`}>
