@@ -6,8 +6,6 @@ const route = require("./routes/allRoutes");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const cors = require("cors");
-const path = require("path");
-const uploadHostels = require("./validators/uploadFile");
 
 app.use(cors());
 app.use("/uploads", express.static("Hostel_Images"));
@@ -16,53 +14,7 @@ app.use("/uploads", express.static("Hostel_Images"));
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
-app.use(
-  "/Hostel_Images",
-  express.static(path.join(__dirname, "Hostel_Images"))
-);
 app.use(route);
-
-// {
-//   /* <em>// Redirect the user to the Google signin page</em>; */
-// }
-// app.get(
-//   "/auth/google",
-//   passport.authenticate("google", { scope: ["email", "profile"] })
-// );
-// {
-//   /* <em>// Retrieve user data using the access token received</em>; */
-// }
-// app.get(
-//   "/auth/google/callback",
-//   passport.authenticate("google", { session: false }),
-//   (req, res) => {
-//     jwt.sign(
-//       { user: req.user },
-//       process.env.SECRET_KEY,
-//       {
-//         expiresIn: "1h",
-//       },
-//       (err, token) => {
-//         if (err) {
-//           return res.json({
-//             token: null,
-//           });
-//         }
-//         res.json({
-//           token,
-//         });
-//       }
-//     );
-//     res.redirect("/profile/");
-//   }
-// );
-// {
-//   /* <em>// profile route after successful sign in</em>; */
-// }
-// app.get("/profile", (req, res) => {
-//   console.log(req);
-//   res.send("Welcome");
-// });
 
 // Error-handling middleware for Multer errors
 app.use((err, req, res, next) => {

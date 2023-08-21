@@ -12,6 +12,7 @@ import jwtDecode from "jwt-decode";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Welcome from "./Welcome";
 // import Content from "./Content";
+import Createproperty from "./Createproperty.js";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -390,6 +391,11 @@ const Dashboard = () => {
                       userType == "merchant"
                         ? "hideBtn"
                         : "btn btn-sm btn-outline-dark"
+                    }
+                    onClick={() =>
+                      handleButtonClicked(
+                        isTokenExp ? navigate("/login") : <Createproperty />
+                      )
                     }
                   >
                     Create Property

@@ -98,57 +98,52 @@ function HomePage() {
               
             })
           
-           <select onChange={change} className="hp-select-button">
-              <option value={'lasu'}>LASU</option>
-              <option value={'unilag'}>UNILAG</option>
-              <option value={'laspotech'}>LASPOTECH</option>
-              <option value={'ui'}>UI(Ibadan)</option>
-              <option value={'the polytechnic ibadan'}>THE POLYTECHNIC IBADAN</option>
-              <option value={'oou'}>OOU</option>
-              <option value={'oau'}>OAU</option>
-              <option value={'jabu'}>JABU</option>
-              <option value={'mapoly'}>MAPOLY</option>
-              <option value={'osu'}>OSU</option>
-              <option value={'eksu'}>EKSU</option>
-          </select> */}
+//            <select onChange={change} className="hp-select-button">
+//               <option value={'lasu'}>LASU</option>
+//               <option value={'unilag'}>UNILAG</option>
+//               <option value={'laspotech'}>LASPOTECH</option>
+//               <option value={'ui'}>UI(Ibadan)</option>
+//               <option value={'the polytechnic ibadan'}>THE POLYTECHNIC IBADAN</option>
+//               <option value={'oou'}>OOU</option>
+//               <option value={'oau'}>OAU</option>
+//               <option value={'jabu'}>JABU</option>
+//               <option value={'mapoly'}>MAPOLY</option>
+//               <option value={'osu'}>OSU</option>
+//               <option value={'eksu'}>EKSU</option>
+//           </select> */}
         </div>
         <div>
-          <Link to={isTokenExp ? "/Dashboard" : "/login"}>
+          <Link to={!isTokenExp ? "/login" : "/Dashboard"}>
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
       </div>
-
-      {/* //carousel */}
       <div className="hp-carousel-div">
         <Carousel controls={false} indicators={false}>
           <Carousel.Item>
             {/* <ExampleCarouselImage text="First slide" /> */}
             <img src={house1} class="d-block w-100" alt="..." />
-
             <Carousel.Caption>
               {/* <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             {/* <ExampleCarouselImage text="Second slide" /> */}
             <img src={house2} class="d-block w-100" alt="..." />
-
             <Carousel.Caption>
               {/* <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             {/* <ExampleCarouselImage text="Third slide" /> */}
             <img src={hostel3} class="d-block w-100" alt="..." />
-
             <Carousel.Caption>
               {/* <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p> */}
+               <p>
+                 Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+               </p> */}
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
@@ -194,36 +189,7 @@ function HomePage() {
       <div className="hp-view-div">
         <p className="hp-view-hostels">View hostels around your campus</p>
       </div>
-
-      <div className="hp-school">
-        {datas.map((results) => {
-          return (
-            <div key={results._id} className="hp-school-div">
-              <div className="hp-img-div">
-                <img src={`${results.hostelImages[1]}`} />
-                <div>
-                  <img className="hp-locate" src={location} />
-                  <p>{results.campusName}</p>
-                </div>
-              </div>
-              <div className="hp-props-text">
-                <p>{results.houseProperties[0]}</p>
-                <p>#{Number(results.price).toLocaleString()} </p>
-
-                <Link className="sp2-linkk" to={`/rentproperty/${results._id}`}>
-                  <button className="home-school-button">
-                    View this property
-                  </button>
-                </Link>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <div>
-        <Footer />
-      </div>
+      <div className="hp-school">{house}</div>
     </div>
   );
 }

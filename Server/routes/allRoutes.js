@@ -76,11 +76,11 @@ route.put(
 
 route.get("/api/allProperties", viewProperties);
 
-route.get("/api/allItems", verifyToken, viewItems);
+route.get("/api/allItems", viewItems);
 
 route.get("/api/property/:id", viewPropertyById);
 
-route.get("/api/item/:id", verifyToken, viewItemById);
+route.get("/api/item/:id", viewItemById);
 
 route.get("/api/user/:id", verifyToken, userProfile);
 
