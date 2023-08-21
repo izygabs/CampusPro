@@ -12,7 +12,6 @@ import jwtDecode from "jwt-decode";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Welcome from "./Welcome";
 // import Content from "./Content";
-import Createproperty from "./Createproperty.js";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -24,8 +23,6 @@ const Dashboard = () => {
   const [lastName, setLastName] = useState();
   const [userType, setUserType] = useState();
   const [loading, setLoading] = useState(false);
-  const [closeBtn, setCloseBtn] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,9 +54,7 @@ const Dashboard = () => {
       });
   }, [navigate]);
 
-  const hideCloseButton = () => {};
   const handleButtonClicked = (component) => {
-    setCloseBtn(true);
     setSelectedComponent(component);
     setShowOverlay(true);
   };
@@ -281,7 +276,7 @@ const Dashboard = () => {
                               </div>
                               <div className="db-confirm">
                                 <p>Pending Confirmation</p>
-                                <h3>This section is coming soon....</h3>
+                                <h3>The property is pending</h3>
                               </div>
                             </div>
                           )
@@ -392,11 +387,6 @@ const Dashboard = () => {
                         ? "hideBtn"
                         : "btn btn-sm btn-outline-dark"
                     }
-                    onClick={() =>
-                      handleButtonClicked(
-                        isTokenExp ? navigate("/login") : <Createproperty />
-                      )
-                    }
                   >
                     Create Property
                   </button>
@@ -434,6 +424,12 @@ const Dashboard = () => {
                   onClose={handleCloseOverlay}
                 />
               ) : (
+                /* <Welcome
+                  firstName={firstName}
+                  // handleChange={handleButtonClicked(
+                  //   isTokenExp ? navigate("/login") : <AddItems />
+                  // )}
+                /> */
                 <div>
                   <h1>Welcome back, {firstName}</h1>
                   <div className="db-content">
@@ -457,8 +453,7 @@ const Dashboard = () => {
                   </div>
                   <div className="db-confirm">
                     <p>Pending Confirmation</p>
-
-                    <h3>This section is coming soon....</h3>
+                    <h3>The property is pending</h3>
                   </div>
                 </div>
               )}
