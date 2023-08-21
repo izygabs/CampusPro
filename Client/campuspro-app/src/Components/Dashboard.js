@@ -10,6 +10,7 @@ import OverlayComponent from "./OverlayComp";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import Welcome from "./Welcome";
 // import Content from "./Content";
 
 const Dashboard = () => {
@@ -386,31 +387,7 @@ const Dashboard = () => {
                   onClose={handleCloseOverlay}
                 />
               ) : (
-                <div>
-                  <h1>Welcome back, {firstName}</h1>
-                  <div className="db-content">
-                    <h6>WHAT'S NEXT</h6>
-                    <h3>
-                      Let's continue with creating your property and items!
-                    </h3>
-                    <p>
-                      Your info is pending verified, just continue with listing
-                      your property now.
-                    </p>
-                    <button
-                      onClick={() =>
-                        handleButtonClicked(
-                          isTokenExp ? navigate("/login") : <AddItems />
-                        )
-                      }
-                    >
-                      Go to Create Your Property
-                    </button>
-                  </div>
-                  <div className="db-confirm">
-                    <p>Pending Confirmation</p>
-                  </div>
-                </div>
+                <Welcome />
               )}
             </div>
             {/* <Welcome /> */}
