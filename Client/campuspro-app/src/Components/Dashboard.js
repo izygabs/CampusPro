@@ -23,6 +23,8 @@ const Dashboard = () => {
   const [lastName, setLastName] = useState();
   const [userType, setUserType] = useState();
   const [loading, setLoading] = useState(false);
+  const [closeBtn, setCloseBtn] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,7 +56,9 @@ const Dashboard = () => {
       });
   }, [navigate]);
 
+  const hideCloseButton = () => {};
   const handleButtonClicked = (component) => {
+    setCloseBtn(true);
     setSelectedComponent(component);
     setShowOverlay(true);
   };
@@ -243,6 +247,45 @@ const Dashboard = () => {
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
+                      onClick={() =>
+                        handleButtonClicked(
+                          isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <div>
+                              <h1>Welcome back, {firstName}</h1>
+                              <div className="db-content">
+                                <h6>WHAT'S NEXT</h6>
+                                <h3>
+                                  Let's continue with creating your property and
+                                  items!
+                                </h3>
+                                <p>
+                                  Your info is pending verified, just continue
+                                  with listing your property now.
+                                </p>
+                                <button
+                                  onClick={() =>
+                                    handleButtonClicked(
+                                      isTokenExp ? (
+                                        navigate("/login")
+                                      ) : (
+                                        <AddItems />
+                                      )
+                                    )
+                                  }
+                                >
+                                  Go to Create Your Property
+                                </button>
+                              </div>
+                              <div className="db-confirm">
+                                <p>Pending Confirmation</p>
+                                <h3>This section is coming soon....</h3>
+                              </div>
+                            </div>
+                          )
+                        )
+                      }
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
@@ -250,7 +293,7 @@ const Dashboard = () => {
                       Dashboard
                     </a>
                   </li>
-                  <li class={userType == "Agent" ? "hideBtn" : "nav-item"}>
+                  <li class={userType == "merchant" ? "hideBtn" : "nav-item"}>
                     <a class="nav-link d-flex  align-items-center gap-2">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
@@ -344,7 +387,7 @@ const Dashboard = () => {
                   <button
                     type="button"
                     class={
-                      userType == "Agent"
+                      userType == "merchant"
                         ? "hideBtn"
                         : "btn btn-sm btn-outline-dark"
                     }
@@ -385,7 +428,33 @@ const Dashboard = () => {
                   onClose={handleCloseOverlay}
                 />
               ) : (
-                <Welcome />
+                <div>
+                  <h1>Welcome back, {firstName}</h1>
+                  <div className="db-content">
+                    <h6>WHAT'S NEXT</h6>
+                    <h3>
+                      Let's continue with creating your property and items!
+                    </h3>
+                    <p>
+                      Your info is pending verified, just continue with listing
+                      your property now.
+                    </p>
+                    <button
+                      onClick={() =>
+                        handleButtonClicked(
+                          isTokenExp ? navigate("/login") : <AddItems />
+                        )
+                      }
+                    >
+                      Go to Create Your Property
+                    </button>
+                  </div>
+                  <div className="db-confirm">
+                    <p>Pending Confirmation</p>
+
+                    <h3>This section is coming soon....</h3>
+                  </div>
+                </div>
               )}
             </div>
             {/* <Welcome /> */}
