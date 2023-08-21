@@ -1,37 +1,81 @@
 import React from "react";
 import logo from "./images/campuspro(6).png";
 import "bootstrap/dist/css/bootstrap.min.css";
+import location from "./images/location-icon.png";
 import house1 from "./images/house-interior.webp";
 import house2 from "./images/hostel2.webp";
 import hostel3 from "./images/hostel3.webp";
-import data from "./data";
-import { useState } from "react";
-import Schools from "./schools";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
 
 function HomePage() {
-  const [datas, setDatas] = useState(data);
+  const [datas, setDatas] = useState([]);
   // const [camp , setCamp]=useState('')
+  const [isTokenExp, setIsTokenExp] = useState(false);
+  const navigate = useNavigate();
 
-  function change(e) {
-    // e.preventDefault()
-    const pal = e.target.value;
-    console.log(pal);
+  useEffect(() => {
+    fetch("/api/getTokenExpiration", {
+      headers: {
+        Authorization: "campusProUserToken", // Include your actual token
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // setIsTokenExp(data.Exp);
+        // console.log(data.token);
+        data.Exp && setIsTokenExp(false);
+        // Redirect to login if token is expired
+      })
+      .catch((error) => {
+        setIsTokenExp(true);
 
-    if (pal) {
-      const filt = datas.filter((place) =>
-        place.campus.toLowerCase().startsWith(pal.toLowerCase())
-      );
-      setDatas(filt);
-    } else {
-      setDatas(data);
+        console.error("Error fetching token status:", error);
+      });
+  }, [isTokenExp]);
+
+  //using the hook to display the fetch data on load
+  useEffect(() => {
+    fetcher();
+  }, []);
+
+  //function to fetch properties from the database
+  const fetcher = async () => {
+    try {
+      const url = "/api/allProperties";
+      const info = await fetch(url);
+      const data2 = await info.json();
+      // console.log(data2)
+      const result = data2.Properties;
+      setDatas(result);
+      console.log(result[0]);
+      console.log(result[0].hostelImages[0]);
+    } catch (error) {
+      console.log(error);
     }
-  }
-  const house = datas.map((aparte) => {
-    return <Schools key={aparte.id} {...aparte} />;
-  });
+  };
+
+  //function to filter properties according to the user search
+  // function change(e) {
+  //   // e.preventDefault()
+  //   const pal = e.target.value;
+  //   console.log(pal);
+
+  //   if (pal) {
+  //     const filt = datas.filter((place) =>
+  //       place.campus.toLowerCase().startsWith(pal.toLowerCase())
+  //     );
+  //     setDatas(filt);
+  //   } else {
+  //     // setDatas(data);
+  //   }
+  //   // setDatas(datas);
+  // }
+
+  // console.log(datas)
+
   return (
     <div className="homepage">
       <div className="hp-header">
@@ -45,11 +89,10 @@ function HomePage() {
         </div>
         <div>
           <input
-            onChange={change}
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
           />
-          {/* const campus= data.campus; */}
+
           {/*
             campus.map((item)=>{
               
@@ -70,7 +113,7 @@ function HomePage() {
           </select> */}
         </div>
         <div>
-          <Link to="/login">
+          <Link to={isTokenExp ? "/Dashboard" : "/login"}>
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
@@ -110,19 +153,18 @@ function HomePage() {
           </Carousel.Item>
         </Carousel>
 
-       
-            <section className="hp-section1">
-              <div className="hp-buy-div">
-                <p className="hp-heading">
-                  BUY <br></br> ITEMS
-                </p>
-                <p className="hp-texts">
-                  Explore various properties listed for sale around your campus
-                </p>
-                <Link className="link" to="/buyPage1">
-                  <button className="hp-button-link">Buy items</button>
-                </Link>
-              </div>
+        <section className="hp-section1">
+          <div className="hp-buy-div">
+            <p className="hp-heading">
+              BUY <br></br> ITEMS
+            </p>
+            <p className="hp-texts">
+              Explore various properties listed for sale around your campus
+            </p>
+            <Link className="link" to="/buyPage1">
+              <button className="hp-button-link">Buy items</button>
+            </Link>
+          </div>
 
           <div className="hp-sell-div">
             <p className="hp-heading">
@@ -131,29 +173,57 @@ function HomePage() {
             <p className="hp-texts">
               Become a merchant and sell properties on CampusPro.
             </p>
-            <Link className="link" to="/login">
+
+            <Link to={isTokenExp ? "/Dashboard" : "/login"}>
               <button className="hp-button-link">Become a merchant</button>
             </Link>
           </div>
 
-              <div className="hp-rent-div">
-                <p className="hp-heading">RENT APARTMENT </p>
-                <p className="hp-texts">
-                  Navigate through pletora of hostels around your campus
-                </p>
-                <Link className="link" to="/01-rentPage">
-                  <button className="hp-button-link">Rent an apartment</button>
-                </Link>
-              </div>
-            </section>
-     
-       
+          <div className="hp-rent-div">
+            <p className="hp-heading">RENT APARTMENT </p>
+            <p className="hp-texts">
+              Navigate through pletora of hostels around your campus
+            </p>
+            <Link className="link" to="/01-rentPage">
+              <button className="hp-button-link">Rent an apartment</button>
+            </Link>
+          </div>
+        </section>
       </div>
 
       <div className="hp-view-div">
         <p className="hp-view-hostels">View hostels around your campus</p>
       </div>
-      <div className="hp-school">{house}</div>
+
+      <div className="hp-school">
+        {datas.map((results) => {
+          return (
+            <div key={results._id} className="hp-school-div">
+              <div className="hp-img-div">
+                <img src={`${results.hostelImages[1]}`} />
+                <div>
+                  <img className="hp-locate" src={location} />
+                  <p>{results.campusName}</p>
+                </div>
+              </div>
+              <div className="hp-props-text">
+                <p>{results.houseProperties[0]}</p>
+                <p>#{Number(results.price).toLocaleString()} </p>
+
+                <Link className="sp2-linkk" to={`/rentproperty/${results._id}`}>
+                  <button className="home-school-button">
+                    View this property
+                  </button>
+                </Link>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

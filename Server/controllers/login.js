@@ -16,14 +16,13 @@ const login = async (req, res) => {
       //check the password
       let validPassword = await bcrypt.compare(Password, isUser.password);
       if (validPassword) {
-        let username = isUser.firstName + " " + isUser.lastName;
-
         const token = jwt.sign(
           {
             _id: isUser._id,
             email: isUser.email,
             userType: isUser.typeOfUser,
-            name: username,
+            fName: isUser.firstName,
+            lName: isUser.lastName,
           },
           process.env.SECRET_KEY,
           {
@@ -41,6 +40,7 @@ const login = async (req, res) => {
       res.status(417).json({ Message: "Invalid Email or Password" });
     }
   } catch (error) {
+    console.log(error);
     const errors = errorHandler.dbSchemaErrors(error);
     res.status(403).json({ Message: errors });
   }

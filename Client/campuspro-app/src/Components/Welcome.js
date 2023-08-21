@@ -3,11 +3,23 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 import AddItems from "./AddItems";
 
-function Welcome(prop) {
+function Welcome() {
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [selectedComponent, setSelectedComponent] = useState(null);
+  const [firstName, setFirstName] = useState();
+  const [isTokenExp, setIsTokenExp] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleButtonClicked = (component) => {
+    setSelectedComponent(component);
+    setShowOverlay(true);
+  };
+
   return (
     <div>
       <div>
-        <h1>Welcome back, {prop.firstName}</h1>
+        <h1>Welcome back, {firstName}</h1>
         <div className="db-content">
           <h6>WHAT'S NEXT</h6>
           <h3>Let's continue with creating your property and items!</h3>
@@ -15,13 +27,18 @@ function Welcome(prop) {
             Your info is pending verified, just continue with listing your
             property now.
           </p>
-          <button onClick={prop.handleChange}>
+          <button
+            onClick={() =>
+              handleButtonClicked(
+                isTokenExp ? navigate("/login") : <AddItems />
+              )
+            }
+          >
             Go to Create Your Property
           </button>
         </div>
         <div className="db-confirm">
           <p>Pending Confirmation</p>
-          <h3>The property is pending</h3>
         </div>
       </div>
     </div>

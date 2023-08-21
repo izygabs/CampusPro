@@ -3,19 +3,56 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../Dashboard.css";
-import { Link } from "react-router-dom";
 import AddItems from "./AddItems";
 import Changepassword from "./Changepassword";
 import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
-import { useLocation } from "react-router-dom";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import Welcome from "./Welcome";
+// import Content from "./Content";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
+  const [isTokenExp, setIsTokenExp] = useState(false);
+  const [userID, setUserID] = useState();
+  const [email, setEmail] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [userType, setUserType] = useState();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // const location = useLocation();
-  // const { userID, email, userType, userName } = location.state;
+  useEffect(() => {
+    fetch("/api/getTokenExpiration", {
+      headers: {
+        Authorization: "campusProUserToken", // Include your actual token
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setIsTokenExp(data.isTokenExpired);
+
+        const token = jwtDecode(data.campusToken);
+        // console.log(token);
+        token && setLoading(true);
+        const { _id, fName, lName, userType, email } = token;
+        setUserID(_id);
+        setEmail(email);
+        setFirstName(fName);
+        setLastName(lName);
+        setUserType(userType);
+        // Redirect to login if token is expired
+        if (data.isTokenExpired) {
+          navigate("/login");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching token status:", error);
+      });
+  }, [navigate]);
 
   const handleButtonClicked = (component) => {
     setSelectedComponent(component);
@@ -25,6 +62,7 @@ const Dashboard = () => {
   const handleCloseOverlay = () => {
     setShowOverlay(false);
   };
+  let userName = firstName + " " + lastName;
 
   return (
     <div className="dash">
@@ -99,25 +137,40 @@ const Dashboard = () => {
         <div class="username">
           <DropdownButton
             id="dropdown-basic-button"
-            title={"userName"}
+            title={loading ? userName : ""}
             className="userName-dropdown"
             variant="secondary"
           >
             <Dropdown.Item
               onClick={() =>
-                handleButtonClicked(<ProfileInfo userID={"userID"} />)
+                handleButtonClicked(<ProfileInfo userID={userID} />)
               }
             >
               My Profile
             </Dropdown.Item>
             <Dropdown.Item
               onClick={() =>
-                handleButtonClicked(<Changepassword Email={"email"} />)
+                handleButtonClicked(
+                  isTokenExp ? (
+                    navigate("/login")
+                  ) : (
+                    <Changepassword Email={email} />
+                  )
+                )
               }
             >
               Login & Security
             </Dropdown.Item>
-            <Dropdown.Item>Sign Out</Dropdown.Item>
+            <Dropdown.Item
+              onClick={async () => {
+                const logout = await axios.get("/api/logout");
+                if (logout) {
+                  navigate("/login");
+                }
+              }}
+            >
+              Sign Out
+            </Dropdown.Item>
           </DropdownButton>
         </div>
         <ul class="navbar-nav flex-row d-md-none">
@@ -191,7 +244,7 @@ const Dashboard = () => {
                       Dashboard
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <li class={userType == "Agent" ? "hideBtn" : "nav-item"}>
                     <a class="nav-link d-flex  align-items-center gap-2">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
@@ -229,7 +282,11 @@ const Dashboard = () => {
                         <Dropdown.Item
                           onClick={() =>
                             handleButtonClicked(
-                              <ProfileInfo userID={"userID"} />
+                              isTokenExp ? (
+                                navigate("/login")
+                              ) : (
+                                <ProfileInfo userID={userID} />
+                              )
                             )
                           }
                         >
@@ -238,7 +295,11 @@ const Dashboard = () => {
                         <Dropdown.Item
                           onClick={() =>
                             handleButtonClicked(
-                              <Changepassword Email={"email"} />
+                              isTokenExp ? (
+                                navigate("/login")
+                              ) : (
+                                <Changepassword Email={email} />
+                              )
                             )
                           }
                         >
@@ -248,7 +309,15 @@ const Dashboard = () => {
                     </a>
                   </li>
                   <li class="nav-item signOut">
-                    <a class="nav-link d-flex align-items-center gap-2 signOut">
+                    <a
+                      class="nav-link d-flex align-items-center gap-2 signOut"
+                      onClick={async () => {
+                        const logout = await axios.get("/api/logout");
+                        if (logout) {
+                          navigate("/login");
+                        }
+                      }}
+                    >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#door-closed" />
                       </svg>
@@ -266,34 +335,54 @@ const Dashboard = () => {
 
               <div class="btn-toolbar ms-5 mb-2 mb-md-0">
                 <div class="btn-group me-2 specialBtn">
-                  <button type="button" class="btn btn-sm btn-outline-dark">
+                  <button
+                    type="button"
+                    class={
+                      userType == "Agent"
+                        ? "hideBtn"
+                        : "btn btn-sm btn-outline-dark"
+                    }
+                  >
                     Create Property
                   </button>
                   {/* <Link to="/add-items"> */}
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
-                    onClick={() => handleButtonClicked(<AddItems />)}
+                    onClick={() =>
+                      handleButtonClicked(
+                        isTokenExp ? navigate("/login") : <AddItems />
+                      )
+                    }
                   >
                     Create Items
                   </button>
                   {/* </Link> */}
                 </div>
+                {/* <button
+                  type="button"
+                  class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1"
+                >
+                  <svg class="bi" style={{ width: "20px", height: "20px" }}>
+                    <use xlinkHref="#calendar3" />
+                  </svg>
+                  This week
+                </button> */}
               </div>
+              <div class="username">{/* <h6>{"Gabriel Isaiah"}</h6> */}</div>
             </div>
 
             <div className="overComp">
-              {showOverlay && (
+              {showOverlay ? (
                 <OverlayComponent
                   component={selectedComponent}
                   onClose={handleCloseOverlay}
                 />
+              ) : (
+                <Welcome />
               )}
             </div>
-            {/* <h2>Section title</h2>
-            <div class="table-responsive small">
-              <h1>display something here</h1>
-            </div> */}
+            {/* <Welcome /> */}
           </main>
         </div>
       </div>
