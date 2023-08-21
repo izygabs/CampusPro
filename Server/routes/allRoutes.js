@@ -92,7 +92,12 @@ route.get("/api/logout", verifyToken, logOut);
 
 route.put("/api/changePassword/:id", changePassword);
 
-route.put("/api/updateUser/:id", upload.single("profilePic"), updateUser);
+route.put(
+  "/api/updateUser/:id",
+  verifyToken,
+  upload.single("profilePic"),
+  updateUser
+);
 
 route.get("/api/propertyByAgent/:agentId", viewPropertyByAgentId);
 

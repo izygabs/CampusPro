@@ -13,6 +13,7 @@ import Changepassword from "./Components/Changepassword";
 import ProfileInfo from "./Components/Profile_info";
 import React from "react";
 import UserDashboard from "./Components/UserDashboard";
+import Welcome from "./Components/Welcome";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/Welcome" element={<Welcome />} />
         </Routes>
       </Router>
     </div>

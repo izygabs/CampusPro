@@ -10,6 +10,11 @@ function ProfileInfo(prop) {
   const [imgSrc, setImageScr] = useState(pic);
   const fileUpload = useRef(null);
   const [userProfile, setUserProfile] = useState([]);
+  const [imagePath, setImagePath] = useState();
+  const [firstName, setFirstName] = useState(userProfile.firstName);
+  const [lastName, setLastName] = useState(userProfile.lastName);
+  const [email, setEmail] = useState(userProfile.email);
+  const [phoneNumber, setPhoneNumber] = useState(userProfile.phoneNumber);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -21,7 +26,50 @@ function ProfileInfo(prop) {
       }
     };
     fetchProfile();
-  }, []);
+  }, [userProfile]);
+
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+    try {
+      const data = await axios.put("/api/updateUser/:id", {
+        firstName: firstName || userProfile.firstName,
+        lastName: lastName || userProfile.lastName,
+        email: email || userProfile.email,
+        phoneNumber: phoneNumber || userProfile.phoneNumber,
+        profilePic: imagePath || userProfile.profilePic,
+      });
+      // console.log(data);
+      alert(data.data.message);
+      setClicked(false);
+      //  setClicked(true);
+      setClicked2(false);
+      //  setClicked2(true);
+      setClicked3(false);
+      //  setClicked3(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleInputChange1 = (e) => {
+    e.preventDefault();
+    setFirstName(e.target.value);
+  };
+
+  const handleInputChange2 = (e) => {
+    e.preventDefault();
+    setLastName(e.target.value);
+  };
+
+  const handleInputChange3 = (e) => {
+    e.preventDefault();
+    setEmail(e.target.value);
+  };
+
+  const handleInputChange4 = (e) => {
+    e.preventDefault();
+    setPhoneNumber(e.target.value);
+  };
 
   const handleEditClicked = (e) => {
     e.preventDefault();
@@ -53,7 +101,10 @@ function ProfileInfo(prop) {
 
   const displayProfilePic = (e) => {
     const file = e.target.files[0];
-    if (file) setImageScr(URL.createObjectURL(file));
+    if (file) {
+      setImageScr(URL.createObjectURL(file));
+      setImagePath(file);
+    }
   };
   return (
     <div className="pi-body">
@@ -101,10 +152,13 @@ function ProfileInfo(prop) {
                 type="text"
                 name="name"
                 placeholder={userProfile.firstName}
+                onChange={handleInputChange1}
               />
               <br />
               <br />
-              <button className="pi-btn">Confirm</button>
+              <button onClick={handleSubmit} className="pi-btn">
+                Confirm
+              </button>
             </div>
           )}
         </div>
@@ -123,10 +177,13 @@ function ProfileInfo(prop) {
                 type="text"
                 name="name"
                 placeholder={userProfile.lastName}
+                onChange={handleInputChange2}
               />
               <br />
               <br />
-              <button className="pi-btn">Confirm</button>
+              <button onClick={handleSubmit} className="pi-btn">
+                Confirm
+              </button>
             </div>
           )}
         </div>
@@ -139,7 +196,7 @@ function ProfileInfo(prop) {
           </div>
           {!clicked3 ? (
             <div>
-              <p className="pi-para">{"+" + userProfile.phoneNumber}</p>
+              <p className="pi-para">{userProfile.phoneNumber}</p>
               <p className="pi-para">{userProfile.email}</p>
             </div>
           ) : (
@@ -147,12 +204,20 @@ function ProfileInfo(prop) {
               <input
                 type="tel"
                 name="name"
-                placeholder={"+" + userProfile.phoneNumber}
+                placeholder={userProfile.phoneNumber}
+                onChange={handleInputChange3}
               />
-              <input type="email" name="name" placeholder={userProfile.email} />
+              <input
+                type="email"
+                name="name"
+                placeholder={userProfile.email}
+                onChange={handleInputChange4}
+              />
               <br />
               <br />
-              <button className="pi-btn">Confirm</button>
+              <button onClick={handleSubmit} className="pi-btn">
+                Confirm
+              </button>
             </div>
           )}
         </div>

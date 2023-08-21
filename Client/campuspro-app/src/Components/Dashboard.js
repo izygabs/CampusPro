@@ -10,6 +10,7 @@ import OverlayComponent from "./OverlayComp";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import Welcome from "./Welcome";
 // import Content from "./Content";
 
 const Dashboard = () => {
@@ -126,7 +127,7 @@ const Dashboard = () => {
         <Link to="/">
           <img
             src={require("../images/campuspro(6).png")}
-className="dashboard-logo"
+            className="dashboard-logo"
             alt=""
           />
         </Link>
@@ -236,17 +237,22 @@ className="dashboard-logo"
             >
               <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                 <ul class="nav flex-column">
-                  <li class="nav-item ">
-                    <a
-                      class="nav-link d-flex  align-items-center gap-2 active "
-                      aria-current="page"
-                                          >
-                      <svg class="bi" style={{ width: "20px", height: "20px" }}>
-                        <use xlinkHref="#house-fill" />
-                      </svg>
-                      Dashboard
-                    </a>
-                  </li>
+                  <Link to="/Welcome">
+                    <li class="nav-item ">
+                      <a
+                        class="nav-link d-flex  align-items-center gap-2 active "
+                        aria-current="page"
+                      >
+                        <svg
+                          class="bi"
+                          style={{ width: "20px", height: "20px" }}
+                        >
+                          <use xlinkHref="#house-fill" />
+                        </svg>
+                        Dashboard
+                      </a>
+                    </li>
+                  </Link>
                   <li class="nav-item">
                     <a class="nav-link d-flex  align-items-center gap-2">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
@@ -263,7 +269,7 @@ className="dashboard-logo"
                       Items
                     </a>
                   </li>
-                                  </ul>
+                </ul>
                 {/* <hr
                   class="my-4 "
                   style={{ color: "black", width: "13.1rem" }}
@@ -348,7 +354,7 @@ className="dashboard-logo"
                   <button type="button" class="btn btn-sm btn-outline-dark">
                     Create Property
                   </button>
-{/* <Link to="/add-items"> */}
+                  {/* <Link to="/add-items"> */}
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
@@ -360,7 +366,7 @@ className="dashboard-logo"
                   >
                     Create Items
                   </button>
-{/* </Link> */}
+                  {/* </Link> */}
                 </div>
                 {/* <button
                   type="button"
@@ -384,31 +390,7 @@ className="dashboard-logo"
                   onClose={handleCloseOverlay}
                 />
               ) : (
-                <div>
-                  <h1>Welcome back, {firstName}</h1>
-                  <div className="db-content">
-                    <h6>WHAT'S NEXT</h6>
-                    <h3>
-                      Let's continue with creating your property and items!
-                    </h3>
-                    <p>
-                      Your info is pending verified, just continue with listing
-                      your property now.
-                    </p>
-                    <button
-                      onClick={() =>
-                        handleButtonClicked(
-                          isTokenExp ? navigate("/login") : <AddItems />
-                        )
-                      }
-                    >
-                      Go to Create Your Property
-                    </button>
-                  </div>
-                  <div className="db-confirm">
-                    <p>Pending Confirmation</p>
-                  </div>
-                </div>
+                <Welcome />
               )}
             </div>
             {/* <Welcome /> */}
