@@ -25,22 +25,23 @@ const BuyPage2 = () => {
     }
   }
   console.log(holddata.itemPictures)
+
   return (
     <div className="minor">
       {holddata && (
         <>   
           <img src={holddata.itemPictures} alt='image' className='i-mg' />
-        <h1 id='details'>Item Details</h1>
-        <p id='para'>Item Name: {holddata.itemName} </p>
-        <p id='para'>Description: {holddata.description} </p>
-        <p id='para'>Item Location: </p>
-        <p id='para'>Price: </p>
-        <h2 id='contact'>Merchant Contact Details</h2>
-        <p id='para'>Merchant Name: </p>
-        <p id='para'>Merchant Number: </p>
-        <p id='para'>Merchant Alternate Number: </p>
-        <p id='para'>Merchant Email Address: </p>
-        <p id='para'>Merchant Location: </p>
+              <h1 id='details'>Item Details</h1>
+              <p id='para'>Item Name: {holddata.itemName} </p>
+              <p id='para'>Description: {holddata.description} </p>
+              <p id='para'>Item Location: {holddata.location}</p>
+              <p id='para'>Price: </p>
+              <h2 id='contact'>Merchant Contact Details</h2>
+              <p id='para'>Merchant Name: </p>
+              <p id='para'>Merchant Number: </p>
+              <p id='para'>Merchant Alternate Number: </p>
+              <p id='para'>Merchant Email Address: </p>
+              <p id='para'>Merchant Location: </p>
         </>
     
         // <div className="buy-div">

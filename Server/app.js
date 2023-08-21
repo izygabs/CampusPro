@@ -6,12 +6,16 @@ const route = require("./routes/allRoutes");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const cors = require("cors");
+const path = require("path");
 
 app.use(cors());
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+app.use('Items_Images', express.static(path.join(__dirname,'Items_Images')));
 app.use(route);
+
+// app.get('http://localhost:3001/Items_Images/')
 
 // {
 //   /* <em>// Redirect the user to the Google signin page</em>; */

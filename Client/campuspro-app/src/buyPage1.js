@@ -65,9 +65,9 @@ const BuyPage = () => {
         {holddata.map((items) => {
           return(
             <div key={items.id} className='items'>
-              {items.itemPictures? <img src={`/${items.itemPictures}`}/> : null}  
+              <img src={items.itemPictures[2]} alt='image' className='images' />
             {/* // <img src={items.itemPictures[]} alt="item" className='images'/> */}
-                 <p id='p-i'>{items.campus}
+              <p id='p-i'>{items.campus}
               <br/> 
               {items.price} 
               <br/> 
@@ -77,7 +77,6 @@ const BuyPage = () => {
                 </Link>
                 </button>
                 </p>
-              
           </div>
           )
           

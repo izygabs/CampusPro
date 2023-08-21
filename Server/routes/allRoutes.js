@@ -76,7 +76,7 @@ route.get("/api/allItems", viewItems);
 
 route.get("/api/property/:id", verifyToken, viewPropertyById);
 
-route.get("/api/item/:id", verifyToken, viewItemById);
+route.get("/api/item/:id", viewItemById);
 
 route.get("/api/user/:id", verifyToken, userProfile);
 
