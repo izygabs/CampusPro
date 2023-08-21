@@ -1,5 +1,6 @@
 // eslint-disable-next-line
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-modal";
 import "./Signup.css";
 import key from "./lock_483408.png";
 import user from "./MicrosoftTeams-image (4).png";
@@ -10,9 +11,23 @@ import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 
 // import gold from './gold.png'
-
+// Modal.setAppElement("#root");
 const Signup = () => {
+  const [message, setMsg] = useState();
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
   const navigator = useNavigate();
+  const closeModal = () => {
+    setModalIsOpen(false);
+
+    navigator("/login");
+  };
 
   const validationSchema = yup.object({
     firstName: yup.string().required(" First name is required"),
@@ -66,10 +81,12 @@ const Signup = () => {
         });
 
         const result = await response.json();
+        setIsSignUpSuccessful(true);
+        setModalIsOpen(true);
         switch (response.status) {
           case 201:
-            alert(result.Message + ".\nClick OK to Login");
-            navigator("/login");
+            setMsg(result.Message + ".\nClick OK to Login");
+            // navigator("/login");
 
             break;
           case 400:
@@ -92,7 +109,7 @@ const Signup = () => {
   });
 
   return (
-    <div className="sp-form-one">
+    <div className="sp-form-one" id="signUP">
       <form className="sp-form" onSubmit={formik.handleSubmit}>
         <h1>Register</h1>
         <div className="header">
@@ -256,9 +273,22 @@ const Signup = () => {
         </div>
 
         <div className="sp-create-Account-button">
-          <button className="sp-btn" type="submit">
+          <button className="sp-btn" type="submit" onClick={openModal}>
             Create Account
           </button>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Success Modal"
+            className="signUp_modal"
+            overlayClassName="signUp_overlayModal"
+          >
+            <h2>Successful sign-up</h2>
+            <p>{message}</p>
+            <button onClick={closeModal} className="modalBtn">
+              Log in
+            </button>
+          </Modal>
         </div>
 
         <p className="sp-registered">

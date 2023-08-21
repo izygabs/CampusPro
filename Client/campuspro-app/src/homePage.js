@@ -24,12 +24,14 @@ function HomePage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setIsTokenExp(data.Exp);
+        // setIsTokenExp(data.Exp);
         // console.log(data.token);
-        // console.log(isTokenExp);
+        data.Exp && setIsTokenExp(false);
         // Redirect to login if token is expired
       })
       .catch((error) => {
+        setIsTokenExp(true);
+
         console.error("Error fetching token status:", error);
       });
   }, [isTokenExp]);
@@ -111,7 +113,7 @@ function HomePage() {
           </select> */}
         </div>
         <div>
-          <Link to={isTokenExp ? "/login" : "/Dashboard"}>
+          <Link to={isTokenExp ? "/Dashboard" : "/login"}>
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
@@ -172,7 +174,7 @@ function HomePage() {
               Become a merchant and sell properties on CampusPro.
             </p>
 
-            <Link to={isTokenExp ? "/login" : "/Dashboard"}>
+            <Link to={isTokenExp ? "/Dashboard" : "/login"}>
               <button className="hp-button-link">Become a merchant</button>
             </Link>
           </div>

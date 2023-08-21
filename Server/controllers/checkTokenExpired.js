@@ -16,7 +16,8 @@ const checkTokenExpired = (req, res) => {
     // Compare the expiration time with the current time
     const isTokenExpired = expirationTime <= new Date();
 
-    return res.status(201).json({ Exp: isTokenExpired, campusToken: token });
+    res.status(201).json({ Exp: isTokenExpired, campusToken: token });
+    return "false";
   } catch (error) {
     // Token is invalid or expired
     console.log(error);

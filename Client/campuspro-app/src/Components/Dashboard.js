@@ -22,6 +22,7 @@ const Dashboard = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [userType, setUserType] = useState();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,7 +36,8 @@ const Dashboard = () => {
         setIsTokenExp(data.isTokenExpired);
 
         const token = jwtDecode(data.campusToken);
-        console.log(token);
+        // console.log(token);
+        token && setLoading(true);
         const { _id, fName, lName, userType, email } = token;
         setUserID(_id);
         setEmail(email);
@@ -135,7 +137,7 @@ const Dashboard = () => {
         <div class="username">
           <DropdownButton
             id="dropdown-basic-button"
-            title={userName}
+            title={loading ? userName : ""}
             className="userName-dropdown"
             variant="secondary"
           >
@@ -237,23 +239,18 @@ const Dashboard = () => {
             >
               <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                 <ul class="nav flex-column">
-                  <Link to="/Welcome">
-                    <li class="nav-item ">
-                      <a
-                        class="nav-link d-flex  align-items-center gap-2 active "
-                        aria-current="page"
-                      >
-                        <svg
-                          class="bi"
-                          style={{ width: "20px", height: "20px" }}
-                        >
-                          <use xlinkHref="#house-fill" />
-                        </svg>
-                        Dashboard
-                      </a>
-                    </li>
-                  </Link>
-                  <li class="nav-item">
+                  <li class="nav-item ">
+                    <a
+                      class="nav-link d-flex  align-items-center gap-2 active "
+                      aria-current="page"
+                    >
+                      <svg class="bi" style={{ width: "20px", height: "20px" }}>
+                        <use xlinkHref="#house-fill" />
+                      </svg>
+                      Dashboard
+                    </a>
+                  </li>
+                  <li class={userType == "Agent" ? "hideBtn" : "nav-item"}>
                     <a class="nav-link d-flex  align-items-center gap-2">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
@@ -325,13 +322,6 @@ const Dashboard = () => {
                         if (logout) {
                           navigate("/login");
                         }
-                        // if (logout.ok) {
-                        //   localStorage.removeItem("token"); // Remove token from storage
-                        //   // window.location.reload(); // Refresh the app or redirect to login page
-                        //   navigate("/login");
-                        // } else {
-                        //   console.error("Logout failed");
-                        // }
                       }}
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
@@ -351,7 +341,14 @@ const Dashboard = () => {
 
               <div class="btn-toolbar ms-5 mb-2 mb-md-0">
                 <div class="btn-group me-2 specialBtn">
-                  <button type="button" class="btn btn-sm btn-outline-dark">
+                  <button
+                    type="button"
+                    class={
+                      userType == "Agent"
+                        ? "hideBtn"
+                        : "btn btn-sm btn-outline-dark"
+                    }
+                  >
                     Create Property
                   </button>
                   {/* <Link to="/add-items"> */}
