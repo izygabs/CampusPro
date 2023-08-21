@@ -290,10 +290,12 @@ p {
 .sp2-divs {
   /* border: solid black 3px; */
   width: 47%;
+  
 }
 .sp2-divs2 {
-  /* border: solid black 3px; */
-  width: 50%;
+  border: solid black 3px;
+  width: 40% !important;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -337,23 +339,23 @@ p {
   opacity: 0.5;
 }
 .sp2-carousel-div{
+  padding-top: 25vh;
   width:100;
+  height: 100vh;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
+  margin-bottom: 10vh;
+
 }
 .sp2-main-sector {
-  /* display: flex; */
-  /* top: 79vh; */
-  /* flex-direction: row; */
-  /* margin-top: 20vh; */
-  min-height: 40vh;
-  width: 70%;
-  padding-top: 15vh;
+  min-height: 100%;
+  width: 55%;
+
 }
 
 .sp2-carousel-img{
-  height: 80vh;
+  height: 100%;
   width:100%;
 }
 .sp2-divs {
@@ -361,11 +363,27 @@ p {
   min-height: 100%;
 }
 .sp2-divs2 {
-  width: 30%;
+  width: 40%;
   min-height: 100%;
-  /* border: dotted 1px blue; */
-  margin-top: 10vh;
-  /* padding-left: 3vw; */
+  border-radius: 30px;
+  border: none !important;
+  padding: 0 3vw
+}
+.sp2-divs2-text{
+  height: 40%;
+}
+.sp2-divs2-text span{
+  font-weight: 700;
+}
+.sp2-divs2-text-span{
+  font-weight: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0;
+}
+.sp2-divs2-details marquee{
+  color: red;
+  font-weight: 600;
 }
 .sp2-main-img {
   width: 100%;
@@ -377,6 +395,7 @@ p {
   width: 100%;
   height: 25vh;
   justify-content: space-around;
+  /* border-radius: 30px; */
 }
 
 .sp-2-img-div div {
@@ -385,23 +404,24 @@ p {
   height: 100%;
   margin: 5vh 0;
 }
+.sp2-similar-props-div{
+  text-align: center;
+}
 .sp2-similar-props{
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   font-style: italic;
-  padding-left: 26%;
+  /* padding-left: 26%; */
   padding-top:15vh;
 }
 .sp2-agents{
-  display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-top: 7vh;
   padding-bottom: 5vh;
 
 }
 .sp2-agent-info {
-  width:50%
+  height: 15%;
 }
 .sp2-agent-info button {
   margin-right: auto;
