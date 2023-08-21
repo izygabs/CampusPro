@@ -2,15 +2,16 @@ body {
   color: #fff;
   margin-bottom: 0;
   width: 100%;
+  background-color: #ede9d3;
 }
 .homepage {
-  background-color: rgb(237, 233, 211);
+  background-color: #ede9d3;
 }
 p {
   margin: 3px !important;
 }
 .hp-header {
-  /* position:fixed; */
+  position:fixed;
   display: flex;
   background-color: rgb(9, 7, 7);
   /* background-color: #ccc; */
@@ -18,7 +19,21 @@ p {
   justify-content: space-between;
   align-items: center;
   height: 15vh;
-  /* margin-bottom: 20vh; */
+  margin-bottom: 15vh;
+  /* position: fixed; */
+  z-index: 100;
+}
+.hp-header2 {
+  position:fixed;
+  display: flex;
+  background-color: rgb(9, 7, 7);
+  /* background-color: #ccc; */
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  /* position: fixed; */
+  z-index: 100;
 }
 .hp-login-button {
   padding: 10px 30px;
@@ -67,10 +82,10 @@ p {
   width: 25%;
   border: none;
   background-color: #ffef99;
-  height: 90%;
+  min-height: 90%;
   text-align: center;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
+  /* border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px; */
   padding-top: 7px;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -113,7 +128,7 @@ p {
   display: flex;
   flex-direction: column;
   width: 20vw;
-  height: 50vh;
+  min-height: 52vh;
   margin-right: 15px;
 }
 .hp-school-div p {
@@ -159,11 +174,20 @@ p {
   font-weight: 700;
   font-style: italic;
 }
+.home-school-button{
+  border-radius: 10px;
+  border: none;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-bottom: 5px;background-color: black;color: white;
+}
 .sp-subrent-div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   background-color: white;
+  margin-top: 15vh;
 }
 .sp-sub-div {
   margin: 5vh 0;
@@ -238,17 +262,23 @@ p {
 .sp-select-amount {
   width: 20vw;
   outline: none;
-  height: 5vh;
+  height: 15vh;
   border: solid 2px #ffef99;
   margin-right: auto;
   margin-left: auto;
   display: block;
   font-size: 14px;
+  /* margin-top: 10vh; */
+  
+  
 }
 .sp-select-amount option {
   font-size: 13px;
   background-color: black;
   color: white;
+}
+.rentpage2{
+  background-color: #ede9d3;
 }
 
 .sp2-divs {
@@ -265,7 +295,7 @@ p {
 .sp2-divs2 p {
   color: black;
   font-size: 15px;
-  line-height: 10px;
+  line-height: 20px;
 }
 .sp2-linkk {
   text-decoration: none;
@@ -300,24 +330,40 @@ p {
 .sp2-linkk button:active {
   opacity: 0.5;
 }
-.sp2-main-sector {
+.sp2-carousel-div{
+  width:100;
   display: flex;
-  margin-top: -19vh;
-  flex-direction: row;
-  height: 60vh;
-  border: solid 3px red;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+.sp2-main-sector {
+  /* display: flex; */
+  /* top: 79vh; */
+  /* flex-direction: row; */
+  /* margin-top: 20vh; */
+  min-height: 40vh;
+  width: 70%;
+  padding-top: 15vh;
+}
+
+.sp2-carousel-img{
+  height: 80vh;
+  width:100%;
 }
 .sp2-divs {
-  width: 50%;
-  height: 100%;
+  width: 100%;
+  min-height: 100%;
 }
 .sp2-divs2 {
-  width: 45%;
-  height: 100%;
+  width: 30%;
+  min-height: 100%;
+  /* border: dotted 1px blue; */
+  margin-top: 10vh;
+  /* padding-left: 3vw; */
 }
 .sp2-main-img {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 .sp-2-img-div {
   display: flex;
@@ -334,18 +380,24 @@ p {
   margin: 5vh 0;
 }
 .sp2-agent-info {
-  margin: 10vh 0;
+  margin-top: 10vh ;
+  padding-bottom: 2vh !important;
 }
 .sp2-agent-info button {
   margin-right: auto;
   margin-left: auto;
   display: block;
   border: none;
-  background-color: #ffef99;
+  background-color: gold;
   font-size: 15px;
-  padding: 3vh 8vw;
-  border-radius: 30px;
+  padding: 1.2vh 5vw;
+  border-radius: 5px;
   transition: background-color 0.7s;
+  
+}
+.sp2-agent-info button:hover {
+  background-color: #2a2929;
+  color: gold;
 }
 
 /* Buy Page 2
@@ -432,9 +484,7 @@ input {
   padding-left: 1rem;
 } */
 
-.sp2-agent-info button:hover {
-  background-color: #2a2929;
-}
+
 #upload {
   color: white;
   background-color: #ffef99;

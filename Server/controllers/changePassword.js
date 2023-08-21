@@ -5,7 +5,8 @@ const bcrypt = require("bcrypt");
 
 const changePassword = async (req, res) => {
   const userId = req.params.id;
-  const value = req.body.data;
+  const { error, value } = req.body;
+  console.log(value);
   try {
     const userExist = await user.findById({ _id: userId });
     console.log(userExist);
@@ -23,6 +24,7 @@ const changePassword = async (req, res) => {
       res.status(201).json({ message: "Password changed successfully" });
     }
   } catch (error) {
+    console.log(error);
     res.status(417).json({ Error: error });
   }
 };

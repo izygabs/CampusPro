@@ -128,7 +128,7 @@ const Dashboard = () => {
         <Link to="/">
           <img
             src={require("../images/campuspro(6).png")}
-            className="dashboard-logo"
+className="dashboard-logo"
             alt=""
           />
         </Link>
@@ -242,7 +242,7 @@ const Dashboard = () => {
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
-                    >
+                                          >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
                       </svg>
@@ -265,7 +265,7 @@ const Dashboard = () => {
                       Items
                     </a>
                   </li>
-                </ul>
+                                  </ul>
                 {/* <hr
                   class="my-4 "
                   style={{ color: "black", width: "13.1rem" }}
@@ -350,7 +350,7 @@ const Dashboard = () => {
                   >
                     Create Property
                   </button>
-                  {/* <Link to="/add-items"> */}
+{/* <Link to="/add-items"> */}
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
@@ -362,8 +362,20 @@ const Dashboard = () => {
                   >
                     Create Items
                   </button>
-                  {/* </Link> */}
+{/* </Link> */}
                 </div>
+                {/* <button
+                  type="button"
+                  class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1"
+                >
+                  <svg class="bi" style={{ width: "20px", height: "20px" }}>
+                    <use xlinkHref="#calendar3" />
+                  </svg>
+                  This week
+                </button> */}
+              </div>
+              <div class="username">
+                <h6>{"Gabriel Isaiah"}</h6>
               </div>
             </div>
 
@@ -401,6 +413,7 @@ const Dashboard = () => {
                 </div>
               )}
             </div>
+            {/* <Welcome /> */}
           </main>
         </div>
       </div>
