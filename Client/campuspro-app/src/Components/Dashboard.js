@@ -14,8 +14,8 @@ const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
 
-  const location = useLocation();
-  const { userID, email, userType, userName } = location.state;
+  // const location = useLocation();
+  // const { userID, email, userType, userName } = location.state;
 
   const handleButtonClicked = (component) => {
     setSelectedComponent(component);
@@ -99,20 +99,20 @@ const Dashboard = () => {
         <div class="username">
           <DropdownButton
             id="dropdown-basic-button"
-            title={userName}
+            title={"userName"}
             className="userName-dropdown"
             variant="secondary"
           >
             <Dropdown.Item
               onClick={() =>
-                handleButtonClicked(<ProfileInfo userID={userID} />)
+                handleButtonClicked(<ProfileInfo userID={"userID"} />)
               }
             >
               My Profile
             </Dropdown.Item>
             <Dropdown.Item
               onClick={() =>
-                handleButtonClicked(<Changepassword Email={email} />)
+                handleButtonClicked(<Changepassword Email={"email"} />)
               }
             >
               Login & Security
@@ -228,7 +228,9 @@ const Dashboard = () => {
                       >
                         <Dropdown.Item
                           onClick={() =>
-                            handleButtonClicked(<ProfileInfo userID={userID} />)
+                            handleButtonClicked(
+                              <ProfileInfo userID={"userID"} />
+                            )
                           }
                         >
                           My Profile
@@ -236,7 +238,7 @@ const Dashboard = () => {
                         <Dropdown.Item
                           onClick={() =>
                             handleButtonClicked(
-                              <Changepassword Email={email} />
+                              <Changepassword Email={"email"} />
                             )
                           }
                         >
