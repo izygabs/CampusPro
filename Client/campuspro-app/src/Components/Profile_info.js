@@ -151,7 +151,7 @@ function ProfileInfo(prop) {
               <input
                 type="text"
                 name="name"
-                placeholder={userProfile.firstName}
+                value={userProfile.firstName}
                 onChange={handleInputChange1}
               />
               <br />
