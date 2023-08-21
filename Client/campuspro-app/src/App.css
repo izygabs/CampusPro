@@ -201,6 +201,7 @@ p {
   height: 40%;
   background-color: #ffef99;
   color: black;
+  margin-top: -1.7vh;
 }
 .sp-img-div {
   height: 60%;
@@ -279,6 +280,11 @@ p {
 }
 .rentpage2{
   background-color: #ede9d3;
+}
+.sp-sub-div2{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .sp2-divs {
@@ -379,9 +385,23 @@ p {
   height: 100%;
   margin: 5vh 0;
 }
+.sp2-similar-props{
+  font-size: 30px;
+  font-weight: 600;
+  font-style: italic;
+  padding-left: 26%;
+  padding-top:15vh;
+}
+.sp2-agents{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 7vh;
+  padding-bottom: 5vh;
+
+}
 .sp2-agent-info {
-  margin-top: 10vh ;
-  padding-bottom: 2vh !important;
+  width:50%
 }
 .sp2-agent-info button {
   margin-right: auto;
