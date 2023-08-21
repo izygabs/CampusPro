@@ -128,7 +128,7 @@ const Dashboard = () => {
         <Link to="/">
           <img
             src={require("../images/campuspro(6).png")}
-className="dashboard-logo"
+            className="dashboard-logo"
             alt=""
           />
         </Link>
@@ -242,14 +242,14 @@ className="dashboard-logo"
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
-                                          >
+                    >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
                       </svg>
                       Dashboard
                     </a>
                   </li>
-                  <li class={userType == "Agent" ? "hideBtn" : "nav-item"}>
+                  <li class={userType == "merchant" ? "hideBtn" : "nav-item"}>
                     <a class="nav-link d-flex  align-items-center gap-2">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
@@ -265,7 +265,7 @@ className="dashboard-logo"
                       Items
                     </a>
                   </li>
-                                  </ul>
+                </ul>
                 {/* <hr
                   class="my-4 "
                   style={{ color: "black", width: "13.1rem" }}
@@ -343,14 +343,14 @@ className="dashboard-logo"
                   <button
                     type="button"
                     class={
-                      userType == "Agent"
+                      userType == "merchant"
                         ? "hideBtn"
                         : "btn btn-sm btn-outline-dark"
                     }
                   >
                     Create Property
                   </button>
-{/* <Link to="/add-items"> */}
+                  {/* <Link to="/add-items"> */}
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
@@ -362,7 +362,7 @@ className="dashboard-logo"
                   >
                     Create Items
                   </button>
-{/* </Link> */}
+                  {/* </Link> */}
                 </div>
                 {/* <button
                   type="button"
