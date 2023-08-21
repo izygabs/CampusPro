@@ -4,39 +4,33 @@ import {useParams} from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect} from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
+import location from "./images/location-icon.png";
 
 
 function RentPage2 (pass) {
   const [datas, setDatas] = useState([]);
-  const [arr, setArr] = useState([]);
+  const [ars, setArs] = useState(false);
   const [agent, setAgent] = useState(false);
-  const [other, setOthers]=useState(null);
+  const [other, setOther]=useState([]);
+ 
 
  
 
  //using the hook to display the fetch data on load
  useEffect(()=>{
-    
-  fetcher()
+    fetcher()
+  
 },[] )
 
 //filter properties according to agent id
-// const similar = async ()=>{
-//   const req = await fetch("/api/allProperties")
-//   const res = await req.json()
-//   console.log(res.Properties)
-//   const properties = res.Properties
-//   setArr([properties])
-//   console.log(arr)
-
-//   const simi = arr.filter((simis)=>
-//     simis.agentID.toUpperString() == datas.agentID.toUpperString()
-//   );
-
-//   setOthers(simi)
-//   // console.log(other)
-
-// }
+const similar = async (agid)=>{
+  const req = await fetch(`/api/propertyByAgent/${agid}`)
+  const res = await req.json()
+  setOther(res)
+  console.log(other)
+  setArs(true)
+}
 
 //function to fetch properties from the database
 const {id} = useParams()
@@ -46,7 +40,7 @@ const fetcher = async()=> {
     const info = await fetch(url)
     const data2 = await info.json()
     const result = data2
-    console.log(result)
+    // console.log(result)
      setDatas(result)
     
   } catch (error) {
@@ -122,13 +116,49 @@ const fetcher = async()=> {
       
       ) : null}
 
+      <div className="sp2-agents">
       <div className="sp2-agent-info">
           <button onClick={viewAgent}>{!agent? 'View agent contact': 'Hide agent info'}</button>
       </div>
+      {!ars?
+      <div className="sp2-agent-info">
+          <button onClick={()=>similar(datas.agentID)}> View similar Properties by this Agent</button>
+      </div>: null}
+      </div>
 
+      {ars? ( <div>
+        <p className="sp2-similar-props">Other properties posted by this Agent</p>
+        <div className="sp-sub-div2">
+            {other.map(other =>{
+              return(
+                <div key={other._id} className="sp-sub-div">
+                  <div className="sp-img-div">
+                    <img src={other.hostelImages ? `/${other.hostelImages[1]}`: null} />
+                    <div>
+                      <img className="hp-locate" src={location} />
+                      <p>{other.campusName}</p>
+                    </div>
+                  </div>
+                  <div className="sp-text-div">
+                    <p>{other.houseProperties}</p>
+                    <p>#{Number(other.price.toLocaleString())}</p>
 
-        {/* <button onClick={similar}>fetch similar</button> */}
+                    <Link className="sp2-linkk" to={`/rentproperty/${other._id}`}>
+                      <button>View this property</button>
+                    </Link>
+                  </div>
+                </div>
+              )
+          })
+            
+        } 
+    </div>
+    </div>) :null}
 
+  
+      {/* <button className="" onClick={()=>similar(datas.agentID)}>View similar Properties by this Agent</button> */}
+
+ 
 
       
   </div>
