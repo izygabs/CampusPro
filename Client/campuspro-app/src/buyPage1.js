@@ -1,15 +1,14 @@
 import logo from './images/campuspro(6).png';
 import './buyPage1.css';
-// import Contents from './contents.json';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 
 const BuyPage = () => {
+
   const [query, setQuery] = useState('');
   const [dropDownQuery, setdropDownQuery] = useState('');
-
   const [update, setUpdate] = useState('');
   const [holddata, setHoldData] = useState([]);
   
@@ -28,6 +27,8 @@ const BuyPage = () => {
       console.log(err);
     }
   }
+
+  // console.log(items.itemPictures);
 
   const handleChange = (e) => {
     setdropDownQuery(e.target.value)
@@ -65,12 +66,8 @@ const BuyPage = () => {
         {holddata.map((items) => {
           return(
             <div key={items.id} className='items'>
-              <img src={items.itemPictures[2]} alt='image' className='images' />
-            {/* // <img src={items.itemPictures[]} alt="item" className='images'/> */}
-              <p id='p-i'>{items.campus}
-              <br/> 
-              {items.price} 
-              <br/> 
+              <img src={items.itemPictures} alt='image' className='images' />
+                <p id='p-i'>{items.campus} <br/> {items.price}  <br/> 
             
               <button className='btn'><Link to={`/holddata/${items._id}`} id='link-btn'>
                 View Details
@@ -81,7 +78,6 @@ const BuyPage = () => {
           )
           
         })}
-        {/* <button type="button"><Link to='/CampusFeatures'>Next</Link></button> */}
       </section>
     </div>
   )

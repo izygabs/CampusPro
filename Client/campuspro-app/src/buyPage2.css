@@ -1,4 +1,5 @@
 .minor-sec {
+  margin-top: 9rem;
   height: 100vh;
   display: flex;
   box-shadow: inset 2px 2px 5px black;
@@ -8,6 +9,7 @@
   margin: 1rem;
   width: 50%;
   border-radius: 10px;
+  box-shadow: 2px 2px 5px black;
 }
 
 .second-div {
@@ -19,7 +21,7 @@
 }
 
 #details {
-  background-color: #ffef99;
+  background-color: gold;
   text-align: center;
   font-size: 1.5rem;
   transition: all 2s ease-in-out;
@@ -56,3 +58,20 @@
   width: 100%;
   height: 100%;
 }
+
+.bp-btn {
+  background: gold;
+  color: black;
+  padding: 0.2rem 1rem;
+  border: none;
+  border-radius: 25px;
+  justify-content: center;
+  margin-left: 12rem;
+  transition: all 2s ease-in-out;
+}
+
+.bp-btn:hover {
+  background: black;
+  color: white;
+}
+
