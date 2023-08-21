@@ -375,9 +375,7 @@ const Dashboard = () => {
                   This week
                 </button> */}
               </div>
-              <div class="username">
-                <h6>{"Gabriel Isaiah"}</h6>
-              </div>
+              <div class="username">{/* <h6>{"Gabriel Isaiah"}</h6> */}</div>
             </div>
 
             <div className="overComp">
