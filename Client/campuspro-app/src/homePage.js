@@ -57,7 +57,7 @@ function HomePage() {
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
-            <img src={logo} className="hp-logo" alt="" />
+            <Link to="/AboutUs"><img src={logo} className="hp-logo" alt="" /></Link>
           </div>
           {/* <div>
             <p>CampusPro</p>

@@ -39,7 +39,7 @@ const BuyPage2 = () => {
       
       {holddata && (
         <>   
-        <Navbar input={''}/>
+        <Navbar />
         <section className="minor-sec">
           <div className="first-div">
           <img src={holddata.itemPictures && holddata.itemPictures[0] } alt='image' className='i-mg' />
