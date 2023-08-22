@@ -60,6 +60,7 @@ function Changepassword(prop) {
       } catch (error) {
         console.error("Error sending password:", error);
       }
+      console.log(values);
     },
   });
 
