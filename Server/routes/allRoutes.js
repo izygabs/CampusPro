@@ -44,6 +44,8 @@ const updateUser = require("../controllers/updateUser");
 
 const viewPropertyByAgentId = require("../controllers/viewPropertyByAgentId");
 
+const viewItemsByMerchId = require("../controllers/viewItemsByMerchId");
+
 const route = express.Router();
 
 route.post("/api/signUp", signUp);
@@ -97,8 +99,10 @@ route.put(
   verifyToken,
   upload.single("profilePic"),
   updateUser
-);
+); 
 
 route.get("/api/propertyByAgent/:agentId", viewPropertyByAgentId);
+
+route.get("/api/itemsByMerch/:merchantID", viewItemsByMerchId);
 
 module.exports = route;

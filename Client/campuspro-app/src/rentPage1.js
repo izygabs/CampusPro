@@ -115,7 +115,7 @@ function RentPage1() {
                 </div>
               </div>
               <div className="sp-text-div">
-                <p>{info.houseProperties[0]}</p>
+                {/* <p>{info.houseProperties[0]}</p> */}
                 <p>#{Number(info.price).toLocaleString()}</p>
 
                 <Link className="sp2-linkk" to={`/rentproperty/${info._id}`}>

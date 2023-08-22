@@ -23,24 +23,31 @@ function RentPage2 (pass) {
   
 },[] )
 
-//filter properties according to agent id
-const similar = async (agid)=>{
-  const req = await fetch(`/api/propertyByAgent/${agid}`)
+//fetch similar properties according to agent id
+const similar = async (agentID)=>{
+  try{
+  const req = await fetch(`/api/propertyByAgent/${agentID}`)
   const res = await req.json()
   setOther(res)
-  console.log(other)
+  console.log(res)
+  // console.log(other)
   setArs(true)
+}catch (error){
+  console.log(error)
+}
+
+
 }
 
 //function to fetch properties from the database
 const {id} = useParams()
 const url= `/api/property/${id}`
-const fetcher = async()=> {
+const fetcher = async ()=> {
   try {
     const info = await fetch(url)
     const data2 = await info.json()
-    const result = data2
-    // console.log(result)
+    const result = data2.Property
+    console.log(result)
      setDatas(result)
     
   } catch (error) {
@@ -52,10 +59,7 @@ const fetcher = async()=> {
     setAgent(!agent)
     console.log(agent)
   }
-  // const hideAgent = ()=>{
-  //   setAgent(false)
-  //   console.log(agent)
-  // }
+
 
   return (  
 
@@ -96,39 +100,52 @@ const fetcher = async()=> {
               </Carousel> 
             </section>
             <div className="sp2-divs2">
-                <p>Hostel Description: {datas.description}</p>
-                  {datas.houseProperties ? <p>Hostel Properties: {datas.houseProperties.toString().split(",").join(', ')}</p> : null}
-                <p>Campus Name: {datas.campusName}</p>
-                <p>Amount/Annum : {Number(datas.price).toLocaleString()}</p>
-                <p>Hostel Address: {datas.location} </p>
+              <div className="sp2-divs2-text">
+                <p className="sp2-divs2-text-span">APARTMENT PROPERTIES</p>
+                <p> <span>Hostel Description:</span> {datas.description}</p>
+                  {datas.houseProperties ? <p> <span>Hostel Properties:</span> {datas.houseProperties.toString().split(",").join(', ')}  </p> : null}
+                <p> <span>Campus Name:</span> {datas.campusName} </p>
+                <p><span>Amount/Annum :</span> #{Number(datas.price).toLocaleString()} </p>
+                <p> <span> Hostel Address:</span> {datas.location} </p>
               </div>
+
+              <div className="sp2-divs2-details">
+                {agent? (
+                    <div>
+                        <p className="sp2-divs2-text-span">AGENT DETAILS</p>
+                        <p> {datas.agentID.firstName} {datas.agentID.lastName} </p>
+                        <p> {datas.agentID.phoneNumber}</p>
+                        <p> {datas.agentID.email}</p>
+                        <marquee>
+                           DISCLAIMER: <span className="sp2-disclaimer">CampusPro</span> is not responsible for transacton between Agents/Merchats & Students.  DISCLAIMER: <span className="sp2-disclaimer">CampusPro</span> is not responsible for transacton between Agents/Merchats & Students.
+                        </marquee>
+                    </div>
+                  ) : null}
+              </div>
+
+              <div className="sp2-agent-info">
+                <button onClick={viewAgent}>{!agent? 'View agent contact': 'Hide agent info'}</button>
+              </div>
+              
+            </div>
           </div>
     
       </div>
 
-      {agent? (
-        <div>
-            <div> Adetayo Jude </div>
-            <div> 09021904099</div>
-            <div> oladapoolusola97@gmail.com</div>
-            <div> DISCLAIMER: CampusPro is not responsible for transacton between Agents/Merchats & Students</div>
-        </div>
-      
-      ) : null}
+
 
       <div className="sp2-agents">
-      <div className="sp2-agent-info">
-          <button onClick={viewAgent}>{!agent? 'View agent contact': 'Hide agent info'}</button>
-      </div>
-      {!ars?
-      <div className="sp2-agent-info">
-          <button onClick={()=>similar(datas.agentID)}> View similar Properties by this Agent</button>
-      </div>: null}
+        {!ars?
+        <div className="sp2-agent-info">
+            <button onClick={()=>similar(datas.agentID._id)}> View similar Properties by this Agent</button>
+        </div>: null}
       </div>
 
       {ars? ( <div>
+        <div className="sp2-similar-props-div">
         <p className="sp2-similar-props">Other properties posted by this Agent</p>
-        <div className="sp-sub-div2">
+        </div>
+        <div className="sp-sub-div22">
             {other.map(other =>{
               return(
                 <div key={other._id} className="sp-sub-div">
@@ -140,23 +157,17 @@ const fetcher = async()=> {
                     </div>
                   </div>
                   <div className="sp-text-div">
-                    <p>{other.houseProperties}</p>
-                    <p>#{Number(other.price.toLocaleString())}</p>
+                    <p>{other.houseProperties[0]}</p>
+                    <p>#{Number(other.price).toLocaleString()}</p>
 
                     <Link className="sp2-linkk" to={`/rentproperty/${other._id}`}>
                       <button>View this property</button>
                     </Link>
                   </div>
                 </div>
-              )
-          })
-            
-        } 
+              )})} 
     </div>
     </div>) :null}
-
-  
-      {/* <button className="" onClick={()=>similar(datas.agentID)}>View similar Properties by this Agent</button> */}
 
  
 

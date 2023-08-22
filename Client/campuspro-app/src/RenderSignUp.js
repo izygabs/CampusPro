@@ -9,6 +9,7 @@ import number from "./MicrosoftTeams-image (5).png";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "./images/campuspro(6).png";
 
 // import gold from './gold.png'
 // Modal.setAppElement("#root");
@@ -109,196 +110,202 @@ const Signup = () => {
   });
 
   return (
-    <div className="sp-form-one" id="signUP">
-      <form className="sp-form" onSubmit={formik.handleSubmit}>
-        <h1>Register</h1>
-        <div className="header">
-          <label className="sp-label" for="firstName">
-            Firstname:
-          </label>
-          <br />
-          <div className="sp-icon-input">
-            <img className="sp-user-img" src={user} alt="" />
+    <>
+      <div className="sp-form-one" id="signUP">
+        <Link to="/">
+          <img src={logo} alt="logo" className="logo" />
+        </Link>
+        <form className="sp-form" onSubmit={formik.handleSubmit}>
+          <h1>Register</h1>
+          <div className="header">
+            <label className="sp-label" for="firstName">
+              Firstname:
+            </label>
+            <br />
+            <div className="sp-icon-input">
+              <img className="sp-user-img" src={user} alt="" />
 
-            <input
-              name="firstName"
-              className="sp-input-testing"
-              type="text"
-              id="name"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.firstName}
-            />
-          </div>
-          {formik.touched.firstName && formik.errors.firstName && (
-            <p className="signup-error-message">{formik.errors.firstName}</p>
-          )}
-
-          <label className="sp-label1" for="lastName">
-            Lastname:
-          </label>
-          <br />
-          <div className="sp-icon-input">
-            <img className="sp-user-img" src={user} alt="" />
-            <input
-              name="lastName"
-              className="sp-input-testing"
-              type="text"
-              id="name"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.lastName}
-            />
-          </div>
-          {formik.touched.lastName && formik.errors.lastName && (
-            <p className="signup-error-message">{formik.errors.lastName}</p>
-          )}
-
-          <label className="sp-email-label" for="email">
-            Email:
-          </label>
-          <br />
-          <div className="sp-icon-input">
-            <img className="sp-user-img" src={email} alt="" />
-            <input
-              name="Email"
-              className="sp-input-testing"
-              type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.Email}
-            />
-          </div>
-          {formik.touched.Email && formik.errors.Email && (
-            <p className="signup-error-message">{formik.errors.Email}</p>
-          )}
-
-          <label className="sp-number1" for="number">
-            Phone number:
-          </label>
-          <br />
-          <div className="sp-icon-input">
-            <img className="sp-user-img" src={number} alt="" />
-            <input
-              name="Phone"
-              className="sp-input-testing"
-              type="tel"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.Phone}
-            />
-          </div>
-          {formik.touched.Phone && formik.errors.Phone && (
-            <p className="signup-error-message">{formik.errors.Phone}</p>
-          )}
-
-          <label className="sp-pwd1" for="password">
-            Password:
-          </label>
-          <br />
-          <div className="sp-icon-input">
-            <img className="sp-user-img" src={key} alt="" />
-            <input
-              name="Password"
-              id="password"
-              className="sp-input-testing"
-              type="password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.Password}
-            />
-          </div>
-          {formik.touched.Password && formik.errors.Password && (
-            <p className="signup-error-message">{formik.errors.Password}</p>
-          )}
-
-          <label className="sp-pwd3" for="confirmPassword">
-            Confirm Password:
-          </label>
-          <br />
-          <div className="sp-icon-input">
-            <img className="sp-user-img" src={key} alt="" />
-            <input
-              name="confirmPassword"
-              id="confirmPassword"
-              className="sp-input-testing"
-              type="password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.confirmPassword}
-            />
-          </div>
-          {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-            <p className="signup-error-message">
-              {formik.errors.confirmPassword}
-            </p>
-          )}
-
-          <div id="main">
-            <div id="checks">
               <input
-                className="sp-type-user"
-                type="radio"
-                name="userType"
-                id="agent"
-                value="Agent"
+                name="firstName"
+                className="sp-input-testing"
+                type="text"
+                id="name"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                checked={formik.values.userType === "Agent"}
+                value={formik.values.firstName}
               />
-              <label className="sp-agent" for="agent">
-                Agent
-              </label>
             </div>
+            {formik.touched.firstName && formik.errors.firstName && (
+              <p className="signup-error-message">{formik.errors.firstName}</p>
+            )}
 
-            <div id="checks">
+            <label className="sp-label1" for="lastName">
+              Lastname:
+            </label>
+            <br />
+            <div className="sp-icon-input">
+              <img className="sp-user-img" src={user} alt="" />
               <input
-                className="sp-type-user"
-                type="radio"
-                name="userType"
-                id="merchant"
-                value="Merchant"
+                name="lastName"
+                className="sp-input-testing"
+                type="text"
+                id="name"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                checked={formik.values.userType === "Merchant"}
+                value={formik.values.lastName}
               />
-              <label className="sp-merchant1" for="merchant">
-                Merchant
-              </label>
             </div>
-          </div>
-          {formik.touched.userType && formik.errors.userType && (
-            <p className="signup-error-message">{formik.errors.userType}</p>
-          )}
-        </div>
+            {formik.touched.lastName && formik.errors.lastName && (
+              <p className="signup-error-message">{formik.errors.lastName}</p>
+            )}
 
-        <div className="sp-create-Account-button">
-          <button className="sp-btn" type="submit" onClick={openModal}>
-            Create Account
-          </button>
-          <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            contentLabel="Success Modal"
-            className="signUp_modal"
-            overlayClassName="signUp_overlayModal"
-          >
-            <h2>Successful sign-up</h2>
-            <p>{message}</p>
-            <button onClick={closeModal} className="modalBtn">
-              Log in
+            <label className="sp-email-label" for="email">
+              Email:
+            </label>
+            <br />
+            <div className="sp-icon-input">
+              <img className="sp-user-img" src={email} alt="" />
+              <input
+                name="Email"
+                className="sp-input-testing"
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.Email}
+              />
+            </div>
+            {formik.touched.Email && formik.errors.Email && (
+              <p className="signup-error-message">{formik.errors.Email}</p>
+            )}
+
+            <label className="sp-number1" for="number">
+              Phone number:
+            </label>
+            <br />
+            <div className="sp-icon-input">
+              <img className="sp-user-img" src={number} alt="" />
+              <input
+                name="Phone"
+                className="sp-input-testing"
+                type="tel"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.Phone}
+              />
+            </div>
+            {formik.touched.Phone && formik.errors.Phone && (
+              <p className="signup-error-message">{formik.errors.Phone}</p>
+            )}
+
+            <label className="sp-pwd1" for="password">
+              Password:
+            </label>
+            <br />
+            <div className="sp-icon-input">
+              <img className="sp-user-img" src={key} alt="" />
+              <input
+                name="Password"
+                id="password"
+                className="sp-input-testing"
+                type="password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.Password}
+              />
+            </div>
+            {formik.touched.Password && formik.errors.Password && (
+              <p className="signup-error-message">{formik.errors.Password}</p>
+            )}
+
+            <label className="sp-pwd3" for="confirmPassword">
+              Confirm Password:
+            </label>
+            <br />
+            <div className="sp-icon-input">
+              <img className="sp-user-img" src={key} alt="" />
+              <input
+                name="confirmPassword"
+                id="confirmPassword"
+                className="sp-input-testing"
+                type="password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.confirmPassword}
+              />
+            </div>
+            {formik.touched.confirmPassword &&
+              formik.errors.confirmPassword && (
+                <p className="signup-error-message">
+                  {formik.errors.confirmPassword}
+                </p>
+              )}
+
+            <div id="main">
+              <div id="checks">
+                <input
+                  className="sp-type-user"
+                  type="radio"
+                  name="userType"
+                  id="agent"
+                  value="Agent"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  checked={formik.values.userType === "Agent"}
+                />
+                <label className="sp-agent" for="agent">
+                  Agent
+                </label>
+              </div>
+
+              <div id="checks">
+                <input
+                  className="sp-type-user"
+                  type="radio"
+                  name="userType"
+                  id="merchant"
+                  value="Merchant"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  checked={formik.values.userType === "Merchant"}
+                />
+                <label className="sp-merchant1" for="merchant">
+                  Merchant
+                </label>
+              </div>
+            </div>
+            {formik.touched.userType && formik.errors.userType && (
+              <p className="signup-error-message">{formik.errors.userType}</p>
+            )}
+          </div>
+
+          <div className="sp-create-Account-button">
+            <button className="sp-btn" type="submit" onClick={openModal}>
+              Create Account
             </button>
-          </Modal>
-        </div>
+            <Modal
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+              contentLabel="Success Modal"
+              className="signUp_modal"
+              overlayClassName="signUp_overlayModal"
+            >
+              <h2>Successful sign-up</h2>
+              <p>{message}</p>
+              <button onClick={closeModal} className="modalBtn">
+                Log in
+              </button>
+            </Modal>
+          </div>
 
-        <p className="sp-registered">
-          Already Registered?
-          <Link to="/login">
-            <a href=".">Login</a>
-          </Link>
-        </p>
-      </form>
-    </div>
+          <p className="sp-registered">
+            Already Registered?
+            <Link to="/login">
+              <a href=".">Login</a>
+            </Link>
+          </p>
+        </form>
+      </div>
+    </>
   );
 };
 

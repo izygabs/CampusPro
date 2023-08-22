@@ -1,0 +1,29 @@
+.nb-body {
+  border: 1px solid red;
+  background-color: black;
+}
+
+.nb-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 17vh;
+  position: sticky;
+}
+
+.nb-img img {
+  width: 20rem;
+}
+
+.nb-input {
+  border: 1px solid blue;
+}
+
+.nb-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid green;
+  width: 20rem;
+}

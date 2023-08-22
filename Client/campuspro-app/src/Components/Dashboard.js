@@ -11,6 +11,8 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Welcome from "./Welcome";
+import Editing from "./Editing";
+import PropertyTray from "./PropertytTray";
 // import Content from "./Content";
 
 const Dashboard = () => {
@@ -64,6 +66,7 @@ const Dashboard = () => {
   };
   let userName = firstName + " " + lastName;
 
+  console.log(userID)
   return (
     <div className="dash">
       <svg
@@ -289,8 +292,18 @@ const Dashboard = () => {
                       Dashboard
                     </a>
                   </li>
-                  <li class={userType == "merchant" ? "hideBtn" : "nav-item"}>
-                    <a class="nav-link d-flex  align-items-center gap-2">
+                  <li class={userType == "merchant" ? "hideBtn" : "nav-item"}  >
+                    
+                    <a class="nav-link d-flex  align-items-center gap-2" 
+                      onClick={() =>
+                      handleButtonClicked(
+                        isTokenExp ? (
+                      navigate("/login")
+                  ) : (
+                    <PropertyTray id = {userID}/>
+                  )
+                )
+              }>
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
                       </svg>
@@ -458,7 +471,7 @@ const Dashboard = () => {
                 </div>
               )}
             </div>
-            {/* <Welcome /> */}
+            <Editing />
           </main>
         </div>
       </div>
