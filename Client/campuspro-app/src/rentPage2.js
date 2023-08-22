@@ -23,23 +23,30 @@ function RentPage2 (pass) {
   
 },[] )
 
-//filter properties according to agent id
-const similar = async (agid)=>{
-  const req = await fetch(`/api/propertyByAgent/${agid}`)
+//fetch similar properties according to agent id
+const similar = async (agentID)=>{
+  try{
+  const req = await fetch(`/api/propertyByAgent/${agentID}`)
   const res = await req.json()
   setOther(res)
-  console.log(other)
+  console.log(res)
+  // console.log(other)
   setArs(true)
+}catch (error){
+  console.log(error)
+}
+
+
 }
 
 //function to fetch properties from the database
 const {id} = useParams()
 const url= `/api/property/${id}`
-const fetcher = async()=> {
+const fetcher = async ()=> {
   try {
     const info = await fetch(url)
     const data2 = await info.json()
-    const result = data2
+    const result = data2.Property
     console.log(result)
      setDatas(result)
     
@@ -52,10 +59,7 @@ const fetcher = async()=> {
     setAgent(!agent)
     console.log(agent)
   }
-  // const hideAgent = ()=>{
-  //   setAgent(false)
-  //   console.log(agent)
-  // }
+
 
   return (  
 
@@ -109,11 +113,11 @@ const fetcher = async()=> {
                 {agent? (
                     <div>
                         <p className="sp2-divs2-text-span">AGENT DETAILS</p>
-                        <p> Adetayo Jude </p>
-                        <p> 09021904099</p>
-                        <p> oladapoolusola97@gmail.com</p>
+                        <p> {datas.agentID.firstName} {datas.agentID.lastName} </p>
+                        <p> {datas.agentID.phoneNumber}</p>
+                        <p> {datas.agentID.email}</p>
                         <marquee>
-                           DISCLAIMER: CampusPro is not responsible for transacton between Agents/Merchats & Students.  DISCLAIMER: CampusPro is not responsible for transacton between Agents/Merchats & Students.
+                           DISCLAIMER: <span className="sp2-disclaimer">CampusPro</span> is not responsible for transacton between Agents/Merchats & Students.  DISCLAIMER: <span className="sp2-disclaimer">CampusPro</span> is not responsible for transacton between Agents/Merchats & Students.
                         </marquee>
                     </div>
                   ) : null}
@@ -133,7 +137,7 @@ const fetcher = async()=> {
       <div className="sp2-agents">
         {!ars?
         <div className="sp2-agent-info">
-            <button onClick={()=>similar(datas.agentID)}> View similar Properties by this Agent</button>
+            <button onClick={()=>similar(datas.agentID._id)}> View similar Properties by this Agent</button>
         </div>: null}
       </div>
 
@@ -141,7 +145,7 @@ const fetcher = async()=> {
         <div className="sp2-similar-props-div">
         <p className="sp2-similar-props">Other properties posted by this Agent</p>
         </div>
-        <div className="sp-sub-div2">
+        <div className="sp-sub-div22">
             {other.map(other =>{
               return(
                 <div key={other._id} className="sp-sub-div">

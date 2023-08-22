@@ -198,14 +198,14 @@ function HomePage() {
           return (
             <div key={results._id} className="hp-school-div">
               <div className="hp-img-div">
-                <img src={`${results.hostelImages[0]}`} />
+                <img src={`/${results.hostelImages[0]}`} />
                 <div>
                   <img className="hp-locate" src={location} />
                   <p>{results.campusName}</p>
                 </div>
               </div>
               <div className="hp-props-text">
-                {/* <p>{results.houseProperties[0]}</p> */}
+                <p>{results.houseProperties[0]}</p>
                 <p>#{Number(results.price).toLocaleString()} </p>
 
                 <Link className="sp2-linkk" to={`/rentproperty/${results._id}`}>

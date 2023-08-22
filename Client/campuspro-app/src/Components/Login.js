@@ -115,7 +115,7 @@ const Login = () => {
               Remember me
             </label>
           </div>
-          {/* <Link to="/Dashboard"> */}
+          <Link to="/Dashboard">
           <button
             class="btn btn-warning w-100 py-2 createBtn "
             type="submit"
@@ -123,32 +123,26 @@ const Login = () => {
           >
             Login
           </button>
-          {/* </Link> */}
+          </Link> 
 
-          <p class="mt-4 mb-3 text-center text-body-secondary">
+           <p class="mt-4 mb-3 text-center text-body-secondary">
             <Link to="/Signup" className="create-account-link">
-              <p id="create-account">Create an Account?</p>
-            </Link>
-            <a href="." class="forget-pwd">
-              Forget Password
-            </a>
-          </p>
-        </form>
-
-        <p class="mt-5 mb-3 text-center year-display">
-          &copy; {new Date().getFullYear()}
+            <p id="create-account">Create an Account?</p>
+          </Link>
+          <a href="." class="forget-pwd">
+            Forget Password
+          </a>
         </p>
-      </main>
-      {/* <div class="googleLogin">
-        <GoogleOAuthProvider
-          clientId={process.env.REACT_APP_CLIENT_ID}
-          className="innerGoogle"
-        >
-          <Google />
-        </GoogleOAuthProvider>
-      </div> */}
-    </div>
-  );
-};
+      </form>
+      <p class="mt-5 mb-3 text-center year-display">
+        &copy; {new Date().getFullYear()}
+         </p>
+       </main> 
+         
+       </div> 
+  
+  )
 
-export default Login;
+  }
+
+export default Login; 

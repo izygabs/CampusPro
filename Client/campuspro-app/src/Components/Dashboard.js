@@ -10,6 +10,7 @@ import OverlayComponent from "./OverlayComp";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import Welcome from "./Welcome";
 // import Content from "./Content";
 
 const Dashboard = () => {
@@ -21,6 +22,7 @@ const Dashboard = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [userType, setUserType] = useState();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +36,8 @@ const Dashboard = () => {
         setIsTokenExp(data.isTokenExpired);
 
         const token = jwtDecode(data.campusToken);
-        console.log(token);
+        // console.log(token);
+        token && setLoading(true);
         const { _id, fName, lName, userType, email } = token;
         setUserID(_id);
         setEmail(email);
@@ -126,7 +129,7 @@ const Dashboard = () => {
         <Link to="/">
           <img
             src={require("../images/campuspro(6).png")}
-className="dashboard-logo"
+            className="dashboard-logo"
             alt=""
           />
         </Link>
@@ -134,7 +137,7 @@ className="dashboard-logo"
         <div class="username">
           <DropdownButton
             id="dropdown-basic-button"
-            title={userName}
+            title={loading ? userName : ""}
             className="userName-dropdown"
             variant="secondary"
           >
@@ -240,14 +243,53 @@ className="dashboard-logo"
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
-                                          >
+                      onClick={() =>
+                        handleButtonClicked(
+                          isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <div>
+                              <h1>Welcome back, {firstName}</h1>
+                              <div className="db-content">
+                                <h6>WHAT'S NEXT</h6>
+                                <h3>
+                                  Let's continue with creating your property and
+                                  items!
+                                </h3>
+                                <p>
+                                  Your info is pending verified, just continue
+                                  with listing your property now.
+                                </p>
+                                <button
+                                  onClick={() =>
+                                    handleButtonClicked(
+                                      isTokenExp ? (
+                                        navigate("/login")
+                                      ) : (
+                                        <AddItems />
+                                      )
+                                    )
+                                  }
+                                >
+                                  Go to Create Your Property
+                                </button>
+                              </div>
+                              <div className="db-confirm">
+                                <p>Pending Confirmation</p>
+                                <h3>The property is pending</h3>
+                              </div>
+                            </div>
+                          )
+                        )
+                      }
+                    >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
                       </svg>
                       Dashboard
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <li class={userType == "merchant" ? "hideBtn" : "nav-item"}>
                     <a class="nav-link d-flex  align-items-center gap-2">
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
@@ -263,7 +305,7 @@ className="dashboard-logo"
                       Items
                     </a>
                   </li>
-                                  </ul>
+                </ul>
                 {/* <hr
                   class="my-4 "
                   style={{ color: "black", width: "13.1rem" }}
@@ -319,13 +361,6 @@ className="dashboard-logo"
                         if (logout) {
                           navigate("/login");
                         }
-                        // if (logout.ok) {
-                        //   localStorage.removeItem("token"); // Remove token from storage
-                        //   // window.location.reload(); // Refresh the app or redirect to login page
-                        //   navigate("/login");
-                        // } else {
-                        //   console.error("Logout failed");
-                        // }
                       }}
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
@@ -345,10 +380,17 @@ className="dashboard-logo"
 
               <div class="btn-toolbar ms-5 mb-2 mb-md-0">
                 <div class="btn-group me-2 specialBtn">
-                  <button type="button" class="btn btn-sm btn-outline-dark">
+                  <button
+                    type="button"
+                    class={
+                      userType == "merchant"
+                        ? "hideBtn"
+                        : "btn btn-sm btn-outline-dark"
+                    }
+                  >
                     Create Property
                   </button>
-{/* <Link to="/add-items"> */}
+                  {/* <Link to="/add-items"> */}
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
@@ -360,7 +402,7 @@ className="dashboard-logo"
                   >
                     Create Items
                   </button>
-{/* </Link> */}
+                  {/* </Link> */}
                 </div>
                 {/* <button
                   type="button"
@@ -372,9 +414,7 @@ className="dashboard-logo"
                   This week
                 </button> */}
               </div>
-              <div class="username">
-                <h6>{"Gabriel Isaiah"}</h6>
-              </div>
+              <div class="username">{/* <h6>{"Gabriel Isaiah"}</h6> */}</div>
             </div>
 
             <div className="overComp">
@@ -384,6 +424,12 @@ className="dashboard-logo"
                   onClose={handleCloseOverlay}
                 />
               ) : (
+                /* <Welcome
+                  firstName={firstName}
+                  // handleChange={handleButtonClicked(
+                  //   isTokenExp ? navigate("/login") : <AddItems />
+                  // )}
+                /> */
                 <div>
                   <h1>Welcome back, {firstName}</h1>
                   <div className="db-content">
@@ -407,6 +453,7 @@ className="dashboard-logo"
                   </div>
                   <div className="db-confirm">
                     <p>Pending Confirmation</p>
+                    <h3>The property is pending</h3>
                   </div>
                 </div>
               )}
