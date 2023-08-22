@@ -11,6 +11,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Welcome from "./Welcome";
+import Editing from "./Editing";
 // import Content from "./Content";
 
 const Dashboard = () => {
@@ -457,7 +458,7 @@ const Dashboard = () => {
                 </div>
               )}
             </div>
-            {/* <Welcome /> */}
+            <Editing />
           </main>
         </div>
       </div>
