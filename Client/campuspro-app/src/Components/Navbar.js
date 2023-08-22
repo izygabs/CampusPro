@@ -8,7 +8,9 @@ function Navbar() {
     <div className="nb-body">
       <div className="nb-content">
         <div className="nb-img">
-          <img src={logo} alt="logo" />
+          <Link to={"/"}>
+            <img src={logo} alt="logo" />
+          </Link>
         </div>
         <div className="nb-input">
           <input
@@ -19,13 +21,13 @@ function Navbar() {
           />
         </div>
         <div className="nb-links">
-          <Link>
-            <p>Contacts</p>
-          </Link>
-          <Link>
-            <p>About</p>
-          </Link>
-          <Link>
+          <a className="linko" href="#footer">
+            <p>Contact</p>
+          </a>
+          <a className="linko" href="#">
+            <p>About us</p>
+          </a>
+          <Link to={"/login"}>
             <button>Login</button>
           </Link>
         </div>

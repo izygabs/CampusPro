@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
-// import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navbar";
 
 function HomePage() {
   const [datas, setDatas] = useState([]);
@@ -79,22 +79,20 @@ function HomePage() {
 
   return (
     <div className="homepage">
-      <div className="hp-header">
-        <div className="hp-logo-div">
-          <div>
+      <Navbar />
+      {/* <div className="hp-header"> */}
+      {/* <div className="hp-logo-div"> */}
+      {/* <div>
             <img src={logo} className="hp-logo" alt="" />
-          </div>
-          {/* <div>
-            <p>CampusPro</p>
           </div> */}
-        </div>
-        <div>
-          <input
+      {/* </div> */}
+      {/* <div> */}
+      {/* <input
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
-          />
+          /> */}
 
-          {/*
+      {/*
             campus.map((item)=>{
               
             })
@@ -112,13 +110,13 @@ function HomePage() {
               <option value={'osu'}>OSU</option>
               <option value={'eksu'}>EKSU</option>
           </select> */}
-        </div>
-        <div>
+      {/* </div> */}
+      {/* <div>
           <Link to={isTokenExp ? "/Dashboard" : "/login"}>
             <button className="hp-login-button">Login</button>
           </Link>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
 
       {/* //carousel */}
       <div className="hp-carousel-div">
@@ -221,7 +219,6 @@ function HomePage() {
           );
         })}
       </div>
-      {/* <Navbar /> */}
       <div>
         <Footer />
       </div>

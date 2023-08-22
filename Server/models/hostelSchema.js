@@ -22,6 +22,12 @@ const hostelSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    hostelStatus: {
+      type: String,
+      default: function () {
+        return { status: "new" };
+      },
+    },
     hostelImages: [String],
     houseProperties: [String],
   },

@@ -10,7 +10,7 @@ function Welcome(prop) {
         <h1>Welcome back, {prop.firstName}</h1>
         <div className="db-content">
           <h6>WHAT'S NEXT</h6>
-          <h3>Let's continue with creating your property and items!</h3>
+          <h3>Let's continue with creating your properties and items!</h3>
           <p>
             Your info is pending verified, just continue with listing your
             property now.

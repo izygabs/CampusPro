@@ -59,7 +59,12 @@ route.post(
   uploadProperty
 );
 
-route.post("/api/uploadItems", uploadItems.array("itemImages", 10), uploadItem);
+route.post(
+  "/api/uploadItems",
+  verifyToken,
+  uploadItems.array("itemImages", 10),
+  uploadItem
+);
 
 route.put(
   "/api/property/:id",
@@ -92,7 +97,7 @@ route.delete("/api/item/:id", verifyToken, deleteItem);
 
 route.get("/api/logout", verifyToken, logOut);
 
-route.put("/api/changePassword/:id", changePassword);
+route.put("/api/changePassword/:id", verifyToken, changePassword);
 
 route.put(
   "/api/updateUser/:id",

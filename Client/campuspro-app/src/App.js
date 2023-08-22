@@ -14,6 +14,8 @@ import ProfileInfo from "./Components/Profile_info";
 import React from "react";
 import UserDashboard from "./Components/UserDashboard";
 import Welcome from "./Components/Welcome";
+import Footer from "./Footer";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
@@ -32,6 +34,7 @@ function App() {
           <Route path="/Signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Welcome" element={<Welcome />} />
+          <Route path="/Footer" element={<Footer />} />
         </Routes>
       </Router>
     </div>

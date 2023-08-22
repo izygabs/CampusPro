@@ -37,6 +37,12 @@ const itemSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    itemStatus: {
+      type: String,
+      default: function () {
+        return { status: "new" };
+      },
+    },
     itemProperties: [String],
     itemPictures: [String],
   },
