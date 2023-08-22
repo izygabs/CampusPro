@@ -172,7 +172,7 @@ function HomePage() {
               Become a merchant and sell properties on CampusPro.
             </p>
 
-            <Link to={isTokenExp ? "/login" : "/Dashboard"}>
+            <Link to={isTokenExp ? "/Dashboard"  :  "/login"}>
               <button className="hp-button-link">Become a merchant</button>
             </Link>
           </div>

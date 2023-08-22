@@ -18,7 +18,7 @@ import PropertyTray from "./Components/PropertytTray";
 function App() {
   return (
     <div className="App">
-      <PropertyTray />
+      {/* <PropertyTray /> */}
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -28,7 +28,7 @@ function App() {
           <Route path="/holddata/:id" element={<BuyPage2 />} />
           <Route path="/Profile_info" element={<ProfileInfo />} />
           <Route path="/Changepassword" element={<Changepassword />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Dashboard/" element={<Dashboard />} />
           <Route path="/Signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Welcome" element={<Welcome />} />

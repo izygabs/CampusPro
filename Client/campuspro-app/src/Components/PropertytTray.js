@@ -1,5 +1,23 @@
 import React from "react";
-const PropertyTray = () => {
+import { useState, useEffect } from "react";
+
+const PropertyTray = (props) => {
+  useEffect(()=>{
+
+  })
+  const fetch = async()=> {
+    try{
+      const req = await fetch(`/api/propertyByAgent/${id}`)
+      const res = req.json()
+      console.log(res)
+
+    }catch(error){
+      console.log(error)
+    }
+  }
+
+  console.log(props.id)
+
   return (
     <div className="property-tray">
       <div className="pt-createProperty">
