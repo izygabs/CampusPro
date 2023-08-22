@@ -143,7 +143,13 @@ const Dashboard = () => {
           >
             <Dropdown.Item
               onClick={() =>
-                handleButtonClicked(<ProfileInfo userID={userID} />)
+                handleButtonClicked(
+                  isTokenExp ? (
+                    navigate("/login")
+                  ) : (
+                    <ProfileInfo userID={userID} />
+                  )
+                )
               }
             >
               My Profile
