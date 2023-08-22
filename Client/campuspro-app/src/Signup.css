@@ -6,6 +6,8 @@
       rgba(35, 34, 34, 0.694)
     ),
     url("./images/students-2.webp");
+  /* margin: 0 !important; */
+  height: 57rem;
 }
 .sp-form h1 {
   text-align: center;
@@ -33,6 +35,10 @@
   margin: 3rem auto;
   padding-left: 16px;
   padding-bottom: 3rem;
+}
+
+.sp-phorm {
+  height: 85%;
 }
 
 .sp-form label {

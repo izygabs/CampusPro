@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
+// import Navbar from "./Components/Navbar";
 
 function HomePage() {
   const [datas, setDatas] = useState([]);
@@ -220,7 +221,7 @@ function HomePage() {
           );
         })}
       </div>
-
+      {/* <Navbar /> */}
       <div>
         <Footer />
       </div>
