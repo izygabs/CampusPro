@@ -91,25 +91,6 @@ function HomePage() {
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
           />
-
-          {/*
-            campus.map((item)=>{
-              
-            })
-          
-           <select onChange={change} className="hp-select-button">
-              <option value={'lasu'}>LASU</option>
-              <option value={'unilag'}>UNILAG</option>
-              <option value={'laspotech'}>LASPOTECH</option>
-              <option value={'ui'}>UI(Ibadan)</option>
-              <option value={'the polytechnic ibadan'}>THE POLYTECHNIC IBADAN</option>
-              <option value={'oou'}>OOU</option>
-              <option value={'oau'}>OAU</option>
-              <option value={'jabu'}>JABU</option>
-              <option value={'mapoly'}>MAPOLY</option>
-              <option value={'osu'}>OSU</option>
-              <option value={'eksu'}>EKSU</option>
-          </select> */}
         </div>
         <div>
           <Link to={isTokenExp ? "/login" : "/Dashboard"}>
@@ -206,7 +187,7 @@ function HomePage() {
                 </div>
               </div>
               <div className="hp-props-text">
-                <p>{results.houseProperties[0]}</p>
+                {/* <p>{results.houseProperties[0]}</p> */}
                 <p>#{Number(results.price).toLocaleString()} </p>
 
                 <Link className="sp2-linkk" to={`/rentproperty/${results._id}`}>

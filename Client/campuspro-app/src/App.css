@@ -280,7 +280,7 @@ p {
   color: white;
 }
 .rentpage2{
-  background-color: #ede9d3;
+  background-color: whitesmoke;
 }
 .sp-sub-div22{
   display: flex;
@@ -447,6 +447,12 @@ p {
 .sp2-disclaimer{
   color: gold
 }
+
+.property-tray{
+  background-color: whitesmoke;
+  padding: 3vh 0;
+}
+
 .pt-createProperty{
   width:100%;
   display: flex;
@@ -473,31 +479,43 @@ p {
   justify-content: space-between;
   align-items: center;
 }
-.pt-nav-btn1, .pt-nav-btn2, .pt-nav-btn3, .pt-nav-btn4, .pt-nav-btn5{
+.pt-nav-btn1{
   border: none;
   background-color: transparent;
+  transition: transform 0.4s;
   
 }
-.pt-nav-btn01, .pt-nav-btn02, .pt-nav-btn03, .pt-nav-btn04, .pt-nav-btn05{
+.pt-nav-btn1:hover{
+  transform: scale(1.1);
+  
+}
+.pt-nav-btn01{
   border: none;
+  font-weight: 700;
+  color: gold;
   border-bottom: solid 4px gold !important;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: transparent;
+  transition: transform 0.4s;
+}
+.pt-nav-btn01:hover{
+  transform: scale(1.1);
 }
 
 
 .pt-properties-filter{
   width: 30%;
   text-align: end;
-  /* border: solid; */
+  
 }
 .pt-properties-display{
   height: 60vh;
   overflow-y: scroll;
-  /* padding-bottom: 70vh; */
-  border: solid;
+  overflow-x: hidden;
+  background-color: whitesmoke;
   margin: 2vh 3vw;
+  /* width: 100%; */
 }
 .pt-properties{
   display: flex;
@@ -506,35 +524,98 @@ p {
   height: 35vh;
   margin-bottom: 3vh;
   align-items: center;
+  background-color: white;
+  /* border: solid; */
 }
 .pt-props-img-div{
   width:22%;
   height: 100%;
-  border:dotted;
+  /* border:dotted; */
+}
+.pt-image{
+  width:100%;
+  height: 100%;
+  object-fit:fill
 }
 .pt-props-desc-div{
-  width: 23%;
+  width: 22%;
   height: 100%;
   align-items: center;
-  border-style:groove
+  padding-top: 10vh;
+ 
+}
+.pt-props-desc-div p,
+.pt-props-campus-div p,
+.pt-props-price-div p,
+.pt-props-posted-div p{
+  width: 100%;
+  text-align: start;
+  font-weight: 700;
+}
+.pt-texts{
+  font-weight: 400 !important;
 }
 .pt-props-campus-div{
+  padding-top: 10vh;
   width:20%;
   height: 100%;
   align-items: center;
-  border-style:ridge;
 }
 .pt-props-price-div{
   width:14%;
   height: 100%;
   align-items: center;
-  border-style:ridge;
+  padding-top: 10vh;
 }
+
 .pt-props-posted-div{
   width:14%;
   height: 100%;
   align-items: center;
-  border-style:ridge; 
+  /* padding-top:; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+}
+
+.pt-props-posted-div button{
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  
+}
+.pt-delete-btn{
+  width: 40px;
+  padding: 0;
+}
+.pt-edit-btn{
+  width: 30px;
+  padding: 0;
+}
+.pt-edit{
+  position: absolute;
+  top:6vh;
+  left:3vw;
+  width:20px;
+  opacity: 0;
+  font-size: 13px;
+  padding-left: 3.2vw;
+}
+.pt-edit:hover{
+  display: flex;
+  opacity: 1;
+}
+.pt-delete{
+  position: absolute;
+  bottom: 7vh;
+  padding-left: 6vw;
+  font-size: 13px;
+  opacity:0;
+}
+.pt-delete:hover{
+  opacity: 1;
 }
 
 
