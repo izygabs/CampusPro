@@ -24,8 +24,7 @@ const hostelSchema = new mongoose.Schema(
     },
     hostelStatus: {
       type: String,
-      default:"new"
-      
+      default: "New",
     },
     hostelImages: [String],
     houseProperties: [String],

@@ -33,6 +33,7 @@ const uploadItem = async (req, res) => {
         campus: value.campus,
         location: value.location,
         itemPictures: [],
+        itemStatus: "New",
       });
       const newSeller = await seller.save();
       if (newSeller) {

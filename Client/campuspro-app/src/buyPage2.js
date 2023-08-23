@@ -42,7 +42,7 @@ const BuyPage2 = () => {
           <section className="minor-sec">
             <div className="first-div">
               <img
-                src={holddata.itemPictures && holddata.itemPictures[0]}
+                src={`${holddata.itemPictures}`}
                 alt="image"
                 className="i-mg"
               />

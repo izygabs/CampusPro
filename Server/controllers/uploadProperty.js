@@ -43,6 +43,7 @@ const uploadProperty = async (req, res) => {
         location: Location,
         hostelImages: [], //to be updated later with the image path
         houseProperties: [],
+        hostelStatus: "New",
       });
 
       let newHostel = await hostel.save();

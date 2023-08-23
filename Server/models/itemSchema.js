@@ -39,8 +39,7 @@ const itemSchema = new mongoose.Schema(
     },
     itemStatus: {
       type: String,
-      default: "new"
-      
+      default: "New",
     },
     itemProperties: [String],
     itemPictures: [String],
