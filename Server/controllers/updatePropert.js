@@ -46,9 +46,7 @@ const updateProperty = async (req, res) => {
       },
       { new: true }
     );
-    res
-      .status(StatusCodes.CREATED)
-      .json({ "Properties uploaded succesfully": hostel });
+    res.status(201).json({ message: "Property updated successfully" });
   } catch (error) {
     // to delete the images saved into the hostels Images folder while database failed
     hostelsPictures.forEach((file) => {
@@ -56,9 +54,7 @@ const updateProperty = async (req, res) => {
     });
     console.log(error);
     const errors = errorHandler.PropertySchemaErrors(error);
-    res
-      .status(StatusCodes.UNPROCESSABLE_ENTITY)
-      .json({ "Database Error": errors });
+    res.status(422).json({ error: "Database Error" });
   }
   // }
 };

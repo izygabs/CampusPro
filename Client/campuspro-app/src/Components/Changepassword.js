@@ -39,6 +39,8 @@ function Changepassword(prop) {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       // Handle form submission
+      console.log(values);
+
       try {
         const response = await fetch("/api/changePassword/:id", {
           method: "PUT",
@@ -60,6 +62,7 @@ function Changepassword(prop) {
       } catch (error) {
         console.error("Error sending password:", error);
       }
+      console.log(values);
     },
   });
 

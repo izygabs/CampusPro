@@ -23,7 +23,9 @@ const viewItemById = require("../controllers/viewItemById");
 const deleteProperty = require("../controllers/deleteProperty");
 
 const deleteItem = require("../controllers/deleteItem");
+
 const userProfile = require("../controllers/userProfile");
+
 const checkTokenExpired = require("../controllers/checkTokenExpired");
 
 const {
@@ -39,6 +41,10 @@ const logOut = require("../controllers/logOut");
 const changePassword = require("../controllers/changePassword");
 
 const updateUser = require("../controllers/updateUser");
+
+const viewPropertyByAgentId = require("../controllers/viewPropertyByAgentId");
+
+const viewItemsByMerchId = require("../controllers/viewItemsByMerchId");
 
 const route = express.Router();
 
@@ -74,7 +80,7 @@ route.get("/api/allProperties", viewProperties);
 
 route.get("/api/allItems", viewItems);
 
-route.get("/api/property/:id", verifyToken, viewPropertyById);
+route.get("/api/property/:id", viewPropertyById);
 
 route.get("/api/item/:id", viewItemById);
 
@@ -86,8 +92,17 @@ route.delete("/api/item/:id", verifyToken, deleteItem);
 
 route.get("/api/logout", verifyToken, logOut);
 
-route.put("/api/changePassword/:id", verifyToken, changePassword);
+route.put("/api/changePassword/:id", changePassword);
 
-route.put("/api/updateUser/:id", upload.single("profilePic"), updateUser);
+route.put(
+  "/api/updateUser/:id",
+  verifyToken,
+  upload.single("profilePic"),
+  updateUser
+); 
+
+route.get("/api/propertyByAgent/:agentId", viewPropertyByAgentId);
+
+route.get("/api/itemsByMerch/:merchantID", viewItemsByMerchId);
 
 module.exports = route;
