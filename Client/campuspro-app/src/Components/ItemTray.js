@@ -7,7 +7,7 @@ import AddItems from "./AddItems";
 import { useNavigate } from "react-router";
 import PropertiesCard from "./PropertiesCard";
 
-const PropertyTray = (props) => {
+const ItemTray = (props) => {
   const navigate = useNavigate();
   const [allProperties, setAllProperties] = useState(true);
   const [newProperties, setNewProperties] = useState(false);
@@ -67,7 +67,8 @@ const PropertyTray = (props) => {
     fetcher();
   }, []);
   const fetcher = async () => {
-    url = `/api/propertyByAgent/${props.id}`;
+    url = `/api/itemsByMerch/${props.id}`;
+
     console.log("url :", url);
     try {
       const req = await fetch(url);
@@ -86,16 +87,16 @@ const PropertyTray = (props) => {
   return (
     <div className="property-tray">
       <div className="pt-createProperty">
-        <h3>Properties</h3>
+        <h3>Items</h3>
         <button
           className="pt-create-button"
           onClick={() =>
             handleButtonClicked(
-              !props.isTokenExp ? navigate("/login") : "+ Create"
+              !props.isTokenExp ? navigate("/login") : <AddItems />
             )
           }
         >
-          + Create Property
+          + Create Item
         </button>
       </div>
       <section className="pt-nav-div">
@@ -104,7 +105,7 @@ const PropertyTray = (props) => {
             className={allProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
             onClick={setall}
           >
-            All Properties
+            All Item
           </button>
           <button
             className={newProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
@@ -145,7 +146,7 @@ const PropertyTray = (props) => {
           </section>
         ) : (
           <div className="pt-empty-array">
-            <p>create your first property today</p>
+            <p>create your first item today</p>
           </div>
         )
       ) : (
@@ -157,4 +158,4 @@ const PropertyTray = (props) => {
     </div>
   );
 };
-export default PropertyTray;
+export default ItemTray;

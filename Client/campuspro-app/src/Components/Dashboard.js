@@ -9,6 +9,7 @@ import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import ItemTray from "./ItemTray";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Editing from "./Editing";
 import PropertyTray from "./PropertytTray";
@@ -310,7 +311,7 @@ const Dashboard = () => {
                             <PropertyTray
                               id={userID}
                               isTokenExp={isTokenExp}
-                              name="Property"
+                          
                             />
                           )
                         )
@@ -330,10 +331,9 @@ const Dashboard = () => {
                           !isTokenExp ? (
                             navigate("/login")
                           ) : (
-                            <PropertyTray
+                            <ItemTray
                               id={userID}
                               isTokenExp={isTokenExp}
-                              name="Items"
                             />
                           )
                         )
