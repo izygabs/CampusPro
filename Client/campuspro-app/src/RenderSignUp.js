@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "./images/campuspro(6).png";
 import Joi from "joi";
 // import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom"; 
 import Login from "./Components/Login";
 // import Modal from "react-modal";
 
@@ -151,8 +151,8 @@ const Signup = () => {
     setBtnChecked(null);
   };
 
-  const clearState = () => {
-    setInputValues({
+  const formik = useFormik({
+    initialValues:{
       firstName: "",
       lastName: "",
       Phone: "",
@@ -174,13 +174,12 @@ const Signup = () => {
         });
 
         const result = await response.json();
+        setIsSignUpSuccessful(true);
+        setModalIsOpen(true);
         switch (response.status) {
           case 201:
-            setMsg(result.Message);
+            setMsg(result.Message + ".\nClick OK to Login");
             // navigator("/login");
-            setIsSignUpSuccessful(true);
-            setModalIsOpen(true);
-            openModal();
 
             break;
           case 400:
@@ -372,7 +371,7 @@ const Signup = () => {
           </div>
 
           <div className="sp-create-Account-button">
-            <button className="sp-btn" type="submit">
+            <button className="sp-btn" type="submit" onClick={openModal}>
               Create Account
             </button>
             <Modal
@@ -385,7 +384,7 @@ const Signup = () => {
               <h2>Successful sign-up</h2>
               <p>{message}</p>
               <button onClick={closeModal} className="modalBtn">
-                Click to Log in
+                Log in
               </button>
             </Modal>
           </div>
