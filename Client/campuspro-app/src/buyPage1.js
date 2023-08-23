@@ -22,7 +22,7 @@ const BuyPage = () => {
       const data = await res.json()
       console.log(data)
       setHoldData(data.Items)
-      // console.log(holddata)
+      console.log(holddata)
     } catch(err) {
       console.log(err);
     }
@@ -46,7 +46,7 @@ const BuyPage = () => {
         </Link>
         <input type="search" name="input" id="search" placeholder='Search items...' onChange={(e) => setQuery(e.target.value)} />
         <div id='p'>
-        <p id='paragraph'>Items Available for buy</p>
+        {/* <p id='paragraph'>Items Available for buy</p> */}
         </div>
       </navbar>
                                     
@@ -60,7 +60,7 @@ const BuyPage = () => {
         <option value='Electronic Gadgets'>Electronic Gadgets</option>
         <option value='Books'>Books</option>
         <option value='Others'>Others</option>
-      </select>
+      </select> 
 
       <section className='bpage-section'>
         {holddata.map((items) => {

@@ -42,7 +42,7 @@ const BuyPage2 = () => {
         <Navbar />
         <section className="minor-sec">
           <div className="first-div">
-          <img src={holddata.itemPictures && holddata.itemPictures[0] } alt='image' className='i-mg' />
+          <img src={`${holddata.itemPictures}` } alt='image' className='i-mg' />
           </div>
           <div className="second-div">
               <h1 id='details'>Item Details</h1>

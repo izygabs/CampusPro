@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 6600;
 const connectMongoose = require("./models/connectMongoose");
 const route = require("./routes/allRoutes");
 const cookieParser = require("cookie-parser");
-const multer = require("multer");
+// const multer = require("multer");
 const cors = require("cors");
 const path = require("path");
 

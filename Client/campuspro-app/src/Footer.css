@@ -12,6 +12,8 @@ body{
 .fp-header{
     display: flex;
     margin-left: 4rem;
+    position: relative;
+    right: 4rem;
 }
 
 .fp-btn{
@@ -56,6 +58,7 @@ body{
 .fp-moto{
     position: relative;
     top: 5px;
+    color: white;
 }
 
 .fp-header, .fp-h3 .fp-btn{
@@ -78,9 +81,10 @@ body{
 
  .fp-contact, .fp-number .fp-contact-num .fp-info{
     position: relative;
-    left: 18rem;
-    top: 2.5rem;
+    left: 20rem;
+    top: 2.3rem;
     line-height: 1rem;
+    color: white;
 }
 .all-contact{
     /* display: flex; */
@@ -99,7 +103,7 @@ body{
 .all-contact, .fp-number .fp-info{
     position: relative;
     right: 6rem;
-    top: 10px;
+    top: 2px;
 }
  .fp-contact, .fp-img-all .one .two .three .four .five{
     width: 15px;
@@ -113,6 +117,8 @@ body{
     width: 2rem;
     margin-top: 12rem;
     margin-left: 4rem;
+    position: relative;
+    right: 14rem;
     /* background-color: white; */
 }
 .one{
@@ -196,9 +202,10 @@ body{
 
 .fp-address, .fp-add .fp-add-one{
     position: relative;
-    left: 20rem;
+    left: 25rem;
     top: 2rem;
     line-height: 1.5rem;
+    color: white;
 }
         
 .fp-newsletter, .fp-input1 .fp-input .fp-news .fp-btn-one{
@@ -209,8 +216,9 @@ body{
 
 .fp-company, .fp-about-com .fp-p{
     position: relative;
-    left: 4rem;
-    top: 2.5rem;
+    left: 6rem;
+    top: 2.2rem;
+    color: white;
 }
 .fp-p li{
     /* border: 2px solid bisque; */
@@ -222,6 +230,9 @@ body{
     font-size: larger;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    position: relative;
+    top: 2rem;
 }
 .fp-displa, .fp-input1 .fp-input{
     display: flex;
@@ -235,4 +246,8 @@ body{
     width: 5px;
     display: flex;
     justify-content: space-around;
+}
+.fp-contact-num{
+    position: relative;
+    left: 1.5rem;
 }
