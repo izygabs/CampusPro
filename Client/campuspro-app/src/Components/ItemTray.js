@@ -65,7 +65,7 @@ const ItemTray = (props) => {
   };
   useEffect(() => {
     fetcher();
-  }, []);
+  }, [fetcher]);
   const fetcher = async () => {
     url = `/api/itemsByMerch/${props.id}`;
 
