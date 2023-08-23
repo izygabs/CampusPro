@@ -12,14 +12,14 @@ function Navbar() {
             <img src={logo} alt="logo" />
           </Link>
         </div>
-        <div className="nb-input">
+        {/* <div className="nb-input">
           <input
             type="text"
             placeholder="Search for ....(fix your own page)"
             // value={searchTerm}
             // onChange={handleSearchChange}
           />
-        </div>
+        </div> */}
         <div className="nb-links">
           <a className="linko" href="#footer">
             <p>Contact</p>
