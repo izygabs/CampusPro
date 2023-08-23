@@ -66,8 +66,10 @@ const BuyPage = () => {
         {holddata.map((items) => {
           return(
             <div key={items.id} className='items'>
-              <img src={items.itemPictures} alt='image' className='images' />
-                <p id='p-i'>{items.campus} <br/> {items.price}  <br/> 
+              <div className='img-div'>
+                <img src={`${items.itemPictures[1]}`} alt='image' className='normal-img' />
+              </div>
+                <p id='p-i'> <br/>  <br/> 
             
               <button className='btn'><Link to={`/holddata/${items._id}`} id='link-btn'>
                 View Details

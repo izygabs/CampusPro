@@ -34,9 +34,13 @@ const About = () => {
         <h1 className="ab-head">
           Our Vision 
         </h1>
-        <p id='par'>CampusPro is a Nigerian based platform that was created with the goal of making it easier for university students to get better accomdation in any campus they are during their days in school. CampusPro website tightens up the gap between the student and the agent in terms of accomodation to rent. 
-          In campusPro, students who wish to sell some of their items they used in school also have the opportunuty to signup on the website as a merchant and upload images, descriptions and prices of the items they wish to upload. We are focused on giving the students a 
-          proper accomodation suitable for their learning through the legit and qualified agents that signup on our website.
+      <p id='par'>CampusPro vision is to be the leading provider of student housing solutions,
+                 providing a safe and secure living environment for students across the country.
+                 We strive to create an environment that is conducive for learning and growth while 
+                  also providing a comfortable and enjoying living experience. Our goal is to help 
+                  students with the best possible housing options while also helping them save money
+                  on their rent.
+                 
         </p>
       </div>
         <div className="first-about">
