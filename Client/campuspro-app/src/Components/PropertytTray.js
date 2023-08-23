@@ -17,6 +17,7 @@ const PropertyTray = (props) => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [data, setData] = useState([]);
+  let url = "";
 
   function setall() {
     setAllProperties(true);
@@ -66,12 +67,10 @@ const PropertyTray = (props) => {
     fetcher();
   }, []);
   const fetcher = async () => {
+    url = `/api/propertyByAgent/${props.id}`;
+    console.log("url :", url);
     try {
-      const req = await fetch(
-        props.name == "Items"
-          ? `/api/itemsByMerch/64dea0a4f95fd237125a3d47`
-          : "/api/propertyByAgent/:agentId"
-      );
+      const req = await fetch(url);
       const res = await req.json();
       const info = await res.Items;
       setData(info);
@@ -87,22 +86,16 @@ const PropertyTray = (props) => {
   return (
     <div className="property-tray">
       <div className="pt-createProperty">
-        <h3>{props.name == "Property" ? "Properties" : "Items"}</h3>
+        <h3>Properties</h3>
         <button
           className="pt-create-button"
           onClick={() =>
             handleButtonClicked(
-              !props.isTokenExp ? (
-                navigate("/login")
-              ) : props.name == "Items" ? (
-                <AddItems />
-              ) : (
-                "+ Create Item"
-              )
+              !props.isTokenExp ? navigate("/login") : "+ Create"
             )
           }
         >
-          {props.name == "Property" ? "+ Create Property" : "+ Create Item"}
+          + Create Property
         </button>
       </div>
       <section className="pt-nav-div">
@@ -111,7 +104,7 @@ const PropertyTray = (props) => {
             className={allProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
             onClick={setall}
           >
-            {props.name == "Property" ? "All Properties" : "All Item"}
+            All Properties
           </button>
           <button
             className={newProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
@@ -152,11 +145,7 @@ const PropertyTray = (props) => {
           </section>
         ) : (
           <div className="pt-empty-array">
-            <p>
-              {props.name == "Property"
-                ? "create your first property today"
-                : "create your first item today"}
-            </p>
+            <p>create your first property today</p>
           </div>
         )
       ) : (
