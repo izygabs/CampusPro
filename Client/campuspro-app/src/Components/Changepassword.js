@@ -39,6 +39,8 @@ function Changepassword(prop) {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       // Handle form submission
+      console.log(values);
+
       try {
         const response = await fetch("/api/changePassword/:id", {
           method: "PUT",
