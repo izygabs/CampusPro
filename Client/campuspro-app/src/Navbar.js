@@ -16,7 +16,7 @@ const Navbar = () => {
           </Link>
           <input type="search" name="input" id="search" placeholder='Search items...' onChange={(e) => setQuery(e.target.value)} />
           <div id='p'>
-          <p id='paragraph'>Items Available for buy</p>
+          {/* <p id='paragraph'>Items Available for buy</p> */}
         </div>
       </navbar>
     </div>

@@ -12,11 +12,8 @@ import Changepassword from "./Components/Changepassword";
 import ProfileInfo from "./Components/Profile_info";
 import React from "react";
 import UserDashboard from "./Components/UserDashboard";
-<<<<<<< HEAD
-import About from "./AboutUs";
-=======
 import PropertyTray from "./Components/PropertytTray";
->>>>>>> 690e68e35cca5fdb90f6f77fad0c38992e0da0b1
+import About from "./AboutUs";
 
 function App() {
   return (
