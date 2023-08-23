@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Changepassword.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 
 function Changepassword(prop) {
   const [click, setClick] = useState(false);
@@ -41,8 +41,7 @@ function Changepassword(prop) {
     onSubmit: async (values, { resetForm }) => {
       // Handle form submission
       try {
-        const id = useParams();
-        const response = await fetch(`/api/changePassword/${id}`, {
+        const response = await fetch(`/api/changePassword/`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values),
@@ -90,7 +89,7 @@ function Changepassword(prop) {
                 className="cp-forms"
                 onSubmit={formik.handleSubmit}
                 method="put"
-                action="/api/changePassword/id"
+                action="/api/changePassword"
               >
                 <label>
                   Current password:<br></br>
