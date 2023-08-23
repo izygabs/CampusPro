@@ -11,9 +11,7 @@ const viewProperties = async (req, res) => {
       res.status(StatusCodes.OK).json({ Properties: allProperties });
     }
   } catch (error) {
-    res
-      .status(StatusCodes.BAD_REQUEST)
-      .json(`Error in getting Properties: ${error}`);
+    res.status(StatusCodes.BAD_REQUEST).json({ Error: error });
   }
 };
 module.exports = viewProperties;
