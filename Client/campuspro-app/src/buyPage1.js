@@ -1,15 +1,14 @@
 import logo from './images/campuspro(6).png';
 import './buyPage1.css';
-// import Contents from './contents.json';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 
 const BuyPage = () => {
+
   const [query, setQuery] = useState('');
   const [dropDownQuery, setdropDownQuery] = useState('');
-
   const [update, setUpdate] = useState('');
   const [holddata, setHoldData] = useState([]);
   
@@ -23,11 +22,13 @@ const BuyPage = () => {
       const data = await res.json()
       console.log(data)
       setHoldData(data.Items)
-      // console.log(holddata)
+      console.log(holddata)
     } catch(err) {
       console.log(err);
     }
   }
+
+  // console.log(items.itemPictures);
 
   const handleChange = (e) => {
     setdropDownQuery(e.target.value)
@@ -38,18 +39,18 @@ const BuyPage = () => {
   console.log(holddata); 
 
   return (
-    <div className="main">
-      <navbar className="navbar">
+    <div className="bpage-main">
+      <navbar className="bpage-navbar">
         <Link to="/">
         <img src={logo} alt='logo' className='logo' />
         </Link>
         <input type="search" name="input" id="search" placeholder='Search items...' onChange={(e) => setQuery(e.target.value)} />
         <div id='p'>
-        <p id='paragraph'>Items Available for buy</p>
+        {/* <p id='paragraph'>Items Available for buy</p> */}
         </div>
       </navbar>
                                     
-      <select value={update} onChange={handleChange} className='select'>
+      <select value={update} onChange={handleChange} className='bpage-select'>
         <option value=' '>Select Item to Display</option><hr/>
         <option value='Clothings'>Clothings</option>
         <option value='Kitchen Utensils'>Kitchen Utensils</option>
@@ -59,20 +60,18 @@ const BuyPage = () => {
         <option value='Electronic Gadgets'>Electronic Gadgets</option>
         <option value='Books'>Books</option>
         <option value='Others'>Others</option>
-      </select>
+      </select> 
 
-      <section className='section'>
+      <section className='bpage-section'>
         {holddata.map((items) => {
           return(
-            <div key={items.id} className='items'>
-              <img src={items.itemPictures[2]} alt='image' className='images' />
-            {/* // <img src={items.itemPictures[]} alt="item" className='images'/> */}
-              <p id='p-i'>{items.campus}
-              <br/> 
-              {items.price} 
-              <br/> 
+            <div key={items.id} className='bpage-items'>
+              <div className='img-div'>
+                <img src={`${items.itemPictures[1]}`} alt='image' className='normal-img' />
+              </div>
+                <p id='p-i'> <br/>  <br/> 
             
-              <button className='btn'><Link to={`/holddata/${items._id}`} id='link-btn'>
+              <button className='bpage-btn'><Link to={`/holddata/${items._id}`} id='link-btn'>
                 View Details
                 </Link>
                 </button>
@@ -81,7 +80,6 @@ const BuyPage = () => {
           )
           
         })}
-        {/* <button type="button"><Link to='/CampusFeatures'>Next</Link></button> */}
       </section>
     </div>
   )

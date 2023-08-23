@@ -81,12 +81,13 @@ const Signup = () => {
         });
 
         const result = await response.json();
-        setIsSignUpSuccessful(true);
-        setModalIsOpen(true);
         switch (response.status) {
           case 201:
-            setMsg(result.Message + ".\nClick OK to Login");
+            setMsg(result.Message);
             // navigator("/login");
+            setIsSignUpSuccessful(true);
+            setModalIsOpen(true);
+            openModal();
 
             break;
           case 400:
