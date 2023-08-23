@@ -6,7 +6,7 @@ const viewItemsByMerchId = async (req, res) => {
   try {
     const allItems = await items.find({ merchantID: merchantId });
 
-    res.status(StatusCodes.OK).json({ "Items found": allItems });
+    res.status(StatusCodes.OK).json({ "Items": allItems });
   } catch (error) {
     res
       .status(StatusCodes.BAD_REQUEST)

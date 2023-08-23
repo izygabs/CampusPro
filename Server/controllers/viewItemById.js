@@ -13,7 +13,7 @@ const viewItemById = async (req, res) => {
     if (!item) {
       res.status(StatusCodes.NOT_FOUND).send("Invalid Id");
     } else {
-      res.status(StatusCodes.OK).json({ "Item found": item });
+      res.status(StatusCodes.OK).json({ "Item": item });
     }
   } catch (error) {
     console.log(error);

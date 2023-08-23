@@ -7,6 +7,10 @@ import * as yup from "yup";
 function Changepassword(prop) {
   const [click, setClick] = useState(false);
 
+  const sub = (e) => {
+    e.preventDefault();
+    // console.log(values);
+  };
   const handleEditClicked = (e) => {
     e.preventDefault();
     // console.log("clcik1", clicked);
@@ -40,6 +44,8 @@ function Changepassword(prop) {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       // Handle form submission
+      console.log(values);
+
       try {
         const response = await fetch(`/api/changePassword/`, {
           method: "PUT",
@@ -60,7 +66,7 @@ function Changepassword(prop) {
       } catch (error) {
         console.error("Error sending password:", error);
       }
-      console.log(values);
+      // console.log(values);
     },
   });
 
@@ -144,7 +150,7 @@ function Changepassword(prop) {
                     </p>
                   )}
               </form>
-              <button className="cp-btn" type="submit">
+              <button className="cp-btn" type="submit" onClick={sub}>
                 Confirm
               </button>
             </div>

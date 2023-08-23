@@ -7,6 +7,8 @@
   text-align: center;
   width: 100%;
   background: black;
+  position: fixed;
+  margin-top: -9rem;
 }
 
 .logo {
@@ -45,7 +47,7 @@
   color: white;
   overflow: hidden;
   box-shadow: inset 2px 2px 5px black;
-  margin-top: 2rem;
+  margin-top: 9rem;
 }
 
 .images {
@@ -90,13 +92,14 @@
 
 .select {
   text-align: center;
-  margin-left: 27rem;
-  margin-top: 2rem;
+  margin-left: 30rem;
+  margin-top: -2rem;
   height: 5vh;
   box-shadow: 1px 1px 5px black;
   transition: all 2s ease-in-out;
   font-weight: bold;
   outline: none;
+  position: fixed;
 }
 
 .select option {

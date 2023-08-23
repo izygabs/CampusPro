@@ -10,8 +10,9 @@ import OverlayComponent from "./OverlayComp";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import Welcome from "./Welcome";
-// import Editing from "./Editing";
+import Editing from "./Editing";
+import PropertyTray from "./PropertytTray";
+// import Navbar from "./Navbar";
 // import Content from "./Content";
 
 const Dashboard = () => {
@@ -24,8 +25,6 @@ const Dashboard = () => {
   const [lastName, setLastName] = useState();
   const [userType, setUserType] = useState();
   const [loading, setLoading] = useState(false);
-  const [closeBtn, setCloseBtn] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,30 +35,35 @@ const Dashboard = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setIsTokenExp(data.isTokenExpired);
-
         const token = jwtDecode(data.campusToken);
-        // console.log(token);
-        token && setLoading(true);
-        const { _id, fName, lName, userType, email } = token;
-        setUserID(_id);
-        setEmail(email);
-        setFirstName(fName);
-        setLastName(lName);
-        setUserType(userType);
-        // Redirect to login if token is expired
-        if (data.isTokenExpired) {
+        // console.log(token.exp);
+        if (!token) {
           navigate("/login");
         }
+        const expirationTime = token.exp;
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        if (expirationTime < currentTime) {
+          // Token has expired, redirect to login
+          navigate("/login");
+        } else {
+          token && setLoading(true);
+          const { _id, fName, lName, userType, email } = token;
+          setUserID(_id);
+          setEmail(email);
+          setFirstName(fName);
+          setLastName(lName);
+          setUserType(userType);
+          setIsTokenExp(true);
+        }
+        // Redirect to login if token is expired
       })
       .catch((error) => {
         console.error("Error fetching token status:", error);
       });
   }, [navigate]);
 
-  const hideCloseButton = () => {};
   const handleButtonClicked = (component) => {
-    setCloseBtn(true);
     setSelectedComponent(component);
     setShowOverlay(true);
   };
@@ -69,6 +73,7 @@ const Dashboard = () => {
   };
   let userName = firstName + " " + lastName;
 
+  // console.log(userID);
   return (
     <div className="dash">
       <svg
@@ -148,7 +153,13 @@ const Dashboard = () => {
           >
             <Dropdown.Item
               onClick={() =>
-                handleButtonClicked(<ProfileInfo userID={userID} />)
+                handleButtonClicked(
+                  !isTokenExp ? (
+                    navigate("/login")
+                  ) : (
+                    <ProfileInfo userID={userID} />
+                  )
+                )
               }
             >
               My Profile
@@ -156,7 +167,7 @@ const Dashboard = () => {
             <Dropdown.Item
               onClick={() =>
                 handleButtonClicked(
-                  isTokenExp ? (
+                  !isTokenExp ? (
                     navigate("/login")
                   ) : (
                     <Changepassword Email={email} />
@@ -244,7 +255,7 @@ const Dashboard = () => {
                       aria-current="page"
                       onClick={() =>
                         handleButtonClicked(
-                          isTokenExp ? (
+                          !isTokenExp ? (
                             navigate("/login")
                           ) : (
                             <div>
@@ -262,7 +273,7 @@ const Dashboard = () => {
                                 <button
                                   onClick={() =>
                                     handleButtonClicked(
-                                      isTokenExp ? (
+                                      !isTokenExp ? (
                                         navigate("/login")
                                       ) : (
                                         <AddItems />
@@ -275,7 +286,7 @@ const Dashboard = () => {
                               </div>
                               <div className="db-confirm">
                                 <p>Pending Confirmation</p>
-                                <h3>This section is coming soon....</h3>
+                                <h3>The property is pending</h3>
                               </div>
                             </div>
                           )
@@ -289,7 +300,22 @@ const Dashboard = () => {
                     </a>
                   </li>
                   <li class={userType == "merchant" ? "hideBtn" : "nav-item"}>
-                    <a class="nav-link d-flex  align-items-center gap-2">
+                    <a
+                      class="nav-link d-flex  align-items-center gap-2"
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <PropertyTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              name="Property"
+                            />
+                          )
+                        )
+                      }
+                    >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
                       </svg>
@@ -297,7 +323,22 @@ const Dashboard = () => {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="">
+                    <a
+                      class="nav-link d-flex align-items-center gap-2"
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <PropertyTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              name="Items"
+                            />
+                          )
+                        )
+                      }
+                    >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#cart" />
                       </svg>
@@ -326,7 +367,7 @@ const Dashboard = () => {
                         <Dropdown.Item
                           onClick={() =>
                             handleButtonClicked(
-                              isTokenExp ? (
+                              !isTokenExp ? (
                                 navigate("/login")
                               ) : (
                                 <ProfileInfo userID={userID} />
@@ -339,7 +380,7 @@ const Dashboard = () => {
                         <Dropdown.Item
                           onClick={() =>
                             handleButtonClicked(
-                              isTokenExp ? (
+                              !isTokenExp ? (
                                 navigate("/login")
                               ) : (
                                 <Changepassword Email={email} />
@@ -395,7 +436,7 @@ const Dashboard = () => {
                     class="btn btn-sm btn-outline-secondary"
                     onClick={() =>
                       handleButtonClicked(
-                        isTokenExp ? navigate("/login") : <AddItems />
+                        !isTokenExp ? navigate("/login") : <AddItems />
                       )
                     }
                   >
@@ -423,6 +464,12 @@ const Dashboard = () => {
                   onClose={handleCloseOverlay}
                 />
               ) : (
+                /* <Welcome
+                  firstName={firstName}
+                  // handleChange={handleButtonClicked(
+                  //   isTokenExp ? navigate("/login") : <AddItems />
+                  // )}
+                /> */
                 <div>
                   <h1>Welcome back, {firstName}</h1>
                   <div className="db-content">
@@ -437,7 +484,7 @@ const Dashboard = () => {
                     <button
                       onClick={() =>
                         handleButtonClicked(
-                          isTokenExp ? navigate("/login") : <AddItems />
+                          !isTokenExp ? navigate("/login") : <AddItems />
                         )
                       }
                     >
@@ -446,8 +493,7 @@ const Dashboard = () => {
                   </div>
                   <div className="db-confirm">
                     <p>Pending Confirmation</p>
-
-                    <h3>This section is coming soon....</h3>
+                    <h3>The property is pending</h3>
                   </div>
                 </div>
               )}

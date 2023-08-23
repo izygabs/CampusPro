@@ -10,6 +10,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
 import Navbar from "./Components/Navbar";
+import jwtDecode from "jwt-decode";
+// import Navbar from "./Components/Navbar";
 
 function HomePage() {
   const [datas, setDatas] = useState([]);
@@ -25,14 +27,23 @@ function HomePage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // setIsTokenExp(data.Exp);
+        const token = jwtDecode(data.campusToken);
+        // console.log(token);
+        if (!token) {
+          navigate("/login");
+        }
+        const expirationTime = token.exp;
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        if (expirationTime < currentTime) {
+          // Token has expired, redirect to login
+          navigate("/login");
+        } else setIsTokenExp(true);
         // console.log(data.token);
-        data.Exp && setIsTokenExp(false);
+        // console.log(isTokenExp);
         // Redirect to login if token is expired
       })
       .catch((error) => {
-        setIsTokenExp(true);
-
         console.error("Error fetching token status:", error);
       });
   }, [isTokenExp]);
@@ -51,8 +62,8 @@ function HomePage() {
       // console.log(data2)
       const result = data2.Properties;
       setDatas(result);
-      console.log(result[0]);
-      console.log(result[0].hostelImages[0]);
+      // console.log(result[0]);
+      // console.log(result[0].hostelImages[0]);
     } catch (error) {
       console.log(error);
     }
@@ -199,14 +210,14 @@ function HomePage() {
           return (
             <div key={results._id} className="hp-school-div">
               <div className="hp-img-div">
-                <img src={`${results.hostelImages[1]}`} />
+                <img src={`/${results.hostelImages[0]}`} />
                 <div>
                   <img className="hp-locate" src={location} />
                   <p>{results.campusName}</p>
                 </div>
               </div>
               <div className="hp-props-text">
-                <p>{results.houseProperties[0]}</p>
+                {/* <p>{results.houseProperties[0]}</p> */}
                 <p>#{Number(results.price).toLocaleString()} </p>
 
                 <Link className="sp2-linkk" to={`/rentproperty/${results._id}`}>
