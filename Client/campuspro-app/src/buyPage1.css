@@ -1,4 +1,4 @@
-.navbar {
+.bpage-navbar {
   border: 1px black solid;
   display: flex;
   height: 20vh;
@@ -40,7 +40,7 @@
 
 /* section */
 
-.section {
+.bpage-section {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
@@ -55,7 +55,7 @@
   width: 100%;
 }
 
-.items {
+.bpage-items {
   height: 330px;
   width: 280px;
   margin: 1rem;
@@ -70,7 +70,7 @@
   margin-left: -4rem;
 }
 
-.btn {
+.bpage-btn {
   background-color: #ffef99;
   font-weight: bold;
   transition: all 2s ease-in-out;
@@ -87,12 +87,12 @@
   color: #ffef99;
 }
 
-.btn:hover {
+.bp-btn:hover {
   background-color: black;
   color: #ffef99 !important;
 }
 
-.select {
+.bpage-select {
   text-align: center;
   margin-left: 33rem;
   margin-top: -2rem;
@@ -104,13 +104,13 @@
   position: fixed;
 }
 
-.select option {
+.bpage-select option {
   background-color: #ffef99;
   font-weight: bold;
   transition: all 5s ease-in-out;
 }
 
-.select option:hover {
+.bpage-select option:hover {
   background-color: black;
   color: #ffef99;
   cursor: pointer;

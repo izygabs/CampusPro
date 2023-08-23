@@ -39,8 +39,8 @@ const BuyPage = () => {
   console.log(holddata); 
 
   return (
-    <div className="main">
-      <navbar className="navbar">
+    <div className="bpage-main">
+      <navbar className="bpage-navbar">
         <Link to="/">
         <img src={logo} alt='logo' className='logo' />
         </Link>
@@ -50,7 +50,7 @@ const BuyPage = () => {
         </div>
       </navbar>
                                     
-      <select value={update} onChange={handleChange} className='select'>
+      <select value={update} onChange={handleChange} className='bpage-select'>
         <option value=' '>Select Item to Display</option><hr/>
         <option value='Clothings'>Clothings</option>
         <option value='Kitchen Utensils'>Kitchen Utensils</option>
@@ -62,16 +62,16 @@ const BuyPage = () => {
         <option value='Others'>Others</option>
       </select>
 
-      <section className='section'>
+      <section className='bpage-section'>
         {holddata.map((items) => {
           return(
-            <div key={items.id} className='items'>
+            <div key={items.id} className='bpage-items'>
               <div className='img-div'>
                 <img src={`${items.itemPictures[1]}`} alt='image' className='normal-img' />
               </div>
                 <p id='p-i'> <br/>  <br/> 
             
-              <button className='btn'><Link to={`/holddata/${items._id}`} id='link-btn'>
+              <button className='bpage-btn'><Link to={`/holddata/${items._id}`} id='link-btn'>
                 View Details
                 </Link>
                 </button>
