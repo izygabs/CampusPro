@@ -75,7 +75,7 @@ const PropertyTray = (props) => {
       const res = await req.json();
       const info = await res.Items;
       setData(info);
-      //   console.log(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
