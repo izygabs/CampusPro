@@ -17,6 +17,7 @@ const PropertyTray = (props) => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [data, setData] = useState([]);
+  let url = "";
 
   function setall() {
     setAllProperties(true);
@@ -66,12 +67,12 @@ const PropertyTray = (props) => {
     fetcher();
   }, []);
   const fetcher = async () => {
+    props.name == "Items"
+      ? (url = `/api/itemsByMerch/${props.id}`)
+      : (url = `/api/propertyByAgent/${props.id}`);
     try {
-      const req = await fetch(
-        props.name == "Items"
-          ? `/api/itemsByMerch/64dea0a4f95fd237125a3d47`
-          : "/api/propertyByAgent/:agentId"
-      );
+      console.log("url :", url);
+      const req = await fetch(url);
       const res = await req.json();
       const info = await res.Items;
       setData(info);
