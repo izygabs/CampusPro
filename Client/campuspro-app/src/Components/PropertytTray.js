@@ -17,7 +17,6 @@ const PropertyTray = (props) => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [data, setData] = useState([]);
-  const [dataLength, setdataLength] = useState(data.length);
 
   function setall() {
     setAllProperties(true);
@@ -68,11 +67,14 @@ const PropertyTray = (props) => {
   }, []);
   const fetcher = async () => {
     try {
-      const req = await fetch(`/api/itemsByMerch/64dea0a4f95fd237125a3d47`);
+      const req = await fetch(
+        props.name == "Items"
+          ? `/api/itemsByMerch/64dea0a4f95fd237125a3d47`
+          : "/api/propertyByAgent/:agentId"
+      );
       const res = await req.json();
       const info = await res.Items;
       setData(info);
-      setdataLength(data.length);
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -85,16 +87,22 @@ const PropertyTray = (props) => {
   return (
     <div className="property-tray">
       <div className="pt-createProperty">
-        <h3>Properties</h3>
+        <h3>{props.name == "Property" ? "Properties" : "Items"}</h3>
         <button
           className="pt-create-button"
           onClick={() =>
             handleButtonClicked(
-              !props.isTokenExp ? navigate("/login") : <AddItems />
+              !props.isTokenExp ? (
+                navigate("/login")
+              ) : props.name == "Items" ? (
+                <AddItems />
+              ) : (
+                "+ Create Item"
+              )
             )
           }
         >
-          + Create Property
+          {props.name == "Property" ? "+ Create Property" : "+ Create Item"}
         </button>
       </div>
       <section className="pt-nav-div">
@@ -103,7 +111,7 @@ const PropertyTray = (props) => {
             className={allProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
             onClick={setall}
           >
-            All Properties
+            {props.name == "Property" ? "All Properties" : "All Item"}
           </button>
           <button
             className={newProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
@@ -136,14 +144,20 @@ const PropertyTray = (props) => {
       </section>
 
       {!showOverlay ? (
-        data.length > 1 ? (
+        data ? (
           <section className="pt-properties-display">
             {data.map((data) => {
               return <PropertiesCard data={data} />;
             })}
           </section>
         ) : (
-          <div> create your first property today</div>
+          <div className="pt-empty-array">
+            <p>
+              {props.name == "Property"
+                ? "create your first property today"
+                : "create your first item today"}
+            </p>
+          </div>
         )
       ) : (
         <OverlayComponent
