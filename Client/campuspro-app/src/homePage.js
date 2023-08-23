@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
+import jwtDecode from "jwt-decode";
 // import Navbar from "./Components/Navbar";
 
 function HomePage() {
@@ -25,7 +26,18 @@ function HomePage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setIsTokenExp(data.Exp);
+        const token = jwtDecode(data.campusToken);
+        // console.log(token);
+        if (!token) {
+          navigate("/login");
+        }
+        const expirationTime = token.exp;
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        if (expirationTime < currentTime) {
+          // Token has expired, redirect to login
+          navigate("/login");
+        } else setIsTokenExp(true);
         // console.log(data.token);
         // console.log(isTokenExp);
         // Redirect to login if token is expired
@@ -49,8 +61,8 @@ function HomePage() {
       // console.log(data2)
       const result = data2.Properties;
       setDatas(result);
-      console.log(result[0]);
-      console.log(result[0].hostelImages[0]);
+      // console.log(result[0]);
+      // console.log(result[0].hostelImages[0]);
     } catch (error) {
       console.log(error);
     }
@@ -93,7 +105,7 @@ function HomePage() {
           />
         </div>
         <div>
-          <Link to={isTokenExp ? "/login" : "/Dashboard"}>
+          <Link to={!isTokenExp ? "/login" : "/Dashboard"}>
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
@@ -154,7 +166,7 @@ function HomePage() {
               Become a merchant and sell properties on CampusPro.
             </p>
 
-            <Link to={isTokenExp ? "/Dashboard"  :  "/login"}>
+            <Link to={isTokenExp ? "/Dashboard" : "/login"}>
               <button className="hp-button-link">Become a merchant</button>
             </Link>
           </div>
