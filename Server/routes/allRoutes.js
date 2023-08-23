@@ -59,7 +59,12 @@ route.post(
   uploadProperty
 );
 
-route.post("/api/uploadItems", uploadItems.array("itemImages", 10), uploadItem);
+route.post(
+  "/api/uploadItems",
+  verifyToken,
+  uploadItems.array("itemImages", 10),
+  uploadItem
+);
 
 route.put(
   "/api/property/:id",

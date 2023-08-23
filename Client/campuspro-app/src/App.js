@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./homePage.js";
@@ -10,7 +11,7 @@ import Dashboard from "./Components/Dashboard";
 import SignUp from "./RenderSignUp";
 import Changepassword from "./Components/Changepassword";
 import ProfileInfo from "./Components/Profile_info";
-import React from "react";
+// import React from "react";
 import UserDashboard from "./Components/UserDashboard";
 import PropertyTray from "./Components/PropertytTray";
 
