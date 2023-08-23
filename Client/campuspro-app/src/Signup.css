@@ -2,7 +2,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-image: linear-gradient(
-      rgba(33, 32, 32, 0.479),
+      rgba(33, 32, 32, 0.822),
       rgba(35, 34, 34, 0.694)
     ),
     url("./images/editImage.jpeg");
@@ -13,8 +13,10 @@
 }
 
 .sp-form {
+  box-shadow: inset 0 0.9em 2em rgba(0, 0, 0, 0.406);
+  color: rgb(239, 236, 236);
   /* line-height: 2.5rem; */
-  background-color: #e4c824;
+  /* background-color: #ebe4bf; */
   /* border: 1px black solid; */
   width: 28rem;
   /* position: relative; */
@@ -22,12 +24,13 @@
   border-radius: 2rem;
   font-size: 1rem;
   margin: 3rem auto;
+  padding-left: 16px;
+  padding-bottom: 3rem;
 }
 
 .sp-form label {
   position: relative;
   top: 8px;
-  font-weight: bold;
   font-size: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -39,10 +42,11 @@
   color: brown;
 }
 .sp-create-Account-button {
-  margin: 0 auto 2rem;
+  margin: 0 auto 1rem;
   text-align: center;
 }
-.sp-btn {
+.sp-btn,
+.sp-btn-inactive {
   display: inline;
   width: 10rem;
   height: 2rem;
@@ -53,9 +57,9 @@
   /* transition: 5000 */
 }
 .sp-btn:hover {
-  background-color: rgb(18, 17, 15);
+  background-color: gold;
   border: none;
-  color: white;
+  color: black;
   transition: 0.4s;
 }
 .header label,
@@ -107,26 +111,24 @@
   top: 33rem;
   left: 2rem;
 }
-.sp-input {
-  width: 22.2rem;
-  border-radius: 2rem;
-  border: 1px solid;
-  outline: none;
-}
 
 .sp-input-testing {
   width: 20rem;
   border-radius: 0rem 2rem 2rem 0;
   border: 0;
   outline: none;
+  background-color: rgb(250, 248, 245);
+
   /* margin-right: 5p; */
 }
 .sp-icon-input {
   width: 22rem;
+  margin-bottom: 8px;
   border-radius: 2rem;
   background-color: white;
   padding-left: 10px;
   margin-left: 19px;
+  background-color: rgb(250, 248, 245);
 }
 .sp-user-img {
   width: 1rem;
@@ -152,26 +154,86 @@ input label button h2 h6 {
 .sp-type-user {
   font-size: medium;
   margin-right: 8px;
+  margin-bottom: 0;
   display: inline;
 }
-.sp-pwd2 {
-  padding-left: 2rem;
+
+.signup-error-message {
+  font-size: 13px;
+  color: red;
+  padding-left: 1.5rem;
+  /* margin-bottom: 1rem; */
 }
-.sp-pwd4 {
-  padding-left: 2rem;
+.sp-registered {
+  margin: 1rem auto 2rem;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding-left: 12px;
 }
-.sp-number4 {
-  padding-left: 2rem;
+.sp-registered a {
+  text-decoration: none;
+  margin-left: 12px;
+  color: rgb(245, 186, 34);
 }
-.sp-number2 {
-  padding-left: 2rem;
+.sp-registered a:hover {
+  color: gold;
 }
-.sp-email-input {
-  padding-left: 2rem;
+.modalBtn:hover {
+  background-color: gold;
+  color: black;
 }
-.sp-input1 {
-  padding-left: 2rem;
+/* SignUpForm.css */
+.signUp-moda {
+  width: 100px; /* Set the desired width */
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  padding: 20px auto;
 }
-.sp-input {
-  padding-left: 2rem;
+
+.signUp_overlayModa {
+  /* /* background: rgba(0, 0, 0, 0.5); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalBtn {
+  display: inline;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 2rem;
+  border: none;
+  margin: 1.5rem auto 2rem;
+}
+/* SignUpForm.css */
+.signUp-modal {
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+
+  /* Center the modal horizontally and vertically */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+
+  /* Add box shadow for a more elevated look */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signUp_overlayModal {
+  background: rgba(3, 3, 3, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+
+  top: 20%;
+  left: 34%;
+  width: 40%;
+  height: 50%;
+  color: #fcd503;
+  font-size: 20px;
 }

@@ -29,4 +29,3 @@
 // }
 // export default Schools;
 
-res.status(200).json([])

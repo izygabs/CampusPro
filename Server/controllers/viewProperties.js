@@ -4,16 +4,14 @@ const { hostelProps } = require("../models/hostelSchema");
 const viewProperties = async (req, res) => {
   const agentID = req.user;
   try {
-    const allProperties = await hostelProps.find();
+    const allProperties = await hostelProps.find({});
     if (!allProperties) {
       res.status(StatusCodes.BAD_REQUEST).send("Invalid ID");
     } else {
-      res.status(StatusCodes.OK).json({ "Properties": allProperties });
+      res.status(StatusCodes.OK).json({ Properties: allProperties });
     }
   } catch (error) {
-    res
-      .status(StatusCodes.BAD_REQUEST)
-      .json(`Error in getting Properties: ${error}`);
+    res.status(StatusCodes.BAD_REQUEST).json({ Error: error });
   }
 };
 module.exports = viewProperties;

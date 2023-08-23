@@ -1,0 +1,20 @@
+const { StatusCodes } = require("http-status-codes");
+const { hostelProps } = require("../models/hostelSchema");
+
+const viewPropertyByAgentId = async (req, res) => {
+  const agentId = req.params.agentId;
+  console.log(agentId);
+  try {
+    const property = await hostelProps.find({ agentID: agentId });
+    if (!property) {
+      res.status(StatusCodes.BAD_REQUEST).send("Invalid Id");
+    } else {
+      res.status(StatusCodes.OK).json(property);
+    }
+  } catch (error) {
+    res
+      .status(StatusCodes.EXPECTATION_FAILED)
+      .json(`Error in fetching the Property ${error}`);
+  }
+};
+module.exports = viewPropertyByAgentId;

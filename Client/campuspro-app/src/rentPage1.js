@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./images/campuspro(6).png";
 
 import { useState, useEffect } from "react";
-import SubRentpage1 from "./subRentPage1";
+// import SubRentpage1 from "./subRentPage1";
 import { Link } from "react-router-dom";
 import location from "./images/location-icon.png";
 import RentPage2 from "./rentPage2"
@@ -10,38 +10,13 @@ import RentPage2 from "./rentPage2"
 
 function RentPage1() {
   const [data11, setData11] = useState([]);
-  const [click, setClick] = useState([]);
+  // const [click, setClick] = useState([]);
 
-  
-  const arrs = []
-// // function to fetch the particular information of clicked id
-const fetchProperty2 = async (abc)=>{
-  const urls = `/api/property/${abc}`
-  const inf = await fetch(urls)
-  const infData = await inf.json()
-  // console.log(infData)
-  arrs.push(infData)
-  // console.log(arrs);
-  // setClick(arrs);
-  // console.log(click);
-  arrs.map((pass)=>{
-    console.log(pass)
-    return(
-      <RentPage2 key={pass._id} {...pass}/>
-    );})
-};
-
-// const dis = ()=>{
-  
-// }
-
-
-  //using the hook to display the fetch data on load
-
+//using the hook to display the fetch data on load
   useEffect(()=>{
-    fetcher2()
-
-  },[] )
+      fetcher2()
+    },[] 
+  )
   
   //function to fetch properties from the database
   const url= "/api/allProperties"
@@ -59,9 +34,9 @@ const fetchProperty2 = async (abc)=>{
   }
 
 
-  const subRent = data11.map((ie) => {
-    return <SubRentpage1 key={ie.id} {...ie} />;
-  });
+  // const subRent = data11.map((ie) => {
+  //   return <SubRentpage1 key={ie.id} {...ie} />;
+  // });
   // a function to sort houses according to the campus name the user inputs into the input
   function sort(e) {
     // e.preventDefault()
@@ -133,18 +108,18 @@ const fetchProperty2 = async (abc)=>{
           return(
             <div key={info._id} className="sp-sub-div">
               <div className="sp-img-div">
-                <img src={`../images/${info.image}`} />
+                <img src={`${info.hostelImages[5]}`} />
                 <div>
                   <img className="hp-locate" src={location} />
                   <p>{info.campusName.toUpperCase()}</p>
                 </div>
               </div>
               <div className="sp-text-div">
-                <p>{info.houseProperties[0]}</p>
-                <p>#{info.price.toLocaleString()}</p>
+                {/* <p>{info.houseProperties[0]}</p> */}
+                <p>#{Number(info.price).toLocaleString()}</p>
 
-                <Link className="sp2-linkk" to={`/data11/${info._id}`}>
-                  <button onClick={()=>{fetchProperty2(info._id)}}>View this property</button>
+                <Link className="sp2-linkk" to={`/rentproperty/${info._id}`}>
+                  <button>View this property</button>
                 </Link>
               </div>
             </div>

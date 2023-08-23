@@ -1,79 +1,98 @@
 import React from "react";
 import logo from "./images/campuspro(6).png";
 import "bootstrap/dist/css/bootstrap.min.css";
+import location from "./images/location-icon.png";
 import house1 from "./images/house-interior.webp";
 import house2 from "./images/hostel2.webp";
 import hostel3 from "./images/hostel3.webp";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
-import location from "./images/location-icon.png";
+import jwtDecode from "jwt-decode";
+// import Navbar from "./Components/Navbar";
 
 function HomePage() {
   const [datas, setDatas] = useState([]);
-  const [ ids, setIds]= useState([])
+  // const [camp , setCamp]=useState('')
+  const [isTokenExp, setIsTokenExp] = useState(false);
+  const navigate = useNavigate();
 
-// // function t fetch the particular information of clicked id
+  useEffect(() => {
+    fetch("/api/getTokenExpiration", {
+      headers: {
+        Authorization: "campusProUserToken", // Include your actual token
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const token = jwtDecode(data.campusToken);
+        // console.log(token);
+        if (!token) {
+          navigate("/login");
+        }
+        const expirationTime = token.exp;
+        const currentTime = Math.floor(Date.now() / 1000);
 
-const fetchProperty = async (abc)=>{
-  
-  const urls = `/api/property/${abc}`
-  const inf = await fetch(urls)
-  const infData = await inf.json()
-  console.log(infData)
-  setIds(infData)
-}
+        if (expirationTime < currentTime) {
+          // Token has expired, redirect to login
+          navigate("/login");
+        } else setIsTokenExp(true);
+        // console.log(data.token);
+        // console.log(isTokenExp);
+        // Redirect to login if token is expired
+      })
+      .catch((error) => {
+        console.error("Error fetching token status:", error);
+      });
+  }, [isTokenExp]);
 
+  //using the hook to display the fetch data on load
+  useEffect(() => {
+    fetcher();
+  }, []);
 
-
-
-//using the hook to display the fetch data on load
-  useEffect(()=>{
-    
-    fetcher()
-    
-  },[] )
-  
   //function to fetch properties from the database
-  const url= "/api/allProperties"
-  const fetcher = async()=> {
+  const fetcher = async () => {
     try {
-      const info = await fetch(url)
-      const data2 = await info.json()
-      const result = data2.Properties
-      setDatas(result)
-      console.log(result)
-      
+      const url = "/api/allProperties";
+      const info = await fetch(url);
+      const data2 = await info.json();
+      // console.log(data2)
+      const result = data2.Properties;
+      setDatas(result);
+      // console.log(result[0]);
+      // console.log(result[0].hostelImages[0]);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-  
-  
-//function to filter properties according to the user search
-  function change(e) {
-    // e.preventDefault()
-    const pal = e.target.value;
-    console.log(pal);
-    
-    if (pal) {
-      const filt = datas.filter((place) =>
-        place.campusName.toLowerCase().startsWith(pal.toLowerCase())
-      );
-      setDatas(filt);
-    } else {
-      setDatas(datas);
-    }
-  }
+  };
 
+  //function to filter properties according to the user search
+  // function change(e) {
+  //   // e.preventDefault()
+  //   const pal = e.target.value;
+  //   console.log(pal);
+
+  //   if (pal) {
+  //     const filt = datas.filter((place) =>
+  //       place.campus.toLowerCase().startsWith(pal.toLowerCase())
+  //     );
+  //     setDatas(filt);
+  //   } else {
+  //     // setDatas(data);
+  //   }
+  //   // setDatas(datas);
+  // }
+
+  // console.log(datas)
 
   return (
     <div className="homepage">
       <div className="hp-header">
         <div className="hp-logo-div">
           <div>
-            <img src={logo} className="hp-logo" />
+            <img src={logo} className="hp-logo" alt="" />
           </div>
           {/* <div>
             <p>CampusPro</p>
@@ -81,32 +100,12 @@ const fetchProperty = async (abc)=>{
         </div>
         <div>
           <input
-            onChange={change}
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
           />
-
-          {/*
-            campus.map((item)=>{
-              
-            })
-          
-           <select onChange={change} className="hp-select-button">
-              <option value={'lasu'}>LASU</option>
-              <option value={'unilag'}>UNILAG</option>
-              <option value={'laspotech'}>LASPOTECH</option>
-              <option value={'ui'}>UI(Ibadan)</option>
-              <option value={'the polytechnic ibadan'}>THE POLYTECHNIC IBADAN</option>
-              <option value={'oou'}>OOU</option>
-              <option value={'oau'}>OAU</option>
-              <option value={'jabu'}>JABU</option>
-              <option value={'mapoly'}>MAPOLY</option>
-              <option value={'osu'}>OSU</option>
-              <option value={'eksu'}>EKSU</option>
-          </select> */}
         </div>
         <div>
-          <Link to="/login-page">
+          <Link to={!isTokenExp ? "/login" : "/Dashboard"}>
             <button className="hp-login-button">Login</button>
           </Link>
         </div>
@@ -166,7 +165,8 @@ const fetchProperty = async (abc)=>{
             <p className="hp-texts">
               Become a merchant and sell properties on CampusPro.
             </p>
-            <Link className="link" to="/login-page">
+
+            <Link to={isTokenExp ? "/Dashboard" : "/login"}>
               <button className="hp-button-link">Become a merchant</button>
             </Link>
           </div>
@@ -186,38 +186,37 @@ const fetchProperty = async (abc)=>{
       <div className="hp-view-div">
         <p className="hp-view-hostels">View hostels around your campus</p>
       </div>
-      
 
-      
       <div className="hp-school">
-        {datas.map((results)=>{
-          return(
+        {datas.map((results) => {
+          return (
             <div key={results._id} className="hp-school-div">
               <div className="hp-img-div">
-                  <img src={`.../Server/${results.hostelImages[1]}`} />
-                  <div>
-                    <img className="hp-locate" src={location} />
-                    <p>{results.campusName.toUpperCase()}</p>
-                  </div>
+                <img src={`/${results.hostelImages[0]}`} />
+                <div>
+                  <img className="hp-locate" src={location} />
+                  <p>{results.campusName}</p>
+                </div>
               </div>
               <div className="hp-props-text">
-                <p>{results.houseProperties[1]}</p>
+                {/* <p>{results.houseProperties[0]}</p> */}
                 <p>#{Number(results.price).toLocaleString()} </p>
-      
-                <Link className="sp2-linkk"  to={`/data11/${results._id}`}>
-                  <button onClick={()=>{fetchProperty(results._id)} } className="home-school-button">View this property</button>
+
+                <Link className="sp2-linkk" to={`/rentproperty/${results._id}`}>
+                  <button className="home-school-button">
+                    View this property
+                  </button>
                 </Link>
               </div>
-          </div>
-          )
+            </div>
+          );
         })}
       </div>
-
+      {/* <Navbar /> */}
       <div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
-
   );
 }
 
