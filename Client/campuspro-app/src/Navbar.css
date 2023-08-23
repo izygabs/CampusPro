@@ -1,4 +1,4 @@
-.navbar {
+.nv-navbar {
   border: 1px black solid;
   display: flex;
   height: 20vh;
@@ -11,7 +11,7 @@
   margin-top: -9rem;
 }
 
-.logo {
+.nv-logo {
   height: 200px;
   margin-top: -3rem;
   margin-left: -3rem;

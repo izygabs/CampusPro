@@ -10,12 +10,9 @@ const viewItemById = async (req, res) => {
         "merchantID",
         "firstName lastName email phoneNumber altPhoneNumber profilePic"
       );
-    if (!item) {
-      res.status(StatusCodes.NOT_FOUND).send("Invalid Id");
-    } else {
-      res.status(StatusCodes.OK).json({ "Item": item });
-    
-  }} catch (error) {
+
+    res.status(StatusCodes.OK).json({ Item: item });
+  } catch (error) {
     console.log(error);
     res
       .status(StatusCodes.BAD_REQUEST)

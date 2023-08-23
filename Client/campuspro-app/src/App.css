@@ -11,7 +11,7 @@ p {
   margin: 3px !important;
 }
 .hp-header {
-  position:fixed;
+  position: fixed;
   display: flex;
   background-color: rgb(9, 7, 7);
   /* background-color: #ccc; */
@@ -24,7 +24,7 @@ p {
   z-index: 100;
 }
 .hp-header2 {
-  position:fixed;
+  position: fixed;
   display: flex;
   background-color: rgb(9, 7, 7);
   /* background-color: #ccc; */
@@ -174,13 +174,15 @@ p {
   font-weight: 700;
   font-style: italic;
 }
-.home-school-button{
+.home-school-button {
   border-radius: 10px;
   border: none;
   margin-right: auto;
   margin-left: auto;
   display: block;
-  margin-bottom: 5px;background-color: black;color: white;
+  margin-bottom: 5px;
+  background-color: black;
+  color: white;
 }
 .sp-subrent-div {
   display: flex;
@@ -271,18 +273,16 @@ p {
   display: block;
   font-size: 14px;
   /* margin-top: 10vh; */
-  
-  
 }
 .sp-select-amount option {
   font-size: 13px;
   background-color: black;
   color: white;
 }
-.rentpage2{
+.rentpage2 {
   background-color: whitesmoke;
 }
-.sp-sub-div22{
+.sp-sub-div22 {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -295,7 +295,6 @@ p {
 .sp2-divs {
   /* border: solid black 3px; */
   width: 47%;
-  
 }
 .sp2-divs2 {
   border: solid black 3px;
@@ -343,25 +342,23 @@ p {
 .sp2-linkk button:active {
   opacity: 0.5;
 }
-.sp2-carousel-div{
+.sp2-carousel-div {
   padding-top: 25vh;
-  width:100;
+  width: 100;
   min-height: 100vh;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
   margin-bottom: 10vh;
-
 }
 .sp2-main-sector {
   min-height: 100%;
   width: 55%;
-
 }
 
-.sp2-carousel-img{
+.sp2-carousel-img {
   height: 100%;
-  width:100%;
+  width: 100%;
 }
 .sp2-divs {
   width: 100%;
@@ -372,21 +369,21 @@ p {
   min-height: 100%;
   border-radius: 30px;
   border: none !important;
-  padding: 0 3vw
+  padding: 0 3vw;
 }
-.sp2-divs2-text{
+.sp2-divs2-text {
   height: 40%;
 }
-.sp2-divs2-text span{
+.sp2-divs2-text span {
   font-weight: 700;
 }
-.sp2-divs2-text-span{
+.sp2-divs2-text-span {
   font-weight: 30px;
   font-weight: 700;
   text-align: center;
   margin-top: 0;
 }
-.sp2-divs2-details marquee{
+.sp2-divs2-details marquee {
   color: red;
   font-weight: 600;
 }
@@ -409,21 +406,20 @@ p {
   height: 100%;
   margin: 5vh 0;
 }
-.sp2-similar-props-div{
+.sp2-similar-props-div {
   text-align: center;
 }
-.sp2-similar-props{
+.sp2-similar-props {
   font-size: 25px;
   font-weight: 600;
   font-style: italic;
   /* padding-left: 26%; */
-  padding-top:15vh;
+  padding-top: 15vh;
 }
-.sp2-agents{
+.sp2-agents {
   align-items: center;
   margin-top: 7vh;
   padding-bottom: 5vh;
-
 }
 .sp2-agent-info {
   height: 15%;
@@ -438,78 +434,74 @@ p {
   padding: 1.2vh 5vw;
   border-radius: 5px;
   transition: background-color 0.7s;
-  
 }
 .sp2-agent-info button:hover {
   background-color: #2a2929;
   color: gold;
 }
-.sp2-disclaimer{
-  color: gold
+.sp2-disclaimer {
+  color: gold;
 }
 
-.property-tray{
+.property-tray {
   background-color: whitesmoke;
   padding: 3vh 0;
+  margin-top: 5vh;
 }
 
-.pt-createProperty{
-  width:100%;
+.pt-createProperty {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin: 5vh 0;
   padding: 0 4vw;
 }
-.pt-create-button{
+.pt-create-button {
   background-color: gold;
   color: black;
   border: none;
-  padding: 1vh 3vw ;
+  padding: 1vh 3vw;
 }
 
-.pt-nav-div{
+.pt-nav-div {
   width: 100%;
   display: flex;
   padding: 2vh 3vw;
   justify-content: space-between;
 }
-.pt-nav-btns{
+.pt-nav-btns {
   width: 45%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.pt-nav-btn1{
+.pt-nav-btn1 {
   border: none;
   background-color: transparent;
   transition: transform 0.4s;
-  
 }
-.pt-nav-btn1:hover{
+.pt-nav-btn1:hover {
   transform: scale(1.1);
-  
 }
-.pt-nav-btn01{
+.pt-nav-btn01 {
   border: none;
   font-weight: 700;
-  color: gold;
+  color: black;
   border-bottom: solid 4px gold !important;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: transparent;
   transition: transform 0.4s;
 }
-.pt-nav-btn01:hover{
+.pt-nav-btn01:hover {
   transform: scale(1.1);
 }
 
-
-.pt-properties-filter{
+.pt-properties-filter {
   width: 30%;
   text-align: end;
-  
 }
-.pt-properties-display{
+.pt-properties-display {
   height: 60vh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -517,7 +509,7 @@ p {
   margin: 2vh 3vw;
   /* width: 100%; */
 }
-.pt-properties{
+.pt-properties {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -527,49 +519,48 @@ p {
   background-color: white;
   /* border: solid; */
 }
-.pt-props-img-div{
-  width:22%;
+.pt-props-img-div {
+  width: 22%;
   height: 100%;
   /* border:dotted; */
 }
-.pt-image{
-  width:100%;
+.pt-image {
+  width: 100%;
   height: 100%;
-  object-fit:fill
+  object-fit: fill;
 }
-.pt-props-desc-div{
+.pt-props-desc-div {
   width: 22%;
   height: 100%;
   align-items: center;
   padding-top: 10vh;
- 
 }
 .pt-props-desc-div p,
 .pt-props-campus-div p,
 .pt-props-price-div p,
-.pt-props-posted-div p{
+.pt-props-posted-div p {
   width: 100%;
   text-align: start;
   font-weight: 700;
 }
-.pt-texts{
+.pt-texts {
   font-weight: 400 !important;
 }
-.pt-props-campus-div{
+.pt-props-campus-div {
   padding-top: 10vh;
-  width:20%;
+  width: 20%;
   height: 100%;
   align-items: center;
 }
-.pt-props-price-div{
-  width:14%;
+.pt-props-price-div {
+  width: 14%;
   height: 100%;
   align-items: center;
   padding-top: 10vh;
 }
 
-.pt-props-posted-div{
-  width:14%;
+.pt-props-posted-div {
+  width: 14%;
   height: 100%;
   align-items: center;
   /* padding-top:; */
@@ -579,45 +570,53 @@ p {
   position: relative;
 }
 
-.pt-props-posted-div button{
+.pt-props-posted-div button {
   border: none;
   background-color: transparent;
   padding: 0;
   margin: 0;
-  
 }
-.pt-delete-btn{
+.pt-delete-btn {
   width: 40px;
   padding: 0;
 }
-.pt-edit-btn{
+.pt-edit-btn {
   width: 30px;
   padding: 0;
 }
-.pt-edit{
+.pt-edit {
   position: absolute;
-  top:6vh;
-  left:3vw;
-  width:20px;
+  top: 6vh;
+  left: 3vw;
+  width: 20px;
   opacity: 0;
   font-size: 13px;
   padding-left: 3.2vw;
 }
-.pt-edit:hover{
+.pt-edit:hover {
   display: flex;
   opacity: 1;
 }
-.pt-delete{
+.pt-delete {
   position: absolute;
   bottom: 7vh;
   padding-left: 6vw;
   font-size: 13px;
-  opacity:0;
+  opacity: 0;
 }
-.pt-delete:hover{
+.pt-delete:hover {
   opacity: 1;
 }
-
+.pt-empty-array {
+  margin: 20vh 10vw;
+  align-items: center;
+  padding: 20px 0;
+  background-color: white;
+}
+.pt-empty-array p {
+  text-align: center;
+  font-size: 40px;
+}
 
 /* Buy Page 2
 
@@ -702,7 +701,6 @@ input {
 /* label {
   padding-left: 1rem;
 } */
-
 
 #upload {
   color: white;

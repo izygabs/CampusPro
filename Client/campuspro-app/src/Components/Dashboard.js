@@ -306,7 +306,11 @@ const Dashboard = () => {
                           !isTokenExp ? (
                             navigate("/login")
                           ) : (
-                            <PropertyTray id={userID} isTokenExp={isTokenExp} />
+                            <PropertyTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              name="Property"
+                            />
                           )
                         )
                       }
@@ -318,7 +322,22 @@ const Dashboard = () => {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="">
+                    <a
+                      class="nav-link d-flex align-items-center gap-2"
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <PropertyTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              name="Items"
+                            />
+                          )
+                        )
+                      }
+                    >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#cart" />
                       </svg>

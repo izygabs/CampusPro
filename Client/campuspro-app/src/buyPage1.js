@@ -39,8 +39,9 @@ const BuyPage = () => {
   console.log(holddata); 
 
   return (
-    <div className="bp1-main">
-      <navbar className="bp1-navbar">
+    <div className="bpage-main">
+
+      <navbar className="bpage-navbar">
         <Link to="/">
         <img src={logo} alt='logo' className='bp1-logo' />
         </Link>
@@ -60,7 +61,7 @@ const BuyPage = () => {
         <option value='Electronic Gadgets'>Electronic Gadgets</option>
         <option value='Books'>Books</option>
         <option value='Others'>Others</option>
-      </select> */}
+  </select> */}
 
       <section className='bp1-section'>
         {holddata.map((items) => {

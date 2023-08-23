@@ -99,7 +99,7 @@ route.put(
   verifyToken,
   upload.single("profilePic"),
   updateUser
-); 
+);
 
 route.get("/api/propertyByAgent/:agentId", viewPropertyByAgentId);
 

@@ -1,4 +1,4 @@
-.bp1-navbar {
+.bpage-navbar {
   border: 1px black solid;
   display: flex;
   height: 20vh;
@@ -41,7 +41,7 @@
 
 /* section */
 
-.bp1-section {
+.bpage-section {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
