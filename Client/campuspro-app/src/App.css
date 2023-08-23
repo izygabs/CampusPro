@@ -2,15 +2,16 @@ body {
   color: #fff;
   margin-bottom: 0;
   width: 100%;
+  background-color: #ede9d3;
 }
 .homepage {
-  background-color: rgb(237, 233, 211);
+  background-color: #ede9d3;
 }
 p {
   margin: 3px !important;
 }
 .hp-header {
-  /* position:fixed; */
+  position: fixed;
   display: flex;
   background-color: rgb(9, 7, 7);
   /* background-color: #ccc; */
@@ -18,7 +19,21 @@ p {
   justify-content: space-between;
   align-items: center;
   height: 15vh;
-  /* margin-bottom: 20vh; */
+  margin-bottom: 15vh;
+  /* position: fixed; */
+  z-index: 100;
+}
+.hp-header2 {
+  position: fixed;
+  display: flex;
+  background-color: rgb(9, 7, 7);
+  /* background-color: #ccc; */
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  /* position: fixed; */
+  z-index: 100;
 }
 .hp-login-button {
   padding: 10px 30px;
@@ -67,10 +82,10 @@ p {
   width: 25%;
   border: none;
   background-color: #ffef99;
-  height: 90%;
+  min-height: 90%;
   text-align: center;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
+  /* border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px; */
   padding-top: 7px;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -113,7 +128,7 @@ p {
   display: flex;
   flex-direction: column;
   width: 20vw;
-  height: 50vh;
+  min-height: 52vh;
   margin-right: 15px;
 }
 .hp-school-div p {
@@ -159,16 +174,28 @@ p {
   font-weight: 700;
   font-style: italic;
 }
+.home-school-button {
+  border-radius: 10px;
+  border: none;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-bottom: 5px;
+  background-color: black;
+  color: white;
+}
 .sp-subrent-div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   background-color: white;
+  margin-top: 15vh;
 }
 .sp-sub-div {
   margin: 5vh 0;
   background-color: black;
-  height: 47vh;
+  min-height: 46vh !important;
+  max-height: 46vh !important;
   width: 23vw;
 }
 .sp-text-div {
@@ -177,6 +204,7 @@ p {
   height: 40%;
   background-color: #ffef99;
   color: black;
+  margin-top: -1.7vh;
 }
 .sp-img-div {
   height: 60%;
@@ -238,17 +266,30 @@ p {
 .sp-select-amount {
   width: 20vw;
   outline: none;
-  height: 5vh;
+  height: 15vh;
   border: solid 2px #ffef99;
   margin-right: auto;
   margin-left: auto;
   display: block;
   font-size: 14px;
+  /* margin-top: 10vh; */
 }
 .sp-select-amount option {
   font-size: 13px;
   background-color: black;
   color: white;
+}
+.rentpage2 {
+  background-color: whitesmoke;
+}
+.sp-sub-div22 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow-x: scroll;
+}
+.sp-sub-div22::-webkit-scrollbar {
+  display: none;
 }
 
 .sp2-divs {
@@ -256,8 +297,9 @@ p {
   width: 47%;
 }
 .sp2-divs2 {
-  /* border: solid black 3px; */
-  width: 50%;
+  border: solid black 3px;
+  width: 40% !important;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -265,7 +307,7 @@ p {
 .sp2-divs2 p {
   color: black;
   font-size: 15px;
-  line-height: 10px;
+  line-height: 20px;
 }
 .sp2-linkk {
   text-decoration: none;
@@ -300,24 +342,54 @@ p {
 .sp2-linkk button:active {
   opacity: 0.5;
 }
-.sp2-main-sector {
+.sp2-carousel-div {
+  padding-top: 25vh;
+  width: 100;
+  min-height: 100vh;
   display: flex;
-  margin-top: -19vh;
-  flex-direction: row;
-  height: 60vh;
-  border: solid 3px red;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin-bottom: 10vh;
+}
+.sp2-main-sector {
+  min-height: 100%;
+  width: 55%;
+}
+
+.sp2-carousel-img {
+  height: 100%;
+  width: 100%;
 }
 .sp2-divs {
-  width: 50%;
-  height: 100%;
+  width: 100%;
+  min-height: 100%;
 }
 .sp2-divs2 {
-  width: 45%;
-  height: 100%;
+  width: 40%;
+  min-height: 100%;
+  border-radius: 30px;
+  border: none !important;
+  padding: 0 3vw;
+}
+.sp2-divs2-text {
+  height: 40%;
+}
+.sp2-divs2-text span {
+  font-weight: 700;
+}
+.sp2-divs2-text-span {
+  font-weight: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0;
+}
+.sp2-divs2-details marquee {
+  color: red;
+  font-weight: 600;
 }
 .sp2-main-img {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 .sp-2-img-div {
   display: flex;
@@ -325,6 +397,7 @@ p {
   width: 100%;
   height: 25vh;
   justify-content: space-around;
+  /* border-radius: 30px; */
 }
 
 .sp-2-img-div div {
@@ -333,19 +406,216 @@ p {
   height: 100%;
   margin: 5vh 0;
 }
+.sp2-similar-props-div {
+  text-align: center;
+}
+.sp2-similar-props {
+  font-size: 25px;
+  font-weight: 600;
+  font-style: italic;
+  /* padding-left: 26%; */
+  padding-top: 15vh;
+}
+.sp2-agents {
+  align-items: center;
+  margin-top: 7vh;
+  padding-bottom: 5vh;
+}
 .sp2-agent-info {
-  margin: 10vh 0;
+  height: 15%;
 }
 .sp2-agent-info button {
   margin-right: auto;
   margin-left: auto;
   display: block;
   border: none;
-  background-color: #ffef99;
+  background-color: gold;
   font-size: 15px;
-  padding: 3vh 8vw;
-  border-radius: 30px;
+  padding: 1.2vh 5vw;
+  border-radius: 5px;
   transition: background-color 0.7s;
+}
+.sp2-agent-info button:hover {
+  background-color: #2a2929;
+  color: gold;
+}
+.sp2-disclaimer {
+  color: gold;
+}
+
+.property-tray {
+  background-color: whitesmoke;
+  padding: 3vh 0;
+  margin-top: 5vh;
+}
+
+.pt-createProperty {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 5vh 0;
+  padding: 0 4vw;
+}
+.pt-create-button {
+  background-color: gold;
+  color: black;
+  border: none;
+  padding: 1vh 3vw;
+}
+
+.pt-nav-div {
+  width: 100%;
+  display: flex;
+  padding: 2vh 3vw;
+  justify-content: space-between;
+}
+.pt-nav-btns {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pt-nav-btn1 {
+  border: none;
+  background-color: transparent;
+  transition: transform 0.4s;
+}
+.pt-nav-btn1:hover {
+  transform: scale(1.1);
+}
+.pt-nav-btn01 {
+  border: none;
+  font-weight: 700;
+  color: black;
+  border-bottom: solid 4px gold !important;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: transparent;
+  transition: transform 0.4s;
+}
+.pt-nav-btn01:hover {
+  transform: scale(1.1);
+}
+
+.pt-properties-filter {
+  width: 30%;
+  text-align: end;
+}
+.pt-properties-display {
+  height: 60vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: whitesmoke;
+  margin: 2vh 3vw;
+  /* width: 100%; */
+}
+.pt-properties {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 35vh;
+  margin-bottom: 3vh;
+  align-items: center;
+  background-color: white;
+  /* border: solid; */
+}
+.pt-props-img-div {
+  width: 22%;
+  height: 100%;
+  /* border:dotted; */
+}
+.pt-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.pt-props-desc-div {
+  width: 22%;
+  height: 100%;
+  align-items: center;
+  padding-top: 10vh;
+}
+.pt-props-desc-div p,
+.pt-props-campus-div p,
+.pt-props-price-div p,
+.pt-props-posted-div p {
+  width: 100%;
+  text-align: start;
+  font-weight: 700;
+}
+.pt-texts {
+  font-weight: 400 !important;
+}
+.pt-props-campus-div {
+  padding-top: 10vh;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+}
+.pt-props-price-div {
+  width: 14%;
+  height: 100%;
+  align-items: center;
+  padding-top: 10vh;
+}
+
+.pt-props-posted-div {
+  width: 14%;
+  height: 100%;
+  align-items: center;
+  /* padding-top:; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+}
+
+.pt-props-posted-div button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+.pt-delete-btn {
+  width: 40px;
+  padding: 0;
+}
+.pt-edit-btn {
+  width: 30px;
+  padding: 0;
+}
+.pt-edit {
+  position: absolute;
+  top: 6vh;
+  left: 3vw;
+  width: 20px;
+  opacity: 0;
+  font-size: 13px;
+  padding-left: 3.2vw;
+}
+.pt-edit:hover {
+  display: flex;
+  opacity: 1;
+}
+.pt-delete {
+  position: absolute;
+  bottom: 7vh;
+  padding-left: 6vw;
+  font-size: 13px;
+  opacity: 0;
+}
+.pt-delete:hover {
+  opacity: 1;
+}
+.pt-empty-array {
+  margin: 20vh 10vw;
+  align-items: center;
+  padding: 20px 0;
+  background-color: white;
+}
+.pt-empty-array p {
+  text-align: center;
+  font-size: 40px;
 }
 
 /* Buy Page 2
@@ -432,9 +702,6 @@ input {
   padding-left: 1rem;
 } */
 
-.sp2-agent-info button:hover {
-  background-color: #2a2929;
-}
 #upload {
   color: white;
   background-color: #ffef99;

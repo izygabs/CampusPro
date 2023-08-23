@@ -3,15 +3,64 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../Dashboard.css";
-import { Link } from "react-router-dom";
 import AddItems from "./AddItems";
 import Changepassword from "./Changepassword";
 import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import Editing from "./Editing";
+import PropertyTray from "./PropertytTray";
+// import Content from "./Content";
 
-const Dashboard = (prop) => {
+const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(null);
+  const [isTokenExp, setIsTokenExp] = useState(false);
+  const [userID, setUserID] = useState();
+  const [email, setEmail] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [userType, setUserType] = useState();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("/api/getTokenExpiration", {
+      headers: {
+        Authorization: "campusProUserToken", // Include your actual token
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const token = jwtDecode(data.campusToken);
+        // console.log(token.exp);
+        if (!token) {
+          navigate("/login");
+        }
+        const expirationTime = token.exp;
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        if (expirationTime < currentTime) {
+          // Token has expired, redirect to login
+          navigate("/login");
+        } else {
+          token && setLoading(true);
+          const { _id, fName, lName, userType, email } = token;
+          setUserID(_id);
+          setEmail(email);
+          setFirstName(fName);
+          setLastName(lName);
+          setUserType(userType);
+          setIsTokenExp(true);
+        }
+        // Redirect to login if token is expired
+      })
+      .catch((error) => {
+        console.error("Error fetching token status:", error);
+      });
+  }, [navigate]);
 
   const handleButtonClicked = (component) => {
     setSelectedComponent(component);
@@ -21,7 +70,9 @@ const Dashboard = (prop) => {
   const handleCloseOverlay = () => {
     setShowOverlay(false);
   };
+  let userName = firstName + " " + lastName;
 
+  // console.log(userID);
   return (
     <div className="dash">
       <svg
@@ -85,38 +136,56 @@ const Dashboard = (prop) => {
         // data-bs-theme="dark"
       >
         <Link to="/">
-          {/* <a
-            class="navbar-brand col-md-3 col-lg-2 me-0  fs-6 dashboard-logo"
-            href="/"
-          > */}
           <img
             src={require("../images/campuspro(6).png")}
             className="dashboard-logo"
             alt=""
           />
-          {/* </a> */}
         </Link>
         <div className="dashboard-search"></div>
         <div class="username">
           <DropdownButton
             id="dropdown-basic-button"
-            title={"Gabriel Isaiah"}
+            title={loading ? userName : ""}
             className="userName-dropdown"
             variant="secondary"
           >
             <Dropdown.Item
-              href="#/action-1"
-              onClick={() => handleButtonClicked(<ProfileInfo />)}
+              onClick={() =>
+                handleButtonClicked(
+                  !isTokenExp ? (
+                    navigate("/login")
+                  ) : (
+                    <ProfileInfo userID={userID} />
+                  )
+                )
+              }
             >
               My Profile
             </Dropdown.Item>
             <Dropdown.Item
-              href="#/action-2"
-              onClick={() => handleButtonClicked(<Changepassword />)}
+              onClick={() =>
+                handleButtonClicked(
+                  !isTokenExp ? (
+                    navigate("/login")
+                  ) : (
+                    <Changepassword Email={email} />
+                  )
+                )
+              }
             >
               Login & Security
             </Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Sign Out</Dropdown.Item>
+            <Dropdown.Item
+              onClick={async () => {
+                const logout = await axios.get("/api/logout");
+                if (logout) {
+                  navigate("/login");
+                }
+              }}
+            >
+              Sign Out
+            </Dropdown.Item>
           </DropdownButton>
         </div>
         <ul class="navbar-nav flex-row d-md-none">
@@ -183,7 +252,45 @@ const Dashboard = (prop) => {
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
-                      href="/"
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <div>
+                              <h1>Welcome back, {firstName}</h1>
+                              <div className="db-content">
+                                <h6>WHAT'S NEXT</h6>
+                                <h3>
+                                  Let's continue with creating your property and
+                                  items!
+                                </h3>
+                                <p>
+                                  Your info is pending verified, just continue
+                                  with listing your property now.
+                                </p>
+                                <button
+                                  onClick={() =>
+                                    handleButtonClicked(
+                                      !isTokenExp ? (
+                                        navigate("/login")
+                                      ) : (
+                                        <AddItems />
+                                      )
+                                    )
+                                  }
+                                >
+                                  Go to Create Your Property
+                                </button>
+                              </div>
+                              <div className="db-confirm">
+                                <p>Pending Confirmation</p>
+                                <h3>The property is pending</h3>
+                              </div>
+                            </div>
+                          )
+                        )
+                      }
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
@@ -191,10 +298,22 @@ const Dashboard = (prop) => {
                       Dashboard
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <li class={userType == "merchant" ? "hideBtn" : "nav-item"}>
                     <a
                       class="nav-link d-flex  align-items-center gap-2"
-                      href="/"
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <PropertyTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              name="Property"
+                            />
+                          )
+                        )
+                      }
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
@@ -205,7 +324,19 @@ const Dashboard = (prop) => {
                   <li class="nav-item">
                     <a
                       class="nav-link d-flex align-items-center gap-2"
-                      href="/"
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <PropertyTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              name="Items"
+                            />
+                          )
+                        )
+                      }
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#cart" />
@@ -233,15 +364,27 @@ const Dashboard = (prop) => {
                         variant="Warning"
                       >
                         <Dropdown.Item
-                          href=""
-                          onClick={() => handleButtonClicked(<ProfileInfo />)}
+                          onClick={() =>
+                            handleButtonClicked(
+                              !isTokenExp ? (
+                                navigate("/login")
+                              ) : (
+                                <ProfileInfo userID={userID} />
+                              )
+                            )
+                          }
                         >
                           My Profile
                         </Dropdown.Item>
                         <Dropdown.Item
-                          href=""
                           onClick={() =>
-                            handleButtonClicked(<Changepassword />)
+                            handleButtonClicked(
+                              !isTokenExp ? (
+                                navigate("/login")
+                              ) : (
+                                <Changepassword Email={email} />
+                              )
+                            )
                           }
                         >
                           Login & Security
@@ -252,7 +395,12 @@ const Dashboard = (prop) => {
                   <li class="nav-item signOut">
                     <a
                       class="nav-link d-flex align-items-center gap-2 signOut"
-                      href="/"
+                      onClick={async () => {
+                        const logout = await axios.get("/api/logout");
+                        if (logout) {
+                          navigate("/login");
+                        }
+                      }}
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#door-closed" />
@@ -271,34 +419,85 @@ const Dashboard = (prop) => {
 
               <div class="btn-toolbar ms-5 mb-2 mb-md-0">
                 <div class="btn-group me-2 specialBtn">
-                  <button type="button" class="btn btn-sm btn-outline-dark">
+                  <button
+                    type="button"
+                    class={
+                      userType == "merchant"
+                        ? "hideBtn"
+                        : "btn btn-sm btn-outline-dark"
+                    }
+                  >
                     Create Property
                   </button>
                   {/* <Link to="/add-items"> */}
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
-                    onClick={() => handleButtonClicked(<AddItems />)}
+                    onClick={() =>
+                      handleButtonClicked(
+                        !isTokenExp ? navigate("/login") : <AddItems />
+                      )
+                    }
                   >
                     Create Items
                   </button>
                   {/* </Link> */}
                 </div>
+                {/* <button
+                  type="button"
+                  class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1"
+                >
+                  <svg class="bi" style={{ width: "20px", height: "20px" }}>
+                    <use xlinkHref="#calendar3" />
+                  </svg>
+                  This week
+                </button> */}
               </div>
+              <div class="username">{/* <h6>{"Gabriel Isaiah"}</h6> */}</div>
             </div>
 
             <div className="overComp">
-              {showOverlay && (
+              {showOverlay ? (
                 <OverlayComponent
                   component={selectedComponent}
                   onClose={handleCloseOverlay}
                 />
+              ) : (
+                /* <Welcome
+                  firstName={firstName}
+                  // handleChange={handleButtonClicked(
+                  //   isTokenExp ? navigate("/login") : <AddItems />
+                  // )}
+                /> */
+                <div>
+                  <h1>Welcome back, {firstName}</h1>
+                  <div className="db-content">
+                    <h6>WHAT'S NEXT</h6>
+                    <h3>
+                      Let's continue with creating your property and items!
+                    </h3>
+                    <p>
+                      Your info is pending verified, just continue with listing
+                      your property now.
+                    </p>
+                    <button
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? navigate("/login") : <AddItems />
+                        )
+                      }
+                    >
+                      Go to Create Your Property
+                    </button>
+                  </div>
+                  <div className="db-confirm">
+                    <p>Pending Confirmation</p>
+                    <h3>The property is pending</h3>
+                  </div>
+                </div>
               )}
             </div>
-            {/* <h2>Section title</h2>
-            <div class="table-responsive small">
-              <h1>display something here</h1>
-            </div> */}
+            {/* <Editing /> */}
           </main>
         </div>
       </div>

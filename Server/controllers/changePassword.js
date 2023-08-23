@@ -5,12 +5,13 @@ const bcrypt = require("bcrypt");
 
 const changePassword = async (req, res) => {
   const userId = req.params.id;
-  const { value } = validator.newPasswordSchema(req.body);
+  const { error, value } = req.body;
+  console.log(value);
   try {
     const userExist = await user.findById({ _id: userId });
     console.log(userExist);
     if (!userExist) {
-      res.status(StatusCodes.NOT_FOUND).send("User not found");
+      res.status(404).json({ message: "User not found" });
     } else {
       const salt = await bcrypt.genSalt();
       const hashedPassword = await bcrypt.hash(value.newPassword, salt);
@@ -20,12 +21,11 @@ const changePassword = async (req, res) => {
         { password: hashedPassword },
         { new: true }
       );
-      res
-        .status(StatusCodes.CREATED)
-        .json({ "Password changed successfully": agent });
+      res.status(201).json({ message: "Password changed successfully" });
     }
   } catch (error) {
-    res.status(StatusCodes.EXPECTATION_FAILED).json({ "Error message": error });
+    console.log(error);
+    res.status(417).json({ Error: error });
   }
 };
 module.exports = changePassword;

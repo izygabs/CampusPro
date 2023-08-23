@@ -1,13 +1,75 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Profile_info.css";
 import pic from "../images/house2.jpg";
+import axios from "axios";
 
-function ProfileInfo() {
+function ProfileInfo(prop) {
   const [clicked, setClicked] = useState(false);
   const [clicked2, setClicked2] = useState(false);
   const [clicked3, setClicked3] = useState(false);
   const [imgSrc, setImageScr] = useState(pic);
   const fileUpload = useRef(null);
+  const [userProfile, setUserProfile] = useState([]);
+  const [imagePath, setImagePath] = useState();
+  const [firstName, setFirstName] = useState(userProfile.firstName);
+  const [lastName, setLastName] = useState(userProfile.lastName);
+  const [email, setEmail] = useState(userProfile.email);
+  const [phoneNumber, setPhoneNumber] = useState(userProfile.phoneNumber);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const results = await axios.get("/api/user/:id");
+        setUserProfile(results.data.Profile);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProfile();
+  }, [userProfile]);
+
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+    try {
+      const data = await axios.put("/api/updateUser/:id", {
+        firstName: firstName || userProfile.firstName,
+        lastName: lastName || userProfile.lastName,
+        email: email || userProfile.email,
+        phoneNumber: phoneNumber || userProfile.phoneNumber,
+        profilePic: imagePath || userProfile.profilePic,
+      });
+      // console.log(data);
+      alert(data.data.message);
+      setClicked(false);
+      //  setClicked(true);
+      setClicked2(false);
+      //  setClicked2(true);
+      setClicked3(false);
+      //  setClicked3(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleInputChange1 = (e) => {
+    e.preventDefault();
+    setFirstName(e.target.value);
+  };
+
+  const handleInputChange2 = (e) => {
+    e.preventDefault();
+    setLastName(e.target.value);
+  };
+
+  const handleInputChange3 = (e) => {
+    e.preventDefault();
+    setEmail(e.target.value);
+  };
+
+  const handleInputChange4 = (e) => {
+    e.preventDefault();
+    setPhoneNumber(e.target.value);
+  };
 
   const handleEditClicked = (e) => {
     e.preventDefault();
@@ -19,6 +81,7 @@ function ProfileInfo() {
   };
   const handleEditClicked2 = (e) => {
     e.preventDefault();
+    // console.log(userProfile);
     if (!clicked2) setClicked2(true);
     else setClicked2(false);
     // console.log("click2", clicked2);
@@ -38,7 +101,10 @@ function ProfileInfo() {
 
   const displayProfilePic = (e) => {
     const file = e.target.files[0];
-    if (file) setImageScr(URL.createObjectURL(file));
+    if (file) {
+      setImageScr(URL.createObjectURL(file));
+      setImagePath(file);
+    }
   };
   return (
     <div className="pi-body">
@@ -64,7 +130,7 @@ function ProfileInfo() {
             />
           ) : (
             <img
-              src={pic}
+              src={userProfile.profilePic || pic}
               alt="profilepic"
               className="pi-pic"
               onClick={uploadFile}
@@ -79,13 +145,20 @@ function ProfileInfo() {
             </button>
           </div>
           {!clicked ? (
-            <p>{"Isaiah"}</p>
+            <p className="pi-para">{userProfile.firstName}</p>
           ) : (
             <div>
-              <input type="text" name="name" />
+              <input
+                type="text"
+                name="name"
+                value={userProfile.firstName}
+                onChange={handleInputChange1}
+              />
               <br />
               <br />
-              <button className="pi-btn">Confirm</button>
+              <button onClick={handleSubmit} className="pi-btn">
+                Confirm
+              </button>
             </div>
           )}
         </div>
@@ -97,13 +170,20 @@ function ProfileInfo() {
             </button>
           </div>
           {!clicked2 ? (
-            <p>{"Gabriel"}</p>
+            <p className="pi-para">{userProfile.lastName}</p>
           ) : (
             <div>
-              <input type="text" name="name" />
+              <input
+                type="text"
+                name="name"
+                placeholder={userProfile.lastName}
+                onChange={handleInputChange2}
+              />
               <br />
               <br />
-              <button className="pi-btn">Confirm</button>
+              <button onClick={handleSubmit} className="pi-btn">
+                Confirm
+              </button>
             </div>
           )}
         </div>
@@ -115,13 +195,29 @@ function ProfileInfo() {
             </button>
           </div>
           {!clicked3 ? (
-            <p>{"+2348103871744"}</p>
+            <div>
+              <p className="pi-para">{userProfile.phoneNumber}</p>
+              <p className="pi-para">{userProfile.email}</p>
+            </div>
           ) : (
             <div>
-              <input type="text" name="name" />
+              <input
+                type="tel"
+                name="name"
+                placeholder={userProfile.phoneNumber}
+                onChange={handleInputChange3}
+              />
+              <input
+                type="email"
+                name="name"
+                placeholder={userProfile.email}
+                onChange={handleInputChange4}
+              />
               <br />
               <br />
-              <button className="pi-btn">Confirm</button>
+              <button onClick={handleSubmit} className="pi-btn">
+                Confirm
+              </button>
             </div>
           )}
         </div>
