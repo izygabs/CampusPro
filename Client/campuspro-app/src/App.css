@@ -527,7 +527,7 @@ p {
 .pt-image {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
 }
 .pt-props-desc-div {
   width: 22%;
@@ -616,6 +616,13 @@ p {
 .pt-empty-array p {
   text-align: center;
   font-size: 40px;
+}
+.pt-confirm-btn{
+  font-weight: bold;
+}
+.pt-del-text{
+  color: red;
+    
 }
 
 /* Buy Page 2
