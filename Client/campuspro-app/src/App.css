@@ -156,7 +156,7 @@ p {
   flex-direction: row;
 }
 .hp-locate {
-  max-width: 15px;
+  width: 15px;
   margin-top: 4px;
 }
 
@@ -194,8 +194,7 @@ p {
 .sp-sub-div {
   margin: 5vh 0;
   background-color: black;
-  min-height: 46vh !important;
-  max-height: 46vh !important;
+  height: 46vh !important;
   width: 23vw;
 }
 .sp-text-div {
@@ -622,7 +621,7 @@ p {
 }
 .pt-del-text{
   color: red;
-    
+
 }
 
 /* Buy Page 2

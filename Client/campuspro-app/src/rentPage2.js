@@ -35,8 +35,6 @@ const similar = async (agentID)=>{
 }catch (error){
   console.log(error)
 }
-
-
 }
 
 //function to fetch properties from the database
@@ -161,7 +159,7 @@ const fetcher = async ()=> {
                     <p>#{Number(other.price).toLocaleString()}</p>
 
                     <Link className="sp2-linkk" to={`/rentproperty/${other._id}`}>
-                      <button>View this property</button>
+                      <button onClick={ ()=>setTimeout("window.location.reload()",1000)}>View this property</button>
                     </Link>
                   </div>
                 </div>
