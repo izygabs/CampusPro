@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
+import Navbar from "./Components/Navbar";
 import jwtDecode from "jwt-decode";
 // import Navbar from "./Components/Navbar";
 
@@ -68,50 +69,10 @@ function HomePage() {
     }
   };
 
-  //function to filter properties according to the user search
-  // function change(e) {
-  //   // e.preventDefault()
-  //   const pal = e.target.value;
-  //   console.log(pal);
-
-  //   if (pal) {
-  //     const filt = datas.filter((place) =>
-  //       place.campus.toLowerCase().startsWith(pal.toLowerCase())
-  //     );
-  //     setDatas(filt);
-  //   } else {
-  //     // setDatas(data);
-  //   }
-  //   // setDatas(datas);
-  // }
-
-  // console.log(datas)
-
   return (
     <div className="homepage">
-      <div className="hp-header">
-        <div className="hp-logo-div">
-          <div>
-            <img src={logo} className="hp-logo" alt="" />
-          </div>
-          {/* <div>
-            <p>CampusPro</p>
-          </div> */}
-        </div>
-        <div>
-          <input
-            placeholder="Search for hostels around your school. example: oou"
-            className="hp-select-button"
-          />
-        </div>
-        <div>
-          <Link to={!isTokenExp ? "/login" : "/Dashboard"}>
-            <button className="hp-login-button">Login</button>
-          </Link>
-        </div>
-      </div>
+      <Navbar />
 
-      {/* //carousel */}
       <div className="hp-carousel-div">
         <Carousel controls={false} indicators={false}>
           <Carousel.Item>
@@ -194,7 +155,7 @@ function HomePage() {
               <div className="hp-img-div">
                 <img src={`/${results.hostelImages[0]}`} />
                 <div>
-                  <img className="hp-locate" src={location} />
+                  <img className="hp-locate2" src={location} />
                   <p>{results.campusName}</p>
                 </div>
               </div>
@@ -212,7 +173,6 @@ function HomePage() {
           );
         })}
       </div>
-      {/* <Navbar /> */}
       <div>
         <Footer />
       </div>

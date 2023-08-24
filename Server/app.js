@@ -4,18 +4,16 @@ const PORT = process.env.PORT || 6600;
 const connectMongoose = require("./models/connectMongoose");
 const route = require("./routes/allRoutes");
 const cookieParser = require("cookie-parser");
-const multer = require("multer");
+// const multer = require("multer");
 const cors = require("cors");
-const path = require('path')
+const path = require("path");
 
 app.use(cors());
-// app.use("/Hostel_Images", express.static("Hostel_Images"));
-app.use('/Hostel_Images',express.static(path.join(__dirname, 'Hostel_Images')));
-app.use('/Items_Images',express.static(path.join(__dirname, 'Items_Images')));
-
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+app.use("/Items_Images", express.static(path.join(__dirname, "Items_Images")));
+app.use("/Hostel_Images", express.static(path.join(__dirname, "Hostel_Images")));
 app.use(route);
 
 // Error-handling middleware for Multer errors

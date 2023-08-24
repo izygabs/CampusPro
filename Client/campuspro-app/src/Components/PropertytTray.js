@@ -95,7 +95,7 @@ const PropertyTray = (props) => {
             )
           }
         >
-          Create Property
+          + Create Property
         </button>
       </div>
       <section className="pt-nav-div">

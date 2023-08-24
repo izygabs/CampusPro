@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./images/campuspro(6).png";
-
+import Navbar from "./Components/Navbar";
 import { useState, useEffect } from "react";
 // import SubRentpage1 from "./subRentPage1";
 import { Link } from "react-router-dom";
@@ -72,35 +72,7 @@ function RentPage1() {
 
   return (
     <div>
-      <div className="hp-header">
-        <div className="hp-logo-div">
-          <div>
-            <Link to="/">
-              <img src={logo} className="hp-logo" />
-            </Link>
-          </div>
-        </div>
-        <div>
-          <input
-            onChange={sort}
-            placeholder="Search for hostels around your school. example: oou"
-            className="hp-select-button"
-          />
-        </div>
-        <div>
-          <Link to="/login">
-            <button className="hp-login-button">Login</button>
-          </Link>
-        </div>
-      </div>
-
-      <select className="sp-select-amount" onChange={sortPrice}>
-        <option value="">Filter hostels according to their prices</option>
-        <option value="2500000">#2,500,000 & below</option>
-        <option value="1000000">#1,000,000 & below</option>
-        <option value="500000">#500,000 & below</option>
-        <option value="200000">#200,000 & below</option>
-      </select>
+      <Navbar />
 
       {/* <div className="sp-subrent-div">{subRent}</div> */}
       <div className="sp-subrent-div">
@@ -108,7 +80,7 @@ function RentPage1() {
           return(
             <div key={info._id} className="sp-sub-div">
               <div className="sp-img-div">
-                <img src={`${info.hostelImages[5]}`} />
+                <img src={`${info.hostelImages[0]}`} />
                 <div>
                   <img className="hp-locate" src={location} />
                   <p>{info.campusName.toUpperCase()}</p>

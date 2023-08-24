@@ -97,10 +97,10 @@ route.delete("/api/item/:id", verifyToken, deleteItem);
 
 route.get("/api/logout", verifyToken, logOut);
 
-route.put("/api/changePassword/:id", changePassword);
+route.put("/api/changePassword/", verifyToken, changePassword);
 
 route.put(
-  "/api/updateUser/:id",
+  "/api/updateUser/",
   verifyToken,
   upload.single("profilePic"),
   updateUser

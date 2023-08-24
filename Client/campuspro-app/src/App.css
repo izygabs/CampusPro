@@ -159,6 +159,10 @@ p {
   width: 15px;
   margin-top: 4px;
 }
+.hp-locate2 {
+  margin-top: 4px;
+  height: 2.5vh !important;
+}
 
 .hp-img-div img {
   height: 100%;
@@ -189,10 +193,10 @@ p {
   flex-wrap: wrap;
   justify-content: space-around;
   background-color: white;
-  margin-top: 15vh;
+  padding-top: 15vh;
 }
 .sp-sub-div {
-  margin: 5vh 0;
+  margin: 5vh 0 !important;
   background-color: black;
   height: 46vh !important;
   width: 23vw;
@@ -200,13 +204,13 @@ p {
 .sp-text-div {
   text-align: center;
   padding-bottom: 2vh !important;
-  height: 40%;
+  height: 40% !important;
   background-color: #ffef99;
   color: black;
   margin-top: -1.7vh;
 }
 .sp-img-div {
-  max-height: 60%;
+  height: 60% !important;
   width: 100%;
   margin-bottom: 10px;
   position: relative;
@@ -413,7 +417,7 @@ p {
   font-weight: 600;
   font-style: italic;
   /* padding-left: 26%; */
-  padding-top: 15vh;
+  padding-top: 0;
 }
 .sp2-agents {
   align-items: center;
