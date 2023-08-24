@@ -112,6 +112,11 @@ const Signup = () => {
 
   return (
     <div className="sp-form-one" id="signUP">
+      <div>
+        <Link to={"/"}>
+          <img className="sp-logo" src={logo} alt="" />
+        </Link>
+      </div>
       <form className="sp-form" onSubmit={formik.handleSubmit}>
         <h1>Register</h1>
         <div className="header">
