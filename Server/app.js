@@ -13,7 +13,13 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use("/Items_Images", express.static(path.join(__dirname, "Items_Images")));
-app.use("/Hostel_Images", express.static(path.join(__dirname, "Hostel_Images")));
+app.use(
+  "/Hostel_Images",
+  express.static(path.join(__dirname, "Hostel_Images"))
+);
+
+app.use("/User_Images", express.static(path.join(__dirname, "User_Images")));
+
 app.use(route);
 
 // Error-handling middleware for Multer errors

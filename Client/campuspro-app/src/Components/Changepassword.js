@@ -7,10 +7,10 @@ import * as yup from "yup";
 function Changepassword(prop) {
   const [click, setClick] = useState(false);
 
-  const sub = (e) => {
-    e.preventDefault();
-    // console.log(values);
-  };
+  // const sub = (e) => {
+  //   e.preventDefault();
+  //   // console.log(values);
+  // };
   const handleEditClicked = (e) => {
     e.preventDefault();
     // console.log("clcik1", clicked);
@@ -47,7 +47,7 @@ function Changepassword(prop) {
       console.log(values);
 
       try {
-        const response = await fetch(`/api/changePassword/`, {
+        const response = await fetch("/api/changePassword", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values),
@@ -150,7 +150,7 @@ function Changepassword(prop) {
                     </p>
                   )}
               </form>
-              <button className="cp-btn" type="submit" onClick={sub}>
+              <button className="cp-btn" type="submit">
                 Confirm
               </button>
             </div>

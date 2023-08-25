@@ -4,6 +4,7 @@ import edit from "../images/edit-icon.png";
 import del from "../images/delete-icon.png";
 import OverlayComponent from "./OverlayComp";
 import AddItems from "./AddItems";
+import axios from "axios"
 import { useNavigate } from "react-router";
 import PropertiesCard from "./PropertiesCard";
 
@@ -25,8 +26,10 @@ const ItemTray = (props) => {
     setNewProperties(false);
     setPublishedProperties(false);
     setUnpublishedProperties(false);
+    fetcher()
   }
   function setEditing() {
+
     setAllProperties(false);
     setEditingProperties(true);
     setNewProperties(false);
@@ -34,11 +37,14 @@ const ItemTray = (props) => {
     setUnpublishedProperties(false);
   }
   function setNew() {
+    fetcher2()
     setAllProperties(false);
     setEditingProperties(false);
     setNewProperties(true);
     setPublishedProperties(false);
     setUnpublishedProperties(false);
+    const filter = data.filter((data)=> data.itemStatus === 'Approved')
+    setData(filter)
   }
   function setPublished() {
     setAllProperties(false);
@@ -53,6 +59,8 @@ const ItemTray = (props) => {
     setNewProperties(false);
     setPublishedProperties(false);
     setUnpublishedProperties(true);
+    const filter2 = data.filter((data)=> data.itemStatus === 'Rejected')
+    setData(filter2)
   }
 
   const handleButtonClicked = (component) => {
@@ -66,6 +74,7 @@ const ItemTray = (props) => {
   useEffect(() => {
     fetcher();
   }, [fetcher]);
+
   const fetcher = async () => {
     url = `/api/itemsByMerch/${props.id}`;
 
@@ -80,10 +89,25 @@ const ItemTray = (props) => {
       console.log(error);
     }
   };
+  const fetcher2 = async () => {
+    url = `/api/itemStatus`;
+
+    console.log("url :", url);
+    try {
+      const req = await fetch(url);
+      const res = await req.json();
+      const info = await res.Items;
+      // setData(info);
+      console.log(info);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   //   console.log(props.id);
   //   console.log(data);
-
+  
   return (
     <div className="property-tray">
       <div className="pt-createProperty">

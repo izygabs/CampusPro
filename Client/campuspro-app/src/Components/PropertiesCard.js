@@ -4,6 +4,8 @@ import del from "../images/delete-icon.png";
 
 const PropertiesCard = (prop) => {
   const data = prop.data;
+
+  //function to delete a paticular item
   const deleter = (id)=>{
     const url= `/api/item/${id}`
     const option = {method : "DELETE"}
@@ -30,8 +32,8 @@ console.log(data)
         <p>{data.campus}</p>
       </div>
       <div className="pt-props-campus-div">
-        <p className="pt-texts">Apartment Price</p>
-        <p>#{Number(data.price).toLocaleString()}</p>
+        <p className="pt-texts">STATUS</p>
+        <p>{data.itemStatus}</p>
       </div>
       <div className="pt-props-posted-div">
         <button>
@@ -59,7 +61,7 @@ console.log(data)
         Confirm delete <span className="pt-confirm-btn">{data.itemName}</span> 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" onClick={()=>deleter(data._id)}><span className="pt-del-text">Confirm</span></button>
+        <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" onClick={()=>deleter(data.id)}><span className="pt-del-text">Confirm</span></button>
         
       </div>
     </div>

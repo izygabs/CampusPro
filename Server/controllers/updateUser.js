@@ -15,7 +15,7 @@ const updateUser = async (req, res) => {
     res.status(201).json({ message: "Profile updated" });
   } catch (error) {
     console.log(error);
-    res.status(403).json({ message: "Update fail" });
+    res.status(403).json({ message: "Update failed" });
   }
 };
 module.exports = updateUser;
