@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
+import Navbar from "./Components/Navbar";
 import jwtDecode from "jwt-decode";
 // import Navbar from "./Components/Navbar";
 
@@ -89,27 +90,44 @@ function HomePage() {
 
   return (
     <div className="homepage">
-      <div className="hp-header">
-        <div className="hp-logo-div">
-          <div>
-            <Link to="/AboutUs"><img src={logo} className="hp-logo" alt="" /></Link>
-          </div>
-          {/* <div>
-            <p>CampusPro</p>
+      <Navbar />
+      {/* <div className="hp-header"> */}
+      {/* <div className="hp-logo-div"> */}
+      {/* <div>
+            <img src={logo} className="hp-logo" alt="" />
           </div> */}
-        </div>
-        <div>
-          <input
+      {/* </div> */}
+      {/* <div> */}
+      {/* <input
             placeholder="Search for hostels around your school. example: oou"
             className="hp-select-button"
-          />
-        </div>
-        <div>
-          <Link to={!isTokenExp ? "/login" : "/Dashboard"}>
+          /> */}
+
+      {/*
+            campus.map((item)=>{
+              
+            })
+          
+           <select onChange={change} className="hp-select-button">
+              <option value={'lasu'}>LASU</option>
+              <option value={'unilag'}>UNILAG</option>
+              <option value={'laspotech'}>LASPOTECH</option>
+              <option value={'ui'}>UI(Ibadan)</option>
+              <option value={'the polytechnic ibadan'}>THE POLYTECHNIC IBADAN</option>
+              <option value={'oou'}>OOU</option>
+              <option value={'oau'}>OAU</option>
+              <option value={'jabu'}>JABU</option>
+              <option value={'mapoly'}>MAPOLY</option>
+              <option value={'osu'}>OSU</option>
+              <option value={'eksu'}>EKSU</option>
+          </select> */}
+      {/* </div> */}
+      {/* <div>
+          <Link to={isTokenExp ? "/Dashboard" : "/login"}>
             <button className="hp-login-button">Login</button>
           </Link>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
 
       {/* //carousel */}
       <div className="hp-carousel-div">
@@ -212,7 +230,6 @@ function HomePage() {
           );
         })}
       </div>
-      {/* <Navbar /> */}
       <div>
         <Footer />
       </div>

@@ -207,7 +207,7 @@ p {
   margin-top: -1.7vh;
 }
 .sp-img-div {
-  height: 60%;
+  max-height: 60%;
   width: 100%;
   margin-bottom: 10px;
   position: relative;
@@ -225,7 +225,7 @@ p {
 }
 .sp-img-div img {
   height: 100%;
-  width: 100%;
+  max-width: 100%;
 }
 
 .sp-text-div button {
