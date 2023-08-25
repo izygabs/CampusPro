@@ -9,9 +9,11 @@ import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import ItemTray from "./ItemTray";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Editing from "./Editing";
 import PropertyTray from "./PropertytTray";
+import Createproperty from "./Createproperty";
 // import Content from "./Content";
 
 const Dashboard = () => {
@@ -309,7 +311,7 @@ const Dashboard = () => {
                             <PropertyTray
                               id={userID}
                               isTokenExp={isTokenExp}
-                              name="Property"
+                          
                             />
                           )
                         )
@@ -329,10 +331,9 @@ const Dashboard = () => {
                           !isTokenExp ? (
                             navigate("/login")
                           ) : (
-                            <PropertyTray
+                            <ItemTray
                               id={userID}
                               isTokenExp={isTokenExp}
-                              name="Items"
                             />
                           )
                         )
@@ -424,7 +425,12 @@ const Dashboard = () => {
                     class={
                       userType == "merchant"
                         ? "hideBtn"
-                        : "btn btn-sm btn-outline-dark"
+                        : "btn btn-sm btn-outline-dark"   
+                    }
+                    onClick={() =>
+                      handleButtonClicked(
+                        !isTokenExp ? navigate("/login") : <Createproperty />
+                      )
                     }
                   >
                     Create Property
