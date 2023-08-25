@@ -12,7 +12,8 @@ import Changepassword from "./Components/Changepassword";
 import ProfileInfo from "./Components/Profile_info";
 import React from "react";
 import UserDashboard from "./Components/UserDashboard";
-import PropertyTray from "./Components/PropertytTray";
+import PropertyTray from "./Components/PropertytTray"
+import About from "./AboutUs";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/Dashboard/" element={<Dashboard />} />
           <Route path="/Signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/AboutUs" element={<About />} />
         </Routes>
       </Router>
     </div>
