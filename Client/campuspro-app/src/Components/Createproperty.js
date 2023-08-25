@@ -12,37 +12,34 @@ const Createproperty = () => {
 
   // const handleClick = () => console.log(msg);
   const validationSchema = yup.object({
-    itemName: yup.string().required(" Item name is required"),
-    category: yup.string().required(" Category is required"),
-    description: yup.string().required(" Description is required"),
+    description: yup.string().required(" Hostel description is required"),
     price: yup
       .number()
-      .required(" Price is required")
+      .required("Price is required")
       .positive("Invalid Price"),
-    quantity: yup
-      .number()
-      .required("No of items is required")
-      .positive("Invalid Number"),
+   
     negotiable: yup.boolean(),
-    campus: yup.string().required("Campus is Required"),
+    campusName: yup.string().required("Campus name is required"),
     location: yup.string().required("Address field is required"),
-    itemImages: yup
+    hostelImages: yup
       .array()
       .min(5, "You must upload minimum of 5 pictures")
       .max(10, "You can upload maximum of 10 pictures"),
+      houseProperties: yup
+      .array()
+      .required("You select some features of the hostel")
+      
   });
 
   const formik = useFormik({
     initialValues: {
-      itemName: "",
-      price: "",
-      category: "",
-      quantity: "",
-      campus: "",
-      location: "",
-      negotiable: false,
       description: "",
-      itemImages: [],
+      price: "",
+      campusName: "",
+      location: "",
+      negotiable: false,  
+    hostelImages: [],
+    houseProperties: [],
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
@@ -50,17 +47,18 @@ const Createproperty = () => {
       // setMsg(() => values);
       try {
         const formData = new FormData();
-        values.itemImages.forEach((file) => {
-          formData.append("itemImages", file);
+        values.hostelImages.forEach((file) => {
+          formData.append("Hostel_Images", file);
         });
-        formData.append("itemName", values.itemName);
-        formData.append("price", values.price);
-        formData.append("category", values.category);
-        formData.append("quantity", values.quantity);
-        formData.append("negotiable", values.negotiable);
-        formData.append("campus", values.campus);
-        formData.append("location", values.location);
+        values.houseProperties.forEach((feat) => {
+          formData.append("houseProperties", feat);
+        });
         formData.append("description", values.description);
+        formData.append("price", values.price);
+        formData.append("negotiable", values.negotiable);
+        formData.append("campusName", values.campusName);
+        formData.append("location", values.location);
+    
 
         const response = await fetch("/api/uploadItems", {
           method: "POST",

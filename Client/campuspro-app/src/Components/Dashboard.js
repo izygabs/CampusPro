@@ -13,6 +13,7 @@ import ItemTray from "./ItemTray";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Editing from "./Editing";
 import PropertyTray from "./PropertytTray";
+import Createproperty from "./Createproperty";
 // import Content from "./Content";
 
 const Dashboard = () => {
@@ -424,7 +425,12 @@ const Dashboard = () => {
                     class={
                       userType == "merchant"
                         ? "hideBtn"
-                        : "btn btn-sm btn-outline-dark"
+                        : "btn btn-sm btn-outline-dark"   
+                    }
+                    onClick={() =>
+                      handleButtonClicked(
+                        !isTokenExp ? navigate("/login") : <Createproperty />
+                      )
                     }
                   >
                     Create Property
