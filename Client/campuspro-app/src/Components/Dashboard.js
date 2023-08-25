@@ -15,6 +15,7 @@ import Editing from "./Editing";
 import PropertyTray from "./PropertytTray";
 // import Navbar from "./Navbar";
 // import Content from "./Content";
+import Createproperty from "./Createproperty";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);

@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Kolawole Abiodun",
     "role": "Project Manager",
-    "image": ""
+    "image": "../buyPage-images/abiodun.jpeg"
   },
 
   {
@@ -24,20 +24,20 @@
     "id": 4,
     "name": "Ajanobi Nzube",
     "role": "Frontend Developer",
-    "image": "../images/nzube.jpeg"
+    "image": "../buyPage-images/nzube.jpeg"
   },
 
   {
     "id": 5,
     "name": "Onyema Eluma",
     "role": "Frontend Devloper",
-    "image": "../images/eluma.jpeg"
+    "image": "../buyPage-images/eluma.jpeg"
   },
 
   {
     "id": 6,
     "name": "Optimistic Funke",
     "role": "Backend Developer",
-    "image": ""
+    "image": "../buyPage-images/funke.jpeg"
   }
 ]

@@ -24,9 +24,11 @@ function Navbar() {
           <a className="linko" href="#footer">
             <p>Contact</p>
           </a>
-          <a className="linko" href="#">
+          {/* <a className="linko" href="#"> */}
+          <Link to="/AboutUs" className="linko">
             <p>About us</p>
-          </a>
+            </Link>
+          {/* </a> */}
           <Link to={"/login"}>
             <button>Login</button>
           </Link>

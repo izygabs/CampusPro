@@ -37,35 +37,6 @@ const BuyPage2 = () => {
   return (
     <div className="minor">
       {holddata && (
-        <>   
-        <Navbar />
-        <section className="bp2-minor-sec">
-          <div className="bp2-first-div">
-          <img src={`${holddata.itemPictures}` } alt='image' className='bp2-i-mg' />
-          </div>
-          <div className="bp2-second-div">
-              <h1 id='bp2-details'>Item Details</h1>
-              <p id='bp2-para'>Item Name: {holddata.itemName} </p>
-              <p id='bp2-para'>Description: {holddata.description} </p>
-              <p id='bp2-para'>Item Location: {holddata.location}</p>
-              <p id='bp2-para'>Price: {holddata.price} </p>
-          
-
-          <button type="button" onClick={handleChange} className="bp2-btn">{change ? 'Hide Merchant Details' : 'Merchant Contact Details'}</button>
-              {change ? 
-              (<div className="bp2-contact">
-                
-                  <p id='bp2-para'>Merchant Name: {holddata.merchantID.firstName}</p>
-                  <p id='bp2-para'>Merchant Number: {holddata.merchantID.phoneNumber}</p>
-                  <p id='bp2-para'>Merchant Email Address: {holddata.merchantID.email} </p>
-                  <p id='bp2-para'>Merchant Location: {holddata.merchantID.location}</p>
-              </div>) : (<div>
-
-              </div>)}
-              </div>
-            </section>
-            
-
         <>
           {/* <Navbar /> */}
           <section className="minor-sec">
@@ -107,7 +78,7 @@ const BuyPage2 = () => {
             </div>
           </section>
         </>
-    
+      )}
       {/* // <div className="buy-div">
         //   <img src={items.image} alt='item' />
         //   <p>Item Price is: { items.price }</p>
@@ -132,7 +103,7 @@ const BuyPage2 = () => {
           <p id="para">Merchant Location: </p>
         </div>
       </section> */}
-    </>
+    </div>
   );
 };
 

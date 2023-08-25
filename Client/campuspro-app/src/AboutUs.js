@@ -54,12 +54,15 @@ const About = () => {
           </div>
         </div>
         {/* our amazing team */}
+          <h1 className='about-h1'>Meet our <br/>Amazing team</h1>
         <div className="about-amazing-team">
           {team.map((devs) => (
             <div className="about-devs" key={devs.id}>
-              <img src={devs.image} alt='agba coder' />
-              <p>{devs.name}</p>
-              <p>{devs.role}</p>
+                 <img src={devs.image} alt='agba coder' className='about-i' />
+              <div className="about-us">
+                <p>{devs.name}</p>
+                <p>Role: {devs.role}</p>
+              </div>
             </div>
           ))}
         </div>
