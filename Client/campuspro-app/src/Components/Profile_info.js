@@ -37,7 +37,7 @@ function ProfileInfo(prop) {
         lastName: lastName || userProfile.lastName,
         email: email || userProfile.email,
         phoneNumber: phoneNumber || userProfile.phoneNumber,
-        profilePic: imagePath || userProfile.profilePic,
+        profilePic: imagePath,
       });
       // console.log(data);
       alert(data.data.message);
@@ -115,32 +115,38 @@ function ProfileInfo(prop) {
           <h2>Personal info</h2>
         </div>
         <div className="pi-update">
-          <input
-            type="file"
-            name="ProfilePic"
-            // accept="image/*"
-            ref={fileUpload}
-            id="uploadImage"
-            onChange={displayProfilePic}
-          />
-          {imgSrc ? (
-            <img
-              src={imgSrc}
-              alt="profilepic"
-              className="pi-pic"
-              onClick={uploadFile}
+          <form
+            enctype="multipart/form-data"
+            method="put"
+            // action="/api/updateUser/"
+          >
+            <input
+              type="file"
+              name="ProfilePic"
+              // accept="image/*"
+              ref={fileUpload}
+              id="uploadImage"
+              onChange={displayProfilePic}
             />
-          ) : (
-            <img
-              src={userProfile.profilePic || pic}
-              alt="profilepic"
-              className="pi-pic"
-              onClick={uploadFile}
-            />
-          )}
-          <button onClick={handleSubmit} className="pi-img">
-            Upload pic
-          </button>
+            {imgSrc ? (
+              <img
+                src={imgSrc}
+                alt="profilepic"
+                className="pi-pic"
+                onClick={uploadFile}
+              />
+            ) : (
+              <img
+                src={userProfile.profilePic || pic}
+                alt="profilepic"
+                className="pi-pic"
+                onClick={uploadFile}
+              />
+            )}
+            <button onSubmit={handleSubmit} type="submit" className="pi-img">
+              Upload pic
+            </button>
+          </form>
         </div>
         <div className="pi-input">
           <div className="pi-div">

@@ -113,8 +113,8 @@ route.get("/api/propertyByAgent/:agentID", viewPropertyByAgentId);
 
 route.get("/api/itemsByMerch/:merchantID", viewItemsByMerchId);
 
-route.get("/api/propertyStatus", verifyToken, getHostelStatus);
+route.get("/api/propertyStatus/:status", verifyToken, getHostelStatus);
 
-route.get("/api/itemStatus", verifyToken, getItemStatus);
+route.get("/api/itemStatus/:status", verifyToken, getItemStatus);
 
 module.exports = route;

@@ -2,14 +2,14 @@ const { user } = require("../models/userSchema");
 const fs = require("fs");
 
 const updateUser = async (req, res) => {
-  // const profilePic = req.file.path;
+  const profilePic = req.file.path;
   const value = req.body;
   console.log(value);
   const userId = req.user;
   try {
     const updatedUser = await user.findByIdAndUpdate(
       { _id: userId },
-      { $set: { ...value } },
+      { $set: { ...value, profilePic } },
       { new: true }
     );
     res.status(201).json({ message: "Profile updated" });
