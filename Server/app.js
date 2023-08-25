@@ -16,10 +16,7 @@ app.use('/Items_Images',express.static(path.join(__dirname, 'Items_Images')));
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
-<<<<<<< HEAD
-=======
 app.use('/Items_Images', express.static(path.join(__dirname,'Items_Images')));
->>>>>>> b320c2d0000e43c142bb34d6c0d1387baef7db4d
 app.use(route);
 
 // Error-handling middleware for Multer errors

@@ -14,6 +14,7 @@ import React from "react";
 import UserDashboard from "./Components/UserDashboard";
 import PropertyTray from "./Components/PropertytTray"
 import About from "./AboutUs";
+import OurServices from "./OurServices";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/Signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/AboutUs" element={<About />} />
+          <Route path="/OurServices" element={<OurServices />} />
         </Routes>
       </Router>
     </div>

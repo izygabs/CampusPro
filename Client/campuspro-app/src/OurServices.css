@@ -1,7 +1,30 @@
 body{
-    background-color: black;
+    /* background-color: black; */
 }
-.fp-p-main{
+.fp-p-main p{
+    padding-left: 13rem;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    word-break: break-all;
+    padding-top: 1rem;
+    width: 860px;
     text-align: center;
-    color: white;
+    
 }
+p{
+    width: 1;
+}
+.fp-service{
+    color: white;
+    text-decoration: none;
+}
+.fp-service:hover{
+    color: white;
+    text-decoration: underline;
+}
+/* .fp-p2{
+    padding-top: 1rem;
+    width: 818px;
+    text-align: center;
+} */
