@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../AddItems.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -9,6 +9,10 @@ import Campusfeatures from "./CampusFeatures";
 const Createproperty = () => {
   const navigator = useNavigate();
   const [msg, setMsg] = useState("");
+  useEffect(() => {
+    // const tim = new Date();
+    console.log(new Date());
+  }, []);
 
   // const handleClick = () => console.log(msg);
   const validationSchema = yup.object({
