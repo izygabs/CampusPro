@@ -62,11 +62,11 @@ const Createproperty = () => {
         formData.append("location", values.location);
         formData.append("description", values.description);
 
-        const response = await fetch("/api/uploadItems", {
+        const response = await fetch("/api/uploadProperties", {
           method: "POST",
-          // headers: {
-          //   "Content-Type": "application/json",
-          // },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: formData,
         });
 
