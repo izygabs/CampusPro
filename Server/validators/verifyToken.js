@@ -6,11 +6,6 @@ const { user } = require("../models/userSchema");
 const verifyToken = async (req, res, next) => {
   const token = req.cookies.campusProUserToken;
 
-  // if (blacklist.has(token)) {
-  //   return res.status(401).json({ message: "Token is blacklisted" });
-  // }
-  // // next();
-
   if (token) {
     jwt.verify(token, process.env.SECRET_KEY, async (error, decoded) => {
       if (error || !decoded) {

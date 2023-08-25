@@ -9,7 +9,7 @@ const { user } = require("../models/userSchema");
 
 const uploadProperty = async (req, res) => {
   let hostelsPictures = req.files;
-  console.log(hostelsPictures);
+  // console.log(hostelsPictures);
   let userEmail = req.email;
   let userId = req.user;
   let value = req.body;
