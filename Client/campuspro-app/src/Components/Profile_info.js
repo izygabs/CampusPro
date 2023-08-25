@@ -30,13 +30,14 @@ function ProfileInfo(prop) {
 
   const handleSubmit = async (e) => {
     // e.preventDefault();
+    // console.log(imagePath.name);
     try {
-      const data = await axios.put("/api/updateUser/:id", {
+      const data = await axios.put("/api/updateUser/", {
         firstName: firstName || userProfile.firstName,
         lastName: lastName || userProfile.lastName,
         email: email || userProfile.email,
         phoneNumber: phoneNumber || userProfile.phoneNumber,
-        profilePic: imagePath || userProfile.profilePic,
+        profilePic: imagePath,
       });
       // console.log(data);
       alert(data.data.message);
@@ -45,7 +46,8 @@ function ProfileInfo(prop) {
       setClicked2(false);
       //  setClicked2(true);
       setClicked3(false);
-      //  setClicked3(true);
+      //  setClicked3(true)
+      setImageScr(pic);
     } catch (error) {
       console.log(error);
     }
@@ -112,30 +114,39 @@ function ProfileInfo(prop) {
         <div className="pi-head">
           <h2>Personal info</h2>
         </div>
-        <div>
-          <input
-            type="file"
-            name="ProfilePic"
-            accept="image/*"
-            ref={fileUpload}
-            id="uploadImage"
-            onChange={displayProfilePic}
-          />
-          {imgSrc ? (
-            <img
-              src={imgSrc}
-              alt="profilepic"
-              className="pi-pic"
-              onClick={uploadFile}
+        <div className="pi-update">
+          <form
+            enctype="multipart/form-data"
+            method="put"
+            // action="/api/updateUser/"
+          >
+            <input
+              type="file"
+              name="ProfilePic"
+              // accept="image/*"
+              ref={fileUpload}
+              id="uploadImage"
+              onChange={displayProfilePic}
             />
-          ) : (
-            <img
-              src={userProfile.profilePic || pic}
-              alt="profilepic"
-              className="pi-pic"
-              onClick={uploadFile}
-            />
-          )}
+            {imgSrc ? (
+              <img
+                src={imgSrc}
+                alt="profilepic"
+                className="pi-pic"
+                onClick={uploadFile}
+              />
+            ) : (
+              <img
+                src={userProfile.profilePic || pic}
+                alt="profilepic"
+                className="pi-pic"
+                onClick={uploadFile}
+              />
+            )}
+            <button onSubmit={handleSubmit} type="submit" className="pi-img">
+              Upload pic
+            </button>
+          </form>
         </div>
         <div className="pi-input">
           <div className="pi-div">
@@ -151,7 +162,7 @@ function ProfileInfo(prop) {
               <input
                 type="text"
                 name="name"
-                value={userProfile.firstName}
+                placeholder={userProfile.firstName}
                 onChange={handleInputChange1}
               />
               <br />
@@ -205,13 +216,13 @@ function ProfileInfo(prop) {
                 type="tel"
                 name="name"
                 placeholder={userProfile.phoneNumber}
-                onChange={handleInputChange3}
+                onChange={handleInputChange4}
               />
               <input
                 type="email"
                 name="name"
                 placeholder={userProfile.email}
-                onChange={handleInputChange4}
+                onChange={handleInputChange3}
               />
               <br />
               <br />
@@ -227,3 +238,14 @@ function ProfileInfo(prop) {
 }
 
 export default ProfileInfo;
+
+// <p className="pi-para">{userProfile.email}</p>;
+
+{
+  /* <input
+  type="email"
+  name="name"
+  placeholder={userProfile.email}
+  onChange={handleInputChange4}
+/>; */
+}

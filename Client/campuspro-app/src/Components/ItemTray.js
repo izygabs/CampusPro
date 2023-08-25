@@ -4,6 +4,7 @@ import edit from "../images/edit-icon.png";
 import del from "../images/delete-icon.png";
 import OverlayComponent from "./OverlayComp";
 import AddItems from "./AddItems";
+import axios from "axios"
 import { useNavigate } from "react-router";
 import PropertiesCard from "./PropertiesCard";
 
@@ -25,8 +26,10 @@ const ItemTray = (props) => {
     setNewProperties(false);
     setPublishedProperties(false);
     setUnpublishedProperties(false);
+    fetcher()
   }
-  function setEditing() {
+  function setPending() {
+    Pending()
     setAllProperties(false);
     setEditingProperties(true);
     setNewProperties(false);
@@ -34,25 +37,31 @@ const ItemTray = (props) => {
     setUnpublishedProperties(false);
   }
   function setNew() {
+    Approved()
     setAllProperties(false);
     setEditingProperties(false);
     setNewProperties(true);
     setPublishedProperties(false);
     setUnpublishedProperties(false);
+    // const filter = data.filter((data)=> data.itemStatus === 'Approved')
+    // setData(filter)
   }
-  function setPublished() {
-    setAllProperties(false);
-    setEditingProperties(false);
-    setNewProperties(false);
-    setPublishedProperties(true);
-    setUnpublishedProperties(false);
-  }
-  function setunpublished() {
+  // function setPublished() {
+  //   setAllProperties(false);
+  //   setEditingProperties(false);
+  //   setNewProperties(false);
+  //   setPublishedProperties(true);
+  //   setUnpublishedProperties(false);
+  // }
+  function setrejected() {
+    Rejected()
     setAllProperties(false);
     setEditingProperties(false);
     setNewProperties(false);
     setPublishedProperties(false);
     setUnpublishedProperties(true);
+    const filter2 = data.filter((data)=> data.itemStatus === 'Rejected')
+    setData(filter2)
   }
 
   const handleButtonClicked = (component) => {
@@ -65,7 +74,8 @@ const ItemTray = (props) => {
   };
   useEffect(() => {
     fetcher();
-  }, []);
+  }, [fetcher]);
+
   const fetcher = async () => {
     url = `/api/itemsByMerch/${props.id}`;
 
@@ -80,10 +90,56 @@ const ItemTray = (props) => {
       console.log(error);
     }
   };
+  const Approved = async () => {
+    url = `/api/itemStatus/Approved`;
+
+    // console.log("url :", url);
+    try {
+      const req = await fetch(url);
+      const res = await req.json();
+      console.log(res)
+      const info = await res.Item;
+      setData(info);
+      // console.log(info);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Pending = async () => {
+    url = `/api/itemStatus/Pending`;
+
+    // console.log("url :", url);
+    try {
+      const req = await fetch(url);
+      const res = await req.json();
+      console.log(res)
+      const info = await res.Item;
+      setData(info);
+      // console.log(info);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Rejected = async () => {
+    url = `/api/itemStatus/Rejected`;
+
+    // console.log("url :", url);
+    try {
+      const req = await fetch(url);
+      const res = await req.json();
+      console.log(res)
+      const info = await res.Item;
+      setData(info);
+      // console.log(info);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   //   console.log(props.id);
   //   console.log(data);
-
+  
   return (
     <div className="property-tray">
       <div className="pt-createProperty">
@@ -111,25 +167,25 @@ const ItemTray = (props) => {
             className={newProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
             onClick={setNew}
           >
-            New
+            Approved
           </button>
           <button
             className={editingProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
-            onClick={setEditing}
+            onClick={setPending}
           >
-            Editing
+            Pending
           </button>
-          <button
+          {/* <button
             className={publishedProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
             onClick={setPublished}
           >
             Published
-          </button>
+          </button> */}
           <button
             className={unpublishedProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
-            onClick={setunpublished}
+            onClick={setrejected}
           >
-            Unpublished
+            Unapproved
           </button>
         </div>
         <div className="pt-properties-filter">

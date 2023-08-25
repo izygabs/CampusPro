@@ -9,6 +9,7 @@ import number from "./MicrosoftTeams-image (5).png";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "./images/campuspro(6).png";
 
 // import gold from './gold.png'
 // Modal.setAppElement("#root");
@@ -111,6 +112,11 @@ const Signup = () => {
 
   return (
     <div className="sp-form-one" id="signUP">
+      <div>
+        <Link to={"/"}>
+          <img className="sp-logo" src={logo} alt="" />
+        </Link>
+      </div>
       <form className="sp-form" onSubmit={formik.handleSubmit}>
         <h1>Register</h1>
         <div className="header">
@@ -274,7 +280,7 @@ const Signup = () => {
         </div>
 
         <div className="sp-create-Account-button">
-          <button className="sp-btn" type="submit" onClick={openModal}>
+          <button className="sp-btn" type="submit">
             Create Account
           </button>
           <Modal
@@ -287,7 +293,7 @@ const Signup = () => {
             <h2>Successful sign-up</h2>
             <p>{message}</p>
             <button onClick={closeModal} className="modalBtn">
-              Log in
+              Click to Log in
             </button>
           </Modal>
         </div>

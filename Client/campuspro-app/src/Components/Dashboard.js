@@ -13,6 +13,7 @@ import ItemTray from "./ItemTray";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Editing from "./Editing";
 import PropertyTray from "./PropertytTray";
+// import Navbar from "./Navbar";
 // import Content from "./Content";
 
 const Dashboard = () => {

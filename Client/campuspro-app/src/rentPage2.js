@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect} from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
+import Navbar from "./Components/Navbar";
 import location from "./images/location-icon.png";
 
 
@@ -35,8 +36,6 @@ const similar = async (agentID)=>{
 }catch (error){
   console.log(error)
 }
-
-
 }
 
 //function to fetch properties from the database
@@ -65,20 +64,11 @@ const fetcher = async ()=> {
 
   <div className="rentpage2">
      <div className="rentpage-main">
-         <div className="hp-header2">
-           <div className="hp-logo-div">
-             <div>
-               <img src={logo} className="hp-logo" alt="" />
-             </div>
-           </div>
-           <div>
-             <button className="hp-login-button">Login</button>
-           </div>
-         </div>
+          <Navbar />
    
           <div className="sp2-carousel-div">
             <section className="sp2-main-sector">
-              <Carousel controls={true} indicators={true}>
+              <Carousel controls={true} indicators={true} class>
                 <Carousel.Item>
                   {datas.hostelImages? <img  class="d-block w-100 sp2-carousel-img" src={`/${datas.hostelImages[0]}`}/>: null}
                 </Carousel.Item>
@@ -150,7 +140,7 @@ const fetcher = async ()=> {
               return(
                 <div key={other._id} className="sp-sub-div">
                   <div className="sp-img-div">
-                    <img src={other.hostelImages ? `/${other.hostelImages[1]}`: null} />
+                    <img src={other.hostelImages ? `/${other.hostelImages[0]}`: null} />
                     <div>
                       <img className="hp-locate" src={location} />
                       <p>{other.campusName}</p>
@@ -161,7 +151,7 @@ const fetcher = async ()=> {
                     <p>#{Number(other.price).toLocaleString()}</p>
 
                     <Link className="sp2-linkk" to={`/rentproperty/${other._id}`}>
-                      <button>View this property</button>
+                      <button onClick={ ()=>setTimeout("window.location.reload()",1000)}>View this property</button>
                     </Link>
                   </div>
                 </div>
