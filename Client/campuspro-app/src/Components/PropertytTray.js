@@ -6,6 +6,7 @@ import OverlayComponent from "./OverlayComp";
 import AddItems from "./AddItems";
 import { useNavigate } from "react-router";
 import PropertiesCard from "./PropertiesCard";
+import Createproperty from "./Createproperty";
 
 const PropertyTray = (props) => {
   const navigate = useNavigate();
@@ -91,7 +92,7 @@ const PropertyTray = (props) => {
           className="pt-create-button"
           onClick={() =>
             handleButtonClicked(
-              !props.isTokenExp ? navigate("/login") : "+ Create"
+              !props.isTokenExp ? navigate("/login") : <Createproperty />
             )
           }
         >

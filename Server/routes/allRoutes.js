@@ -58,7 +58,7 @@ route.post("/api/login", login);
 route.post(
   "/api/uploadProperties",
   verifyToken,
-  uploadHostels.array("hostels", 10),
+  uploadHostels.array("hostelImages", 10),
   uploadProperty
 );
 
