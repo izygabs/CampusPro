@@ -1,5 +1,5 @@
 #input {
-  padding-right: 1rem;
+  padding-left: 0.5rem;
 }
 
 .feat-btn {
@@ -18,6 +18,15 @@
 }
 
 .cam {
+  margin-top: 12px;
+  margin-left: 5px;
   font-size: 1rem;
   /* text-align: center; */
+}
+.section-1 input {
+  margin-left: 12px;
+}
+.cpt-chechbox-div {
+  display: flex;
+  /* justify-content: flex-start; */
 }

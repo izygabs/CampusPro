@@ -12,6 +12,7 @@ import jwtDecode from "jwt-decode";
 import ItemTray from "./ItemTray";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Editing from "./Editing";
+import Createproperty from "./Createproperty";
 import PropertyTray from "./PropertytTray";
 // import Navbar from "./Navbar";
 // import Content from "./Content";
@@ -25,9 +26,19 @@ const Dashboard = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [userType, setUserType] = useState();
+  const [time, setTime] = useState();
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const tim = new Date().getHours();
+    console.log(tim);
+    if (tim < 12) setTime("Good Morning");
+    else if (tim < 18) setTime("Good Afternoon");
+    else setTime("Good Evening");
+    // console.log(new Date().getHours());
+  }, []);
   useEffect(() => {
     fetch("/api/getTokenExpiration", {
       headers: {
@@ -260,7 +271,9 @@ const Dashboard = () => {
                             navigate("/login")
                           ) : (
                             <div>
-                              <h1>Welcome back, {firstName}</h1>
+                              <h1>
+                                {time}, {firstName}
+                              </h1>
                               <div className="db-content">
                                 <h6>WHAT'S NEXT</h6>
                                 <h3>
@@ -276,13 +289,17 @@ const Dashboard = () => {
                                     handleButtonClicked(
                                       !isTokenExp ? (
                                         navigate("/login")
+                                      ) : userType == "Agent" ? (
+                                        <Createproperty />
                                       ) : (
                                         <AddItems />
                                       )
                                     )
                                   }
                                 >
-                                  Go to Create Your Property
+                                  {userType == "Agent"
+                                    ? "Go to Add Your Property"
+                                    : "Go to Add Your Items"}
                                 </button>
                               </div>
                               <div className="db-confirm">
@@ -308,11 +325,7 @@ const Dashboard = () => {
                           !isTokenExp ? (
                             navigate("/login")
                           ) : (
-                            <PropertyTray
-                              id={userID}
-                              isTokenExp={isTokenExp}
-                          
-                            />
+                            <PropertyTray id={userID} isTokenExp={isTokenExp} />
                           )
                         )
                       }
@@ -331,10 +344,7 @@ const Dashboard = () => {
                           !isTokenExp ? (
                             navigate("/login")
                           ) : (
-                            <ItemTray
-                              id={userID}
-                              isTokenExp={isTokenExp}
-                            />
+                            <ItemTray id={userID} isTokenExp={isTokenExp} />
                           )
                         )
                       }
@@ -418,7 +428,7 @@ const Dashboard = () => {
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 class="h2">Dashboard</h1>
 
-              <div class="btn-toolbar ms-5 mb-2 mb-md-0">
+              {/* <div class="btn-toolbar ms-5 mb-2 mb-md-0">
                 <div class="btn-group me-2 specialBtn">
                   <button
                     type="button"
@@ -427,11 +437,16 @@ const Dashboard = () => {
                         ? "hideBtn"
                         : "btn btn-sm btn-outline-dark"
                     }
+                    onClick={() =>
+                      handleButtonClicked(
+                        !isTokenExp ? navigate("/login") : <Createproperty />
+                      )
+                    }
                   >
                     Create Property
                   </button>
                   {/* <Link to="/add-items"> */}
-                  <button
+              {/* <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
                     onClick={() =>
@@ -441,10 +456,10 @@ const Dashboard = () => {
                     }
                   >
                     Create Items
-                  </button>
-                  {/* </Link> */}
-                </div>
-                {/* <button
+                  </button> */}
+              {/* </Link> */}
+              {/* </div> */}
+              {/* <button
                   type="button"
                   class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1"
                 >
@@ -453,8 +468,8 @@ const Dashboard = () => {
                   </svg>
                   This week
                 </button> */}
-              </div>
-              <div class="username">{/* <h6>{"Gabriel Isaiah"}</h6> */}</div>
+              {/* </div>
+              <div class="username">{/* <h6>{"Gabriel Isaiah"}</h6> */}
             </div>
 
             <div className="overComp">
@@ -464,14 +479,10 @@ const Dashboard = () => {
                   onClose={handleCloseOverlay}
                 />
               ) : (
-                /* <Welcome
-                  firstName={firstName}
-                  // handleChange={handleButtonClicked(
-                  //   isTokenExp ? navigate("/login") : <AddItems />
-                  // )}
-                /> */
                 <div>
-                  <h1>Welcome back, {firstName}</h1>
+                  <h1>
+                    {time}, {firstName}
+                  </h1>
                   <div className="db-content">
                     <h6>WHAT'S NEXT</h6>
                     <h3>
@@ -484,11 +495,19 @@ const Dashboard = () => {
                     <button
                       onClick={() =>
                         handleButtonClicked(
-                          !isTokenExp ? navigate("/login") : <AddItems />
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : userType == "Agent" ? (
+                            <Createproperty />
+                          ) : (
+                            <AddItems />
+                          )
                         )
                       }
                     >
-                      Go to Create Your Property
+                      {userType == "Agent"
+                        ? "Go to Add Your Property"
+                        : "Go to Add Your Items"}
                     </button>
                   </div>
                   <div className="db-confirm">
