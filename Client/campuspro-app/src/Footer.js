@@ -16,7 +16,7 @@ const Footer = () => {
     <div className='fp-main-header'>
         <div className='fp-header'>
             <h3 className='fp-h3'>Have some questions about our work? </h3>
-            <button className='fp-btn'>MORE ABOUT US</button>
+            <Link to="/MORE ABOUT US"><button className='fp-btn'>MORE ABOUT US</button></Link>
         </div>
 
         <footer className='fp-main'>
@@ -69,3 +69,4 @@ const Footer = () => {
 }
 
 export default Footer
+

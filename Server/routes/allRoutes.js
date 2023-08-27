@@ -46,6 +46,9 @@ const viewPropertyByAgentId = require("../controllers/viewPropertyByAgentId");
 
 const viewItemsByMerchId = require("../controllers/viewItemsByMerchId");
 
+const getHostelStatus = require("../controllers/getHostelByStatus");
+const getItemStatus = require("../controllers/getItemByStatus");
+
 const route = express.Router();
 
 route.post("/api/signUp", signUp);
@@ -59,7 +62,12 @@ route.post(
   uploadProperty
 );
 
-route.post("/api/uploadItems", uploadItems.array("itemImages", 10), uploadItem);
+route.post(
+  "/api/uploadItems",
+  verifyToken,
+  uploadItems.array("itemImages", 10),
+  uploadItem
+);
 
 route.put(
   "/api/property/:id",
@@ -92,17 +100,21 @@ route.delete("/api/item/:id", verifyToken, deleteItem);
 
 route.get("/api/logout", verifyToken, logOut);
 
-route.put("/api/changePassword/:id", changePassword);
+route.put("/api/changePassword", verifyToken, changePassword);
 
 route.put(
-  "/api/updateUser/:id",
+  "/api/updateUser/",
   verifyToken,
   upload.single("profilePic"),
   updateUser
 );
 
-route.get("/api/propertyByAgent/:agentId", viewPropertyByAgentId);
+route.get("/api/propertyByAgent/:agentID", viewPropertyByAgentId);
 
 route.get("/api/itemsByMerch/:merchantID", viewItemsByMerchId);
+
+route.get("/api/propertyStatus/:status", verifyToken, getHostelStatus);
+
+route.get("/api/itemStatus/:status", verifyToken, getItemStatus);
 
 module.exports = route;

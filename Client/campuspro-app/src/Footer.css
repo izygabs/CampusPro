@@ -7,13 +7,14 @@ body{
     background-color: black;
     height: 23rem;
     width: 100%;
+    
 }
 
 .fp-header{
     display: flex;
     margin-left: 4rem;
     position: relative;
-    right: 4rem;
+    right: 16rem;
 }
 
 .fp-btn{
@@ -38,7 +39,6 @@ body{
     background-color: rgba(1, 8, 1, 0.295);
     height: 15rem;
     
-    
 }
 .fp-main, .fp-campus .fp-moto{
     margin-left: 4rem;
@@ -62,7 +62,7 @@ body{
 }
 
 .fp-header, .fp-h3 .fp-btn{
-    margin-left: 20rem;
+    margin-left: 33rem;
 }
 
 .email-box{
@@ -96,9 +96,12 @@ body{
     /* margin-top: 2rem; */
     position: relative;
     top: 8px;
+    right: 7px;
 }
 .all-contact .fp-info{
     display: flex;
+    position: relative;
+    right: 1rem;
 }
 .all-contact, .fp-number .fp-info{
     position: relative;
@@ -264,4 +267,11 @@ body{
 }
 .fp-service{
     /* background-color: black; */
+}
+.fp-main{
+    margin-left: 5.5rem;
+}
+.fp-add-one{
+    position: relative;
+    right: 5px;
 }

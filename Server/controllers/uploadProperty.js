@@ -8,8 +8,10 @@ const nodeMailer = require("../Services/nodemailer");
 const { user } = require("../models/userSchema");
 
 const uploadProperty = async (req, res) => {
+  const arrayStatus= ['Pending', 'Approved', 'Rejected'];
+
   let hostelsPictures = req.files;
-  console.log(hostelsPictures);
+  // console.log(hostelsPictures);
   let userEmail = req.email;
   let userId = req.user;
   let value = req.body;
@@ -34,6 +36,7 @@ const uploadProperty = async (req, res) => {
 
     try {
       const hostelPics = hostelsPictures.map((file) => file.path);
+      let num= Math.floor(Math.random() * 3);
 
       const hostel = new hostelProps({
         agentID: userId,
@@ -43,6 +46,7 @@ const uploadProperty = async (req, res) => {
         location: Location,
         hostelImages: [], //to be updated later with the image path
         houseProperties: [],
+        hostelStatus: arrayStatus[num]
       });
 
       let newHostel = await hostel.save();

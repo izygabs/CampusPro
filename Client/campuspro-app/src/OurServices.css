@@ -1,5 +1,6 @@
-body{
-    /* background-color: black; */
+.fp-container_header{
+    width: 100%;
+    height: 100%;
 }
 .fp-p-main p{
     padding-left: 13rem;
@@ -10,7 +11,8 @@ body{
     padding-top: 1rem;
     width: 860px;
     text-align: center;
-    
+    position: relative;
+    left: 5rem;
 }
 p{
     width: 1;
@@ -23,8 +25,48 @@ p{
     color: white;
     text-decoration: underline;
 }
-/* .fp-p2{
-    padding-top: 1rem;
-    width: 818px;
+
+.fp-campus-image img{
+    width: 40rem;
+    padding: 8px;
+}
+ .item-one{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    left: 4rem;
+    width: 40rem;
+    height: 22.3rem;
+} 
+.fp-items, .item-one .item-two .item-three .h-t{
+    position: relative;
+    left: 40rem;
+    width: 20rem;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    bottom: 78.8rem;
+}
+ .item-two{
+    position: relative;
+    left: 4rem;
+}
+.h-t{
     text-align: center;
-} */
+    width: 240%;
+}
+.item-three{
+    width: 42rem;
+    margin-left: 3rem;
+} 
+.h-apartment{
+    text-align: center;
+    width: 40rem;
+    position: relative;
+    top: 10px;
+}
+@media(min-width: 200px),  (max-width: 300px){
+    .fp-container_header {
+      flex-direction: column; background-color: brown;
+    }
+  }

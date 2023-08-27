@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-// const register = require("../models/userSchema");
+const register = require("../models/userSchema");
 const jwt = require("jsonwebtoken");
 const { StatusCodes } = require("http-status-codes");
 const { user } = require("../models/userSchema");

@@ -26,7 +26,7 @@ const AddItems = () => {
     location: yup.string().required("Address field is required"),
     itemImages: yup
       .array()
-      .min(5, "You must upload minimum of 5 pictures")
+      .min(3, "You must upload minimum of 3 pictures")
       .max(10, "You can upload maximum of 10 pictures"),
   });
 
