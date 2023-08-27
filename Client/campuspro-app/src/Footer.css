@@ -174,7 +174,7 @@ body{
     border-radius: 1rem;
 }
 .fp-newsletter .fp-btn-one:hover{
-    background-color: gold;
+    background-color: #ffef99;
     transition: 0.4s;
 }
 .fp-newsletter .fp-input{
@@ -250,4 +250,18 @@ body{
 .fp-contact-num{
     position: relative;
     left: 1.5rem;
+}
+.fp-about{
+    color: white;
+    text-decoration: none;
+}
+.fp-about:hover{
+    color: white;
+    text-decoration: underline;
+}
+.fp-about:active{
+    color: rgb(128, 128, 181);
+}
+.fp-service{
+    /* background-color: black; */
 }

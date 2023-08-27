@@ -11,6 +11,7 @@ import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
 import Navbar from "./Components/Navbar";
 import jwtDecode from "jwt-decode";
+
 // import Navbar from "./Components/Navbar";
 
 function HomePage() {
@@ -18,6 +19,8 @@ function HomePage() {
   // const [camp , setCamp]=useState('')
   const [isTokenExp, setIsTokenExp] = useState(false);
   const navigate = useNavigate();
+
+// console.log(campData)
 
   useEffect(() => {
     fetch("/api/getTokenExpiration", {
@@ -72,7 +75,7 @@ function HomePage() {
   return (
     <div className="homepage">
       <Navbar />
-
+        
       <div className="hp-carousel-div">
         <Carousel controls={false} indicators={false}>
           <Carousel.Item>
