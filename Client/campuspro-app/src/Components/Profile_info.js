@@ -11,46 +11,52 @@ function ProfileInfo(prop) {
   const fileUpload = useRef(null);
   const [userProfile, setUserProfile] = useState([]);
   const [imagePath, setImagePath] = useState();
+  const [msg, setMsg] = useState("");
+  const [fileUploaded, setFileUpload] = useState(false);
   const [firstName, setFirstName] = useState(userProfile.firstName);
   const [lastName, setLastName] = useState(userProfile.lastName);
   const [email, setEmail] = useState(userProfile.email);
   const [phoneNumber, setPhoneNumber] = useState(userProfile.phoneNumber);
 
   useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const results = await axios.get("/api/user/:id");
-        setUserProfile(results.data.Profile);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchProfile();
   }, [userProfile]);
 
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // console.log(imagePath.name);
+  const fetchProfile = async () => {
     try {
-      const data = await axios.put("/api/updateUser/", {
-        firstName: firstName || userProfile.firstName,
-        lastName: lastName || userProfile.lastName,
-        email: email || userProfile.email,
-        phoneNumber: phoneNumber || userProfile.phoneNumber,
-        profilePic: imagePath,
-      });
-      // console.log(data);
-      alert(data.data.message);
-      setClicked(false);
-      //  setClicked(true);
-      setClicked2(false);
-      //  setClicked2(true);
-      setClicked3(false);
-      //  setClicked3(true)
-      setImageScr(pic);
+      const results = await axios.get("/api/user/:id");
+      setUserProfile(results.data.Profile);
     } catch (error) {
       console.log(error);
     }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(typeof imagePath);
+
+    if (fileUploaded) {
+      try {
+        const formdata = new FormData();
+        formdata.append("firstName", firstName || userProfile.firstName);
+        formdata.append("lastName", lastName || userProfile.lastName);
+        formdata.append("email", email || userProfile.email);
+        formdata.append("phoneNumber", phoneNumber || userProfile.phoneNumber);
+        formdata.append("profilePic", imagePath || userProfile.profilePic);
+        const data = await axios.put(`/api/updateUser`, formdata, {
+          headers: {
+            "Content-Type": `multipart/form-data`,
+          },
+        });
+        alert(data.data.message);
+        setClicked(false);
+        setClicked2(false);
+        setClicked3(false);
+        setImageScr(pic);
+        setFileUpload(false);
+      } catch (error) {
+        console.log(error);
+      }
+    } else setMsg("Click the Image above to select a profile picture");
   };
 
   const handleInputChange1 = (e) => {
@@ -103,7 +109,9 @@ function ProfileInfo(prop) {
 
   const displayProfilePic = (e) => {
     const file = e.target.files[0];
+    // console.log(file);
     if (file) {
+      setFileUpload(true);
       setImageScr(URL.createObjectURL(file));
       setImagePath(file);
     }
@@ -128,24 +136,31 @@ function ProfileInfo(prop) {
               id="uploadImage"
               onChange={displayProfilePic}
             />
-            {imgSrc ? (
+            {fileUploaded ? (
               <img
-                src={imgSrc}
-                alt="profilepic"
+                src={!fileUploaded ? `${userProfile.profilePic}` : `${imgSrc}`}
+                alt="Profile picture"
                 className="pi-pic"
                 onClick={uploadFile}
               />
             ) : (
               <img
-                src={userProfile.profilePic || pic}
-                alt="profilepic"
+                src={
+                  userProfile.profilePic
+                    ? `${userProfile.profilePic}`
+                    : `${imgSrc}`
+                }
+                alt="Profile picture"
                 className="pi-pic"
                 onClick={uploadFile}
               />
             )}
-            <button onSubmit={handleSubmit} type="submit" className="pi-img">
+            <button onClick={handleSubmit} type="submit" className="pi-img">
               Upload pic
             </button>
+            <p style={{ color: "red", fontSize: "14px", marginLeft: "1.5rem" }}>
+              {fileUploaded ? "" : msg}
+            </p>
           </form>
         </div>
         <div className="pi-input">

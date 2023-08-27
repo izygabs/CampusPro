@@ -103,7 +103,7 @@ route.get("/api/logout", verifyToken, logOut);
 route.put("/api/changePassword", verifyToken, changePassword);
 
 route.put(
-  "/api/updateUser/",
+  "/api/updateUser",
   verifyToken,
   upload.single("profilePic"),
   updateUser

@@ -40,34 +40,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    propertyIds: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "hostel",
-        },
-      ],
-    },
-
-    itemIds: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "item",
-        },
-      ],
-    },
-    google: {
-      id: {
-        type: String,
-      },
-      name: {
-        type: String,
-      },
-      email: {
-        type: String,
-      },
-    },
   },
   { timestamps: true }
 );
