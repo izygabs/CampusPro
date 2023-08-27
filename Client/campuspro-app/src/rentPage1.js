@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import location from "./images/location-icon.png";
 import RentPage2 from "./rentPage2"
+import campData from "./campus"
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function RentPage1() {
@@ -73,6 +74,27 @@ function RentPage1() {
   return (
     <div>
       <Navbar />
+
+      <div className="hp-select-div">
+          <select>
+            <input type="text"  placeholder="search"/>
+            <option>Filter hostels by campus</option>
+            {campData.map((uni)=>{
+              return(
+                <option value={uni.name} key={uni.name} >{uni.name}</option>
+              )
+            })}
+          </select>
+
+          <select>
+            <option>filter hostels according to price</option>
+            <option value='1000000' >1,000,000 and below</option>
+            <option value='500000' >500,000 and below</option>
+            <option value='200000' >200,000 and below</option>
+            <option value='100000' >100,000 and below</option>
+          </select>
+        
+        </div>
 
       {/* <div className="sp-subrent-div">{subRent}</div> */}
       <div className="sp-subrent-div">

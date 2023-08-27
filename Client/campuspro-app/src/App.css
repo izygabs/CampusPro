@@ -10,6 +10,24 @@ body {
 p {
   margin: 3px !important;
 }
+.hp-select-div{
+  padding-top: 20vh;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15vw;
+  padding-right: 15vw;
+}
+.hp-select-div select{
+ height: 7vh;
+ outline: none;
+ background-color: #ffef99;
+ font-weight: bold;
+
+}
+.hp-select-div option{
+  background-color:whitesmoke ;
+
+}
 .hp-header {
   position: fixed;
   display: flex;
