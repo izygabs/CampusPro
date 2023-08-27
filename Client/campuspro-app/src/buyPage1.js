@@ -40,17 +40,18 @@ const BuyPage = () => {
 
   return (
     <div className="bpage-main">
+
       <navbar className="bpage-navbar">
         <Link to="/">
-        <img src={logo} alt='logo' className='logo' />
+        <img src={logo} alt='logo' className='bp1-logo' />
         </Link>
-        <input type="search" name="input" id="search" placeholder='Search items...' onChange={(e) => setQuery(e.target.value)} />
+        <input type="search" name="input" id="bp1-search" placeholder='Search items...' onChange={(e) => setQuery(e.target.value)} />
         <div id='p'>
         {/* <p id='paragraph'>Items Available for buy</p> */}
         </div>
       </navbar>
                                     
-      <select value={update} onChange={handleChange} className='bpage-select'>
+      {/* <select value={update} onChange={handleChange} className='bp1-select'>
         <option value=' '>Select Item to Display</option><hr/>
         <option value='Clothings'>Clothings</option>
         <option value='Kitchen Utensils'>Kitchen Utensils</option>
@@ -60,18 +61,18 @@ const BuyPage = () => {
         <option value='Electronic Gadgets'>Electronic Gadgets</option>
         <option value='Books'>Books</option>
         <option value='Others'>Others</option>
-      </select> 
+  </select> */}
 
-      <section className='bpage-section'>
+      <section className='bp1-section'>
         {holddata.map((items) => {
           return(
-            <div key={items.id} className='bpage-items'>
-              <div className='img-div'>
-                <img src={`${items.itemPictures[1]}`} alt='image' className='normal-img' />
+            <div key={items.id} className='bp1-items'>
+              <div className='bp1-img-div'>
+                <img src={`${items.itemPictures[1]}`} alt='image' className='bp1-normal-img' />
               </div>
-                <p id='p-i'> <br/>  <br/> 
+                <p id='bp1-p-i'> <br/>  <br/> 
             
-              <button className='bpage-btn'><Link to={`/holddata/${items._id}`} id='link-btn'>
+              <button className='bp1-btn'><Link to={`/holddata/${items._id}`} id='bp1-link-btn'>
                 View Details
                 </Link>
                 </button>

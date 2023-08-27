@@ -1,18 +1,18 @@
-.minor-sec {
+.bp2-minor-sec {
   margin-top: 9rem;
   height: 100vh;
   display: flex;
   box-shadow: inset 2px 2px 5px black;
 }
 
-.first-div {
+.bp2-first-div {
   margin: 1rem;
   width: 50%;
   border-radius: 10px;
   box-shadow: 2px 2px 5px black;
 }
 
-.second-div {
+.bp2-second-div {
   margin: 1.5rem;
   width: 50%;
   font-weight: bold;
@@ -21,7 +21,7 @@
   height: 50vh;
 }
 
-#details {
+#bp2-details {
   background-color: gold;
   text-align: center;
   font-size: 1.5rem;
@@ -30,13 +30,13 @@
   margin-top: 0.5rem;
 }
 
-#details:hover {
+#bp2-details:hover {
   background-color: black;
   color: #ffef99;
   cursor: pointer;
 }
 
-#contact {
+#bp2-contact {
   background-color: #ffef99;
   text-align: center;
   font-size: 1.5rem;
@@ -45,22 +45,22 @@
   border-radius: 10px;
 }
 
-#contact:hover {
+#bp2-contact:hover {
   background-color: black;
   color: #ffef99;
   cursor: pointer;
 }
 
-#para {
+#bp2-para {
   padding-bottom: 1.3rem;
 }
 
-.i-mg {
+.bp2-i-mg {
   width: 100%;
   height: 100%;
 }
 
-.bp-btn {
+.bp2-btn {
   background: gold;
   color: black;
   padding: 0.2rem 1rem;
@@ -71,7 +71,7 @@
   transition: all 2s ease-in-out;
 }
 
-.bp-btn:hover {
+.bp2-btn:hover {
   background: black;
   color: white;
 }

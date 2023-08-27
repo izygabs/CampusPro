@@ -15,6 +15,7 @@ import Editing from "./Editing";
 import PropertyTray from "./PropertytTray";
 // import Navbar from "./Navbar";
 // import Content from "./Content";
+import Createproperty from "./Createproperty";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -425,7 +426,12 @@ const Dashboard = () => {
                     class={
                       userType == "merchant"
                         ? "hideBtn"
-                        : "btn btn-sm btn-outline-dark"
+                        : "btn btn-sm btn-outline-dark"   
+                    }
+                    onClick={() =>
+                      handleButtonClicked(
+                        !isTokenExp ? navigate("/login") : <Createproperty />
+                      )
                     }
                   >
                     Create Property
