@@ -131,7 +131,7 @@ p {
 }
 .hp-school {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   overflow-x: scroll;
   border-style: none;
   width: 100%;
@@ -146,8 +146,9 @@ p {
   display: flex;
   flex-direction: column;
   width: 20vw;
-  min-height: 52vh;
+  height: 52vh;
   margin-right: 15px;
+  
 }
 .hp-school-div p {
   text-align: center;
@@ -182,7 +183,7 @@ p {
   height: 2.5vh !important;
 }
 
-.hp-img-div img {
+.hp-img{
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -244,9 +245,10 @@ p {
   border-radius: 15px;
   padding: 1px 10px;
 }
-.sp-img-div img {
+.sp-img{
   height: 100%;
-  max-width: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .sp-text-div button {
@@ -366,7 +368,7 @@ p {
 .sp2-carousel-div {
   padding-top: 25vh;
   width: 100;
-  min-height: 100vh;
+  max-height: 95vh;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
@@ -378,8 +380,10 @@ p {
 }
 
 .sp2-carousel-img {
-  height: 100%;
-  width: 100%;
+  max-height: 70vh;
+  max-width: 100%;
+  border-radius: 25px;
+  object-fit:fill;
 }
 .sp2-divs {
   width: 100%;

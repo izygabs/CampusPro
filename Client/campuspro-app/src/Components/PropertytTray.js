@@ -5,7 +5,7 @@ import del from "../images/delete-icon.png";
 import OverlayComponent from "./OverlayComp";
 import AddItems from "./AddItems";
 import { useNavigate } from "react-router";
-import PropertiesCard from "./PropertiesCard";
+import PropertiesCard2 from "./propertiesCard2";
 import Createproperty from "./Createproperty";
 
 const PropertyTray = (props) => {
@@ -73,9 +73,8 @@ const PropertyTray = (props) => {
     try {
       const req = await fetch(url);
       const res = await req.json();
-      const info = await res.Items;
-      setData(info);
-      console.log(data);
+      setData(res);
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -141,7 +140,7 @@ const PropertyTray = (props) => {
         data ? (
           <section className="pt-properties-display">
             {data.map((data) => {
-              return <PropertiesCard data={data} />;
+              return <PropertiesCard2 data={data} />;
             })}
           </section>
         ) : (

@@ -102,7 +102,7 @@ function RentPage1() {
           return(
             <div key={info._id} className="sp-sub-div">
               <div className="sp-img-div">
-                <img src={`${info.hostelImages[0]}`} />
+                <img className="sp-img" src={`${info.hostelImages[0]}`} />
                 <div>
                   <img className="hp-locate" src={location} />
                   <p>{info.campusName.toUpperCase()}</p>

@@ -84,9 +84,9 @@ const fetcher = async ()=> {
                 <Carousel.Item>
                   {datas.hostelImages? <img  class="d-block w-100 sp2-carousel-img" src={`/${datas.hostelImages[4]}`}/>: null}
                 </Carousel.Item>
-                <Carousel.Item>
+                {/* <Carousel.Item>
                   {datas.hostelImages? <img  class="d-block w-100 sp2-carousel-img" src={`/${datas.hostelImages[5]}`}/>: null}
-                </Carousel.Item>
+                </Carousel.Item> */}
               </Carousel> 
             </section>
             <div className="sp2-divs2">
@@ -147,7 +147,7 @@ const fetcher = async ()=> {
                     </div>
                   </div>
                   <div className="sp-text-div">
-                    <p>{other.houseProperties[0]}</p>
+                    <p>{other.hostelFeatures[0]}</p>
                     <p>#{Number(other.price).toLocaleString()}</p>
 
                     <Link className="sp2-linkk" to={`/rentproperty/${other._id}`}>
