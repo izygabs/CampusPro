@@ -6,6 +6,8 @@ const { items } = require("../models/itemSchema");
 let fs = require("fs");
 
 const uploadItem = async (req, res) => {
+  const arrayStatus= ['Pending', 'Approved', 'Rejected'];
+
   const itemPics = req.files;
   // console.log(req.files);
   const merchantId = req.user;
@@ -21,6 +23,8 @@ const uploadItem = async (req, res) => {
     res.status(406).json({ Message: "You must upload minimum of 5 pictures" });
   } else {
     try {
+   let num= Math.floor(Math.random() * 3);
+
       const itemPic = itemPics.map((file) => file.path);
       const seller = new items({
         merchantID: merchantId,
@@ -33,7 +37,7 @@ const uploadItem = async (req, res) => {
         campus: value.campus,
         location: value.location,
         itemPictures: [],
-        itemStatus: "New",
+        itemStatus: arrayStatus[num]
       });
       const newSeller = await seller.save();
       if (newSeller) {

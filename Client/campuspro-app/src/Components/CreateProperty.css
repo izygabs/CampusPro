@@ -1,0 +1,23 @@
+#input {
+  padding-right: 1rem;
+}
+
+.feat-btn {
+  border: none;
+  background-color: gold;
+  color: black;
+  border-radius: 25px;
+  padding: 0.3rem 1.5rem;
+  margin-top: 0.5rem;
+  transition: all 2s ease-in-out;
+}
+
+.feat-btn:hover {
+  background: black;
+  color: white;
+}
+
+.cam {
+  font-size: 1rem;
+  /* text-align: center; */
+}

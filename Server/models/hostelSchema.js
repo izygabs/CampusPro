@@ -26,8 +26,9 @@ const hostelSchema = new mongoose.Schema(
       type: String,
       default: "New",
     },
+
     hostelImages: [String],
-    houseProperties: [String],
+    hostelFeatures: [String],
   },
   { timestamps: true }
 );

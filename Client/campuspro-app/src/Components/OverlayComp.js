@@ -2,11 +2,11 @@ import React from "react";
 
 function OverlayComponent({ component, onClose }) {
   return (
-    <div className="overlay">
+    <div>
       <button className="close-button" onClick={onClose}>
         Close
       </button>
-      <div className="overlay-content">{component}</div>
+      <div>{component}</div>
     </div>
   );
 }

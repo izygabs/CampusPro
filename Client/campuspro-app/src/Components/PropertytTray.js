@@ -69,13 +69,13 @@ const PropertyTray = (props) => {
   }, []);
   const fetcher = async () => {
     url = `/api/propertyByAgent/${props.id}`;
-    console.log("url :", url);
+    // console.log("url :", url);
     try {
       const req = await fetch(url);
       const res = await req.json();
       const info = await res.Items;
       setData(info);
-      console.log(data);
+      //   console.log(data);
     } catch (error) {
       console.log(error);
     }

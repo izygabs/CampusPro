@@ -7,10 +7,6 @@ import * as yup from "yup";
 function Changepassword(prop) {
   const [click, setClick] = useState(false);
 
-  // const sub = (e) => {
-  //   e.preventDefault();
-  //   // console.log(values);
-  // };
   const handleEditClicked = (e) => {
     e.preventDefault();
     // console.log("clcik1", clicked);
@@ -34,7 +30,9 @@ function Changepassword(prop) {
       .oneOf([yup.ref("newPassword"), null], "Passwords must match")
       .required("Confirm Password is required"),
   });
-
+  const sub = (e) => {
+    console.log("working");
+  };
   const formik = useFormik({
     initialValues: {
       currentPassword: "",
@@ -44,25 +42,35 @@ function Changepassword(prop) {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       // Handle form submission
-      console.log(values);
+      // console.log(values);
 
       try {
+        const formData = new FormData();
+
+        formData.append("currentPassword", values.currentPassword);
+        formData.append("newPassword", values.newPassword);
+        formData.append("confirmPassword", values.confirmPassword);
+
         const response = await fetch("/api/changePassword", {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify(values),
         });
-        console.log(response);
+        // console.log(response);
 
         const result = await response.json();
         if (response.status === 404) {
           alert(result.message);
         } else if (response.status === 201) {
           alert(result.message);
+          resetForm();
         } else if (response.status === 417) {
           alert(result.Error);
+        } else {
+          alert(result.message);
         }
-        resetForm();
       } catch (error) {
         console.error("Error sending password:", error);
       }
@@ -97,17 +105,16 @@ function Changepassword(prop) {
                 method="put"
                 action="/api/changePassword"
               >
-                <label>
-                  Current password:<br></br>
-                  <input
-                    type="password"
-                    name="currentPassword"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.currentPassword}
-                    placeholder="Enter your current password"
-                  />
-                </label>
+                <label>Current password:</label>
+                <br></br>
+                <input
+                  type="password"
+                  name="currentPassword"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.currentPassword}
+                  placeholder="Enter your current password"
+                />
                 {formik.touched.currentPassword &&
                   formik.errors.currentPassword && (
                     <p className="chngPwd-error-message">
@@ -115,44 +122,44 @@ function Changepassword(prop) {
                     </p>
                   )}
                 <br></br>
-                <label>
-                  New password: <br />
-                  <input
-                    type="password"
-                    name="newPassword"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.newPassword}
-                    placeholder="Enter your new password"
-                  />
-                </label>
+                <label>New password:</label>
+                <br />
+                <input
+                  type="password"
+                  name="newPassword"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.newPassword}
+                  placeholder="Enter your new password"
+                />
                 {formik.touched.newPassword && formik.errors.newPassword && (
                   <p className="chngPwd-error-message">
                     {formik.errors.newPassword}
                   </p>
                 )}
                 <br />
-                <label>
-                  Confirm new password: <br />
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.confirmPassword}
-                    placeholder="Confirm your password"
-                  />
-                </label>
+                <label>Confirm new password:</label>
+                <br />
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.confirmPassword}
+                  placeholder="Confirm your password"
+                />
                 {formik.touched.confirmPassword &&
                   formik.errors.confirmPassword && (
                     <p className="chngPwd-error-message">
                       {formik.errors.confirmPassword}
                     </p>
                   )}
+
+                <br />
+                <button className="cp-btn" type="submit">
+                  Confirm
+                </button>
               </form>
-              <button className="cp-btn" type="submit">
-                Confirm
-              </button>
             </div>
           )}
         </div>
