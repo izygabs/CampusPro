@@ -2,9 +2,11 @@ const { user } = require("../models/userSchema");
 const fs = require("fs");
 
 const updateUser = async (req, res) => {
-  const profilePic = req.file.path;
+  // console.log(req.file);
   const value = req.body;
-  console.log(value);
+  // console.log(value);
+  const profilePic = req.file.path;
+
   const userId = req.user;
   try {
     const updatedUser = await user.findByIdAndUpdate(
