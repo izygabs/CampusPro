@@ -6,10 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import jwtDecode from "jwt-decode";
 import logo from "../images/campuspro(6).png";
 
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, resolvePath } from "react-router-dom";
 
 const Login = () => {
   const [jwtData, setJwtToken] = useState(null);
+  const [msg, setMsg] = useState("");
 
   const navigator = useNavigate();
   // const [email, setEmail] =useState("");
@@ -39,7 +40,7 @@ const Login = () => {
       const result = await response.json();
       const token = jwtDecode(result.jwtToken);
       // setJwtToken(token);
-      // console.log(result);
+      console.log(result.Message);
       const email = token.email;
       const userType = token.userType;
       const userName = token.name;
@@ -54,13 +55,13 @@ const Login = () => {
           // });
           break;
         case 401:
-          alert(result.Message);
+          alert(result.Error);
           break;
         case 417:
-          alert(result.Message);
+          setMsg(result.Message);
           break;
         case 403:
-          alert(result.Message);
+          setMsg(result.Message);
           break;
         default:
           alert(result.Message);
@@ -85,7 +86,7 @@ const Login = () => {
             className="login-form"
           >
             <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
-
+            <p>{msg}</p>
             <div class="form-floating py-3">
               <input
                 name="Email"
@@ -160,4 +161,4 @@ const Login = () => {
   );
 };
 
-export default Login; 
+export default Login;
