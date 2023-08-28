@@ -382,7 +382,7 @@ p {
   flex-wrap: nowrap;
   justify-content: space-around;
   margin-bottom: 10vh;
-  border: solid 2px black;
+  /* border: solid 2px black; */
 }
 .sp2-main-sector {
   min-height: 100%;
@@ -393,7 +393,7 @@ p {
   max-height: 80vh;
   max-width: 100%;
   border-radius: 25px;
-  object-fit:fill;
+  object-fit:cover;
 }
 .sp2-divs {
   width: 100%;
@@ -425,6 +425,11 @@ p {
 .sp2-main-img {
   width: 100%;
   min-height: 100%;
+}
+.sp-other-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .sp-2-img-div {
   display: flex;

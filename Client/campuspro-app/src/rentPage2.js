@@ -16,8 +16,6 @@ function RentPage2 (pass) {
   const [other, setOther]=useState([]);
  
 
- 
-
  //using the hook to display the fetch data on load
  useEffect(()=>{
     fetcher()
@@ -140,7 +138,7 @@ const fetcher = async ()=> {
               return(
                 <div key={other._id} className="sp-sub-div">
                   <div className="sp-img-div">
-                    <img src={other.hostelImages ? `/${other.hostelImages[0]}`: null} />
+                    <img className="sp-other-img" src={other.hostelImages ? `/${other.hostelImages[0]}`: null} />
                     <div>
                       <img className="hp-locate" src={location} />
                       <p>{other.campusName}</p>
