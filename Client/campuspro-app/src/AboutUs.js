@@ -3,10 +3,13 @@ import './AboutUs.css';
 import House from './images/quality-house.jpg';
 import interior from './images/quality-interior.jpg';
 import team from './team.json';
+import Navbar from '../src/Components/Navbar';
 
 const About = () => {
 
   return (
+    <>
+    <Navbar />
     <div className='main-about'>
       <section className="about-main-section">
         <div className="about-build-div">
@@ -69,6 +72,7 @@ const About = () => {
 
       </section>
     </div>
+    </>
   )
 }
 

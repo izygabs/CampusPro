@@ -6,13 +6,14 @@ import facebook from "./images/facebook.png";
 import linkedin from "./images/linkedin (2).png";
 import twitter from "./images/twitter.png";
 import youtube from "./images/youtube.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className="fp-main-header" id="footer">
       <div className="fp-header">
         <h3 className="fp-h3">Have some questions about our work? </h3>
-        <button className="fp-btn">MORE ABOUT US</button>
+        <Link to='/AboutUs'><button className="fp-btn">MORE ABOUT US</button></Link>
       </div>
 
       <footer className="fp-main">
