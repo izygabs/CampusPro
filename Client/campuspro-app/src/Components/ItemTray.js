@@ -132,6 +132,7 @@ const ItemTray = (props) => {
       const req = await fetch(url);
       const res = await req.json();
       const info = await res.Item;
+      // console.log(info)
       setData(info);
       // console.log(info);
     } catch (error) {

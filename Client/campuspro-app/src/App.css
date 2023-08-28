@@ -176,6 +176,7 @@ p {
 }
 .hp-locate {
   width: 15px;
+  height: 2.3vh;
   margin-top: 4px;
 }
 .hp-locate2 {
@@ -198,7 +199,7 @@ p {
   font-style: italic;
 }
 .home-school-button {
-  border-radius: 10px;
+  border-radius: 15px;
   border: none;
   margin-right: auto;
   margin-left: auto;
@@ -206,6 +207,14 @@ p {
   margin-bottom: 5px;
   background-color: black;
   color: white;
+  padding: 2px 12px;
+  transition:background-color 0.7s ;
+}
+.home-school-button:hover {
+
+  background-color: transparent;
+  border: solid 1px black;
+  color: black;
 }
 .sp-subrent-div {
   display: flex;

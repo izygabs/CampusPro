@@ -79,7 +79,8 @@ const PropertyTray = (props) => {
   const Pending = async ()=> {
   
     try {
-      const req = await fetch(`/api/propertyStatus/Pending`);
+      const req = await fetch(`/api/propertyStatus/Approved`);
+      console.log(req)
       const res = await req.json();
         console.log(res);
       
