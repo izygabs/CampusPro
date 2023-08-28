@@ -375,13 +375,14 @@ p {
   opacity: 0.5;
 }
 .sp2-carousel-div {
-  padding-top: 25vh;
+  padding-top: 15vh;
   width: 100;
-  max-height: 95vh;
+  max-height: 105vh;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
   margin-bottom: 10vh;
+  border: solid 2px black;
 }
 .sp2-main-sector {
   min-height: 100%;
@@ -389,7 +390,7 @@ p {
 }
 
 .sp2-carousel-img {
-  max-height: 70vh;
+  max-height: 80vh;
   max-width: 100%;
   border-radius: 25px;
   object-fit:fill;
