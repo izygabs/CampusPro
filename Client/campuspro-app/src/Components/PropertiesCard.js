@@ -1,19 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import edit from "../images/edit-icon.png";
 import del from "../images/delete-icon.png";
+import Modal from "react-modal";
+import AddItems from "./AddItems";
+
+// import { useDataContext } from "./DataContext";
 
 const PropertiesCard = (prop) => {
-  const data = prop.data;
+  // const data = prop.data;
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [data, setData] = useState(prop.data);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  //   const { deleter } = useDataContext();
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const editItem = (id, name) => {
+    console.log("item name", name);
+    console.log("ID", id);
+    // setModalIsOpen(true);
+    // openModal();
+  };
+
+  const handleDelete = () => {
+    setShowConfirmation(true);
+  };
 
   //function to delete a paticular item
-  const deleter = (id) => {
-    console.log("item id", id);
+  const deleter = async (id, data) => {
     const url = `/api/item/${id}`;
     const option = { method: "DELETE" };
-    fetch(url, option).then((res) => console.log(res.status));
+    let resposnse = await fetch(url, option);
 
-    alert(`item deleted successfully`);
-    setTimeout(window.location.reload(), 1000);
+    console.log(resposnse.Message);
+    // prop.fetchData();
+    // const updatedData = data.filter((item) => item._id !== id);
+    // setData(updatedData);
+    alert("Item deleted");
+    setShowConfirmation(false);
+
+    // setTimeout("window.location.reload()", 100);
   };
 
   // console.log(data)
@@ -35,26 +66,55 @@ const PropertiesCard = (prop) => {
         <p>{data.itemStatus}</p>
       </div>
       <div className="pt-props-posted-div">
-        <button>
-          {" "}
+        <button onClick={() => editItem(data._id, data.itemName)}>
           <img className="pt-edit-btn" src={edit} />
         </button>
 
         <button
           type="button"
           class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
+          //   data-bs-toggle="modal"
+          //   data-bs-target="#exampleModal"
+          //   onClick={() => deleter(data._id)}
+          onClick={handleDelete}
         >
-          <img className="pt-delete-btn" src={del} />
+          {!showConfirmation && <img className="pt-delete-btn" src={del} />}
         </button>
-        <p className="pt-edit">Edit</p>
+        {/* <p className="pt-edit">Edit</p> */}
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          contentLabel="Success Modal"
+          className="editItem_modal"
+          overlayClassName="editItem_overlayModal"
+        >
+          <AddItems />
+        </Modal>
         {/* <p className="pt-delete">Delete</p> */}
 
         {/* <!-- Button trigger modal --> */}
 
         {/* <!-- Modal --> */}
-        <div
+
+        {showConfirmation && (
+          <div className="confirmation-dialog">
+            <p>{`Are you sure you want to delete?`}</p>
+
+            <button
+              onClick={() => deleter(data._id, data)}
+              className="deleteButton"
+            >
+              Yes
+            </button>
+            <button
+              onClick={() => setShowConfirmation(false)}
+              className="deleteButton"
+            >
+              No
+            </button>
+          </div>
+        )}
+        {/* <div
           class="modal fade"
           id="exampleModal"
           tabindex="-1"
@@ -88,7 +148,7 @@ const PropertiesCard = (prop) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

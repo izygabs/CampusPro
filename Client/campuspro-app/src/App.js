@@ -15,9 +15,11 @@ import ProfileInfo from "./Components/Profile_info";
 import UserDashboard from "./Components/UserDashboard";
 import PropertyTray from "./Components/PropertytTray";
 import About from "./AboutUs";
+// import { DataProvider } from "./Components/DataContext";
 
 function App() {
   return (
+    // <DataProvider>
     <div className="App">
       {/* <PropertyTray /> */}
       <Router>
@@ -36,6 +38,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    // </DataProvider>
   );
 }
 
