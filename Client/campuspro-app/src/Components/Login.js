@@ -139,9 +139,9 @@ const Login = () => {
               <Link to="/Signup" className="create-account-link">
                 <p id="create-account">Create an Account?</p>
               </Link>
-              <a href="." class="forget-pwd">
+              {/* <a href="" class="forget-pwd">
                 Forget Password
-              </a>
+              </a> */}
             </p>
           </form>
 
