@@ -131,7 +131,7 @@ p {
 }
 .hp-school {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   overflow-x: scroll;
   border-style: none;
   width: 100%;
@@ -146,8 +146,9 @@ p {
   display: flex;
   flex-direction: column;
   width: 20vw;
-  min-height: 52vh;
+  height: 52vh;
   margin-right: 15px;
+  
 }
 .hp-school-div p {
   text-align: center;
@@ -175,6 +176,7 @@ p {
 }
 .hp-locate {
   width: 15px;
+  height: 2.3vh;
   margin-top: 4px;
 }
 .hp-locate2 {
@@ -182,7 +184,7 @@ p {
   height: 2.5vh !important;
 }
 
-.hp-img-div img {
+.hp-img{
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -197,7 +199,7 @@ p {
   font-style: italic;
 }
 .home-school-button {
-  border-radius: 10px;
+  border-radius: 15px;
   border: none;
   margin-right: auto;
   margin-left: auto;
@@ -205,6 +207,14 @@ p {
   margin-bottom: 5px;
   background-color: black;
   color: white;
+  padding: 2px 12px;
+  transition:background-color 0.7s ;
+}
+.home-school-button:hover {
+
+  background-color: transparent;
+  border: solid 1px black;
+  color: black;
 }
 .sp-subrent-div {
   display: flex;
@@ -244,9 +254,10 @@ p {
   border-radius: 15px;
   padding: 1px 10px;
 }
-.sp-img-div img {
+.sp-img{
   height: 100%;
-  max-width: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .sp-text-div button {
@@ -364,13 +375,14 @@ p {
   opacity: 0.5;
 }
 .sp2-carousel-div {
-  padding-top: 25vh;
+  padding-top: 15vh;
   width: 100;
-  min-height: 100vh;
+  max-height: 105vh;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
   margin-bottom: 10vh;
+  /* border: solid 2px black; */
 }
 .sp2-main-sector {
   min-height: 100%;
@@ -378,8 +390,10 @@ p {
 }
 
 .sp2-carousel-img {
-  height: 100%;
-  width: 100%;
+  max-height: 80vh;
+  max-width: 100%;
+  border-radius: 25px;
+  object-fit:cover;
 }
 .sp2-divs {
   width: 100%;
@@ -411,6 +425,11 @@ p {
 .sp2-main-img {
   width: 100%;
   min-height: 100%;
+}
+.sp-other-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .sp-2-img-div {
   display: flex;

@@ -13,7 +13,7 @@ const PropertiesCard = (prop) => {
     fetch(url, option).then((res) => console.log(res.status));
 
     alert(`item deleted successfully`);
-    // setTimeout("window.location.reload()", 1000);
+    setTimeout(window.location.reload(), 1000);
   };
 
   // console.log(data)

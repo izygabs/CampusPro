@@ -11,7 +11,8 @@ import campData from "./campus"
 
 function RentPage1() {
   const [data11, setData11] = useState([]);
-  // const [click, setClick] = useState([]);
+  const [data12, setData12] = useState([]);
+ 
 
 //using the hook to display the fetch data on load
   useEffect(()=>{
@@ -27,43 +28,25 @@ function RentPage1() {
       const data2 = await info.json()
       const result = data2.Properties
       setData11(result)
+      setData12(result)
       console.log(result)
       
     } catch (error) {
       console.log(error)
     }
   }
-
-
-  // const subRent = data11.map((ie) => {
-  //   return <SubRentpage1 key={ie.id} {...ie} />;
-  // });
-  // a function to sort houses according to the campus name the user inputs into the input
-  function sort(e) {
-    // e.preventDefault()
-    const searchs = e.target.value;
-    console.log(searchs);
-
-    if (searchs) {
-      let sorting = data11.filter((ei) =>
-        ei.campus.toLowerCase().startsWith(searchs.toLowerCase())
-      );
-      setData11(sorting);
-    } else {
-      setData11(data11);
-    }
-  }
+ 
 
   // a function to sort houses according to thier prices
   function sortPrice(e) {
-    setData11(data11);
+    setData11(data12);
 
     const prc = Number(e.target.value);
 
     console.log(prc);
 
     if (prc) {
-      let srtprice = data11.filter((ea) => ea.amount <= prc);
+      let srtprice = data12.filter((ea) => ea.price <= prc);
 
       setData11(srtprice);
     } else {
@@ -86,8 +69,10 @@ function RentPage1() {
             })}
           </select>
 
-          <select>
+          <select onChange={sortPrice}>
             <option>filter hostels according to price</option>
+            <option value='2000000' >2,000,000 and below</option>
+            <option value='1500000' >1,500,000 and below</option>
             <option value='1000000' >1,000,000 and below</option>
             <option value='500000' >500,000 and below</option>
             <option value='200000' >200,000 and below</option>
@@ -102,7 +87,7 @@ function RentPage1() {
           return(
             <div key={info._id} className="sp-sub-div">
               <div className="sp-img-div">
-                <img src={`${info.hostelImages[0]}`} />
+                <img className="sp-img" src={`${info.hostelImages[0]}`} />
                 <div>
                   <img className="hp-locate" src={location} />
                   <p>{info.campusName.toUpperCase()}</p>

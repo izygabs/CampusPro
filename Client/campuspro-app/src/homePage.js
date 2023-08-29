@@ -156,7 +156,7 @@ function HomePage() {
           return (
             <div key={results._id} className="hp-school-div">
               <div className="hp-img-div">
-                <img src={`/${results.hostelImages[0]}`} />
+                <img className="hp-img" src={`/${results.hostelImages[0]}`} />
                 <div>
                   <img className="hp-locate2" src={location} />
                   <p>{results.campusName}</p>

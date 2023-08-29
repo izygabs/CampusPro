@@ -23,7 +23,7 @@ const Createproperty = () => {
       .required(" Description about the hostel is required"),
     price: yup
       .number()
-      .required(" Price is required")
+      .required("Price is required")
       .positive("Invalid Price"),
     negotiable: yup.boolean(),
     campusName: yup.string().required("Campus is Required"),
@@ -128,13 +128,13 @@ const Createproperty = () => {
       >
         <div>
           <label for="description">
-            Tell us something about the property
+            Property Description
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
           <input
             className="add-items-inputs"
-            placeholder="Enter item description"
+            placeholder="Enter property description"
             type="text"
             name="description"
             onChange={formik.handleChange}
@@ -167,7 +167,7 @@ const Createproperty = () => {
 
         <div>
           <label for="location">
-            Tell us the about the location of the property
+            Property Location
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
@@ -234,7 +234,40 @@ const Createproperty = () => {
                 onChange={() => handleCheckboxChange("3 bedroom")}
               />
               <label htmlFor="" id="input">
-                3 bedroom
+                1 bedroom
+              </label>
+              <input
+                type="checkbox"
+                name="hostelFeatures"
+                value="24hrs Electricity"
+                id="hostelFeatures"
+                // checked={formik.values.hostelFeatures === "24hrs Electricity"}
+                onChange={() => handleCheckboxChange("24hrs Electricity")}
+              />
+              <label htmlFor="" id="input">
+                4 bedroom
+              </label>
+              <input
+                type="checkbox"
+                name="hostelFeatures"
+                value="24hrs Electricity"
+                id="hostelFeatures"
+                // checked={formik.values.hostelFeatures === "24hrs Electricity"}
+                onChange={() => handleCheckboxChange("24hrs Electricity")}
+              />
+              <label htmlFor="" id="input">
+                2 bedroom
+              </label>
+              <input
+                type="checkbox"
+                name="hostelFeatures"
+                value="24hrs Electricity"
+                id="hostelFeatures"
+                // checked={formik.values.hostelFeatures === "24hrs Electricity"}
+                onChange={() => handleCheckboxChange("24hrs Electricity")}
+              />
+              <label htmlFor="" id="input">
+                self contain apartment
               </label>
               <input
                 type="checkbox"

@@ -16,8 +16,6 @@ function RentPage2 (pass) {
   const [other, setOther]=useState([]);
  
 
- 
-
  //using the hook to display the fetch data on load
  useEffect(()=>{
     fetcher()
@@ -84,9 +82,9 @@ const fetcher = async ()=> {
                 <Carousel.Item>
                   {datas.hostelImages? <img  class="d-block w-100 sp2-carousel-img" src={`/${datas.hostelImages[4]}`}/>: null}
                 </Carousel.Item>
-                <Carousel.Item>
+                {/* <Carousel.Item>
                   {datas.hostelImages? <img  class="d-block w-100 sp2-carousel-img" src={`/${datas.hostelImages[5]}`}/>: null}
-                </Carousel.Item>
+                </Carousel.Item> */}
               </Carousel> 
             </section>
             <div className="sp2-divs2">
@@ -140,14 +138,14 @@ const fetcher = async ()=> {
               return(
                 <div key={other._id} className="sp-sub-div">
                   <div className="sp-img-div">
-                    <img src={other.hostelImages ? `/${other.hostelImages[0]}`: null} />
+                    <img className="sp-other-img" src={other.hostelImages ? `/${other.hostelImages[0]}`: null} />
                     <div>
                       <img className="hp-locate" src={location} />
                       <p>{other.campusName}</p>
                     </div>
                   </div>
                   <div className="sp-text-div">
-                    <p>{other.houseProperties[0]}</p>
+                    <p>{other.hostelFeatures[0]}</p>
                     <p>#{Number(other.price).toLocaleString()}</p>
 
                     <Link className="sp2-linkk" to={`/rentproperty/${other._id}`}>
