@@ -10,7 +10,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigator = useNavigate();
-  // const [email, setEmail] =useState("");
+  const [msg, setMsg] = useState("");
+  const [isError, setError] = useState(false);
   const [inputValues, setInputValues] = useState({
     Email: "",
     Password: "",
@@ -48,16 +49,23 @@ const Login = () => {
           // });
           break;
         case 401:
-          alert(result.Message);
+          setMsg(result.Message);
+          setError(true);
           break;
         case 417:
-          alert(result.Message);
+          setMsg(result.Message);
+          setError(true);
+
           break;
         case 403:
-          alert(result.Message);
+          setMsg(result.Message);
+          setError(true);
+
           break;
         default:
-          alert(result.Message);
+          setMsg(result.Message);
+          setError(true);
+
           break;
       }
     } catch (error) {
@@ -79,7 +87,7 @@ const Login = () => {
             className="login-form"
           >
             <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
-
+            <p className="login-error-message">{isError ? msg : ""}</p>
             <div class="form-floating py-3">
               <input
                 name="Email"

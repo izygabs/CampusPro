@@ -98,7 +98,7 @@ const ItemTray = (props) => {
     try {
       const req = await fetch(url);
       const res = await req.json();
-      console.log(res);
+      //   console.log(res);
       const info = await res.Item;
       setData(info);
     } catch (error) {
@@ -151,7 +151,13 @@ const ItemTray = (props) => {
         <div className="pt-nav-btns">
           <button
             className={allProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
-            onClick={setall}
+            // onClick={setall}
+            onClick={() => {
+              setall();
+              handleButtonClicked(
+                !props.isTokenExp ? navigate("/login") : setall()
+              );
+            }}
           >
             All Item
           </button>
