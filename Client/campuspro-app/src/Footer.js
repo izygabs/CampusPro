@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css'
-import email from './images/email.png'
+// import email from './images/email.png'
 import instagram from './images/instagram.png'
 import facebook from './images/facebook.png'
 import linkedin from './images/linkedin (2).png'
@@ -16,7 +16,7 @@ const Footer = () => {
     <div className='fp-main-header'>
         <div className='fp-header'>
             <h3 className='fp-h3'>Have some questions about our work? </h3>
-            <Link to="/MORE ABOUT US"><button className='fp-btn'>MORE ABOUT US</button></Link>
+            <Link to="/AboutUs"><button className='fp-btn'>MORE ABOUT US</button></Link>
         </div>
 
         <footer className='fp-main'>
@@ -40,7 +40,7 @@ const Footer = () => {
             <div className='fp-contact'>
                 <h3 className='fp-contact-num'>CONTACT</h3>
                 <div className='all-contact'>
-                    <span className='fp-info'><img className='email-box' src={email} alt='email'/>info@campuspro.com</span>
+                    <span className='fp-info'>info@campuspro.com</span>
                     <span className='fp-number'>+234-8099275325</span>
                 </div>
                 <div className='fp-img-all'>

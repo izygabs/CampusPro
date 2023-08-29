@@ -4,8 +4,8 @@ import Modal from "react-modal";
 import "./Signup.css";
 import key from "./lock_483408.png";
 import user from "./MicrosoftTeams-image (4).png";
-import email from './images/email.png'
 import number from './images/number.png'
+import email from './images/email.png'
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
@@ -166,7 +166,7 @@ const Signup = () => {
           </label>
           <br />
           <div className="sp-icon-input">
-            <img className="sp-user-img" src={email} alt="" />
+            <img className="sp-user-img" src={number} alt="" />
             <input
               name="Email"
               className="sp-input-testing"
@@ -185,7 +185,7 @@ const Signup = () => {
           </label>
           <br />
           <div className="sp-icon-input">
-            <img className="sp-user-img" src={number} alt="" />
+            <img className="sp-user-img" src={email} alt="" />
             <input
               name="Phone"
               className="sp-input-testing"

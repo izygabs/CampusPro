@@ -4,7 +4,7 @@ body{
 }
 
 .fp-main-header{
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     height: 23rem;
     width: 100%;
     
@@ -70,6 +70,7 @@ body{
     height: 8px;
     position: relative;
     top: 7px;
+    color: rgb(255, 255, 255);
 }
 
 .fp-company, .fp-p{
@@ -97,11 +98,13 @@ body{
     position: relative;
     top: 8px;
     right: 7px;
+    color: rgb(255, 255, 255);
 }
 .all-contact .fp-info{
     display: flex;
     position: relative;
-    right: 1rem;
+    left: -4px;
+    color: rgb(255, 255, 255);
 }
 .all-contact, .fp-number .fp-info{
     position: relative;
