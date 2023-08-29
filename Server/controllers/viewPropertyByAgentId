@@ -2,7 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 const { hostelProps } = require("../models/hostelSchema");
 
 const viewPropertyByAgentId = async (req, res) => {
-  const agentId = req.params.agentId;
+  const agentId = req.params.agentID;
   // console.log(agentId);
   try {
     const property = await hostelProps.find({ agentID: agentId });

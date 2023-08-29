@@ -72,7 +72,7 @@ const AddItems = () => {
         switch (response.status) {
           case 201:
             alert(result.Message);
-            // navigator("/Dashboard");
+            resetForm();
             break;
           case 400:
             alert(result.Message);
@@ -91,11 +91,9 @@ const AddItems = () => {
             alert(result.Message);
             break;
         }
-        resetForm();
       } catch (error) {
         console.error("Error sending data:", error);
       }
-      console.log(values);
     },
   });
 
@@ -314,7 +312,7 @@ const AddItems = () => {
         <div className="add-items-images">
           <label for="Items-image">
             Upload items pictures
-            <span className="add-item-hysteric">min:5, max:10</span>
+            <span className="add-item-hysteric">min:3, max:10</span>
             <input
               type="file"
               multiple

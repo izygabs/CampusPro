@@ -76,7 +76,7 @@ const ItemTray = (props) => {
    // hook to run the fetcher fuction on load of the page
   useEffect(() => {
     fetcher();
-  }, [fetcher]);
+  }, []);
 
   //a function to fetch all properties
   const fetcher = async () => {
@@ -99,10 +99,9 @@ const ItemTray = (props) => {
     try {
       const req = await fetch(url);
       const res = await req.json();
-      console.log(res);
+      //   console.log(res);
       const info = await res.Item;
       setData(info);
-      // console.log(info);
     } catch (error) {
       console.log(error);
     }
@@ -112,14 +111,11 @@ const ItemTray = (props) => {
   const Pending = async () => {
     url = `/api/itemStatus/Pending`;
 
-    // console.log("url :", url);
     try {
       const req = await fetch(url);
       const res = await req.json();
-      //   console.log(res);
       const info = await res.Item;
       setData(info);
-      // console.log(info);
     } catch (error) {
       console.log(error);
     }
@@ -140,7 +136,6 @@ const ItemTray = (props) => {
     }
   };
 
-
   return (
     <div className="property-tray">
       <div className="pt-createProperty">
@@ -160,7 +155,13 @@ const ItemTray = (props) => {
         <div className="pt-nav-btns">
           <button
             className={allProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
-            onClick={setall}
+            // onClick={setall}
+            onClick={() => {
+              setall();
+              handleButtonClicked(
+                !props.isTokenExp ? navigate("/login") : setall()
+              );
+            }}
           >
             All Item
           </button>
@@ -198,7 +199,7 @@ const ItemTray = (props) => {
         data ? (
           <section className="pt-properties-display">
             {data.map((data) => {
-              return <PropertiesCard data={data} />;
+              return <PropertiesCard data={data} fetchData={fetcher} />;
             })}
           </section>
         ) : (

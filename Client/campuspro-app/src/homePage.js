@@ -11,12 +11,12 @@ import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
 import Navbar from "./Components/Navbar";
 import jwtDecode from "jwt-decode";
-
+import axios from "axios";
 // import Navbar from "./Components/Navbar";
 
 function HomePage() {
   const [datas, setDatas] = useState([]);
-  // const [camp , setCamp]=useState('')
+  const [log, setLog] = useState("Log out");
   const [isTokenExp, setIsTokenExp] = useState(false);
   const navigate = useNavigate();
 
@@ -72,10 +72,91 @@ function HomePage() {
     }
   };
 
+  const logout = async () => {
+    const logout = await axios.get("/api/logout");
+    if (logout) {
+      alert("successful log out");
+      setLog("Login");
+      navigate("/");
+    }
+  };
+
+  //function to filter properties according to the user search
+  // function change(e) {
+  //   // e.preventDefault()
+  //   const pal = e.target.value;
+  //   console.log(pal);
+
+  //   if (pal) {
+  //     const filt = datas.filter((place) =>
+  //       place.campus.toLowerCase().startsWith(pal.toLowerCase())
+  //     );
+  //     setDatas(filt);
+  //   } else {
+  //     // setDatas(data);
+  //   }
+  //   // setDatas(datas);
+  // }
+
+  // console.log(datas)
+
   return (
     <div className="homepage">
       <Navbar />
-        
+      {/* <div className="hp-header"> */}
+      {/* <div className="hp-logo-div"> */}
+      {/* <div>
+            <img src={logo} className="hp-logo" alt="" />
+          </div> */}
+      {/* </div> */}
+      {/* <div> */}
+      {/* <input
+            placeholder="Search for hostels around your school. example: oou"
+            className="hp-select-button"
+<<<<<<< HEAD
+          />
+        </div>
+        <div>
+          {!isTokenExp ? (
+            <Link to="/login">
+              <button className="hp-login-button">Login</button>
+            </Link>
+          ) : (
+            <button className="hp-login-button" onClick={logout}>
+              {log}
+            </button>
+          )}
+        </div>
+      </div>
+=======
+          /> */}
+      {/*
+            campus.map((item)=>{
+              
+            })
+          
+           <select onChange={change} className="hp-select-button">
+              <option value={'lasu'}>LASU</option>
+              <option value={'unilag'}>UNILAG</option>
+              <option value={'laspotech'}>LASPOTECH</option>
+              <option value={'ui'}>UI(Ibadan)</option>
+              <option value={'the polytechnic ibadan'}>THE POLYTECHNIC IBADAN</option>
+              <option value={'oou'}>OOU</option>
+              <option value={'oau'}>OAU</option>
+              <option value={'jabu'}>JABU</option>
+              <option value={'mapoly'}>MAPOLY</option>
+              <option value={'osu'}>OSU</option>
+              <option value={'eksu'}>EKSU</option>
+          </select> */}
+      {/* </div> */}
+      {/* <div>
+          <Link to={isTokenExp ? "/Dashboard" : "/login"}>
+            <button className="hp-login-button">Login</button>
+          </Link>
+        </div> */}
+      {/* </div> */}
+      {/* >>>>>>> 54ac5c7eecf64857b27c27317f1516f025bde553 */}
+      {/* //carousel */}
       <div className="hp-carousel-div">
         <Carousel controls={false} indicators={false}>
           <Carousel.Item>
@@ -146,11 +227,9 @@ function HomePage() {
           </div>
         </section>
       </div>
-
       <div className="hp-view-div">
         <p className="hp-view-hostels">View hostels around your campus</p>
       </div>
-
       <div className="hp-school">
         {datas.map((results) => {
           return (
@@ -158,7 +237,7 @@ function HomePage() {
               <div className="hp-img-div">
                 <img className="hp-img" src={`/${results.hostelImages[0]}`} />
                 <div>
-                  <img className="hp-locate2" src={location} />
+                  <img className="hp-locate" src={location} />
                   <p>{results.campusName}</p>
                 </div>
               </div>

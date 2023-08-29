@@ -25,8 +25,11 @@ function RentPage2 (pass) {
 //fetch similar properties according to agent id
 const similar = async (agentID)=>{
   try{
+    console.log(agentID)
   const req = await fetch(`/api/propertyByAgent/${agentID}`)
+  console.log(req)
   const res = await req.json()
+  console.log(res)
   setOther(res)
   console.log(res)
   // console.log(other)

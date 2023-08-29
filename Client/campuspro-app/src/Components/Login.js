@@ -6,14 +6,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import jwtDecode from "jwt-decode";
 import logo from "../images/campuspro(6).png";
 
-import { Link, useNavigate, useLocation, resolvePath } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [jwtData, setJwtToken] = useState(null);
-  const [msg, setMsg] = useState("");
-
   const navigator = useNavigate();
-  // const [email, setEmail] =useState("");
+  const [msg, setMsg] = useState("");
+  const [isError, setError] = useState(false);
   const [inputValues, setInputValues] = useState({
     Email: "",
     Password: "",
@@ -38,13 +36,9 @@ const Login = () => {
         body: JSON.stringify(inputValues),
       });
       const result = await response.json();
-      const token = jwtDecode(result.jwtToken);
+      // const token = jwtDecode(result.jwtToken);
       // setJwtToken(token);
-      console.log(result.Message);
-      const email = token.email;
-      const userType = token.userType;
-      const userName = token.name;
-      const userID = token._id;
+      // console.log(result);
 
       switch (response.status) {
         case 200:
@@ -55,16 +49,23 @@ const Login = () => {
           // });
           break;
         case 401:
-          alert(result.Error);
+          setMsg(result.Message);
+          setError(true);
           break;
         case 417:
           setMsg(result.Message);
+          setError(true);
+
           break;
         case 403:
           setMsg(result.Message);
+          setError(true);
+
           break;
         default:
-          alert(result.Message);
+          setMsg(result.Message);
+          setError(true);
+
           break;
       }
     } catch (error) {
@@ -86,7 +87,7 @@ const Login = () => {
             className="login-form"
           >
             <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
-            <p>{msg}</p>
+            <p className="login-error-message">{isError ? msg : ""}</p>
             <div class="form-floating py-3">
               <input
                 name="Email"

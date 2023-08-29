@@ -34,7 +34,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     const tim = new Date().getHours();
-    console.log(tim);
     if (tim < 12) setTime("Good Morning");
     else if (tim < 18) setTime("Good Afternoon");
     else setTime("Good Evening");
@@ -401,11 +400,21 @@ const Dashboard = () => {
                         >
                           Login & Security
                         </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={async () => {
+                            const logout = await axios.get("/api/logout");
+                            if (logout) {
+                              navigate("/login");
+                            }
+                          }}
+                        >
+                          Sign out
+                        </Dropdown.Item>
                       </DropdownButton>
                     </a>
                   </li>
                   <li class="nav-item signOut">
-                    <a
+                    {/* <a
                       class="nav-link d-flex align-items-center gap-2 signOut"
                       onClick={async () => {
                         const logout = await axios.get("/api/logout");
@@ -418,7 +427,7 @@ const Dashboard = () => {
                         <use xlinkHref="#door-closed" />
                       </svg>
                       Sign out
-                    </a>
+                    </a> */}
                   </li>
                 </ul>
               </div>
