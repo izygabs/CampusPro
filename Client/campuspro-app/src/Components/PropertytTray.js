@@ -5,7 +5,7 @@ import del from "../images/delete-icon.png";
 import OverlayComponent from "./OverlayComp";
 import AddItems from "./AddItems";
 import { useNavigate } from "react-router";
-import PropertiesCard from "./PropertiesCard";
+import PropertiesCard2 from "./propertiesCard2";
 import Createproperty from "./Createproperty";
 
 const PropertyTray = (props) => {
@@ -27,13 +27,7 @@ const PropertyTray = (props) => {
     setPublishedProperties(false);
     setUnpublishedProperties(false);
   }
-  function setEditing() {
-    setAllProperties(false);
-    setEditingProperties(true);
-    setNewProperties(false);
-    setPublishedProperties(false);
-    setUnpublishedProperties(false);
-  }
+
   function setNew() {
     setAllProperties(false);
     setEditingProperties(false);
@@ -42,6 +36,7 @@ const PropertyTray = (props) => {
     setUnpublishedProperties(false);
   }
   function setPublished() {
+    Pending()
     setAllProperties(false);
     setEditingProperties(false);
     setNewProperties(false);
@@ -73,16 +68,27 @@ const PropertyTray = (props) => {
     try {
       const req = await fetch(url);
       const res = await req.json();
-      const info = await res.Items;
-      setData(info);
+      setData(res);
       //   console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  //   console.log(props.id);
-  //   console.log(data);
+  //function to fetch pending properties
+  const Pending = async ()=> {
+  
+    try {
+      const req = await fetch(`/api/propertyStatus/Approved`);
+      console.log(req)
+      const res = await req.json();
+        console.log(res);
+      
+     
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="property-tray">
@@ -111,25 +117,20 @@ const PropertyTray = (props) => {
             className={newProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
             onClick={setNew}
           >
-            New
+            Approved
           </button>
-          <button
-            className={editingProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
-            onClick={setEditing}
-          >
-            Editing
-          </button>
+        
           <button
             className={publishedProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
             onClick={setPublished}
           >
-            Published
+            Pending
           </button>
           <button
             className={unpublishedProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
             onClick={setunpublished}
           >
-            Unpublished
+            Rejected
           </button>
         </div>
         <div className="pt-properties-filter">
@@ -141,7 +142,7 @@ const PropertyTray = (props) => {
         data ? (
           <section className="pt-properties-display">
             {data.map((data) => {
-              return <PropertiesCard data={data} />;
+              return <PropertiesCard2 data={data} />;
             })}
           </section>
         ) : (

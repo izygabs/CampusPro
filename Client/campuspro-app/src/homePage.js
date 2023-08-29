@@ -20,6 +20,8 @@ function HomePage() {
   const [isTokenExp, setIsTokenExp] = useState(false);
   const navigate = useNavigate();
 
+// console.log(campData)
+
   useEffect(() => {
     fetch("/api/getTokenExpiration", {
       headers: {
@@ -233,7 +235,7 @@ function HomePage() {
           return (
             <div key={results._id} className="hp-school-div">
               <div className="hp-img-div">
-                <img src={`/${results.hostelImages[0]}`} />
+                <img className="hp-img" src={`/${results.hostelImages[0]}`} />
                 <div>
                   <img className="hp-locate" src={location} />
                   <p>{results.campusName}</p>

@@ -20,6 +20,8 @@ const ItemTray = (props) => {
   const [data, setData] = useState([]);
   let url = "";
 
+
+  //function to run the fetcher function on click
   function setall() {
     setAllProperties(true);
     setEditingProperties(false);
@@ -28,6 +30,9 @@ const ItemTray = (props) => {
     setUnpublishedProperties(false);
     fetcher();
   }
+
+
+   //function to run the pending function on click
   function setPending() {
     Pending();
     setAllProperties(false);
@@ -36,6 +41,8 @@ const ItemTray = (props) => {
     setPublishedProperties(false);
     setUnpublishedProperties(false);
   }
+
+   //function to run the Approved function on click
   function setNew() {
     Approved();
     setAllProperties(false);
@@ -43,16 +50,9 @@ const ItemTray = (props) => {
     setNewProperties(true);
     setPublishedProperties(false);
     setUnpublishedProperties(false);
-    // const filter = data.filter((data)=> data.itemStatus === 'Approved')
-    // setData(filter)
   }
-  // function setPublished() {
-  //   setAllProperties(false);
-  //   setEditingProperties(false);
-  //   setNewProperties(false);
-  //   setPublishedProperties(true);
-  //   setUnpublishedProperties(false);
-  // }
+ 
+   //function to run the rejected function on click
   function setrejected() {
     Rejected();
     setAllProperties(false);
@@ -72,29 +72,30 @@ const ItemTray = (props) => {
   const handleCloseOverlay = () => {
     setShowOverlay(false);
   };
+
+   // hook to run the fetcher fuction on load of the page
   useEffect(() => {
     fetcher();
   }, []);
 
+  //a function to fetch all properties
   const fetcher = async () => {
     url = `/api/itemsByMerch/${props.id}`;
 
-    // console.log("url :", url);
     try {
       const req = await fetch(url);
       const res = await req.json();
       const info = await res.Items;
       setData(info);
-      return info;
-      //   console.log(data);
+        console.log(res);
     } catch (error) {
       console.log(error);
     }
   };
+
+  //function to fetch Approved items
   const Approved = async () => {
     url = `/api/itemStatus/Approved`;
-
-    // console.log("url :", url);
     try {
       const req = await fetch(url);
       const res = await req.json();
@@ -105,6 +106,8 @@ const ItemTray = (props) => {
       console.log(error);
     }
   };
+  
+  //function to fetch pending items
   const Pending = async () => {
     url = `/api/itemStatus/Pending`;
 
@@ -117,14 +120,15 @@ const ItemTray = (props) => {
       console.log(error);
     }
   };
+
+  // a function to fetch rejected items
   const Rejected = async () => {
     url = `/api/itemStatus/Rejected`;
-
     try {
       const req = await fetch(url);
       const res = await req.json();
-      //   console.log(res);
       const info = await res.Item;
+      // console.log(info)
       setData(info);
       // console.log(info);
     } catch (error) {

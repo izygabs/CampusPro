@@ -6,13 +6,14 @@ import facebook from "./images/facebook.png";
 import linkedin from "./images/linkedin (2).png";
 import twitter from "./images/twitter.png";
 import youtube from "./images/youtube.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className="fp-main-header" id="footer">
       <div className="fp-header">
         <h3 className="fp-h3">Have some questions about our work? </h3>
-        <button className="fp-btn">MORE ABOUT US</button>
+        <Link to='/AboutUs'><button className="fp-btn">MORE ABOUT US</button></Link>
       </div>
 
       <footer className="fp-main">
@@ -25,15 +26,15 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="fp-company">
-          <h3 className="fp-about-com">COMPANY</h3>
-          <u className="fp-p">
-            <li>About us</li>
-            <li>Our services</li>
-            <li>Contacts</li>
-            <li>Blog</li>
-          </u>
-        </div>
+            <div className='fp-company'>
+                <h3 className='fp-about-com'>COMPANY</h3>
+                <u className='fp-p'>
+                    <Link className='fp-about' to='/AboutUs'><li>About us</li></Link> 
+                    <Link className='fp-service' to='/OurServices'><li>Our services</li></Link>
+                    <li>Contacts</li>
+                    <li>Blog</li>
+                </u>
+            </div>
 
         <div className="fp-contact">
           <h3 className="fp-contact-num">CONTACT</h3>

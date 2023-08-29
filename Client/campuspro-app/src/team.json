@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name": "Kolawole Abiodun",
+    "role": "Project Manager",
+    "image": "../buyPage-images/abiodun.jpeg"
+  },
+
+  {
+    "id": 2,
+    "name": "Gabriel Isaiah",
+    "role": "CTO",
+    "image": "../buyPage-images/isaiah.png"
+  },
+
+  {
+    "id": 3,
+    "name": "Oladapo olushola",
+    "role": "Frontend Developer",
+    "image": "../buyPage-images/sanwo.png"
+  },
+
+  {
+    "id": 4,
+    "name": "Ajanobi Nzube",
+    "role": "Frontend Developer",
+    "image": "../buyPage-images/nzube.jpeg"
+  },
+
+  {
+    "id": 5,
+    "name": "Onyema Eluma",
+    "role": "Frontend Devloper",
+    "image": "../buyPage-images/eluma.jpeg"
+  },
+
+  {
+    "id": 6,
+    "name": "Optimistic Funke",
+    "role": "Backend Developer",
+    "image": "../buyPage-images/funke.jpeg"
+  }
+]

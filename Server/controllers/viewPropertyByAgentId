@@ -3,6 +3,7 @@ const { hostelProps } = require("../models/hostelSchema");
 
 const viewPropertyByAgentId = async (req, res) => {
   const agentId = req.params.agentID;
+  // console.log(agentId);
   try {
     const property = await hostelProps.find({ agentID: agentId });
     if (!property) {

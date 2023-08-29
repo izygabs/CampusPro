@@ -32,22 +32,18 @@ const PropertiesCard = (prop) => {
   };
 
   //function to delete a paticular item
-  const deleter = async (id, data) => {
+  const deleter = async (id) => {
     const url = `/api/item/${id}`;
     const option = { method: "DELETE" };
     let resposnse = await fetch(url, option);
 
     console.log(resposnse.Message);
-    // prop.fetchData();
-    // const updatedData = data.filter((item) => item._id !== id);
-    // setData(updatedData);
     alert("Item deleted");
     setShowConfirmation(false);
 
     // setTimeout("window.location.reload()", 100);
   };
 
-  // console.log(data)
   return (
     <div key={data._id} className="pt-properties">
       <div className="pt-props-img-div">
