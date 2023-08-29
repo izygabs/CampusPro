@@ -45,12 +45,6 @@ function Changepassword(prop) {
       // console.log(values);
 
       try {
-        const formData = new FormData();
-
-        formData.append("currentPassword", values.currentPassword);
-        formData.append("newPassword", values.newPassword);
-        formData.append("confirmPassword", values.confirmPassword);
-
         const response = await fetch("/api/changePassword", {
           method: "PUT",
           headers: {

@@ -6,11 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import jwtDecode from "jwt-decode";
 import logo from "../images/campuspro(6).png";
 
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [jwtData, setJwtToken] = useState(null);
-
   const navigator = useNavigate();
   // const [email, setEmail] =useState("");
   const [inputValues, setInputValues] = useState({
@@ -37,13 +35,9 @@ const Login = () => {
         body: JSON.stringify(inputValues),
       });
       const result = await response.json();
-      const token = jwtDecode(result.jwtToken);
+      // const token = jwtDecode(result.jwtToken);
       // setJwtToken(token);
       // console.log(result);
-      const email = token.email;
-      const userType = token.userType;
-      const userName = token.name;
-      const userID = token._id;
 
       switch (response.status) {
         case 200:
@@ -160,4 +154,4 @@ const Login = () => {
   );
 };
 
-export default Login; 
+export default Login;

@@ -74,7 +74,7 @@ const ItemTray = (props) => {
   };
   useEffect(() => {
     fetcher();
-  }, [fetcher]);
+  }, []);
 
   const fetcher = async () => {
     url = `/api/itemsByMerch/${props.id}`;
@@ -85,6 +85,7 @@ const ItemTray = (props) => {
       const res = await req.json();
       const info = await res.Items;
       setData(info);
+      return info;
       //   console.log(data);
     } catch (error) {
       console.log(error);
@@ -100,7 +101,6 @@ const ItemTray = (props) => {
       console.log(res);
       const info = await res.Item;
       setData(info);
-      // console.log(info);
     } catch (error) {
       console.log(error);
     }
@@ -108,14 +108,11 @@ const ItemTray = (props) => {
   const Pending = async () => {
     url = `/api/itemStatus/Pending`;
 
-    // console.log("url :", url);
     try {
       const req = await fetch(url);
       const res = await req.json();
-      //   console.log(res);
       const info = await res.Item;
       setData(info);
-      // console.log(info);
     } catch (error) {
       console.log(error);
     }
@@ -123,7 +120,6 @@ const ItemTray = (props) => {
   const Rejected = async () => {
     url = `/api/itemStatus/Rejected`;
 
-    // console.log("url :", url);
     try {
       const req = await fetch(url);
       const res = await req.json();
@@ -135,9 +131,6 @@ const ItemTray = (props) => {
       console.log(error);
     }
   };
-
-  //   console.log(props.id);
-  //   console.log(data);
 
   return (
     <div className="property-tray">
@@ -196,7 +189,7 @@ const ItemTray = (props) => {
         data ? (
           <section className="pt-properties-display">
             {data.map((data) => {
-              return <PropertiesCard data={data} />;
+              return <PropertiesCard data={data} fetchData={fetcher} />;
             })}
           </section>
         ) : (
