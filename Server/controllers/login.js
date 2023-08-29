@@ -34,7 +34,7 @@ const login = async (req, res) => {
           .status(200)
           .json({ Message: `Welcome ${isUser.firstName}`, jwtToken: token });
       } else {
-        return res.status(403).json({ Error: "Invalid Password" });
+        return res.status(401).json({ Error: "Invalid Password" });
       }
     } else {
       res.status(417).json({ Message: "Invalid Email or Password" });

@@ -38,13 +38,6 @@ const Login = () => {
         body: JSON.stringify(inputValues),
       });
       const result = await response.json();
-      const token = jwtDecode(result.jwtToken);
-      // setJwtToken(token);
-      console.log(result.Message);
-      const email = token.email;
-      const userType = token.userType;
-      const userName = token.name;
-      const userID = token._id;
 
       switch (response.status) {
         case 200:
