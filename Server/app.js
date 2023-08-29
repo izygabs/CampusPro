@@ -11,7 +11,7 @@ const path = require("path");
 app.use(cors());
 app.use(cookieParser());
 app.use(cors());
-// app.use(express.json({ limit: 52428800 }));
+app.use(express.json({ limit: 52428800 }));
 app.use("/Items_Images", express.static(path.join(__dirname, "Items_Images")));
 app.use(
   "/Hostel_Images",

@@ -10,7 +10,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigator = useNavigate();
-  // const [email, setEmail] =useState("");
+  const [msg, setMsg] = useState("");
+  const [isError, setError] = useState(false);
   const [inputValues, setInputValues] = useState({
     Email: "",
     Password: "",
@@ -26,13 +27,14 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log(inputValues);
     try {
       const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(inputValues),
+        body: inputValues,
       });
       const result = await response.json();
       // const token = jwtDecode(result.jwtToken);
@@ -48,16 +50,23 @@ const Login = () => {
           // });
           break;
         case 401:
-          alert(result.Error);
+          setMsg(result.Message);
+          setError(true);
           break;
         case 417:
           setMsg(result.Message);
+          setError(true);
+
           break;
         case 403:
           setMsg(result.Message);
+          setError(true);
+
           break;
         default:
-          alert(result.Message);
+          setMsg(result.Message);
+          setError(true);
+
           break;
       }
     } catch (error) {
@@ -79,7 +88,7 @@ const Login = () => {
             className="login-form"
           >
             <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
-            <p>{msg}</p>
+            <p className="login-error-message">{isError ? msg : ""}</p>
             <div class="form-floating py-3">
               <input
                 name="Email"

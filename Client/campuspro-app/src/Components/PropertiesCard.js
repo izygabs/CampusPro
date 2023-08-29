@@ -23,8 +23,8 @@ const PropertiesCard = (prop) => {
   const editItem = (id, name) => {
     console.log("item name", name);
     console.log("ID", id);
-    // setModalIsOpen(true);
-    // openModal();
+    setModalIsOpen(true);
+    openModal();
   };
 
   const handleDelete = () => {

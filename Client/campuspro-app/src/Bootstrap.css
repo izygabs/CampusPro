@@ -149,3 +149,8 @@
 .year-display {
   color: rgb(193, 189, 189);
 }
+.login-error-message {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+}

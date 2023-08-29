@@ -7,8 +7,8 @@ const validator = require("../validators/joiValidation");
 const errorHandler = require("../middlewares/handleError");
 
 const login = async (req, res) => {
+  console.log(req.body);
   const { Email, Password } = req.body;
-  // console.log(Email, Password);
 
   try {
     const isUser = await user.findOne({ email: Email });
@@ -34,7 +34,7 @@ const login = async (req, res) => {
           .status(200)
           .json({ Message: `Welcome ${isUser.firstName}`, jwtToken: token });
       } else {
-        return res.status(401).json({ Error: "Invalid Password" });
+        return res.status(401).json({ Message: "Invalid Email or Password" });
       }
     } else {
       res.status(417).json({ Message: "Invalid Email or Password" });
