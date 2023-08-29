@@ -42,6 +42,7 @@ function ProfileInfo(prop) {
         formdata.append("email", email || userProfile.email);
         formdata.append("phoneNumber", phoneNumber || userProfile.phoneNumber);
         formdata.append("profilePic", imagePath || userProfile.profilePic);
+
         const data = await axios.put(`/api/updateUser`, formdata, {
           headers: {
             "Content-Type": `multipart/form-data`,

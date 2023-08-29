@@ -27,13 +27,14 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log(inputValues);
     try {
       const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(inputValues),
+        body: inputValues,
       });
       const result = await response.json();
       // const token = jwtDecode(result.jwtToken);

@@ -20,8 +20,6 @@ const ItemTray = (props) => {
   const [data, setData] = useState([]);
   let url = "";
 
-
-  //function to run the fetcher function on click
   function setall() {
     setAllProperties(true);
     setEditingProperties(false);
@@ -30,9 +28,6 @@ const ItemTray = (props) => {
     setUnpublishedProperties(false);
     fetcher();
   }
-
-
-   //function to run the pending function on click
   function setPending() {
     Pending();
     setAllProperties(false);
@@ -41,8 +36,6 @@ const ItemTray = (props) => {
     setPublishedProperties(false);
     setUnpublishedProperties(false);
   }
-
-   //function to run the Approved function on click
   function setNew() {
     Approved();
     setAllProperties(false);
@@ -51,8 +44,13 @@ const ItemTray = (props) => {
     setPublishedProperties(false);
     setUnpublishedProperties(false);
   }
- 
-   //function to run the rejected function on click
+  // function setPublished() {
+  //   setAllProperties(false);
+  //   setEditingProperties(false);
+  //   setNewProperties(false);
+  //   setPublishedProperties(true);
+  //   setUnpublishedProperties(false);
+  // }
   function setrejected() {
     Rejected();
     setAllProperties(false);
@@ -72,8 +70,6 @@ const ItemTray = (props) => {
   const handleCloseOverlay = () => {
     setShowOverlay(false);
   };
-
-   // hook to run the fetcher fuction on load of the page
   useEffect(() => {
     fetcher();
   }, []);
@@ -106,8 +102,6 @@ const ItemTray = (props) => {
       console.log(error);
     }
   };
-  
-  //function to fetch pending items
   const Pending = async () => {
     url = `/api/itemStatus/Pending`;
 

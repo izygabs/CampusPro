@@ -20,8 +20,6 @@ function HomePage() {
   const [isTokenExp, setIsTokenExp] = useState(false);
   const navigate = useNavigate();
 
-// console.log(campData)
-
   useEffect(() => {
     fetch("/api/getTokenExpiration", {
       headers: {
