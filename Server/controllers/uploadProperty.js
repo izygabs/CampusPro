@@ -8,25 +8,33 @@ const nodeMailer = require("../Services/nodemailer");
 const { user } = require("../models/userSchema");
 
 const uploadProperty = async (req, res) => {
-  const arrayStatus= ['Pending', 'Approved', 'Rejected'];
+  const arrayStatus = ["Pending", "Approved", "Rejected"];
 
   let hostelsPictures = req.files;
-  // console.log(hostelsPictures);
+  console.log(hostelsPictures);
   let userEmail = req.email;
   let userId = req.user;
   let value = req.body;
-  if (hostelsPictures == null || hostelsPictures.length < 5) {
-    // to delete the images saved into the hostels Images folder while validation failed
-    hostelsPictures.forEach((file) => {
-      fs.unlinkSync(file.path);
-    });
+  // console.log("values", req.body);
+  // if (hostelsPictures == null || hostelsPictures.length < 5) {
+  //   // to delete the images saved into the hostels Images folder while validation failed
+  //   hostelsPictures.forEach((file) => {
+  //     fs.unlinkSync(file.path);
+  //   });
 
-    res.status(400).json({ Message: "You must upload minimum of 5 pictures" });
-  } else {
-    const userDetails = await user.findById({ _id: userId });
-    const { Description, Price, Campus, Location } = value;
-    const subject = `Property added successfully`;
-    const message = `Greeting ${userDetails.firstName},
+  //   res.status(400).json({ Message: "You must upload minimum of 5 pictures" });
+  // } else {
+  const userDetails = await user.findById({ _id: userId });
+  const {
+    description,
+    price,
+    campusName,
+    location,
+    negotiable,
+    hostelFeatures,
+  } = value;
+  const subject = `Property added successfully`;
+  const message = `Greeting ${userDetails.firstName},
     You have successfully uploaded new property. It will be published once verified.
     Please check your dashboard for more details.                   
                     
@@ -34,43 +42,36 @@ const uploadProperty = async (req, res) => {
                     Best regards
                     The team at CampusPro`;
 
-    try {
-      const hostelPics = hostelsPictures.map((file) => file.path);
-      let num= Math.floor(Math.random() * 3);
+  try {
+    const hostelPics = hostelsPictures.map((file) => file.path);
+    let num = Math.floor(Math.random() * 3);
 
-      const hostel = new hostelProps({
-        agentID: userId,
-        description: Description,
-        price: Price,
-        campusName: Campus,
-        location: Location,
-        hostelImages: [], //to be updated later with the image path
-        houseProperties: [],
-        hostelStatus: arrayStatus[num]
-      });
+    const hostel = new hostelProps({
+      agentID: userId,
+      description: description,
+      price: price,
+      campusName: campusName,
+      location: location,
+      hostelImages: [], //to be updated later with the image path
+      hostelFeatures: hostelFeatures,
+      hostelStatus: arrayStatus[num],
+    });
 
-      let newHostel = await hostel.save();
-      if (newHostel) {
-        await hostelProps.findByIdAndUpdate(
-          { _id: newHostel._id },
-          { $push: { hostelImages: { $each: hostelPics } } },
-          { $push: { houseProperties: { $each: hostelProperties } } },
-          { new: true }
-        );
-      }
-      nodeMailer(userEmail, subject, message);
-      res.status(StatusCodes.CREATED).json("Properties uploaded succesfully");
-    } catch (error) {
-      // to delete the images saved into the hostels Images folder while database failed
-      hostelsPictures.forEach((file) => {
-        fs.unlinkSync(file.path);
-      });
-
-      const errors = errorHandler.PropertySchemaErrors(error);
-      res
-        .status(StatusCodes.UNPROCESSABLE_ENTITY)
-        .json({ "Database Error": errors });
+    let newHostel = await hostel.save();
+    if (newHostel) {
+      await hostelProps.findByIdAndUpdate(
+        { _id: newHostel._id },
+        { $push: { hostelImages: { $each: hostelPics } } },
+        { $push: { hostelFeatures: { $each: hostelFeatures } } },
+        { new: true }
+      );
     }
+    nodeMailer(userEmail, subject, message);
+    res.status(201).json({ Message: "Properties uploaded succesfully" });
+  } catch (error) {
+    const errors = errorHandler.PropertySchemaErrors(error);
+    console.log(errors);
+    res.status(417).json({ Error: errors });
   }
 };
 module.exports = uploadProperty;

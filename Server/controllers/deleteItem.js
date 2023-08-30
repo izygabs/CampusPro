@@ -9,27 +9,21 @@ const deleteItem = async (req, res) => {
     const item = await items.findById({ _id: itemId });
     // console.log(item);
 
-    if (!item) {
-      res.status(StatusCodes.NOT_FOUND).send("Invalid item Id");
-    } else {
-      arr = item.itemPictures;
-      const delItem = await items.findByIdAndDelete({ _id: itemId });
-      if (delItem) {
-        try {
-          arr.forEach((file) => {
-            fs.unlinkSync(file);
-          });
-        } catch (error) {
-          // console.log(error);
-        }
-        res.status(StatusCodes.OK).json("Item deleted");
-      } else {
-        res.status(StatusCodes.OK).json("Item doesn't exist or deleted");
+    arr = item.itemPictures;
+    const delItem = await items.findByIdAndDelete({ _id: itemId });
+    if (delItem) {
+      try {
+        arr.forEach((file) => {
+          fs.unlinkSync(file);
+        });
+      } catch (error) {
+        console.log(error);
       }
+      res.status(200).json({ Message: "Item deleted" });
     }
   } catch (error) {
     console.log(error);
-    res.status(StatusCodes.EXPECTATION_FAILED).json(error);
+    res.status(403).json({ Error: error });
   }
 };
 module.exports = deleteItem;

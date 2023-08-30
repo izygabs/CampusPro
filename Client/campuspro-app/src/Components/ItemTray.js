@@ -4,7 +4,7 @@ import edit from "../images/edit-icon.png";
 import del from "../images/delete-icon.png";
 import OverlayComponent from "./OverlayComp";
 import AddItems from "./AddItems";
-import axios from "axios"
+import axios from "axios";
 import { useNavigate } from "react-router";
 import PropertiesCard from "./PropertiesCard";
 
@@ -26,10 +26,10 @@ const ItemTray = (props) => {
     setNewProperties(false);
     setPublishedProperties(false);
     setUnpublishedProperties(false);
-    fetcher()
+    fetcher();
   }
   function setPending() {
-    Pending()
+    Pending();
     setAllProperties(false);
     setEditingProperties(true);
     setNewProperties(false);
@@ -37,7 +37,7 @@ const ItemTray = (props) => {
     setUnpublishedProperties(false);
   }
   function setNew() {
-    Approved()
+    Approved();
     setAllProperties(false);
     setEditingProperties(false);
     setNewProperties(true);
@@ -54,14 +54,14 @@ const ItemTray = (props) => {
   //   setUnpublishedProperties(false);
   // }
   function setrejected() {
-    Rejected()
+    Rejected();
     setAllProperties(false);
     setEditingProperties(false);
     setNewProperties(false);
     setPublishedProperties(false);
     setUnpublishedProperties(true);
-    const filter2 = data.filter((data)=> data.itemStatus === 'Rejected')
-    setData(filter2)
+    const filter2 = data.filter((data) => data.itemStatus === "Rejected");
+    setData(filter2);
   }
 
   const handleButtonClicked = (component) => {
@@ -79,13 +79,13 @@ const ItemTray = (props) => {
   const fetcher = async () => {
     url = `/api/itemsByMerch/${props.id}`;
 
-    console.log("url :", url);
+    // console.log("url :", url);
     try {
       const req = await fetch(url);
       const res = await req.json();
       const info = await res.Items;
       setData(info);
-      console.log(data);
+      //   console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -97,7 +97,7 @@ const ItemTray = (props) => {
     try {
       const req = await fetch(url);
       const res = await req.json();
-      console.log(res)
+      console.log(res);
       const info = await res.Item;
       setData(info);
       // console.log(info);
@@ -112,7 +112,7 @@ const ItemTray = (props) => {
     try {
       const req = await fetch(url);
       const res = await req.json();
-      console.log(res)
+      //   console.log(res);
       const info = await res.Item;
       setData(info);
       // console.log(info);
@@ -127,7 +127,7 @@ const ItemTray = (props) => {
     try {
       const req = await fetch(url);
       const res = await req.json();
-      console.log(res)
+      //   console.log(res);
       const info = await res.Item;
       setData(info);
       // console.log(info);
@@ -136,10 +136,9 @@ const ItemTray = (props) => {
     }
   };
 
-
   //   console.log(props.id);
   //   console.log(data);
-  
+
   return (
     <div className="property-tray">
       <div className="pt-createProperty">

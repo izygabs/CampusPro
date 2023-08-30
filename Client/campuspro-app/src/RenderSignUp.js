@@ -40,7 +40,7 @@ const Signup = () => {
     Email: yup
       .string()
       .email("Invalid email: 'example@gmail.com'")
-      .required(" Price is required"),
+      .required(" Email is required"),
     userType: yup
       .string()
       .oneOf(["Agent", "Merchant"], "Select a valid user type")

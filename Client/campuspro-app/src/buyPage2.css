@@ -1,5 +1,5 @@
 .bp2-minor-sec {
-  margin-top: 9rem;
+  /* margin-top: 9rem; */
   height: 100vh;
   display: flex;
   box-shadow: inset 2px 2px 5px black;
@@ -9,29 +9,42 @@
   margin: 1rem;
   width: 50%;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px black;
+  background: white;
 }
 
 .bp2-second-div {
   margin: 1.5rem;
   width: 50%;
   font-weight: bold;
-  box-shadow: 2px 2px 5px black;
   border-radius: 10px;
-  height: 50vh;
+  height:95vh; 
+  background: white;
+  padding-left: 1.5rem;
+}
+.bp2-second-div2 {
+  margin: 1.5rem;
+  width: 50%;
+  font-weight: bold;
+  border-radius: 10px;
+  height:50vh; 
+  background: white;
+  padding-left: 1.5rem;
+}
+
+.ab-dis {
+  color: red;
 }
 
 #bp2-details {
-  background-color: gold;
   text-align: center;
   font-size: 1.5rem;
   transition: all 2s ease-in-out;
   border-radius: 10px;
   margin-top: 0.5rem;
+  font-weight: bold;
 }
 
 #bp2-details:hover {
-  background-color: black;
   color: #ffef99;
   cursor: pointer;
 }
@@ -43,6 +56,8 @@
   transition: all 2s ease-in-out;
   margin-top: 0.5rem;
   border-radius: 10px;
+  height: 100px;
+  border: 2px black solid;
 }
 
 #bp2-contact:hover {
@@ -76,3 +91,7 @@
   color: white;
 }
 
+.bp2-minor {
+  border: 1px black solid;
+  margin-bottom: -25rem;
+}

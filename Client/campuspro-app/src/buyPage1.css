@@ -41,7 +41,7 @@
 
 /* section */
 
-.bpage-section {
+.bp1-section {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
@@ -76,16 +76,17 @@
   font-weight: bold;
   transition: all 2s ease-in-out;
   margin-top: 12.8rem;
+  border: none;
 }
 
 #bp1-link-btn {
   text-decoration: none;
   color: black;
-  transition: all 2s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 #bp1-link-btn:hover {
-  color: #ffef99;
+  color: white;
 }
 
 .bp1-btn:hover {

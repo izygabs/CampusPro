@@ -11,6 +11,11 @@ body {
   box-shadow: inset 2px 2px 5px gold;
 }
 
+.main-about {
+  border: 1px white solid;
+  /* margin-top: 5rem; */
+}
+
 .about-build-div {
   display: flex;
 }
@@ -66,13 +71,13 @@ span {
 }
 
 .about-house img {
-  width: 450px;
-  height: 300px;
+  width: 650px;
+  height: 450px;
 }
 
 .about-interior img {
-  width: 545px;
-  height: 300px;
+  width: 597px;
+  height: 450px;
 }
 
 .about-hr {
@@ -142,7 +147,7 @@ span {
 }
 
 .about-devs {
-  margin: 1.7rem;
+  margin: 2rem;
   width: 260px;
 }
 
@@ -159,7 +164,7 @@ span {
 }
 
 .about-amazing-team {
-  margin: 1rem;
+  margin-left: 8rem;
   display: flex;
   flex-wrap: wrap;
   font-weight: bold;

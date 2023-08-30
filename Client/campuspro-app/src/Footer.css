@@ -71,6 +71,7 @@ body{
     position: relative;
     top: 7px;
     color: rgb(255, 255, 255);
+    
 }
 
 .fp-company, .fp-p{
@@ -103,7 +104,7 @@ body{
 .all-contact .fp-info{
     display: flex;
     position: relative;
-    left: -4px;
+    left: -12px;
     color: rgb(255, 255, 255);
 }
 .all-contact, .fp-number .fp-info{
@@ -278,3 +279,4 @@ body{
     position: relative;
     right: 5px;
 }
+
