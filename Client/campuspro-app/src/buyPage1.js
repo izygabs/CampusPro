@@ -45,7 +45,6 @@ const BuyPage = () => {
         <Link to="/">
         <img src={logo} alt='logo' className='bp1-logo' />
         </Link>
-        <input type="search" name="input" id="bp1-search" placeholder='Search items...' onChange={(e) => setQuery(e.target.value)} />
         <div id='p'>
         {/* <p id='paragraph'>Items Available for buy</p> */}
         </div>

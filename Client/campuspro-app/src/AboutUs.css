@@ -101,7 +101,7 @@ span {
 /* animation */
 .about-team p {
   transform: translateX(-1200px);
-  animation: team 2s forwards ease-in-out;
+  animation: 2s forwards ease-in-out;
 }
 
 /* keyframes */

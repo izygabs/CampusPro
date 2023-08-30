@@ -277,7 +277,7 @@ const Createproperty = () => {
                 // checked={formik.values.hostelFeatures === "24hrs Electricity"}
                 onChange={() => handleCheckboxChange("24hrs Electricity")}
               />
-              <label htmlFor="hostelFeatures" id="input">
+              <label htmlFor="h ostelFeatures" id="input">
                 24hrs Electricity
               </label>
 

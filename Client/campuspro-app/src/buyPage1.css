@@ -13,7 +13,6 @@
 
 .bp1-logo {
   height: 200px;
-  margin-top: -3rem;
   margin-left: -3rem;
 }
 
@@ -126,4 +125,42 @@
 .bp1-normal-img {
   width: 280px;
   height: 48vh;
+}
+
+
+@media (max-width: 600px) {
+  .bpage-navbar {
+    border: 1px black solid;
+    display: flex;
+    height: 20vh;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+    background: black;
+    position: fixed;
+    margin-top: -13rem;
+  }
+
+  .bp1-section {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    box-shadow: inset 2px 2px 5px black;
+    margin-top: 13rem;
+  }
+
+  .bp1-items {
+    height: 330px;
+    width: 300px;
+    margin: 2rem;
+    box-shadow: 2px 2px 10px black;
+  }
+
+  .bp1-normal-img {
+    width: 280px;
+    height: 33vh;
+  }
 }

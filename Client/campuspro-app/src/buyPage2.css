@@ -1,5 +1,4 @@
 .bp2-minor-sec {
-  /* margin-top: 9rem; */
   height: 100vh;
   display: flex;
   box-shadow: inset 2px 2px 5px black;
@@ -94,4 +93,52 @@
 .bp2-minor {
   border: 1px black solid;
   margin-bottom: -25rem;
+}
+
+
+@media (max-width: 600px) {
+  .bp2-minor-sec {
+    height: 110vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 2px 2px 5px black;
+  }
+
+  .bp2-first-div {
+    margin-left: 0.5rem;
+    width: 97%;
+    border-radius: 10px;
+    background: white;
+  }
+
+  .bp2-second-div2 {
+    margin-left: 0.5rem;
+    width: 97%;
+    font-weight: bold;
+    border-radius: 10px;
+    height:50vh; 
+    background: white;
+    padding-left: 1.5rem;
+  }
+
+  .bp2-second-div {
+    margin-left: 0.5rem;
+    width: 97%;
+    font-weight: bold;
+    border-radius: 10px;
+    height:95vh; 
+    background: white;
+    padding-left: 1.5rem;
+  }
+
+  .bp2-btn {
+    background: gold;
+    color: black;
+    padding: 0.2rem 1rem;
+    border: none;
+    border-radius: 25px;
+    justify-content: center;
+    margin-left: 3rem;
+    transition: all 2s ease-in-out;
+  }
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Contents from "./contents.json";
 import Navbar from './Components/Navbar';
-// import { Link } from "react-router-dom";
+
 
 const BuyPage2 = () => {
   const { id } = useParams();
