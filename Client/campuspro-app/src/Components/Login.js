@@ -12,6 +12,7 @@ const Login = () => {
   const navigator = useNavigate();
   const [msg, setMsg] = useState("");
   const [isError, setError] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [inputValues, setInputValues] = useState({
     Email: "",
     Password: "",
@@ -68,6 +69,14 @@ const Login = () => {
 
           break;
       }
+
+      // if (rememberMe) {
+      //   // Store the token in local storage
+      //   localStorage.setItem("token", token);
+      // } else {
+      //   // Use session-based token
+      //   sessionStorage.setItem("token", token);
+      // }
     } catch (error) {
       console.log("Error in login ", error);
     }

@@ -7,6 +7,12 @@ import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import location from "./images/location-icon.png";
+import whatsappIcon from "./images/whatsapp icon.png";
+import userImage from "./images/User_icon_2.svg.png";
+import EmailIcon from "./images/email.png";
+import callIcon from "./images/call icon.png";
+import ReactWhatsapp from "react-whatsapp";
+import Mailto from "reactv16-mailto";
 
 function RentPage2(pass) {
   const [datas, setDatas] = useState([]);
@@ -14,6 +20,17 @@ function RentPage2(pass) {
   const [agent, setAgent] = useState(false);
   const [other, setOther] = useState([]);
 
+  const handleDial = (number) => {
+    window.location.href = `tel:${number}`;
+  };
+
+  // const handleWhatsApp = (telNumber, property) => {
+  //   <ReactWhatsapp
+  //     number={telNumber}
+  //     message={`Hello, i am interested in this property ${property}`}
+  //   />;
+  //   // window.open(`https://api.whatsapp.com/send?phone=${telNumber}`, "_blank");
+  // };
   //using the hook to display the fetch data on load
   useEffect(() => {
     fetcher();
@@ -143,12 +160,64 @@ function RentPage2(pass) {
               {agent ? (
                 <div>
                   <p className="sp2-divs2-text-span">AGENT DETAILS</p>
-                  <p>
+                  <div className="rp2-profilePic">
+                    <img
+                      src={`/${datas.agentID.profilePic}`}
+                      alt="profile pic"
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        borderRadius: "100px",
+                      }}
+                    />
+                  </div>
+                  <h4>
                     {" "}
                     {datas.agentID.firstName} {datas.agentID.lastName}{" "}
-                  </p>
-                  <p> {datas.agentID.phoneNumber}</p>
-                  <p> {datas.agentID.email}</p>
+                  </h4>
+                  <div className="contacts">
+                    <button
+                      onClick={() => handleDial(datas.agentID.phoneNumber)}
+                    >
+                      <img
+                        src={callIcon}
+                        alt="whatsapp icon"
+                        style={{ width: "23px", height: "23px" }}
+                      />{" "}
+                      {datas.agentID.phoneNumber}
+                    </button>
+                    {/* <button
+                    // onClick={() => handleWhatsApp("08137296808", "Hostel")}
+                  >
+                    {" "}
+                  </button> */}
+                    <ReactWhatsapp
+                      number={`${datas.agentID.phoneNumber}`}
+                      message={`Hello, i am interested in this property`}
+                      className=""
+                    >
+                      <img
+                        src={whatsappIcon}
+                        alt="whatsapp icon"
+                        style={{ width: "23px", height: "23px" }}
+                      />{" "}
+                      {datas.agentID.phoneNumber}
+                    </ReactWhatsapp>
+                    {/* <br /> */}
+                    <Mailto
+                      email={`${datas.agentID.email}`}
+                      obfuscate={true}
+                      className="emailPart"
+                    >
+                      <img
+                        src={EmailIcon}
+                        alt="whatsapp icon"
+                        style={{ width: "23px", height: "23px" }}
+                      />{" "}
+                      Email Me
+                    </Mailto>
+                  </div>
+                  {/* <p> {datas.agentID.email}</p> */}
                   <marquee>
                     DISCLAIMER:{" "}
                     <span className="sp2-disclaimer">CampusPro</span> is not

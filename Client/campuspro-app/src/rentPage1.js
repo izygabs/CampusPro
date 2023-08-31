@@ -5,37 +5,33 @@ import { useState, useEffect } from "react";
 // import SubRentpage1 from "./subRentPage1";
 import { Link } from "react-router-dom";
 import location from "./images/location-icon.png";
-import RentPage2 from "./rentPage2"
-import campData from "./campus"
+import RentPage2 from "./rentPage2";
+import campData from "./campus";
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function RentPage1() {
   const [data11, setData11] = useState([]);
   const [data12, setData12] = useState([]);
- 
 
-//using the hook to display the fetch data on load
-  useEffect(()=>{
-      fetcher2()
-    },[] 
-  )
-  
+  //using the hook to display the fetch data on load
+  useEffect(() => {
+    fetcher2();
+  }, []);
+
   //function to fetch properties from the database
-  const url= "/api/allProperties"
-  const fetcher2 = async()=> {
+  const url = "/api/allProperties";
+  const fetcher2 = async () => {
     try {
-      const info = await fetch(url)
-      const data2 = await info.json()
-      const result = data2.Properties
-      setData11(result)
-      setData12(result)
-      console.log(result)
-      
+      const info = await fetch(url);
+      const data2 = await info.json();
+      const result = data2.Properties;
+      setData11(result);
+      setData12(result);
+      console.log(result);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
- 
+  };
 
   // a function to sort houses according to thier prices
   function sortPrice(e) {
@@ -59,32 +55,33 @@ function RentPage1() {
       <Navbar />
 
       <div className="hp-select-div">
-          <select>
-            <input type="text"  placeholder="search"/>
-            <option>Filter hostels by campus</option>
-            {campData.map((uni)=>{
-              return(
-                <option value={uni.name} key={uni.name} >{uni.name}</option>
-              )
-            })}
-          </select>
+        <select>
+          <input type="text" placeholder="search" />
+          <option>Filter hostels by campus</option>
+          {campData.map((uni) => {
+            return (
+              <option value={uni.name} key={uni.name}>
+                {uni.name}
+              </option>
+            );
+          })}
+        </select>
 
-          <select onChange={sortPrice}>
-            <option>filter hostels according to price</option>
-            <option value='2000000' >2,000,000 and below</option>
-            <option value='1500000' >1,500,000 and below</option>
-            <option value='1000000' >1,000,000 and below</option>
-            <option value='500000' >500,000 and below</option>
-            <option value='200000' >200,000 and below</option>
-            <option value='100000' >100,000 and below</option>
-          </select>
-        
-        </div>
+        <select onChange={sortPrice}>
+          <option>filter hostels according to price</option>
+          <option value="2000000">2,000,000 and below</option>
+          <option value="1500000">1,500,000 and below</option>
+          <option value="1000000">1,000,000 and below</option>
+          <option value="500000">500,000 and below</option>
+          <option value="200000">200,000 and below</option>
+          <option value="100000">100,000 and below</option>
+        </select>
+      </div>
 
       {/* <div className="sp-subrent-div">{subRent}</div> */}
       <div className="sp-subrent-div">
-        {data11.map((info)=>{
-          return(
+        {data11.map((info) => {
+          return (
             <div key={info._id} className="sp-sub-div">
               <div className="sp-img-div">
                 <img className="sp-img" src={`${info.hostelImages[0]}`} />
@@ -102,7 +99,7 @@ function RentPage1() {
                 </Link>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
@@ -110,4 +107,3 @@ function RentPage1() {
 }
 
 export default RentPage1;
-

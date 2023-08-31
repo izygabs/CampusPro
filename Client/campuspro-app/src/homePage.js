@@ -2,9 +2,10 @@ import React from "react";
 import logo from "./images/campuspro(6).png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import location from "./images/location-icon.png";
-import house1 from "./images/house-interior.webp";
-import house2 from "./images/hostel2.webp";
-import hostel3 from "./images/hostel3.webp";
+import house1 from "./images/hostelImage-transformed.jpeg";
+import house2 from "./images/hostelboys.jpg";
+import hostel3 from "./images/hostelImg.jpeg";
+import hostel4 from "./images/hostelImage2.jpeg";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
@@ -12,15 +13,16 @@ import Footer from "./Footer";
 import Navbar from "./Components/Navbar";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+
 // import Navbar from "./Components/Navbar";
 
 function HomePage() {
   const [datas, setDatas] = useState([]);
-  const [log, setLog] = useState("Log out");
+  // const [log, setLog] = useState("Log out");
   const [isTokenExp, setIsTokenExp] = useState(false);
   const navigate = useNavigate();
 
-// console.log(campData)
+  // console.log(campData)
 
   useEffect(() => {
     fetch("/api/getTokenExpiration", {
@@ -76,7 +78,7 @@ function HomePage() {
     const logout = await axios.get("/api/logout");
     if (logout) {
       alert("successful log out");
-      setLog("Login");
+      // setLog("Login");
       navigate("/");
     }
   };
@@ -162,31 +164,18 @@ function HomePage() {
           <Carousel.Item>
             {/* <ExampleCarouselImage text="First slide" /> */}
             <img src={house1} class="d-block w-100" alt="..." />
-
-            <Carousel.Caption>
-              {/* <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
-            </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             {/* <ExampleCarouselImage text="Second slide" /> */}
             <img src={house2} class="d-block w-100" alt="..." />
-
-            <Carousel.Caption>
-              {/* <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
-            </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             {/* <ExampleCarouselImage text="Third slide" /> */}
             <img src={hostel3} class="d-block w-100" alt="..." />
-
-            <Carousel.Caption>
-              {/* <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p> */}
-            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            {/* <ExampleCarouselImage text="Third slide" /> */}
+            <img src={hostel4} class="d-block w-100" alt="..." />
           </Carousel.Item>
         </Carousel>
 

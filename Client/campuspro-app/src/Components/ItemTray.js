@@ -20,7 +20,6 @@ const ItemTray = (props) => {
   const [data, setData] = useState([]);
   let url = "";
 
-
   //function to run the fetcher function on click
   function setall() {
     setAllProperties(true);
@@ -31,8 +30,7 @@ const ItemTray = (props) => {
     fetcher();
   }
 
-
-   //function to run the pending function on click
+  //function to run the pending function on click
   function setPending() {
     Pending();
     setAllProperties(false);
@@ -42,7 +40,7 @@ const ItemTray = (props) => {
     setUnpublishedProperties(false);
   }
 
-   //function to run the Approved function on click
+  //function to run the Approved function on click
   function setNew() {
     Approved();
     setAllProperties(false);
@@ -51,8 +49,8 @@ const ItemTray = (props) => {
     setPublishedProperties(false);
     setUnpublishedProperties(false);
   }
- 
-   //function to run the rejected function on click
+
+  //function to run the rejected function on click
   function setrejected() {
     Rejected();
     setAllProperties(false);
@@ -73,7 +71,7 @@ const ItemTray = (props) => {
     setShowOverlay(false);
   };
 
-   // hook to run the fetcher fuction on load of the page
+  // hook to run the fetcher fuction on load of the page
   useEffect(() => {
     fetcher();
   }, []);
@@ -87,7 +85,7 @@ const ItemTray = (props) => {
       const res = await req.json();
       const info = await res.Items;
       setData(info);
-        console.log(res);
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -106,7 +104,7 @@ const ItemTray = (props) => {
       console.log(error);
     }
   };
-  
+
   //function to fetch pending items
   const Pending = async () => {
     url = `/api/itemStatus/Pending`;
@@ -147,6 +145,11 @@ const ItemTray = (props) => {
               !props.isTokenExp ? navigate("/login") : <AddItems />
             )
           }
+          disabled={!props.pic && true}
+          title={
+            !props.pic &&
+            "Upload you profile picture before you can add property"
+          }
         >
           + Create Item
         </button>
@@ -155,13 +158,13 @@ const ItemTray = (props) => {
         <div className="pt-nav-btns">
           <button
             className={allProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
-            // onClick={setall}
-            onClick={() => {
-              setall();
-              handleButtonClicked(
-                !props.isTokenExp ? navigate("/login") : setall()
-              );
-            }}
+            onClick={setall}
+            // onClick={() => {
+            //   setall();
+            //   handleButtonClicked(
+            //     !props.isTokenExp ? navigate("/login") : setall()
+            //   );
+            // }}
           >
             All Item
           </button>

@@ -36,7 +36,7 @@ const PropertyTray = (props) => {
     setUnpublishedProperties(false);
   }
   function setPublished() {
-    Pending()
+    Pending();
     setAllProperties(false);
     setEditingProperties(false);
     setNewProperties(false);
@@ -76,15 +76,12 @@ const PropertyTray = (props) => {
   };
 
   //function to fetch pending properties
-  const Pending = async ()=> {
-  
+  const Pending = async () => {
     try {
       const req = await fetch(`/api/propertyStatus/Approved`);
-      console.log(req)
+      console.log(req);
       const res = await req.json();
-        console.log(res);
-      
-     
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -100,6 +97,11 @@ const PropertyTray = (props) => {
             handleButtonClicked(
               !props.isTokenExp ? navigate("/login") : <Createproperty />
             )
+          }
+          disabled={!props.pic && true}
+          title={
+            !props.pic &&
+            "Upload you profile picture before you can add property"
           }
         >
           + Create Property
@@ -119,7 +121,7 @@ const PropertyTray = (props) => {
           >
             Approved
           </button>
-        
+
           <button
             className={publishedProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
             onClick={setPublished}
