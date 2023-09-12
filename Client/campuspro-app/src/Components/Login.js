@@ -34,7 +34,7 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: inputValues,
+        body: JSON.stringify(inputValues),
       });
       const result = await response.json();
       // const token = jwtDecode(result.jwtToken);

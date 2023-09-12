@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import edit from "../images/edit-icon.png";
 import del from "../images/delete-icon.png";
 
 const PropertiesCard2 = (prop) => {
   const data = prop.data;
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const handleDelete = () => {
+    setShowConfirmation(true);
+  };
+
+
   //function to delete a paticular item
   const deleter = (id)=>{
-    const url= `/api/item/${id}`
+    const url= `/api/property/${id}`
     const option = {method : "DELETE"}
     fetch(url, option)
     .then(res => console.log(res.status))
@@ -16,9 +32,10 @@ const PropertiesCard2 = (prop) => {
     setTimeout("window.location.reload()",1000);
     }
     
-console.log(data)
+// console.log(data)
   return (
-    <div key={data._id} className="pt-properties">
+<div>
+    { data? <div key={data._id} className="pt-properties">
       <div className="pt-props-img-div">
         <img className="pt-image" src={`${data.hostelImages[0]}`} />
       </div>
@@ -37,37 +54,35 @@ console.log(data)
       </div>
       <div className="pt-props-posted-div">
         <button>
-          {" "}
           <img className="pt-edit-btn" src={edit} />
         </button>
       
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img className="pt-delete-btn" src={del} />
+        <button type="button" class="btn btn-primary" onClick={handleDelete} >
+           {!showConfirmation && <img className="pt-delete-btn" src={del} />}
         </button>
-        <p className="pt-edit">Edit</p>
-        {/* <p className="pt-delete">Delete</p> */}
+        {/* <p className="pt-edit">Edit</p> */}
 
-        {/* <!-- Button trigger modal --> */}
+        {showConfirmation && (
+          <div className="confirmation-dialog">
+            <p>{`Are you sure you want to delete?`}</p>
 
-{/* <!-- Modal --> */}
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered ">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button
+              onClick={() => deleter(data._id, data)}
+              className="deleteButton"
+            >
+              Yes
+            </button>
+            <button
+              onClick={() => setShowConfirmation(false)}
+              className="deleteButton"
+            >
+              No
+            </button>
+          </div>
+        )}
       </div>
-      <div class="modal-body">
-        Confirm delete <span className="pt-confirm-btn">{data.itemName}</span> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" onClick={()=>deleter(data.id)}><span className="pt-del-text">Confirm</span></button>
-        
-      </div>
-    </div>
-  </div>
-</div>
-      </div>
+    </div>: 
+     <div> No Properties</div> }
     </div>
   );
 };

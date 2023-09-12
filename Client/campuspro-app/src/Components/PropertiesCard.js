@@ -11,7 +11,8 @@ const PropertiesCard = (prop) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [data, setData] = useState(prop.data);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  //   const { deleter } = useDataContext();
+
+
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -45,7 +46,8 @@ const PropertiesCard = (prop) => {
   };
 
   return (
-    <div key={data._id} className="pt-properties">
+  <div>
+   {data ? <div key={data._id} className="pt-properties">
       <div className="pt-props-img-div">
         <img className="pt-image" src={`${data.itemPictures[0]}`} />
       </div>
@@ -69,9 +71,7 @@ const PropertiesCard = (prop) => {
         <button
           type="button"
           class="btn btn-primary"
-          //   data-bs-toggle="modal"
-          //   data-bs-target="#exampleModal"
-          //   onClick={() => deleter(data._id)}
+          // Click={() => deleter(data._id)}
           onClick={handleDelete}
         >
           {!showConfirmation && <img className="pt-delete-btn" src={del} />}
@@ -110,43 +110,12 @@ const PropertiesCard = (prop) => {
             </button>
           </div>
         )}
-        {/* <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                Confirm delete{" "}
-                <span className="pt-confirm-btn">{data.itemName}</span>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                  onClick={() => deleter(data._id)}
-                >
-                  <span className="pt-del-text">Confirm</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> */}
+       
       </div>
-    </div>
+    </div>:
+    
+    <div>NO Items</div>}
+  </div>
   );
 };
 export default PropertiesCard;
