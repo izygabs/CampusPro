@@ -14,9 +14,8 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import Editing from "./Editing";
 import Createproperty from "./Createproperty";
 import PropertyTray from "./PropertytTray";
-// import Navbar from "./Navbar";
-// import Content from "./Content";
-// import Createproperty from "./Createproperty";
+// import "react-tooltip/dist/react-tooltip.css";
+// import { Tooltip } from "react-tooltip";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -28,6 +27,7 @@ const Dashboard = () => {
   const [lastName, setLastName] = useState();
   const [userType, setUserType] = useState();
   const [time, setTime] = useState();
+  const [pic, setPic] = useState();
 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ const Dashboard = () => {
           navigate("/login");
         } else {
           token && setLoading(true);
-          const { _id, fName, lName, userType, email } = token;
+          const { _id, fName, lName, userType, email, profilePic } = token;
           setUserID(_id);
           setEmail(email);
           setFirstName(fName);
@@ -75,13 +75,28 @@ const Dashboard = () => {
       });
   }, [navigate]);
 
+  useEffect(() => {
+    getPic();
+  }, [pic]);
+
+  const getPic = async () => {
+    try {
+      const results = await axios.get("/api/user/:id");
+      setPic(results.data.Profile.profilePic);
+      console.log(results.data.Profile.profilePic);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleButtonClicked = (component) => {
     setSelectedComponent(component);
     setShowOverlay(true);
+    getPic();
   };
 
   const handleCloseOverlay = () => {
     setShowOverlay(false);
+    getPic();
   };
   let userName = firstName + " " + lastName;
 
@@ -274,6 +289,14 @@ const Dashboard = () => {
                               <h1>
                                 {time}, {firstName}
                               </h1>
+                              {!pic && (
+                                <marquee
+                                  style={{ color: "red", fontSize: "1.5rem" }}
+                                >
+                                  Note: You must upload your profile picture
+                                  before you can add properties or items !!!
+                                </marquee>
+                              )}
                               <div className="db-content">
                                 <h6>WHAT'S NEXT</h6>
                                 <h3>
@@ -285,6 +308,7 @@ const Dashboard = () => {
                                   with listing your property now.
                                 </p>
                                 <button
+                                  // data-tooltip-id="my-tooltip"
                                   onClick={() =>
                                     handleButtonClicked(
                                       !isTokenExp ? (
@@ -296,11 +320,17 @@ const Dashboard = () => {
                                       )
                                     )
                                   }
+                                  disabled={!pic && true}
+                                  title={
+                                    !pic &&
+                                    "Upload you profile picture before you can add property"
+                                  }
                                 >
                                   {userType == "Agent"
                                     ? "Go to Add Your Property"
                                     : "Go to Add Your Items"}
                                 </button>
+                                {/* <Tooltip id="my-tooltip" /> */}
                               </div>
                               <div className="db-confirm">
                                 <p>Pending Confirmation</p>
@@ -325,7 +355,11 @@ const Dashboard = () => {
                           !isTokenExp ? (
                             navigate("/login")
                           ) : (
-                            <PropertyTray id={userID} isTokenExp={isTokenExp} />
+                            <PropertyTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              pic={pic}
+                            />
                           )
                         )
                       }
@@ -344,7 +378,11 @@ const Dashboard = () => {
                           !isTokenExp ? (
                             navigate("/login")
                           ) : (
-                            <ItemTray id={userID} isTokenExp={isTokenExp} />
+                            <ItemTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              pic={pic}
+                            />
                           )
                         )
                       }
@@ -498,6 +536,12 @@ const Dashboard = () => {
                   <h1>
                     {time}, {firstName}
                   </h1>
+                  {!pic && (
+                    <marquee style={{ color: "red", fontSize: "1.5rem" }}>
+                      Note: You must upload your profile picture before you can
+                      add properties or items !!!
+                    </marquee>
+                  )}
                   <div className="db-content">
                     <h6>WHAT'S NEXT</h6>
                     <h3>
@@ -518,6 +562,11 @@ const Dashboard = () => {
                             <AddItems />
                           )
                         )
+                      }
+                      disabled={!pic && true}
+                      title={
+                        !pic &&
+                        "Upload you profile picture before you can add property"
                       }
                     >
                       {userType == "Agent"

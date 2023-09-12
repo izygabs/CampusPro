@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Profile_info.css";
-import pic from "../images/house2.jpg";
+import pic from "../images/user.png";
 import axios from "axios";
 
 function ProfileInfo(prop) {

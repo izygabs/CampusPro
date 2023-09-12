@@ -24,6 +24,9 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.14.2",
     "react-scripts": "^2.1.3",
+    "react-tooltip": "^5.21.1",
+    "react-whatsapp": "^0.3.0",
+    "reactv16-mailto": "^0.4.4",
     "web-vitals": "^2.1.4",
     "yup": "^1.2.0"
   },

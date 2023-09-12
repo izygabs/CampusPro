@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import edit from "../images/edit-icon.png";
 import del from "../images/delete-icon.png";
 import Modal from "react-modal";
-import AddItems from "./AddItems";
+import EditItem from "./EditItem";
 
 // import { useDataContext } from "./DataContext";
 
@@ -68,12 +68,7 @@ const PropertiesCard = (prop) => {
           <img className="pt-edit-btn" src={edit} />
         </button>
 
-        <button
-          type="button"
-          class="btn btn-primary"
-          // Click={() => deleter(data._id)}
-          onClick={handleDelete}
-        >
+        <button type="button" class="btn btn-primary" onClick={handleDelete}>
           {!showConfirmation && <img className="pt-delete-btn" src={del} />}
         </button>
         {/* <p className="pt-edit">Edit</p> */}
@@ -84,7 +79,7 @@ const PropertiesCard = (prop) => {
           className="editItem_modal"
           overlayClassName="editItem_overlayModal"
         >
-          <AddItems />
+          <EditItem  data={data}/>
         </Modal>
         {/* <p className="pt-delete">Delete</p> */}
 

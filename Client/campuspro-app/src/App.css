@@ -10,23 +10,21 @@ body {
 p {
   margin: 3px !important;
 }
-.hp-select-div{
+.hp-select-div {
   padding-top: 20vh;
   display: flex;
   justify-content: space-between;
   padding-left: 15vw;
   padding-right: 15vw;
 }
-.hp-select-div select{
- height: 7vh;
- outline: none;
- background-color: #ffef99;
- font-weight: bold;
-
+.hp-select-div select {
+  height: 7vh;
+  outline: none;
+  background-color: #ffef99;
+  font-weight: bold;
 }
-.hp-select-div option{
-  background-color:whitesmoke ;
-
+.hp-select-div option {
+  background-color: whitesmoke;
 }
 .hp-header {
   position: fixed;
@@ -148,7 +146,6 @@ p {
   width: 20vw;
   height: 52vh;
   margin-right: 15px;
-  
 }
 .hp-school-div p {
   text-align: center;
@@ -184,7 +181,7 @@ p {
   height: 2.5vh !important;
 }
 
-.hp-img{
+.hp-img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -208,10 +205,9 @@ p {
   background-color: black;
   color: white;
   padding: 2px 12px;
-  transition:background-color 0.7s ;
+  transition: background-color 0.7s;
 }
 .home-school-button:hover {
-
   background-color: transparent;
   border: solid 1px black;
   color: black;
@@ -243,6 +239,13 @@ p {
   margin-bottom: 10px;
   position: relative;
 }
+.sp-hostel-img{
+  height: 100% !important;
+  width: 100%;
+  margin-bottom: 10px;
+  object-fit: cover;
+  /* position: relative; */
+}
 .sp-img-div div {
   position: absolute;
   background-color: #ffef99;
@@ -254,7 +257,7 @@ p {
   border-radius: 15px;
   padding: 1px 10px;
 }
-.sp-img{
+.sp-img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -393,7 +396,7 @@ p {
   max-height: 80vh;
   max-width: 100%;
   border-radius: 25px;
-  object-fit:cover;
+  object-fit: cover;
 }
 .sp2-divs {
   width: 100%;
@@ -426,7 +429,7 @@ p {
   width: 100%;
   min-height: 100%;
 }
-.sp-other-img{
+.sp-other-img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -463,6 +466,40 @@ p {
 }
 .sp2-agent-info {
   height: 15%;
+}
+.contacts {
+  margin: 3vh 0vw;
+  padding: 0 2px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.emailPart {
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  /* margin-left: 10px; */
+  color: black;
+  background-color: transparent;
+  padding: 3px 4px 4px;
+  transition: transform 0.4s 
+}
+.contacts button {
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  /* margin-left: 10px; */
+  color: black;
+  background-color: transparent;
+  padding: 3px 4px 4px;
+  transition: transform 0.4s  ;
+}
+.contacts button:hover {
+transform: scale(1.1);
+}
+.emailPart:hover {
+transform: scale(1.1);
+color: black;
 }
 .sp2-agent-info button {
   margin-right: auto;
@@ -678,7 +715,11 @@ p {
   /* Add box shadow for a more elevated look */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-
+/* .rp2-profilePic {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+} */
 .editItem_overlayModal {
   background: rgba(3, 3, 3, 0.5);
   display: flex;

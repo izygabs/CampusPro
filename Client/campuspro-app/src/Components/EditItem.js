@@ -4,48 +4,28 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router";
 
-const AddItems = () => {
+const EditItems = (props) => {
+  const data = props.data;
   const navigator = useNavigate();
   const [msg, setMsg] = useState("");
 
   // const handleClick = () => console.log(msg);
-  const validationSchema = yup.object({
-    itemName: yup.string().required(" Item name is required"),
-    category: yup.string().required(" Category is required"),
-    description: yup.string().required(" Description is required"),
-    price: yup
-      .number()
-      .required(" Price is required")
-      .positive("Invalid Price"),
-    quantity: yup
-      .number()
-      .required("No of items is required")
-      .positive("Invalid Number"),
-    negotiable: yup.boolean(),
-    campus: yup.string().required("Campus is Required"),
-    location: yup.string().required("Address field is required"),
-    itemImages: yup
-      .array()
-      .min(3, "You must upload minimum of 3 pictures")
-      .max(10, "You can upload maximum of 10 pictures"),
-  });
 
   const formik = useFormik({
     initialValues: {
-      itemName: "",
-      price: "",
-      category: "",
-      quantity: "",
-      campus: "",
-      location: "",
-      negotiable: false,
-      description: "",
+      itemName: data.itemName,
+      price: data.price,
+      category: data.category,
+      quantity: data.quantity,
+      campus: data.campus,
+      location: data.location,
+      negotiable: data.negotiable,
+      description: data.description,
       itemImages: [],
     },
-    validationSchema: validationSchema,
+
     onSubmit: async (values, { resetForm }) => {
-      // Handle form submission
-      // setMsg(() => values);
+      console.log(data);
       try {
         const formData = new FormData();
         values.itemImages.forEach((file) => {
@@ -60,11 +40,8 @@ const AddItems = () => {
         formData.append("location", values.location);
         formData.append("description", values.description);
 
-        const response = await fetch("/api/uploadItems", {
-          method: "POST",
-          // headers: {
-          //   "Content-Type": "application/json",
-          // },
+        const response = await fetch(`/api/item/${data._id}`, {
+          method: "PUT",
           body: formData,
         });
 
@@ -103,130 +80,99 @@ const AddItems = () => {
         className="add-items-form"
         onSubmit={formik.handleSubmit}
         enctype="multipart/form-data"
-        method="post"
-        action="/api/uploadItems"
+        method="put"
       >
         <div>
-          <p id="requiredInfo">* are required fields</p>
-          <label for="itemName">
-            Name of the item<span className="add-item-hysteric">*</span>
-          </label>
+          <label for="itemName">Item's Name</label>
           <br />
           <input
             className="add-items-inputs"
-            placeholder="Enter item Name"
+            placeholder={data.itemName}
             type="text"
             name="itemName"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.itemName}
           />
-          {formik.touched.itemName && formik.errors.itemName && (
-            <p className="addItem-error-message">{formik.errors.itemName}</p>
-          )}
         </div>
         <div>
-          <label for="description">
-            Item's Description:
-            <span className="add-item-hysteric">*</span>
-          </label>
+          <label for="description">Item's Description:</label>
           <br />
           <input
             className="add-items-inputs"
-            placeholder="Enter item description"
+            placeholder={data.description}
             type="text"
             name="description"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.description}
           />
-          {formik.touched.description && formik.errors.description && (
-            <p className="addItem-error-message">{formik.errors.description}</p>
-          )}
         </div>
 
         <div>
-          <label for="price">
-            What is the Price?<span className="add-item-hysteric">*</span>
-          </label>
+          <label for="price">Item's Price:</label>
           <br />
           <input
             className="add-items-inputs"
-            placeholder="Enter item Price"
+            placeholder={data.price}
             type="number"
             name="price"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.price}
           />
-          {formik.touched.price && formik.errors.price && (
-            <p className="addItem-error-message">{formik.errors.price}</p>
-          )}
         </div>
 
         <div>
-          <label for="quantity">
-            Number of Item?<span className="add-item-hysteric">*</span>
-          </label>
+          <label for="quantity">Number of Item:</label>
           <br />
           <input
             className="add-items-inputs"
-            placeholder="Enter number of items"
+            placeholder={data.quantity}
             type="number"
             name="quantity"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.quantity}
           />
-          {formik.touched.quantity && formik.errors.quantity && (
-            <p className="addItem-error-message">{formik.errors.quantity}</p>
-          )}
         </div>
 
         <div>
           <label for="location">
-            Location of the item
+            Item's Location:
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
           <input
             className="add-items-inputs"
-            placeholder="Enter item's address"
+            placeholder={data.location}
             type="text"
             name="location"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.location}
           />
-          {formik.touched.location && formik.errors.location && (
-            <p className="addItem-error-message">{formik.errors.location}</p>
-          )}
         </div>
 
         <div>
           <label for="campus">
-            Which Campus is the item located?
-            <span className="add-item-hysteric">*</span>
+            Campus location:
+            {/* <span className="add-item-hysteric">*</span> */}
           </label>
           <br />
           <input
             className="add-items-inputs"
-            placeholder="Enter the campus name here"
+            placeholder={data.campus}
             type="text"
             name="campus"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.campus}
           />
-          {formik.touched.campus && formik.errors.campus && (
-            <p className="addItem-error-message">{formik.errors.campus}</p>
-          )}
         </div>
 
         <div>
-          <label for="category">
-            Catogory of the Item<span className="add-item-hysteric">*</span>
-          </label>
+          <label for="category">Item's Category:</label>
           <br />
           <select
             className="addItem-category"
@@ -290,9 +236,6 @@ const AddItems = () => {
               label=" Others"
             />
           </select>
-          {formik.touched.category && formik.errors.category && (
-            <p className="addItem-error-message">{formik.errors.category}</p>
-          )}
         </div>
         {/* <br /> */}
         <div>
@@ -334,17 +277,15 @@ const AddItems = () => {
               onBlur={formik.handleBlur}
             />
           </label>
-          {formik.touched.itemImages && formik.errors.itemImages && (
-            <p className="addItem-error-message">{formik.errors.itemImages}</p>
-          )}
         </div>
 
-        <div className="add-item-btn">
+        <div className="edit-item-btn">
           <button type="submit">Add Item</button>
+          <button>Cancel</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default AddItems;
+export default EditItems;

@@ -51,6 +51,8 @@ const ItemTray = (props) => {
   //   setPublishedProperties(true);
   //   setUnpublishedProperties(false);
   // }
+
+  //function to run the rejected function on click
   function setrejected() {
     Rejected();
     setAllProperties(false);
@@ -83,7 +85,7 @@ const ItemTray = (props) => {
       const res = await req.json();
       const info = await res.Items;
       setData(info);
-        console.log(res);
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -141,6 +143,11 @@ const ItemTray = (props) => {
               !props.isTokenExp ? navigate("/login") : <AddItems />
             )
           }
+          disabled={!props.pic && true}
+          title={
+            !props.pic &&
+            "Upload you profile picture before you can add property"
+          }
         >
           + Create Item
         </button>
@@ -149,13 +156,13 @@ const ItemTray = (props) => {
         <div className="pt-nav-btns">
           <button
             className={allProperties ? "pt-nav-btn01" : "pt-nav-btn1"}
-            // onClick={setall}
-            onClick={() => {
-              setall();
-              handleButtonClicked(
-                !props.isTokenExp ? navigate("/login") : setall()
-              );
-            }}
+            onClick={setall}
+            // onClick={() => {
+            //   setall();
+            //   handleButtonClicked(
+            //     !props.isTokenExp ? navigate("/login") : setall()
+            //   );
+            // }}
           >
             All Item
           </button>

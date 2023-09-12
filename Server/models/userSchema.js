@@ -21,12 +21,12 @@ const userSchema = new mongoose.Schema(
       lowerCase: true,
     },
     phoneNumber: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
     },
     altPhoneNumber: {
-      type: Number,
+      type: String,
     },
     password: {
       type: String,

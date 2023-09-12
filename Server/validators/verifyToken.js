@@ -16,10 +16,14 @@ const verifyToken = async (req, res, next) => {
       } else {
         // const expirationTime = new Date(decoded.exp * 1000);
         // const isExpired = expirationTime <= new Date();
-        const userID = await user.findById(decoded._id);
-        req.user = userID._id;
-        req.email = userID.email;
-        next();
+        try {
+          const userID = await user.findById(decoded._id);
+          req.user = userID._id;
+          req.email = userID.email;
+          next();
+        } catch (error) {
+          console.log(error);
+        }
         // return isExpired;
       }
     });
