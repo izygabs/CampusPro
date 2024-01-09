@@ -10,7 +10,7 @@ const Signup = (props) => {
   };
   return (
     <div className="sp-form-one">
-      <form>
+      <form className="sp-phorm">
         <label className="sp-label">{label}</label>
         <input
           {...inputProps}

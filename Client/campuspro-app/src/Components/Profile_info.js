@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Profile_info.css";
-import pic from "../images/house2.jpg";
+import pic from "../images/user.png";
 import axios from "axios";
 
 function ProfileInfo(prop) {
@@ -10,18 +10,74 @@ function ProfileInfo(prop) {
   const [imgSrc, setImageScr] = useState(pic);
   const fileUpload = useRef(null);
   const [userProfile, setUserProfile] = useState([]);
+  const [imagePath, setImagePath] = useState();
+  const [msg, setMsg] = useState("");
+  const [fileUploaded, setFileUpload] = useState(false);
+  const [firstName, setFirstName] = useState(userProfile.firstName);
+  const [lastName, setLastName] = useState(userProfile.lastName);
+  const [email, setEmail] = useState(userProfile.email);
+  const [phoneNumber, setPhoneNumber] = useState(userProfile.phoneNumber);
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    fetchProfile();
+  }, [userProfile]);
+
+  const fetchProfile = async () => {
+    try {
+      const results = await axios.get("/api/user/:id");
+      setUserProfile(results.data.Profile);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(typeof imagePath);
+
+    if (fileUploaded) {
       try {
-        const results = await axios.get("/api/user/:id");
-        setUserProfile(results.data.Profile);
+        const formdata = new FormData();
+        formdata.append("firstName", firstName || userProfile.firstName);
+        formdata.append("lastName", lastName || userProfile.lastName);
+        formdata.append("email", email || userProfile.email);
+        formdata.append("phoneNumber", phoneNumber || userProfile.phoneNumber);
+        formdata.append("profilePic", imagePath || userProfile.profilePic);
+        const data = await axios.put(`/api/updateUser`, formdata, {
+          headers: {
+            "Content-Type": `multipart/form-data`,
+          },
+        });
+        alert(data.data.message);
+        setClicked(false);
+        setClicked2(false);
+        setClicked3(false);
+        setImageScr(pic);
+        setFileUpload(false);
       } catch (error) {
         console.log(error);
       }
-    };
-    fetchProfile();
-  }, []);
+    } else setMsg("Click the Image above to select a profile picture");
+  };
+
+  const handleInputChange1 = (e) => {
+    e.preventDefault();
+    setFirstName(e.target.value);
+  };
+
+  const handleInputChange2 = (e) => {
+    e.preventDefault();
+    setLastName(e.target.value);
+  };
+
+  const handleInputChange3 = (e) => {
+    e.preventDefault();
+    setEmail(e.target.value);
+  };
+
+  const handleInputChange4 = (e) => {
+    e.preventDefault();
+    setPhoneNumber(e.target.value);
+  };
 
   const handleEditClicked = (e) => {
     e.preventDefault();
@@ -53,7 +109,12 @@ function ProfileInfo(prop) {
 
   const displayProfilePic = (e) => {
     const file = e.target.files[0];
-    if (file) setImageScr(URL.createObjectURL(file));
+    // console.log(file);
+    if (file) {
+      setFileUpload(true);
+      setImageScr(URL.createObjectURL(file));
+      setImagePath(file);
+    }
   };
   return (
     <div className="pi-body">
@@ -61,30 +122,46 @@ function ProfileInfo(prop) {
         <div className="pi-head">
           <h2>Personal info</h2>
         </div>
-        <div>
-          <input
-            type="file"
-            name="ProfilePic"
-            accept="image/*"
-            ref={fileUpload}
-            id="uploadImage"
-            onChange={displayProfilePic}
-          />
-          {imgSrc ? (
-            <img
-              src={imgSrc}
-              alt="profilepic"
-              className="pi-pic"
-              onClick={uploadFile}
+        <div className="pi-update">
+          <form
+            enctype="multipart/form-data"
+            method="put"
+            // action="/api/updateUser/"
+          >
+            <input
+              type="file"
+              name="ProfilePic"
+              // accept="image/*"
+              ref={fileUpload}
+              id="uploadImage"
+              onChange={displayProfilePic}
             />
-          ) : (
-            <img
-              src={userProfile.profilePic || pic}
-              alt="profilepic"
-              className="pi-pic"
-              onClick={uploadFile}
-            />
-          )}
+            {fileUploaded ? (
+              <img
+                src={!fileUploaded ? `${userProfile.profilePic}` : `${imgSrc}`}
+                alt="Profile picture"
+                className="pi-pic"
+                onClick={uploadFile}
+              />
+            ) : (
+              <img
+                src={
+                  userProfile.profilePic
+                    ? `${userProfile.profilePic}`
+                    : `${imgSrc}`
+                }
+                alt="Profile picture"
+                className="pi-pic"
+                onClick={uploadFile}
+              />
+            )}
+            <button onClick={handleSubmit} type="submit" className="pi-img">
+              Upload pic
+            </button>
+            <p style={{ color: "red", fontSize: "14px", marginLeft: "1.5rem" }}>
+              {fileUploaded ? "" : msg}
+            </p>
+          </form>
         </div>
         <div className="pi-input">
           <div className="pi-div">
@@ -101,10 +178,13 @@ function ProfileInfo(prop) {
                 type="text"
                 name="name"
                 placeholder={userProfile.firstName}
+                onChange={handleInputChange1}
               />
               <br />
               <br />
-              <button className="pi-btn">Confirm</button>
+              <button onClick={handleSubmit} className="pi-btn">
+                Confirm
+              </button>
             </div>
           )}
         </div>
@@ -123,10 +203,13 @@ function ProfileInfo(prop) {
                 type="text"
                 name="name"
                 placeholder={userProfile.lastName}
+                onChange={handleInputChange2}
               />
               <br />
               <br />
-              <button className="pi-btn">Confirm</button>
+              <button onClick={handleSubmit} className="pi-btn">
+                Confirm
+              </button>
             </div>
           )}
         </div>
@@ -139,7 +222,7 @@ function ProfileInfo(prop) {
           </div>
           {!clicked3 ? (
             <div>
-              <p className="pi-para">{"+" + userProfile.phoneNumber}</p>
+              <p className="pi-para">{userProfile.phoneNumber}</p>
               <p className="pi-para">{userProfile.email}</p>
             </div>
           ) : (
@@ -147,12 +230,20 @@ function ProfileInfo(prop) {
               <input
                 type="tel"
                 name="name"
-                placeholder={"+" + userProfile.phoneNumber}
+                placeholder={userProfile.phoneNumber}
+                onChange={handleInputChange4}
               />
-              <input type="email" name="name" placeholder={userProfile.email} />
+              <input
+                type="email"
+                name="name"
+                placeholder={userProfile.email}
+                onChange={handleInputChange3}
+              />
               <br />
               <br />
-              <button className="pi-btn">Confirm</button>
+              <button onClick={handleSubmit} className="pi-btn">
+                Confirm
+              </button>
             </div>
           )}
         </div>
@@ -162,3 +253,5 @@ function ProfileInfo(prop) {
 }
 
 export default ProfileInfo;
+
+

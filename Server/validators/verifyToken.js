@@ -6,11 +6,6 @@ const { user } = require("../models/userSchema");
 const verifyToken = async (req, res, next) => {
   const token = req.cookies.campusProUserToken;
 
-  // if (blacklist.has(token)) {
-  //   return res.status(401).json({ message: "Token is blacklisted" });
-  // }
-  // // next();
-
   if (token) {
     jwt.verify(token, process.env.SECRET_KEY, async (error, decoded) => {
       if (error || !decoded) {
@@ -21,10 +16,14 @@ const verifyToken = async (req, res, next) => {
       } else {
         // const expirationTime = new Date(decoded.exp * 1000);
         // const isExpired = expirationTime <= new Date();
-        const userID = await user.findById(decoded._id);
-        req.user = userID._id;
-        req.email = userID.email;
-        next();
+        try {
+          const userID = await user.findById(decoded._id);
+          req.user = userID._id;
+          req.email = userID.email;
+          next();
+        } catch (error) {
+          console.log(error);
+        }
         // return isExpired;
       }
     });

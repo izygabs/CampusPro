@@ -55,11 +55,13 @@
 .btn,
 .nav-link {
   color: black !important;
+  margin-top: 1rem !important;
 }
 .dpBtn,
 .nav-link:hover {
   background-color: black !important;
   color: white !important;
+  cursor: pointer;
 }
 #dropdown-basic-button {
   background-color: black !important;
@@ -196,4 +198,7 @@
   padding-left: 2rem;
   padding-top: 0.3rem;
   background-color: whitesmoke;
+}
+.hideBtn {
+  display: none;
 }

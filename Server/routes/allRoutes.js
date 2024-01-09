@@ -23,7 +23,9 @@ const viewItemById = require("../controllers/viewItemById");
 const deleteProperty = require("../controllers/deleteProperty");
 
 const deleteItem = require("../controllers/deleteItem");
+
 const userProfile = require("../controllers/userProfile");
+
 const checkTokenExpired = require("../controllers/checkTokenExpired");
 
 const {
@@ -40,6 +42,13 @@ const changePassword = require("../controllers/changePassword");
 
 const updateUser = require("../controllers/updateUser");
 
+const viewPropertyByAgentId = require("../controllers/viewPropertyByAgentId");
+
+const viewItemsByMerchId = require("../controllers/viewItemsByMerchId");
+
+const getHostelStatus = require("../controllers/getHostelByStatus");
+const getItemStatus = require("../controllers/getItemByStatus");
+
 const route = express.Router();
 
 route.post("/api/signUp", signUp);
@@ -49,11 +58,16 @@ route.post("/api/login", login);
 route.post(
   "/api/uploadProperties",
   verifyToken,
-  uploadHostels.array("hostels", 10),
+  uploadHostels.array("hostelImages", 10),
   uploadProperty
 );
 
-route.post("/api/uploadItems", uploadItems.array("itemImages", 10), uploadItem);
+route.post(
+  "/api/uploadItems",
+  verifyToken,
+  uploadItems.array("itemImages", 10),
+  uploadItem
+);
 
 route.put(
   "/api/property/:id",
@@ -72,11 +86,11 @@ route.put(
 
 route.get("/api/allProperties", viewProperties);
 
-route.get("/api/allItems", verifyToken, viewItems);
+route.get("/api/allItems", viewItems);
 
-route.get("/api/property/:id", verifyToken, viewPropertyById);
+route.get("/api/property/:id", viewPropertyById);
 
-route.get("/api/item/:id", verifyToken, viewItemById);
+route.get("/api/item/:id", viewItemById);
 
 route.get("/api/user/:id", verifyToken, userProfile);
 
@@ -86,8 +100,21 @@ route.delete("/api/item/:id", verifyToken, deleteItem);
 
 route.get("/api/logout", verifyToken, logOut);
 
-route.put("/api/changePassword/:id", verifyToken, changePassword);
+route.put("/api/changePassword", verifyToken, changePassword);
 
-route.put("/api/updateUser/:id", upload.single("profilePic"), updateUser);
+route.put(
+  "/api/updateUser",
+  verifyToken,
+  upload.single("profilePic"),
+  updateUser
+);
+
+route.get("/api/propertyByAgent/:agentID", viewPropertyByAgentId);
+
+route.get("/api/itemsByMerch/:merchantID", viewItemsByMerchId);
+
+route.get("/api/propertyStatus/:status", verifyToken, getHostelStatus);
+
+route.get("/api/itemStatus/:status", verifyToken, getItemStatus);
 
 module.exports = route;

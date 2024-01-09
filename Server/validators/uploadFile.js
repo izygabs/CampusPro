@@ -1,6 +1,7 @@
 const multer = require("multer");
+const path = require("path");
 
-const storage = multer.diskStorage({
+const userStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./User_Images");
   },
@@ -30,7 +31,7 @@ const itemsStorage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: userStorage });
 const uploadHostels = multer({
   storage: hostelStorage,
 });

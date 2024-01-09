@@ -5,14 +5,24 @@
       rgba(33, 32, 32, 0.822),
       rgba(35, 34, 34, 0.694)
     ),
-    url("./images/editImage.jpeg");
+    url("./images/students-2.webp");
+  height: 160vh;
 }
+
+.sp-logo {
+  /* border: 1px solid blue; */
+  height: 15rem;
+  margin-left: 28.5rem;
+  margin-bottom: -4rem;
+}
+
 .sp-form h1 {
   text-align: center;
   padding-top: 40px;
 }
 
 .sp-form {
+  /* border: 1px solid red; */
   box-shadow: inset 0 0.9em 2em rgba(0, 0, 0, 0.406);
   color: rgb(239, 236, 236);
   /* line-height: 2.5rem; */
@@ -26,6 +36,7 @@
   margin: 3rem auto;
   padding-left: 16px;
   padding-bottom: 3rem;
+  height: 100;
 }
 
 .sp-form label {
@@ -178,4 +189,62 @@ input label button h2 h6 {
 }
 .sp-registered a:hover {
   color: gold;
+}
+.modalBtn:hover {
+  background-color: gold;
+  color: black;
+}
+/* SignUpForm.css */
+.signUp-moda {
+  width: 100px; /* Set the desired width */
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  padding: 20px auto;
+}
+
+.signUp_overlayModa {
+  /* /* background: rgba(0, 0, 0, 0.5); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalBtn {
+  display: inline;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 2rem;
+  border: none;
+  margin: 1.5rem auto 2rem;
+}
+/* SignUpForm.css */
+.signUp-modal {
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+
+  /* Center the modal horizontally and vertically */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+
+  /* Add box shadow for a more elevated look */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signUp_overlayModal {
+  background: rgba(3, 3, 3, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+
+  top: 20%;
+  left: 34%;
+  width: 40%;
+  height: 50%;
+  color: #fcd503;
+  font-size: 20px;
 }

@@ -1,84 +1,115 @@
 import React from "react";
 import logo from "./images/campuspro(6).png";
-import datae from "./data";
-import { useState } from "react";
-import SubRentpage1 from "./subRentPage1";
+import Navbar from "./Components/Navbar";
+import { useState, useEffect } from "react";
+// import SubRentpage1 from "./subRentPage1";
 import { Link } from "react-router-dom";
+import location from "./images/location-icon.png";
+import RentPage2 from "./rentPage2";
+import campData from "./campus";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function RentPage1() {
-  const [data1, setData1] = useState(datae);
-  const subRent = data1.map((ie) => {
-    return <SubRentpage1 key={ie.id} {...ie} />;
-  });
-  // a function to sort houses according to the campus name the user inputs into the input
-  function sort(e) {
-    // e.preventDefault()
-    const searchs = e.target.value;
-    console.log(searchs);
+  const [data11, setData11] = useState([]);
+  const [data12, setData12] = useState([]);
 
-    if (searchs) {
-      let sorting = data1.filter((ei) =>
-        ei.campus.toLowerCase().startsWith(searchs.toLowerCase())
-      );
-      setData1(sorting);
-    } else {
-      setData1(datae);
+  //using the hook to display the fetch data on load
+  useEffect(() => {
+    fetcher2();
+  }, []);
+
+  //function to fetch properties from the database
+  const url = "/api/allProperties";
+  const fetcher2 = async () => {
+    try {
+      const info = await fetch(url);
+      const data2 = await info.json();
+      const result = data2.Properties;
+      setData11(result);
+      setData12(result);
+      // console.log(result);
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   // a function to sort houses according to thier prices
   function sortPrice(e) {
-    setData1(datae);
+    setData11(data12);
 
     const prc = Number(e.target.value);
 
-    console.log(prc);
+    // console.log(prc);
 
     if (prc) {
-      let srtprice = data1.filter((ea) => ea.amount <= prc);
+      let srtprice = data12.filter((ea) => ea.price <= prc);
 
-      setData1(srtprice);
+      setData11(srtprice);
     } else {
-      setData1(datae);
+      setData11(data11);
+      
     }
   }
 
   return (
     <div>
-      <div className="hp-header">
-        <div className="hp-logo-div">
-          <div>
-            <Link to="/">
-              <img src={logo} className="hp-logo" />
-            </Link>
-          </div>
-          <div>
-            <p>CampusPro</p>
-          </div>
-        </div>
-        <div>
-          <input
-            onChange={sort}
-            placeholder="Search for hostels around your school. example: oou"
-            className="hp-select-button"
-          />
-        </div>
-        <div>
-          <Link to="/login">
-            <button className="hp-login-button">Login</button>
-          </Link>
-        </div>
+      <Navbar />
+
+      <div className="hp-select-div">
+        <select>
+          <input type="text" placeholder="search" />
+          <option>Filter hostels by campus</option>
+          {campData.map((uni) => {
+            return (
+              <option value={uni.name} key={uni.name}>
+                {uni.name}
+              </option>
+            );
+          })}
+        </select>
+
+        <select onChange={sortPrice}>
+          <option>filter hostels according to price</option>
+          <option value="2000000">2,000,000 and below</option>
+          <option value="1500000">1,500,000 and below</option>
+          <option value="1000000">1,000,000 and below</option>
+          <option value="500000">500,000 and below</option>
+          <option value="200000">200,000 and below</option>
+          <option value="100000">100,000 and below</option>
+        </select>
       </div>
 
-      <select className="sp-select-amount" onChange={sortPrice}>
-        <option value="">Filter hostels according to their prices</option>
-        <option value="2500000">#2,500,000 & below</option>
-        <option value="1000000">#1,000,000 & below</option>
-        <option value="500000">#500,000 & below</option>
-        <option value="200000">#200,000 & below</option>
-      </select>
+      {/* <div className="sp-subrent-div">{subRent}</div> */}
+      <div className="sp-subrent-div">
+      {
+        data11.length > 0 ?
+        
+        data11.map(info => (
+            <div key={info._id} className="sp-sub-div">
+              <div className="sp-img-div">
+                <img className="sp-img" src={`${info.hostelImages[0]}`} />
+                <div>
+                  <img className="hp-locate" src={location} />
+                  <p>{info.campusName.toUpperCase()}</p>
+                </div>
+              </div>
+              <div className="sp-text-div">
+                {/* <p>{info.houseProperties[0]}</p> */}
+                <p>#{Number(info.price).toLocaleString()}</p>
 
-      <div className="sp-subrent-div">{subRent}</div>
+                <Link className="sp2-linkk" to={`/rentproperty/${info._id}`}>
+                  <button>View this property</button>
+                </Link>
+              </div>
+            </div>
+          )
+        )
+        :
+        <h1>No Property found</h1>
+      }
+
+
+      </div>
     </div>
   );
 }

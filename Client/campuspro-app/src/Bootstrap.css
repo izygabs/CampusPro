@@ -1,4 +1,7 @@
 .signinPage {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
   height: 100%;
   /* background-color: whitesmoke; */
   background-position: initial;
@@ -10,6 +13,13 @@
     ),
     url("../src/images/blackpeopleImage.jpg");
 }
+
+.signinPage img {
+  /* border: 1px solid blue; */
+  height: 10rem;
+  margin-left: 0.5rem;
+}
+
 .signinPage::after {
   content: "";
   position: absolute;
@@ -138,4 +148,9 @@
 }
 .year-display {
   color: rgb(193, 189, 189);
+}
+.login-error-message {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
 }

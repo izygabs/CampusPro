@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../AddItems.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import campData from "../campus";
 import { useNavigate } from "react-router";
 
 const AddItems = () => {
@@ -26,7 +27,7 @@ const AddItems = () => {
     location: yup.string().required("Address field is required"),
     itemImages: yup
       .array()
-      .min(5, "You must upload minimum of 5 pictures")
+      .min(3, "You must upload minimum of 3 pictures")
       .max(10, "You can upload maximum of 10 pictures"),
   });
 
@@ -72,7 +73,7 @@ const AddItems = () => {
         switch (response.status) {
           case 201:
             alert(result.Message);
-            // navigator("/Dashboard");
+            resetForm();
             break;
           case 400:
             alert(result.Message);
@@ -91,11 +92,9 @@ const AddItems = () => {
             alert(result.Message);
             break;
         }
-        resetForm();
       } catch (error) {
         console.error("Error sending data:", error);
       }
-      console.log(values);
     },
   });
 
@@ -129,7 +128,7 @@ const AddItems = () => {
         </div>
         <div>
           <label for="description">
-            Tell us something about the item
+            Item's Description:
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
@@ -168,7 +167,7 @@ const AddItems = () => {
 
         <div>
           <label for="quantity">
-            What is the quantity?<span className="add-item-hysteric">*</span>
+            Number of Item?<span className="add-item-hysteric">*</span>
           </label>
           <br />
           <input
@@ -187,7 +186,7 @@ const AddItems = () => {
 
         <div>
           <label for="location">
-            Tell us the about the location of the item
+            Location of the item
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
@@ -211,7 +210,7 @@ const AddItems = () => {
             <span className="add-item-hysteric">*</span>
           </label>
           <br />
-          <input
+          {/* <input
             className="add-items-inputs"
             placeholder="Enter the campus name here"
             type="text"
@@ -219,7 +218,21 @@ const AddItems = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.campus}
-          />
+          /> */}
+          <select className="add-items-inputs"  name="campus"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            // value={formik.values.location}
+            >
+          <option>Select Campus</option>
+          {campData.map((uni,index) => {
+            return (
+              <option value={uni.abbr} key={index}>
+                {uni.abbr}
+              </option>
+            );
+          })}
+        </select>
           {formik.touched.campus && formik.errors.campus && (
             <p className="addItem-error-message">{formik.errors.campus}</p>
           )}
@@ -314,7 +327,7 @@ const AddItems = () => {
         <div className="add-items-images">
           <label for="Items-image">
             Upload items pictures
-            <span className="add-item-hysteric">min:5, max:10</span>
+            <span className="add-item-hysteric">min:3, max:10</span>
             <input
               type="file"
               multiple
