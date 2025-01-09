@@ -15,15 +15,7 @@ const uploadProperty = async (req, res) => {
   let userEmail = req.email;
   let userId = req.user;
   let value = req.body;
-  // console.log("values", req.body);
-  // if (hostelsPictures == null || hostelsPictures.length < 5) {
-  //   // to delete the images saved into the hostels Images folder while validation failed
-  //   hostelsPictures.forEach((file) => {
-  //     fs.unlinkSync(file.path);
-  //   });
-
-  //   res.status(400).json({ Message: "You must upload minimum of 5 pictures" });
-  // } else {
+ 
   const userDetails = await user.findById({ _id: userId });
   const {
     description,

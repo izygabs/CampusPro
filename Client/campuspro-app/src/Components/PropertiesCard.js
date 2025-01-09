@@ -37,7 +37,7 @@ const PropertiesCard = (prop) => {
     const option = { method: "DELETE" };
     let resposnse = await fetch(url, option);
 
-    console.log(resposnse.Message);
+    // console.log(resposnse.Message);
     alert("Item deleted");
     setShowConfirmation(false);
 

@@ -2,14 +2,14 @@
   {
     "id": 1,
     "name": "Kolawole Abiodun",
-    "role": "Project Manager",
+    "role": "PM/Backend Dev",
     "image": "../buyPage-images/abiodun.jpeg"
   },
 
   {
     "id": 2,
     "name": "Gabriel Isaiah",
-    "role": "CTO",
+    "role": "CTO/Backend Dev",
     "image": "../buyPage-images/isaiah.png"
   },
 
