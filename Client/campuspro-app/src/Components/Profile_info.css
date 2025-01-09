@@ -25,7 +25,8 @@
 }
 
 .pi-pic {
-  margin-top: 1.5rem;
+  /* border: 1px solid red; */
+  margin-top: -6rem;
   border-radius: 800px;
   width: 150px;
   height: 150px;
@@ -83,4 +84,21 @@
 .pi-btn:hover {
   background-color: black;
   color: white;
+}
+
+.pi-img {
+  /* border: 1px solid blue; */
+  border: none;
+  margin-top: 9rem;
+  margin-left: 0.5rem;
+  height: 2rem;
+  width: 6rem;
+  border-radius: 5px;
+  color: black;
+  background-color: gold;
+  transition: all 0.3s ease-in-out;
+}
+.pi-img:hover {
+  color: white;
+  background-color: black;
 }

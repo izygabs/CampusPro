@@ -1,0 +1,32 @@
+#input {
+  padding-left: 0.5rem;
+}
+
+.feat-btn {
+  border: none;
+  background-color: gold;
+  color: black;
+  border-radius: 25px;
+  padding: 0.3rem 1.5rem;
+  margin-top: 0.5rem;
+  transition: all 2s ease-in-out;
+}
+
+.feat-btn:hover {
+  background: black;
+  color: white;
+}
+
+.cam {
+  margin-top: 12px;
+  margin-left: 5px;
+  font-size: 1rem;
+  /* text-align: center; */
+}
+.section-1 input {
+  margin-left: 12px;
+}
+.cpt-chechbox-div {
+  display: flex;
+  /* justify-content: flex-start; */
+}

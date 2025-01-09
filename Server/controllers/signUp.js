@@ -33,8 +33,6 @@ const signUp = async (req, res) => {
         password: hashedPassword,
         profilePic: null,
         typeOfUser: value.userType,
-        propertyIds: [],
-        itemIds: [],
       });
       let newUser = await agents.save();
       nodeMailer(value.Email, subject, message);

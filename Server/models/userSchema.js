@@ -21,12 +21,12 @@ const userSchema = new mongoose.Schema(
       lowerCase: true,
     },
     phoneNumber: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
     },
     altPhoneNumber: {
-      type: Number,
+      type: String,
     },
     password: {
       type: String,
@@ -39,34 +39,6 @@ const userSchema = new mongoose.Schema(
     typeOfUser: {
       type: String,
       required: true,
-    },
-    propertyIds: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "hostel",
-        },
-      ],
-    },
-
-    itemIds: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "item",
-        },
-      ],
-    },
-    google: {
-      id: {
-        type: String,
-      },
-      name: {
-        type: String,
-      },
-      email: {
-        type: String,
-      },
     },
   },
   { timestamps: true }

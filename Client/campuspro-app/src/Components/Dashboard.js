@@ -9,8 +9,13 @@ import ProfileInfo from "./Profile_info";
 import OverlayComponent from "./OverlayComp";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import ItemTray from "./ItemTray";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-// import Content from "./Content";
+import Editing from "./Editing";
+import Createproperty from "./Createproperty";
+import PropertyTray from "./PropertytTray";
+// import "react-tooltip/dist/react-tooltip.css";
+// import { Tooltip } from "react-tooltip";
 
 const Dashboard = () => {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -21,8 +26,19 @@ const Dashboard = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [userType, setUserType] = useState();
+  const [time, setTime] = useState();
+  const [pic, setPic] = useState();
+
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const tim = new Date().getHours();
+    if (tim < 12) setTime("Good Morning");
+    else if (tim < 18) setTime("Good Afternoon");
+    else setTime("Good Evening");
+    // console.log(new Date().getHours());
+  }, []);
   useEffect(() => {
     fetch("/api/getTokenExpiration", {
       headers: {
@@ -31,36 +47,60 @@ const Dashboard = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setIsTokenExp(data.isTokenExpired);
-
         const token = jwtDecode(data.campusToken);
-        console.log(token);
-        const { _id, fName, lName, userType, email } = token;
-        setUserID(_id);
-        setEmail(email);
-        setFirstName(fName);
-        setLastName(lName);
-        setUserType(userType);
-        // Redirect to login if token is expired
-        if (data.isTokenExpired) {
+        // console.log(token.exp);
+        if (!token) {
           navigate("/login");
         }
+        const expirationTime = token.exp;
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        if (expirationTime < currentTime) {
+          // Token has expired, redirect to login
+          navigate("/login");
+        } else {
+          token && setLoading(true);
+          const { _id, fName, lName, userType, email, profilePic } = token;
+          setUserID(_id);
+          setEmail(email);
+          setFirstName(fName);
+          setLastName(lName);
+          setUserType(userType);
+          setIsTokenExp(true);
+        }
+        // Redirect to login if token is expired
       })
       .catch((error) => {
         console.error("Error fetching token status:", error);
       });
   }, [navigate]);
 
+  useEffect(() => {
+    getPic();
+  }, [pic]);
+
+  const getPic = async () => {
+    try {
+      const results = await axios.get("/api/user/:id");
+      setPic(results.data.Profile.profilePic);
+      console.log(results.data.Profile.profilePic);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleButtonClicked = (component) => {
     setSelectedComponent(component);
     setShowOverlay(true);
+    getPic();
   };
 
   const handleCloseOverlay = () => {
     setShowOverlay(false);
+    getPic();
   };
   let userName = firstName + " " + lastName;
 
+  // console.log(userID);
   return (
     <div className="dash">
       <svg
@@ -134,14 +174,14 @@ const Dashboard = () => {
         <div class="username">
           <DropdownButton
             id="dropdown-basic-button"
-            title={userName}
+            title={loading ? userName : ""}
             className="userName-dropdown"
             variant="secondary"
           >
             <Dropdown.Item
               onClick={() =>
                 handleButtonClicked(
-                  isTokenExp ? (
+                  !isTokenExp ? (
                     navigate("/login")
                   ) : (
                     <ProfileInfo userID={userID} />
@@ -154,7 +194,7 @@ const Dashboard = () => {
             <Dropdown.Item
               onClick={() =>
                 handleButtonClicked(
-                  isTokenExp ? (
+                  !isTokenExp ? (
                     navigate("/login")
                   ) : (
                     <Changepassword Email={email} />
@@ -240,6 +280,66 @@ const Dashboard = () => {
                     <a
                       class="nav-link d-flex  align-items-center gap-2 active "
                       aria-current="page"
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <div>
+                              <h1>
+                                {time}, {firstName}
+                              </h1>
+                              {!pic && (
+                                <marquee
+                                  style={{ color: "red", fontSize: "1.5rem" }}
+                                >
+                                  Note: You must upload your profile picture
+                                  before you can add properties or items !!!
+                                </marquee>
+                              )}
+                              <div className="db-content">
+                                <h6>WHAT'S NEXT</h6>
+                                <h3>
+                                  Let's continue with creating your property and
+                                  items!
+                                </h3>
+                                <p>
+                                  Your info is pending verified, just continue
+                                  with listing your property now.
+                                </p>
+                                <button
+                                  // data-tooltip-id="my-tooltip"
+                                  onClick={() =>
+                                    handleButtonClicked(
+                                      !isTokenExp ? (
+                                        navigate("/login")
+                                      ) : userType == "Agent" ? (
+                                        <Createproperty />
+                                      ) : (
+                                        <AddItems />
+                                      )
+                                    )
+                                  }
+                                  disabled={!pic && true}
+                                  title={
+                                    !pic &&
+                                    "Upload you profile picture before you can add property"
+                                  }
+                                >
+                                  {userType == "Agent"
+                                    ? "Go to Add Your Property"
+                                    : "Go to Add Your Items"}
+                                </button>
+                                {/* <Tooltip id="my-tooltip" /> */}
+                              </div>
+                              <div className="db-confirm">
+                                <p>Pending Confirmation</p>
+                                <h3>The property is pending</h3>
+                              </div>
+                            </div>
+                          )
+                        )
+                      }
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#house-fill" />
@@ -247,8 +347,23 @@ const Dashboard = () => {
                       Dashboard
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link d-flex  align-items-center gap-2">
+                  <li class={userType == "merchant" ? "hideBtn" : "nav-item"}>
+                    <a
+                      class="nav-link d-flex  align-items-center gap-2"
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <PropertyTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              pic={pic}
+                            />
+                          )
+                        )
+                      }
+                    >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#file-earmark" />
                       </svg>
@@ -256,7 +371,22 @@ const Dashboard = () => {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="">
+                    <a
+                      class="nav-link d-flex align-items-center gap-2"
+                      onClick={() =>
+                        handleButtonClicked(
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : (
+                            <ItemTray
+                              id={userID}
+                              isTokenExp={isTokenExp}
+                              pic={pic}
+                            />
+                          )
+                        )
+                      }
+                    >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#cart" />
                       </svg>
@@ -285,7 +415,7 @@ const Dashboard = () => {
                         <Dropdown.Item
                           onClick={() =>
                             handleButtonClicked(
-                              isTokenExp ? (
+                              !isTokenExp ? (
                                 navigate("/login")
                               ) : (
                                 <ProfileInfo userID={userID} />
@@ -298,7 +428,7 @@ const Dashboard = () => {
                         <Dropdown.Item
                           onClick={() =>
                             handleButtonClicked(
-                              isTokenExp ? (
+                              !isTokenExp ? (
                                 navigate("/login")
                               ) : (
                                 <Changepassword Email={email} />
@@ -308,31 +438,34 @@ const Dashboard = () => {
                         >
                           Login & Security
                         </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={async () => {
+                            const logout = await axios.get("/api/logout");
+                            if (logout) {
+                              navigate("/login");
+                            }
+                          }}
+                        >
+                          Sign out
+                        </Dropdown.Item>
                       </DropdownButton>
                     </a>
                   </li>
                   <li class="nav-item signOut">
-                    <a
+                    {/* <a
                       class="nav-link d-flex align-items-center gap-2 signOut"
                       onClick={async () => {
                         const logout = await axios.get("/api/logout");
                         if (logout) {
                           navigate("/login");
                         }
-                        // if (logout.ok) {
-                        //   localStorage.removeItem("token"); // Remove token from storage
-                        //   // window.location.reload(); // Refresh the app or redirect to login page
-                        //   navigate("/login");
-                        // } else {
-                        //   console.error("Logout failed");
-                        // }
                       }}
                     >
                       <svg class="bi" style={{ width: "20px", height: "20px" }}>
                         <use xlinkHref="#door-closed" />
                       </svg>
                       Sign out
-                    </a>
+                    </a> */}
                   </li>
                 </ul>
               </div>
@@ -343,26 +476,53 @@ const Dashboard = () => {
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 class="h2">Dashboard</h1>
 
-              <div class="btn-toolbar ms-5 mb-2 mb-md-0">
+              {/* <div class="btn-toolbar ms-5 mb-2 mb-md-0">
                 <div class="btn-group me-2 specialBtn">
-                  <button type="button" class="btn btn-sm btn-outline-dark">
+                  <button
+                    type="button"
+                    class={
+                      userType == "merchant"
+                        ? "hideBtn"
+                        : "btn btn-sm btn-outline-dark"   
+                    }
+                    onClick={() =>
+                      handleButtonClicked(
+                        !isTokenExp ? navigate("/login") : <Createproperty />
+                      )
+                    }
+                    onClick={() =>
+                      handleButtonClicked(
+                        !isTokenExp ? navigate("/login") : <Createproperty />
+                      )
+                    }
+                  >
                     Create Property
                   </button>
                   {/* <Link to="/add-items"> */}
-                  <button
+              {/* <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
                     onClick={() =>
                       handleButtonClicked(
-                        isTokenExp ? navigate("/login") : <AddItems />
+                        !isTokenExp ? navigate("/login") : <AddItems />
                       )
                     }
                   >
                     Create Items
-                  </button>
-                  {/* </Link> */}
-                </div>
-              </div>
+                  </button> */}
+              {/* </Link> */}
+              {/* </div> */}
+              {/* <button
+                  type="button"
+                  class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1"
+                >
+                  <svg class="bi" style={{ width: "20px", height: "20px" }}>
+                    <use xlinkHref="#calendar3" />
+                  </svg>
+                  This week
+                </button> */}
+              {/* </div>
+              <div class="username">{/* <h6>{"Gabriel Isaiah"}</h6> */}
             </div>
 
             <div className="overComp">
@@ -373,7 +533,15 @@ const Dashboard = () => {
                 />
               ) : (
                 <div>
-                  <h1>Welcome back, {firstName}</h1>
+                  <h1>
+                    {time}, {firstName}
+                  </h1>
+                  {!pic && (
+                    <marquee style={{ color: "red", fontSize: "1.5rem" }}>
+                      Note: You must upload your profile picture before you can
+                      add properties or items !!!
+                    </marquee>
+                  )}
                   <div className="db-content">
                     <h6>WHAT'S NEXT</h6>
                     <h3>
@@ -386,19 +554,34 @@ const Dashboard = () => {
                     <button
                       onClick={() =>
                         handleButtonClicked(
-                          isTokenExp ? navigate("/login") : <AddItems />
+                          !isTokenExp ? (
+                            navigate("/login")
+                          ) : userType == "Agent" ? (
+                            <Createproperty />
+                          ) : (
+                            <AddItems />
+                          )
                         )
                       }
+                      disabled={!pic && true}
+                      title={
+                        !pic &&
+                        "Upload you profile picture before you can add property"
+                      }
                     >
-                      Go to Create Your Property
+                      {userType == "Agent"
+                        ? "Go to Add Your Property"
+                        : "Go to Add Your Items"}
                     </button>
                   </div>
                   <div className="db-confirm">
                     <p>Pending Confirmation</p>
+                    <h3>The property is pending</h3>
                   </div>
                 </div>
               )}
             </div>
+            {/* <Editing /> */}
           </main>
         </div>
       </div>

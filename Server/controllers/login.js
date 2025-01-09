@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-// const register = require("../models/userSchema");
+const register = require("../models/userSchema");
 const jwt = require("jsonwebtoken");
 const { StatusCodes } = require("http-status-codes");
 const { user } = require("../models/userSchema");
@@ -34,7 +34,7 @@ const login = async (req, res) => {
           .status(200)
           .json({ Message: `Welcome ${isUser.firstName}`, jwtToken: token });
       } else {
-        return res.status(401).json({ Message: "Invalid Password" });
+        return res.status(401).json({ Message: "Invalid Email or Password" });
       }
     } else {
       res.status(417).json({ Message: "Invalid Email or Password" });

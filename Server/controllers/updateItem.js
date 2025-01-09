@@ -9,15 +9,7 @@ const updateItem = async (req, res) => {
   const merchantId = req.user;
   const itemId = req.params.id;
   const value = req.body;
-  // if (error) {
-  //   itemPics.forEach((file) => {
-  //     fs.unlinkSync(file.path);
-  //   });
-  //   const errors = errorHandler.JoiErrorHandler(error);
-  //   res
-  //     .status(StatusCodes.NOT_ACCEPTABLE)
-  //     .json({ "Input validation failed": errors });
-  // } else {
+
   try {
     const existItems = await items.findById({ _id: itemId });
     const itemPic = itemPics.map((file) => file.path);
@@ -33,7 +25,7 @@ const updateItem = async (req, res) => {
       },
       { new: true }
     );
-    res.status(201).json({ Message: item });
+    res.status(201).json({ Message: "item updated" });
     // const merchant = await items.findByIdAndUpdate(merchantId,{$set: value});
   } catch (error) {
     itemPics.forEach((file) => {
